@@ -1,0 +1,31 @@
+.signup {
+  text-align: left;
+  width: 50%;
+}
+.signup__container {
+  background-color: rgba(245, 245, 245, 0.81);
+  margin: 8px;
+  padding: 20px 70px;
+}
+.register__inputs {
+  display: flex;
+  flex-direction: column;
+}
+.register__button {
+  border: none;
+  width: 180px;
+  height: 45px;
+  background-color: #000000;
+  color: white;
+}
+.security__text {
+  margin: 15px 0;
+}
+@media screen and (max-width: 500px) {
+  .signup__container,
+  .login__container {
+    padding: 15px 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}

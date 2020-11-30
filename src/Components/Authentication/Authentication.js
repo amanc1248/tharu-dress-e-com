@@ -2,18 +2,19 @@ import React from "react";
 import "../..";
 import "./Authentication.css";
 import Login from "./Login/Login";
+import Signup from "./Signup/Signup";
 function Authentication() {
   return (
-    <div className="authentication">
+    <div className="authentication container-fluid p-0">
       <img
-        className="authentication__logo"
+        className="authentication__logo  w-100"
         src="images/croped.jpg"
         alt="authentication background"
       />
-      <div className="login">
+      <div className=" login__signup row ">
         <Login></Login>
+        <Signup></Signup>
       </div>
-      <div className="signup"></div>
     </div>
   );
 }

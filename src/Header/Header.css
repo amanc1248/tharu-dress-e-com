@@ -10,7 +10,9 @@
   font-size: 40px;
   font-weight: bolder;
 }
-
+.headerIcon {
+  color: black;
+}
 /* .nav-link,
 .hamburger {
   color: white !important;

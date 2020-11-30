@@ -1,14 +1,14 @@
 import React from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
-import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
+import PersonIcon from "@material-ui/icons/Person";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import Button from "react-bootstrap/Button";
 
 function Header() {
   return (
     <div className="header">
-      <nav className="navbar navbar-expand-lg navbar-light  ">
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top ">
         <a className="navbar-brand order-0 nav-link" href="#">
           DASA
         </a>
@@ -35,13 +35,13 @@ function Header() {
           </ul>
         </div>
         <a className="searchIcon nav-link" href="#">
-          <SearchIcon></SearchIcon>
+          <SearchIcon className="headerIcon"></SearchIcon>
         </a>
         <a className="nav-link" href="#">
-          <PersonOutlineIcon></PersonOutlineIcon>
+          <PersonIcon className="headerIcon"></PersonIcon>
         </a>
         <a className="nav-link" href="#">
-          <LocalMallIcon></LocalMallIcon>
+          <LocalMallIcon className="headerIcon"></LocalMallIcon>
         </a>
         <button
           className="navbar-toggler"

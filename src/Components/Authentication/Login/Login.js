@@ -2,24 +2,32 @@ import React from "react";
 import "./Login.css";
 function Login() {
   return (
-    <div className="login">
-      <div className="title__subTitle">
-        <h5>SIGN IN</h5>
-        <p>Please enter your email and password to access your account</p>
-      </div>
+    <div className="login col-lg-6 col-md-6">
       <div className="login__container">
+        <div className="title__subTitle">
+          <h6>SIGN IN</h6>
+          <p className="subtitle">
+            Please enter your email and password to access your account
+          </p>
+        </div>
         <form action="">
-          <p>Email</p>
-          <input type="text"></input>
-          <p>Password</p>
-          <input type="text"></input>
+          <div className="signin__inputs">
+            <label htmlFor="">
+              Email
+              <input type="text"></input>
+            </label>
+            <label htmlFor="">
+              Password
+              <input type="text"></input>
+            </label>
+          </div>
           <div className="security__text">
             <small>
               This site is protected by reCAPTCHA and the Google Privacy Policy
               and Terms Of Service Apply{" "}
             </small>
           </div>
-          <div className="form__footer">
+          <div className="login__form__footer row justify-content-between mr-0 ml-0">
             <p>
               {" "}
               <u>Forgot Password</u>{" "}
