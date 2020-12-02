@@ -1,0 +1,40 @@
+.footer {
+  background-color: rgba(245, 245, 245, 0.81);
+}
+.firstSectionFooter {
+  padding: 1em 1em !important;
+  text-align: left;
+  font-size: 14px;
+}
+.emailSignUpTitle,
+.followUsTitle {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 17px !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5em;
+}
+.socialIcon {
+  font-size: xx-large !important;
+  width: 60px !important;
+  color: black;
+}
+.footerPadding {
+  padding: 0 0.5em 0 0;
+  color: black;
+}
+.secondSectionFooter {
+  padding: 1em 2em 2em 2em !important;
+}
+.followUsLinks,
+.additionalInformationLinks {
+  padding-bottom: 2em;
+  font-size: 14px;
+}
+@media screen and (max-width: 1000px) {
+  .secondSectionFooter {
+    background-color: #f1f1f1;
+  }
+  .followUsLinks, .additionalInformationLinks {
+    text-align: left;
+  }
+}

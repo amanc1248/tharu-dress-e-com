@@ -1,0 +1,95 @@
+.carousel__image {
+  height: 100vh;
+  /* when using background image we have to use background keyword where as when using just image we 
+  have to use object keyword */
+  object-fit: cover;
+  object-position: top center;
+  /* position: relative; */
+  /* background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; */
+}
+.carousel-button {
+  background-color: white;
+  border: none;
+  color: black;
+  font-weight: 600;
+  height: 42px;
+  margin-bottom: 2em;
+  width: 150px;
+}
+.headingClothShortDescription {
+  margin-bottom: 1.5em;
+}
+.second__section__heading,
+.shopTheLookHeading {
+  margin: 3.5em 0;
+  text-align: center;
+}
+.sale {
+  height: 100vh;
+  text-align: center;
+}
+
+.saleHeading {
+  font-size: 4.5em;
+  height: 50vh;
+}
+.salesButton {
+  height: 50vh;
+}
+.firstProduct,
+.secondProduct {
+  background-color: Transparent;
+  border: 1px solid black;
+  color: black;
+  font-weight: 600;
+  height: 42px;
+  margin: 5em 2em 0em 2em;
+  width: 150px;
+}
+.kids {
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  background-repeat: no-repeat;
+}
+.kids__container {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  top: 60%;
+}
+.kidsProductDescription {
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 1.5em;
+}
+.shopKids__button {
+  background-color: white;
+  border: none;
+  color: black;
+  font-weight: 600;
+  height: 42px;
+  margin: 0 0 1em 0.5em;
+  width: 190px;
+}
+
+@media screen and (max-width: 500px) {
+  .firstProduct,
+  .secondProduct {
+    margin: 3em 1em 0em 1em;
+    width: 120px;
+  }
+  .sale {
+    height: 50vh;
+  }
+  .salesButton {
+    height: 25vh;
+  }
+}

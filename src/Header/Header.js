@@ -4,45 +4,49 @@ import SearchIcon from "@material-ui/icons/Search";
 import PersonIcon from "@material-ui/icons/Person";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import { Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import MenuIcon from "@material-ui/icons/Menu";
+import { FormControl } from "@material-ui/core";
 
 function Header() {
   return (
     <div className="header">
       <nav className="navbar navbar-expand-lg navbar-light fixed-top ">
-        <a className="navbar-brand order-0 nav-link" href="#">
+        <Link className="navbar-brand order-0 nav-link" to="/">
           DASA
-        </a>
+        </Link>
         <div
           className="collapse navbar-collapse text-right order-lg-0 order-last"
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link menWomenKidsHeading" href="#">
-                MEN <span className="sr-only">(current)</span>
-              </a>
+              <Link to="/men" className="nav-link menWomenKidsHeading">
+                <div>MEN</div>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link menWomenKidsHeading" href="#">
+              <Link className="nav-link menWomenKidsHeading" to="/women">
                 WOMEN
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link menWomenKidsHeading" href="#">
+              <Link className="nav-link menWomenKidsHeading" to="/kids">
                 KIDS
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
-        <a className="searchIcon nav-link" href="#">
+        <Link className="searchIcon nav-link" href="#">
           <SearchIcon className="headerIcon"></SearchIcon>
-        </a>
-        <a className="nav-link" href="#">
+        </Link>
+        <Link className="nav-link" to="/signin">
           <PersonIcon className="headerIcon"></PersonIcon>
-        </a>
-        <a className="nav-link" href="#">
+        </Link>
+        <Link className="nav-link" href="#">
           <LocalMallIcon className="headerIcon"></LocalMallIcon>
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -53,7 +57,7 @@ function Header() {
           aria-label="Toggle navigation"
         >
           <span className="">
-            <i className="fas fa-bars hamburger"></i>
+            <MenuIcon className="headerIcon"></MenuIcon>
           </span>
         </button>
       </nav>

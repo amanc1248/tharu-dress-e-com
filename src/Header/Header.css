@@ -6,12 +6,12 @@
   color: black !important;
 } */
 .navbar-brand {
-  color: white;
+  color: white !important;
   font-size: 40px;
   font-weight: bolder;
 }
 .headerIcon {
-  color: black;
+  color: white;
 }
 /* .nav-link,
 .hamburger {
@@ -33,6 +33,7 @@
 
 .menWomenKidsHeading {
   font-weight: 700;
+  color: white !important;
 }
 .navbarWithSearchbar {
   position: relative;
