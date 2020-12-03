@@ -9,6 +9,7 @@ import Footer from "./Footer/Footer";
 import Men from "./Components/Category/Men/Men";
 import Women from "./Components/Category/Women/Women";
 import Kids from "./Components/Category/Kids/Kids";
+import MenProduct from "./Components/Product Category/Men Product/MenProduct";
 function App() {
   return (
     <Router>
@@ -35,6 +36,10 @@ function App() {
           </Route>
           {/* Authentication Route */}
 
+          <Route path="/MenCategory">
+            <Header></Header>
+            <MenProduct></MenProduct>
+          </Route>
           <Route path="/signin">
             <Header></Header>
             <Authentication></Authentication>
