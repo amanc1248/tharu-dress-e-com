@@ -1,5 +1,10 @@
 import React from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Product from "../Product/Product";
+import "./ProductCategory.css";
+import LocalShippingIcon from "@material-ui/icons/LocalShipping";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 function ProductCategory({
   product_category_title,
   product_category_description,
@@ -17,29 +22,62 @@ function ProductCategory({
       </div>
 
       {/* 2nd Section filter bar */}
-      <div className="filter__bar">
-        <div className="filter__options">
-          <div>
+      <div className="filter__bar__container">
+        <div className="filter__bar">
+          <div className="filter__option">
             Category
-            <ExpandMoreIcon></ExpandMoreIcon>
+            <ExpandMoreIcon className="expandmore__icon"></ExpandMoreIcon>
           </div>
-          <div>
+          <div className="filter__option">
             Design
-            <ExpandMoreIcon></ExpandMoreIcon>
+            <ExpandMoreIcon className="expandmore__icon"></ExpandMoreIcon>
           </div>
-          <div>
+          <div className="filter__option">
             Size
-            <ExpandMoreIcon></ExpandMoreIcon>
+            <ExpandMoreIcon className="expandmore__icon"></ExpandMoreIcon>
           </div>
-          <div>
+          <div className="filter__option">
             Style
-            <ExpandMoreIcon></ExpandMoreIcon>
+            <ExpandMoreIcon className="expandmore__icon"></ExpandMoreIcon>
           </div>
         </div>
       </div>
 
       {/* 3rd section products section */}
-      
+      <div className="products__list row">
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
+        <Product></Product>
+      </div>
+      {/*  4th section, view more button*/}
+      <div className="view__more__container">
+        <button type="button" className="view__more__button">
+          VIEW MORE
+        </button>
+      </div>
+
+      {/* 5th section, customer service */}
+      <div className="customer__service__container row">
+        <div className="customer__service  col-lg-4 col-md-4 col-sm-4 col-sm-12   ">
+          <LocalShippingIcon className="customer__service__icon"></LocalShippingIcon>
+          <p className="customer__service__description">
+            Shipping And Exchange
+          </p>
+        </div>
+        <div className="customer__service col-lg-4 col-md-4 col-sm-4 col-sm-12   ">
+          <CheckBoxIcon className="customer__service__icon"></CheckBoxIcon>
+          <p className="customer__service__description">Free Packaging</p>
+        </div>
+        <div className="customer__service col-lg-4 col-md-4 col-sm-4 col-sm-12   ">
+          <InsertEmoticonIcon className="customer__service__icon"></InsertEmoticonIcon>
+          <p className="customer__service__description">Get your avatar</p>
+        </div>
+      </div>
     </div>
   );
 }

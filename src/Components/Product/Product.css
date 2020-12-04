@@ -1,11 +1,20 @@
+.product__container {
+  padding: 1px;
+}
 .product {
   background-color: rgb(231, 231, 231);
   width: 100%;
 }
+
 .specific__product__image {
   width: 100%;
   height: auto;
 }
-.products__list {
-  height: 100vh;
+/* .products__list {
+  margin-left: 5px;
+} */
+@media screen and (max-width: 500px) {
+  .product__name {
+    font-size: 14px;
+  }
 }

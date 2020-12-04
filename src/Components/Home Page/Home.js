@@ -67,7 +67,7 @@ function Home() {
           <Carousel.Item>
             <img
               className="d-block w-100 carousel__image"
-              src="images\Home Carousel Image\images\20190910_120902.jpg"
+              src="images/Home Carousel Image/images/20190910_120902.jpg"
               alt="Third slide"
             />
 

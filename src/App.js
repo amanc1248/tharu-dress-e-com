@@ -1,7 +1,6 @@
 import "./App.css";
 import Authentication from "./Components/Authentication/Authentication";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React, { Component } from "react";
 import Header from "./Header/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Components/Home Page/Home";
@@ -37,7 +36,6 @@ function App() {
           {/* Authentication Route */}
 
           <Route path="/MenCategory">
-            <Header></Header>
             <MenProduct></MenProduct>
           </Route>
           <Route path="/signin">
