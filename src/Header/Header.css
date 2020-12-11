@@ -1,40 +1,56 @@
+.navbar__brand {
+  font-size: 25px !important;
+  font-weight: 700 !important;
+}
+.our__toogler{
+  color: white!important;
+}
+.navbar__component__whenScrolled {
+  color: black !important;
+  font-weight: 500;
+}
+.navbar__component__whennotscrolled {
+  color: white !important;
+  font-weight: 500;
+}
+.headerWhenScrolled {
+  background-color: white;
+}
+.headerWhenNotScrolled {
+  background-color: transparent;
+  /* color: white !important; */
+}
+
 /* 1) FOR GIVING A SPACE TO THE NAVBAR */
 /* .navbar:hover{
   background-color: white;
 }
+.
 .nav-link:hover, .hamburger:hover{
   color: black !important;
 } */
-.navbar-brand {
-  color: white !important;
-  font-size: 40px;
-  font-weight: bolder;
-}
+/* 
 .headerIcon {
   color: white;
 }
-/* .nav-link,
+.nav-link,
 .hamburger {
-  color: white !important;
+  color: white;
 } */
 
-.nav-linkWhenScrolledAndHovered {
+/* .nav-linkWhenScrolledAndHovered {
   color: black !important;
 }
 
 /* CHANGING THE BACKGROUND COLOR WHEN SCROLLED  */
-.navbarColorWhenScrolledAndHovered {
+/* .navbarColorWhenScrolledAndHovered {
   background-color: white !important;
-}
+} */
 
-.navbarColorWhenNotScrolled {
+/* .navbarColorWhenNotScrolled {
   background-color: transparent !important;
-}
-
-.menWomenKidsHeading {
-  font-weight: 700;
-  color: white !important;
-}
+} */
+/* .
 .navbarWithSearchbar {
   position: relative;
-}
+} */

@@ -1,6 +1,5 @@
 import "./App.css";
 import Authentication from "./Components/Authentication/Authentication";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Header/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Components/Home Page/Home";
@@ -9,6 +8,11 @@ import Men from "./Components/Category/Men/Men";
 import Women from "./Components/Category/Women/Women";
 import Kids from "./Components/Category/Kids/Kids";
 import MenProduct from "./Components/Product Category/Men Product/MenProduct";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import WomenProduct from "./Components/Product Category/Women Product/WomenProduct";
+import KidsProduct from "./Components/Product Category/Kids Product/KidsProduct";
+import Cart from "./Components/Cart/Cart";
+
 function App() {
   return (
     <Router>
@@ -38,9 +42,20 @@ function App() {
           <Route path="/MenCategory">
             <MenProduct></MenProduct>
           </Route>
+          <Route path="/WomenCategory">
+            <WomenProduct></WomenProduct>
+          </Route>
+          <Route path="/KidCategory">
+            <KidsProduct></KidsProduct>
+          </Route>
           <Route path="/signin">
             <Header></Header>
             <Authentication></Authentication>
+            <Footer></Footer>
+          </Route>
+          <Route path="/cart">
+            <Header></Header>
+            <Cart></Cart>
             <Footer></Footer>
           </Route>
           {/* Home Route👇 */}

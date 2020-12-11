@@ -1,0 +1,15 @@
+.welcome__user {
+  margin: 35px 0;
+}
+.cart__options__list {
+  display: flex;
+  flex-direction: row;
+  margin: 25px 0;
+  justify-content: center;
+  align-items: center;
+}
+.cart__option {
+  margin: 0 15px;
+  font-size: 16px;
+  font-weight: 400;
+}
