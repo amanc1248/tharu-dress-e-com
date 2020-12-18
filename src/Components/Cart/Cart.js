@@ -1,5 +1,10 @@
 import React from "react";
+import AccountDetails from "./Account Details/AccountDetails";
+import Bag from "./Bag/Bag";
+import ShoppingBagProduct from "./Bag/ShoppingBagProduct";
 import "./Cart.css";
+import Favorite from "./Favorites/Favorite";
+import Tabs from "./Tabs/Tabs";
 function Cart() {
   return (
     <div className="cart">
@@ -14,13 +19,20 @@ function Cart() {
       <p>
         If you have any queries or need further assistance, please Contact Us
       </p>
-      <div className="cart__options__list">
-        <p className="cart__option">Overview</p>
-        <p className="cart__option">Bags</p>
-        <p className="cart__option">Favorites</p>
-        <p className="cart__option">Orders</p>
-        <p className="cart__option">Account Details</p>
-      </div>
+      <Tabs>
+        <div label="Bag">
+          <Bag></Bag>
+        </div>
+        <div label="Favorites">
+          <Favorite></Favorite>
+        </div>
+        <div label="Orders">
+          <h1>THis is the orders page</h1>
+        </div>
+        <div label="Account Details">
+          <AccountDetails></AccountDetails>
+        </div>
+      </Tabs>
     </div>
   );
 }

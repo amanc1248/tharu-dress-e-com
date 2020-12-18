@@ -1,0 +1,28 @@
+.address__book {
+  font-size: 13px;
+}
+.address__book__title,
+.address__book__shippingAddress,
+.address__book__billingAddress {
+  margin-top: 20px;
+}
+.address__book__billingAddress{
+    margin-bottom: 20px;
+}
+.address__book__edit__button {
+  background-color: black;
+  border: none;
+  color: white;
+  height: 42px;
+  width: 190px;
+}
+.address__book__changepassword__button {
+  background-color: white;
+  border: none;
+  color: black;
+  height: 42px;
+  width: 190px;
+}
+.address__book {
+  text-align: left;
+}

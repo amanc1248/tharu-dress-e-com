@@ -5,10 +5,18 @@ import "./ProductCategory.css";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import { Button, Popover, OverlayTrigger } from "react-bootstrap";
+import FilterOptions from "./FilterOptions/FilterOptions";
+
 function ProductCategory({
   product_category_title,
   product_category_description,
 }) {
+  const myCategoryOption = () => {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  };
   return (
     <div className="product__category">
       {/* 1st Section Product category information */}
@@ -24,35 +32,46 @@ function ProductCategory({
       {/* 2nd Section filter bar */}
       <div className="filter__bar__container">
         <div className="filter__bar">
-          <div className="filter__option">
-            Category
-            <ExpandMoreIcon className="expandmore__icon"></ExpandMoreIcon>
-          </div>
-          <div className="filter__option">
-            Design
-            <ExpandMoreIcon className="expandmore__icon"></ExpandMoreIcon>
-          </div>
-          <div className="filter__option">
-            Size
-            <ExpandMoreIcon className="expandmore__icon"></ExpandMoreIcon>
-          </div>
-          <div className="filter__option">
-            Style
-            <ExpandMoreIcon className="expandmore__icon"></ExpandMoreIcon>
+          <div className="filter__options">
+            <FilterOptions ourOptions="Color"></FilterOptions>
+            <FilterOptions ourOptions="Design"></FilterOptions>
+            <FilterOptions ourOptions="Size"></FilterOptions>
+            <FilterOptions ourOptions="Style"></FilterOptions>
           </div>
         </div>
       </div>
 
       {/* 3rd section products section */}
       <div className="products__list row">
-        <Product></Product>
-        <Product></Product>
-        <Product></Product>
-        <Product></Product>
-        <Product></Product>
-        <Product></Product>
-        <Product></Product>
-        <Product></Product>
+        <Product
+          productName="Anchara With Red Boutique"
+          productPrice="$120.00"
+        ></Product>
+        <Product productName="Yellow Boutique" productPrice="$110.00"></Product>
+        <Product
+          productName="Anchara With Red Boutique"
+          productPrice="$120.00"
+        ></Product>
+        <Product
+          productName="Anchara With Red Boutique"
+          productPrice="$120.00"
+        ></Product>
+        <Product
+          productName="Anchara With Red Boutique"
+          productPrice="$120.00"
+        ></Product>
+        <Product
+          productName="Anchara With Red Boutique"
+          productPrice="$120.00"
+        ></Product>
+        <Product
+          productName="Anchara With Red Boutique"
+          productPrice="$120.00"
+        ></Product>
+        <Product
+          productName="Anchara With Red Boutique"
+          productPrice="$120.00"
+        ></Product>
       </div>
       {/*  4th section, view more button*/}
       <div className="view__more__container">

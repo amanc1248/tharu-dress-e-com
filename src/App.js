@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import WomenProduct from "./Components/Product Category/Women Product/WomenProduct";
 import KidsProduct from "./Components/Product Category/Kids Product/KidsProduct";
 import Cart from "./Components/Cart/Cart";
+import NavButton from "./NavButton";
 
 function App() {
   return (
@@ -57,6 +58,14 @@ function App() {
             <Header></Header>
             <Cart></Cart>
             <Footer></Footer>
+          </Route>
+          <Route path="/filterOptions">
+            <div className="NavButton__Container">
+           <NavButton></NavButton>
+            <NavButton></NavButton>
+            <NavButton></NavButton>
+            <NavButton></NavButton>
+            </div>
           </Route>
           {/* Home Route👇 */}
           <Route path="/">

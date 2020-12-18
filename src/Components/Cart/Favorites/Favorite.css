@@ -1,0 +1,4 @@
+.favorite__products__container {
+  display: flex;
+  flex-direction: row;
+}

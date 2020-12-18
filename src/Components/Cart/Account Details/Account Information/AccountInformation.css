@@ -1,0 +1,24 @@
+.account__information {
+  font-size: 13px;
+  text-align: left;
+}
+.account__information__container {
+  margin: 20px 0;
+}
+.userDetails {
+  margin-bottom: 8px;
+}
+.edit__button {
+  background-color: black;
+  border: none;
+  color: white;
+  height: 42px;
+  width: 190px;
+}
+.changepassword__button {
+  background-color: white;
+  border: none;
+  color: black;
+  height: 42px;
+  width: 190px;
+}

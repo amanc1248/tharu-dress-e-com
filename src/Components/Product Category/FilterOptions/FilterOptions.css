@@ -1,0 +1,55 @@
+.filter__options {
+  display: flex;
+}
+/* .filter__option{
+    position: relative;
+} */
+.filter__options__button {
+  padding: 4px;
+  background-color: white;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.filter__options__content {
+  background-color: white;
+  border: none;
+  -webkit-box-shadow: 0 0 10px #fff;
+  box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.16);
+  width: 40vw;
+  position: absolute;
+  padding: 20px;
+  right: 0;
+  left: 0;
+  top: 100%;
+  z-index: 1;
+}
+.filter__options__container {
+  position: relative;
+}
+/* the filter options property */
+.color__options {
+  display: flex;
+  align-items: center;
+}
+.clear__button {
+  background-color: white;
+  color: #808080;
+  border: 1px solid #707070;
+  height: 42px;
+  width: 150px;
+}
+.show__results__button {
+  background-color: black;
+  color: white;
+  border: none;
+  height: 42px;
+  width: 150px;
+}
+@media screen and (max-width: 500px) {
+  .filter__options__content {
+    width: 100vw;
+    right: 200px;
+    /* left: 100px; */
+  }
+}
