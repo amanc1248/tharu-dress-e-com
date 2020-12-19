@@ -1,5 +1,4 @@
 import React from "react";
-import "../..";
 import "./Authentication.css";
 import Login from "./Login/Login";
 import Signup from "./Signup/Signup";
