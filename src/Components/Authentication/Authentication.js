@@ -1,7 +1,7 @@
 import React from "react";
 import "./Authentication.css";
 import Login from "./Login/Login";
-import Signup from "./Signup/Signup";
+import Signup from "./Signup/Signup.js";
 function Authentication() {
   return (
     <div className="authentication container-fluid p-0">
