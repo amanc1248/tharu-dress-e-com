@@ -3,12 +3,39 @@ import AccountInformation from "./Account Information/AccountInformation";
 import AccountDetailsTabs from "./AccountDetailsTabs/AccountDetailsTabs";
 import AddressBook from "./Address Book/AddressBook";
 import PaymentOptions from "./Payment Options/PaymentOptions";
+import ChangePassword from "./Account Information/ChangePassword/ChangePassword";
+import { useSelector } from "react-redux";
+import AccountInformationEdit from "./Account Information/AccountInformationEdit/AccountInformationEdit";
+
+// import {
+//   goToAccountEdit,
+//   goToChangePassword,
+// } from "./Account Information/Redux/Actions";
 function AccountDetails() {
+  const editAccount = useSelector((state) => state.editAccount);
+  const changePassword = useSelector((state) => state.changePassword);
+  // const changePassword = useDispatch();
   return (
     <div className="account__details">
       <AccountDetailsTabs>
         <div label="Account Information">
-          <AccountInformation></AccountInformation>
+          {editAccount === false && changePassword === false ? (
+            <AccountInformation></AccountInformation>
+          ) : (
+            <>
+              {editAccount === true && changePassword === false ? (
+                <AccountInformationEdit></AccountInformationEdit>
+              ) : (
+                <>
+                  {editAccount === false && changePassword === true ? (
+                    <ChangePassword></ChangePassword>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              )}
+            </>
+          )}
         </div>
         <div label="Address Book">
           <AddressBook></AddressBook>

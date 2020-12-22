@@ -1,6 +1,11 @@
 import React from "react";
 import "./AccountInformation.css";
+import { useDispatch } from "react-redux";
+import { goToAccountEdit, goToChangePassword } from "./Redux/Actions";
+
 function AccountInformation() {
+  const dispatch = useDispatch();
+
   return (
     <div className="account__information">
       <div className="account__information__instruction">
@@ -46,10 +51,20 @@ function AccountInformation() {
       </div>
       <div className="account__information__buttons row justify-content-between">
         <div className="edit__button__container col-6">
-          <button className="edit__button">EDIT</button>
+          <button
+            className="edit__button"
+            onClick={() => dispatch(goToAccountEdit())}
+          >
+            EDIT
+          </button>
         </div>
         <div className="changepassword__button__container col-6">
-          <button className="changepassword__button">CHANGE PASSWORD</button>
+          <button
+            className="changepassword__button"
+            onClick={() => dispatch(goToChangePassword())}
+          >
+            CHANGE PASSWORD
+          </button>
         </div>
       </div>
     </div>
