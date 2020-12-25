@@ -8,3 +8,8 @@ export const goToChangePassword = () => {
     type: "CHANGEPASSWORD",
   };
 };
+export const goToAddressBookEdit = () => {
+  return {
+    type: "ADDRESSBOOKEDIT",
+  };
+};

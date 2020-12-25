@@ -1,6 +1,10 @@
 import React from "react";
 import "./AccountInformationEdit.css";
+import { useDispatch } from "react-redux";
+import { goToAccountEdit } from "../Redux/Actions";
 function AccountInformationEdit() {
+  const dispatch = useDispatch();
+
   return (
     <div className="account__information__edit">
       <div className="account__information__edit__instruction">
@@ -9,33 +13,43 @@ function AccountInformationEdit() {
       </div>
       <form action="">
         <div className="address__book__edit__inputs">
-           <label>
+          <label>
             First Name
-            <input type="text"  />
+            <input type="text" />
           </label>
-           <label>
+          <label>
             Last Name
-            <input type="text"  />
+            <input type="text" />
           </label>
-           <label>
+          <label>
             Location
-            <input type="text"  />
+            <input type="text" />
           </label>
-           <label>
+          <label>
             Phone
-            <input type="text"  />
+            <input type="text" />
           </label>
-           <label>
+          <label>
             Email
-            <input type="text"  />
+            <input type="text" />
           </label>
         </div>
         <div className="account__information__buttons row justify-content-between">
           <div className="edit__button__container col-6">
-            <button className="edit__button">SAVE</button>
+            <button
+              className="edit__button"
+              onClick={() => dispatch(goToAccountEdit())}
+            >
+              SAVE
+            </button>
           </div>
           <div className="changepassword__button__container col-6">
-            <button className="changepassword__button">CANCEL</button>
+            <button
+              className="changepassword__button"
+              onClick={() => dispatch(goToAccountEdit())}
+            >
+              CANCEL
+            </button>
           </div>
         </div>
       </form>

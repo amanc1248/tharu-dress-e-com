@@ -3,7 +3,7 @@ import React from "react";
 function PaymentOptions() {
   return (
     <div className="payment__options">
-      <h1>OUr fucking payment system including daraz and esewa</h1>
+      <h1>Our payment system including daraz and esewa</h1>
     </div>
   );
 }

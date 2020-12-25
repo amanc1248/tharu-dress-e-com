@@ -1,0 +1,13 @@
+.address__book__edit {
+  font-size: 13px;
+  text-align: left;
+}
+.Shipping__address__edit__inputs,
+.billing__address__edit__inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.address__book__edit__title {
+  margin: 20px 0;
+}

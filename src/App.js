@@ -13,6 +13,7 @@ import WomenProduct from "./Components/Product Category/Women Product/WomenProdu
 import KidsProduct from "./Components/Product Category/Kids Product/KidsProduct";
 import Cart from "./Components/Cart/Cart";
 import NavButton from "./NavButton";
+import ProductIndividual from "./Components/Product Individual/ProductIndividual";
 
 function App() {
   return (
@@ -59,12 +60,17 @@ function App() {
             <Cart></Cart>
             <Footer></Footer>
           </Route>
+          <Route path="/productIndividual">
+            <Header></Header>
+            <ProductIndividual></ProductIndividual>
+            <Footer></Footer>
+          </Route>
           <Route path="/filterOptions">
             <div className="NavButton__Container">
-           <NavButton></NavButton>
-            <NavButton></NavButton>
-            <NavButton></NavButton>
-            <NavButton></NavButton>
+              <NavButton></NavButton>
+              <NavButton></NavButton>
+              <NavButton></NavButton>
+              <NavButton></NavButton>
             </div>
           </Route>
           {/* Home Route👇 */}

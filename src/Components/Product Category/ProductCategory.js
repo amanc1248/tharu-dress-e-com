@@ -1,22 +1,15 @@
 import React from "react";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Product from "../Product/Product";
 import "./ProductCategory.css";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import { Button, Popover, OverlayTrigger } from "react-bootstrap";
 import FilterOptions from "./FilterOptions/FilterOptions";
 
 function ProductCategory({
   product_category_title,
   product_category_description,
 }) {
-  const myCategoryOption = () => {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-  };
   return (
     <div className="product__category">
       {/* 1st Section Product category information */}

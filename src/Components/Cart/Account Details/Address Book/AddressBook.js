@@ -1,6 +1,10 @@
 import React from "react";
 import "./AddressBook.css";
+import { useDispatch } from "react-redux";
+import { goToAddressBookEdit } from "../Account Information/Redux/Actions";
 function AddressBook() {
+  const dispatch = useDispatch();
+
   return (
     <div className="address__book">
       <div className="address__book__instruction">
@@ -108,14 +112,22 @@ function AddressBook() {
           </span>
           <span>Nepal</span>
         </div>
-      </div>  
+      </div>
       <div className="address__book__buttons row justify-content-between">
         <div className="address__book__edit__button__container col-6">
-          <button className="address__book__edit__button">EDIT</button>
+          <button
+            className="address__book__edit__button"
+            onClick={() => dispatch(goToAddressBookEdit())}
+          >
+            EDIT
+          </button>
         </div>
         <div className="address__book__changepassword__button__container col-6">
-          <button className="address__book__changepassword__button">
-            CHANGE PASSWORD
+          <button
+            className="address__book__changepassword__button"
+            onClick={() => dispatch(goToAddressBookEdit())}
+          >
+            DELETE
           </button>
         </div>
       </div>

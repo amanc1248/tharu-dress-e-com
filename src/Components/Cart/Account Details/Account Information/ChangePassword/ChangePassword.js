@@ -1,11 +1,11 @@
 import React from "react";
-// import { goToChangePassword } from "../Redux/Actions";
-// import { useDispatch } from "react-redux";
+import { goToChangePassword } from "../Redux/Actions";
+import { useDispatch } from "react-redux";
 import "./ChangePassword.css";
 // import { goToChangePassword } from "../Redux/Actions";
 
 function ChangePassword() {
-  // const dispatch = useDispatch()  ;
+  const dispatch = useDispatch();
 
   return (
     <div className="change__password">
@@ -31,13 +31,18 @@ function ChangePassword() {
           <div className="edit__button__container col-6">
             <button
               className="edit__button"
-              
+              onClick={() => dispatch(goToChangePassword())}
             >
               SAVE
             </button>
           </div>
           <div className="changepassword__button__container col-6">
-            <button className="changepassword__button">CANCEL</button>
+            <button
+              className="changepassword__button"
+              onClick={() => dispatch(goToChangePassword())}
+            >
+              CANCEL
+            </button>
           </div>
         </div>
       </form>

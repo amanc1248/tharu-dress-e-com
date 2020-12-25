@@ -1,7 +1,7 @@
 const editAccount = (goToEditState = false, action) => {
   switch (action.type) {
     case "EDITACCOUNT":
-      return (goToEditState = true);
+      return !goToEditState;
 
     default:
       return goToEditState;
