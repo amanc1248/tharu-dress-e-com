@@ -61,7 +61,6 @@ function App() {
             <Footer></Footer>
           </Route>
           <Route path="/productIndividual">
-            <Header></Header>
             <ProductIndividual></ProductIndividual>
             <Footer></Footer>
           </Route>
