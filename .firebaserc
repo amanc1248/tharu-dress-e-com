@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "tharu-ecommerce-web-ap"
+    "staging": "tharuecommercewebapp",
+    "default": "tharuecommercewebapp"
   }
 }

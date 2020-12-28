@@ -3,7 +3,7 @@ import React from "react";
 import "./Signup.css";
 function Signup() {
   return (
-    <div className="signup col-lg-6 col-md-6">
+    <div className="signup col-lg-6 col-md-6 p-0">
       <div className="signup__container">
         <div className="title__subtitle">
           <h6>REGISTER</h6>

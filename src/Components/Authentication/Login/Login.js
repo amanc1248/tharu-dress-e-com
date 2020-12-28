@@ -2,7 +2,7 @@ import React from "react";
 import "./Login.css";
 function Login() {
   return (
-    <div className="login col-lg-6 col-md-6">
+    <div className="login col-lg-6 col-md-6 p-0">
       <div className="login__container">
         <div className="title__subTitle">
           <h6>SIGN IN</h6>

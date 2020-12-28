@@ -1,0 +1,30 @@
+.tailor-tab-list-item {
+  font-weight: 500;
+  list-style: none;
+  margin-bottom: 35px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tailor-tab-list-active {
+  text-decoration: underline;
+}
+.tailor-tab-list {
+  text-align: left;
+}
+.tailor-tabs {
+  background-color: #e7e7e7;
+  padding: 50px 40px;
+}
+@media screen and (max-width: 767px) {
+  .tailor-tabs {
+    padding: 20px 15px;
+  }
+  .tailor-tab-list {
+    display: flex;
+    justify-content: space-between;
+  }
+  .tailor-tab-list-item {
+    margin-bottom: 20px;
+  }
+}

@@ -12,8 +12,8 @@ function ProductIndividual() {
   };
   return (
     <div className="product__individual">
-      <div className="row product__individual__container">
-        <div className="col-lg-6 col-md-6 product__individual__images">
+      <div className="row product__individual__container container-fluid m-0 p-0">
+        <div className="col-lg-6 col-md-6 product__individual__images p-0">
           <Carousel>
             <Carousel.Item>
               <img

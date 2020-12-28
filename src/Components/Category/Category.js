@@ -26,7 +26,7 @@ function Category({
         <p className="category__title">{category_title}</p>
       </div>
       {/* 1st sub category collection */}
-      <div className="first__sub__category__collection row ">
+      <div className="first__sub__category__collection row container-fluid p-0 m-0">
         <div
           className="item item__1 col-lg-6 col-md-6"
           style={{
@@ -38,7 +38,7 @@ function Category({
             <p className="discover__more__button">DISCOVER MORE {">"}</p>
           </div>
         </div>
-        <div className="second__third__item col-lg-6 col-md-6">
+        <div className="second__third__item col-lg-6 col-md-6 p-0">
           <div
             className=" item item__2"
             style={{

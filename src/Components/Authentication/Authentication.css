@@ -5,9 +5,6 @@
 
   object-fit: cover;
 }
-.login__signup {
-  display: flex;
-}
 @media screen and (max-width: 500px) {
   .authentication__logo {
     height: 20vh;
