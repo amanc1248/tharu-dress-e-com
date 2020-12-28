@@ -4,7 +4,7 @@ import "./Favorite.css";
 function Favorite() {
   return (
     <div className="favorite">
-      <div className="favorite__products__container">
+      <div className="favorite__products__container row container-container-fluid m-0 p-0">
         <Product
           productName="Anchara With Red Boutique"
           productPrice="$120.00"

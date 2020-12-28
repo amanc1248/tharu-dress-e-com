@@ -1,9 +1,17 @@
 .product__container {
-  padding: 1px;
+  padding: 0.5px;
 }
 .product {
   background-color: rgb(231, 231, 231);
   width: 100%;
+  padding-bottom: 16px;
+}
+.product__info {
+  color: #00000067;
+}
+.favorite__border__icon {
+  margin: 16px;
+  color: #00000081;
 }
 
 .specific__product__image {

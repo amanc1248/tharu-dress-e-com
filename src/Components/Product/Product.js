@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 function Product({ addToFavoriteIcon, productName, productPrice }) {
   return (
     <div className="product__container col-lg-3 col-md-4 col-sm-6 col-6  ">
-      <Link to="/productIndividual">
+      <Link
+        to="/productIndividual"
+        style={{ textDecoration: "none", color: "none" }}
+      >
         <div className="product">
           <div className="add__to__wishlist text-right">
-            <FavoriteBorderIcon></FavoriteBorderIcon>
+            <FavoriteBorderIcon className="favorite__border__icon"></FavoriteBorderIcon>
           </div>
           <img
             className="specific__product__image"

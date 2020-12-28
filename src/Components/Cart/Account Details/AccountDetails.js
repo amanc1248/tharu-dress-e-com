@@ -49,7 +49,7 @@ function AccountDetails() {
         <div label="Payment Options">
           <PaymentOptions></PaymentOptions>
         </div>
-      </AccountDetailsTabs>
+      </AccountDetailsTabs> 
     </div>
   );
 }
