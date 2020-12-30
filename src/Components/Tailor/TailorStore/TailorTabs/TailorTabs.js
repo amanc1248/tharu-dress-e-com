@@ -28,8 +28,8 @@ class TailorTabs extends Component {
     } = this;
 
     return (
-      <div className="tailor-tabs row">
-        <ul className="tailor-tab-list col-lg-6 col-md-6 col-sm-12">
+      <div className="tailor-tabs">
+        <ul className="tailor-tab-list ">
           {children.map((child) => {
             const { label } = child.props;
 
@@ -43,7 +43,7 @@ class TailorTabs extends Component {
             );
           })}
         </ul>
-        <div className="tailor-tab-content col-lg-6 col-md-6 col-sm-12">
+        <div className="tailor-tab-content">
           {children.map((child) => {
             if (child.props.label !== activeTab) return undefined;
             return child.props.children;

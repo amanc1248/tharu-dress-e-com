@@ -27,17 +27,20 @@
   margin: 3.5em 0;
   text-align: center;
 }
-.sale {
+/* .sale {
   height: 100vh;
   text-align: center;
-}
+} */
 
+.sale {
+  height: 100vh;
+}
 .saleHeading {
   font-size: 4.5em;
-  height: 50vh;
+  height: 50%;
 }
 .salesButton {
-  height: 50vh;
+  height: 50%;
 }
 .firstProduct,
 .secondProduct {
@@ -89,7 +92,7 @@
   .sale {
     height: 50vh;
   }
-  .salesButton {
+  /* .salesButton {
     height: 25vh;
-  }
+  } */
 }

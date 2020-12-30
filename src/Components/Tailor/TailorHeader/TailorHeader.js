@@ -11,6 +11,12 @@ function TailorHeader() {
           alt="authentication background"
         />
       </div>
+      <div className="welcome__user">
+        <h4>WELCOME, AMAN</h4>
+      </div>
+      <p>
+        If you have any queries or need further assistance, please Contact Us
+      </p>
     </div>
   );
 }

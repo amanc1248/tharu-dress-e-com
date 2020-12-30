@@ -72,6 +72,7 @@ function App() {
             <SignInRegister></SignInRegister>
           </Route>
           <Route path="/tailorAccount">
+            <TailorHeader></TailorHeader>
             <Tailor></Tailor>
           </Route>
 

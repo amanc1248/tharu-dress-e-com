@@ -1,7 +1,6 @@
 import React from "react";
 import AccountDetails from "./Account Details/AccountDetails";
 import Bag from "./Bag/Bag";
-import ShoppingBagProduct from "./Bag/ShoppingBagProduct";
 import "./Cart.css";
 import Favorite from "./Favorites/Favorite";
 import Tabs from "./Tabs/Tabs";

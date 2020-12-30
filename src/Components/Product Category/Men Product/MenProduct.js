@@ -2,7 +2,6 @@ import React from "react";
 import Footer from "../../../Footer/Footer";
 import Header from "../../../Header/Header";
 import ProductCategory from "../ProductCategory";
-import { withRouter } from "react-router";
 function MenProduct() {
   return (
     <div className="men__product">

@@ -1,6 +1,13 @@
 .tailor-tab-list {
   border-bottom: 1px solid #ccc;
   padding-left: 0;
+  display: flex;
+  justify-content: center;
+
+  overflow-x: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 .tailor-tab-list-item {
@@ -14,4 +21,8 @@
   background-color: white;
   border: solid #ccc;
   border-width: 1px 1px 0 1px;
+}
+.tailor-tab-content {
+  background-color: #e7e7e7;
+  padding: 20px 0;
 }
