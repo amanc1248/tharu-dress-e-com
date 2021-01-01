@@ -1,0 +1,67 @@
+.tailor__account__information {
+  font-size: 13px;
+  text-align: left;
+}
+.tailor__account__information__container {
+  margin: 20px 0;
+}
+.tailor__details {
+  margin-bottom: 8px;
+}
+.tailor__edit__button,
+.tailor__save__button,
+.tailor__change__password__save__button {
+  background-color: black;
+  border: none;
+  color: white;
+  height: 42px;
+  width: 190px;
+}
+.tailor__changepassword__button,
+.tailor__accountCancel__button,
+.tailor__cancel__button {
+  background-color: white;
+  border: none;
+  color: black;
+  height: 42px;
+  width: 190px;
+}
+@media screen and (max-width: 576px) {
+  .tailor__edit__button,
+  .tailor__edit__button,
+  .tailor__changepassword__button,
+  .tailor__accountCancel__button,
+  .tailor__change__password__save__button,
+  .tailor__cancel__button {
+    width: 45vw;
+    /* margin-right: 10px; */
+  }
+}
+.tailor__account__information__edit {
+  font-size: 13px;
+  text-align: left;
+  width: 85%;
+}
+
+.tailor__address__edit__inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 767px) {
+  .tailor__account__information__edit {
+    width: 100%;
+  }
+}
+/* Change password css👇 */
+.tailor__account__information__change__password {
+  font-size: 13px;
+  text-align: left;
+  /* width: 85%; */
+}
+.tailor__account__information__change__password__inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
