@@ -49,7 +49,7 @@ function AccountInformation() {
           <span>amanc1248@gmail.com</span>
         </div>
       </div>
-      <div className="account__information__buttons row justify-content-between">
+      <div className="account__information__buttons row ">
         <div className="edit__button__container col-6">
           <button
             className="edit__button"

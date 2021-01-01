@@ -1,5 +1,9 @@
 import React from "react";
+import TailorAccountDetails from "./TailorAccountDetails/TailorAccountDetails";
+import TailorCustomer from "./TailorCustomer/TailorCustomer";
+import TailorEmployees from "./TailorEmployees/TailorEmployees";
 import TailorOrder from "./TailorOrder/TailorOrder";
+import TailorProducts from "./TailorProducts/TailorProducts";
 import TailorSales from "./TailorSales/TailorSales";
 import TailorTabs from "./TailorTabs/TailorTabs";
 
@@ -10,11 +14,21 @@ function Tailor() {
         <div label="Sales">
           <TailorSales></TailorSales>
         </div>
-        <div label="Orders"><TailorOrder></TailorOrder></div>
-        <div label="Products">This is Products</div>
-        <div label="Customers">This is customers</div>
-        <div label="Employees">This is employess</div>
-        <div label="Account Details">This is account details</div>
+        <div label="Orders">
+          <TailorOrder></TailorOrder>
+        </div>
+        <div label="Products">
+          <TailorProducts></TailorProducts>{" "}
+        </div>
+        <div label="Customers">
+          <TailorCustomer></TailorCustomer>
+        </div>
+        <div label="Employees">
+          <TailorEmployees></TailorEmployees>
+        </div>
+        <div label="Account Details">
+          <TailorAccountDetails></TailorAccountDetails>
+        </div>
       </TailorTabs>
     </div>
   );

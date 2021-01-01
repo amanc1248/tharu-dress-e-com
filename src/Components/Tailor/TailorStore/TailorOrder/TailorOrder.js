@@ -31,7 +31,7 @@ function TailorOrder() {
         </div>
       </div>
       <div className="tailor__orders">
-        <table class="table order__table">
+        <table class="table order__table" id="orders__table">
           <thead>
             <tr>
               <th scope="col">Orders</th>
