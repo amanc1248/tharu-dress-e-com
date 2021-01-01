@@ -27,7 +27,7 @@ class TailorAccountDetailsTabs extends Component {
     } = this;
 
     return (
-      <div className="tailor-account-tabs row">
+      <div className="tailor-account-tabs row no-gutters">
         <ul className="tailor-account-tab-list col-lg-6 col-md-6 col-sm-12">
           {children.map((child) => {
             const { label } = child.props;

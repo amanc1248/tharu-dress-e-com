@@ -28,7 +28,7 @@ class AccountDetailsTabs extends Component {
     } = this;
 
     return (
-      <div className="account-tabs row">
+      <div className="account-tabs row no-gutters">
         <ul className="account-tab-list col-lg-6 col-md-6 col-sm-12">
           {children.map((child) => {
             const { label } = child.props;

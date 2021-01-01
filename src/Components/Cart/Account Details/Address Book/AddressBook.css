@@ -6,8 +6,8 @@
 .address__book__billingAddress {
   margin-top: 20px;
 }
-.address__book__billingAddress{
-    margin-bottom: 20px;
+.address__book__billingAddress {
+  margin-bottom: 20px;
 }
 .address__book__edit__button {
   background-color: black;
@@ -25,4 +25,11 @@
 }
 .address__book {
   text-align: left;
+}
+@media screen and (max-width: 576px) {
+  .address__book__edit__button,
+  .address__book__changepassword__button {
+    width: 45vw;
+    /* margin-right: 10px; */
+  }
 }

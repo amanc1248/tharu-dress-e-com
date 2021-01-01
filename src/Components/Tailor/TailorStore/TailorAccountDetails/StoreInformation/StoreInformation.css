@@ -1,0 +1,14 @@
+.store__information {
+  font-size: 13px;
+  text-align: left;
+}
+.store__information__address__book__title {
+  margin-top: 20px;
+}
+.store__information__address__book__container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.tailor__address__detail {
+  margin-bottom: 8px;
+}
