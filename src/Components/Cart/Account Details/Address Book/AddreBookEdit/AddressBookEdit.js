@@ -35,7 +35,7 @@ function AddressBookEdit() {
             <input type="text" />
           </label>
           <label>
-            Address
+            Store Address
             <input type="text" />
           </label>
         </div>

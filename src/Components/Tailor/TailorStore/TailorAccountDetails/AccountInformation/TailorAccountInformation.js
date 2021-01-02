@@ -1,6 +1,6 @@
 import React from "react";
 import "./TailorAccountInformation.css";
-function TailorAccountInformation() {
+function TailorAccountInformation({ editPage, changePasswordPage }) {
   return (
     <div className="tailor__account__information">
       <div className="tailor__account__information">
@@ -46,17 +46,14 @@ function TailorAccountInformation() {
       </div>
       <div className="tailor__account__information__buttons row ">
         <div className="tailor__edit__button__container col-6">
-          <button
-            className="tailor__edit__button"
-            // onClick={() => dispatch(goToAccountEdit())}
-          >
+          <button className="tailor__edit__button" onClick={editPage}>
             EDIT
           </button>
         </div>
         <div className="tailor__changepassword__button__container col-6">
           <button
             className="tailor__changepassword__button"
-            // onClick={() => dispatch(goToChangePassword())}
+            onClick={changePasswordPage}
           >
             CHANGE PASSWORD
           </button>
@@ -66,7 +63,7 @@ function TailorAccountInformation() {
   );
 }
 
-export function TailorAccountInformationEdit() {
+export function TailorAccountInformationEdit({ editPage }) {
   return (
     <div className="tailor__account__information__edit">
       <div className="tailor__account__information__edit__instruction">
@@ -98,10 +95,17 @@ export function TailorAccountInformationEdit() {
         </div>
         <div className="tailor__account__information__buttons row justify-content-between">
           <div className="tailor__save__button__container col-6">
-            <button className="tailor__save__button">SAVE</button>
+            <button className="tailor__save__button" onClick={editPage}>
+              SAVE
+            </button>
           </div>
           <div className="tailor__accountCancel__button__container col-6">
-            <button className="tailor__accountCancel__button">CANCEL</button>
+            <button
+              className="tailor__accountCancel__button"
+              onClick={editPage}
+            >
+              CANCEL
+            </button>
           </div>
         </div>
       </form>
@@ -109,7 +113,7 @@ export function TailorAccountInformationEdit() {
   );
 }
 
-export function TailorAccountInformationChangePassword() {
+export function TailorAccountInformationChangePassword({ changePasswordPage }) {
   return (
     <div className="tailor__account__information__change__password">
       <div className="tailor__account__information__change__password__instruction">
@@ -134,7 +138,7 @@ export function TailorAccountInformationChangePassword() {
           <div className="tailor__change__password__edit__button__container col-6">
             <button
               className="tailor__change__password__save__button"
-              //   onClick={() => dispatch(goToChangePassword())}
+              onClick={changePasswordPage}
             >
               SAVE
             </button>
@@ -142,7 +146,7 @@ export function TailorAccountInformationChangePassword() {
           <div className="tailor__change__password__button__container col-6">
             <button
               className="tailor__cancel__button"
-              //   onClick={() => dispatch(goToChangePassword())}
+              onClick={changePasswordPage}
             >
               CANCEL
             </button>
