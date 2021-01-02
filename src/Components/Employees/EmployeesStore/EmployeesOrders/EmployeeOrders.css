@@ -1,0 +1,28 @@
+.employee__orders {
+  padding: 10px;
+  background-color: #e7e7e7;
+}
+.employee__orders__quick__search {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  padding: 10px;
+}
+#employee__orders__table {
+  background-color: #fff;
+}
+.employee__orders__container {
+  margin-top: 10px;
+}
+@media screen and (max-width: 767px) {
+  table#employee__orders__table td:nth-child(3),
+  table#employee__orders__table td:nth-child(5) {
+    display: none;
+  }
+  table#employee__orders__table th:nth-child(3),
+  table#employee__orders__table th:nth-child(5) {
+    display: none;
+  }
+}

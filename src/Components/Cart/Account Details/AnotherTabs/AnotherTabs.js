@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import AccountDetailsTab from "./AccountDetailsTab";
+import AnotherTab from "./AnotherTab";
+import "./Another.css";
 // ...
 
-class AccountDetailsTabs extends Component {
+class AnotherTabs extends Component {
   static propTypes = {
     children: PropTypes.instanceOf(Array).isRequired,
   };
@@ -28,13 +29,13 @@ class AccountDetailsTabs extends Component {
     } = this;
 
     return (
-      <div className="account-tabs row no-gutters">
-        <ul className="account-tab-list col-lg-6 col-md-6 col-sm-12">
+      <div className="another-tabs row no-gutters">
+        <ul className="another-tab-list col-lg-6 col-md-6 col-sm-12">
           {children.map((child) => {
             const { label } = child.props;
 
             return (
-              <AccountDetailsTab
+              <AnotherTab
                 activeTab={activeTab}
                 key={label}
                 label={label}
@@ -43,7 +44,7 @@ class AccountDetailsTabs extends Component {
             );
           })}
         </ul>
-        <div className="account-tab-content col-lg-6 col-md-6 col-sm-12">
+        <div className="another-tab-content col-lg-6 col-md-6 col-sm-12">
           {children.map((child) => {
             if (child.props.label !== activeTab) return undefined;
             return child.props.children;
@@ -54,4 +55,4 @@ class AccountDetailsTabs extends Component {
   }
 }
 
-export default AccountDetailsTabs;
+export default AnotherTabs;

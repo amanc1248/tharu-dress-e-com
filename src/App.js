@@ -17,6 +17,10 @@ import ProductIndividual from "./Components/Product Individual/ProductIndividual
 import SignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
 import TailorHeader from "./Components/Tailor/TailorHeader/TailorHeader";
 import Tailor from "./Components/Tailor/TailorStore/Tailor";
+import TailorSignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
+import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegister/EmployeesSignInRegister";
+import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
+import EmployeeAndTailorRegister from "./Header/EmployeeAndTailorRegister";
 
 function App() {
   return (
@@ -68,12 +72,14 @@ function App() {
             <Footer></Footer>
           </Route>
           <Route path="/tailorSignIn">
-            <TailorHeader></TailorHeader>
+            <EmployeeAndTailorRegister></EmployeeAndTailorRegister>
             <SignInRegister></SignInRegister>
+            <Footer></Footer>
           </Route>
           <Route path="/tailorAccount">
             <TailorHeader></TailorHeader>
             <Tailor></Tailor>
+            <Footer></Footer>
           </Route>
 
           <Route path="/filterOptions">
@@ -83,6 +89,15 @@ function App() {
               <NavButton></NavButton>
               <NavButton></NavButton>
             </div>
+          </Route>
+          <Route path="/employeeSignIn">
+            <EmployeeAndTailorRegister></EmployeeAndTailorRegister>
+            <EmployeeSignInRegister></EmployeeSignInRegister>
+            <Footer></Footer>
+          </Route>
+          <Route path="/employeeStore">
+            <TailorHeader></TailorHeader>
+            <EmployeesStore></EmployeesStore>
           </Route>
           {/* Home Route👇 */}
           <Route path="/">

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./AccountDetails.css";
 
-class AccountDetailsTab extends Component {
+class AnotherTab extends Component {
   static propTypes = {
     activeTab: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -20,10 +19,10 @@ class AccountDetailsTab extends Component {
       props: { activeTab, label },
     } = this;
 
-    let className = "account-tab-list-item"; //this is the className for the individual list item
+    let className = "another-tab-list-item"; //this is the className for the individual list item
 
     if (activeTab === label) {
-      className += " account-tab-list-active";
+      className += " another-tab-list-active";
     }
 
     return (
@@ -34,4 +33,4 @@ class AccountDetailsTab extends Component {
   }
 }
 
-export default AccountDetailsTab;
+export default AnotherTab;

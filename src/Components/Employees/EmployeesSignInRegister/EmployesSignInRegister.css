@@ -1,50 +1,37 @@
-.tailor__signIn,
-.tailor__register {
+.employee__signIn,
+.employee__register {
   text-align: left;
 }
-.tailor__signIn__container,
-.tailor__register__container {
+.employee__signIn__container,
+.employee__register__container {
   background-color: rgba(245, 245, 245, 0.81);
   margin: 8px;
   padding: 20px 70px;
 }
-.tailor__signin__inputs,
-.tailor__register__inputs {
+.employee__signIn__inputs,
+.employee__register__inputs {
   display: flex;
   flex-direction: column;
 }
-.subtitle {
-  margin: 25px 0;
-}
-form,
-p {
-  font-size: 14px;
-}
-
-.tailor__signin__inputs > input {
+.employee__signIn__inputs > input {
   border: none;
   width: 100%;
   height: 45px;
   margin: 15px 0 10px 0 !important;
 }
-.tailor__register__inputs > input {
+.employee__register__inputs > input {
   border: none;
   width: 100%;
   height: 45px;
   margin: 15px 0 10px 0 !important;
 }
-.tailor__register__inputs > label > select {
-  border: none;
-  width: 100%;
-  height: 45px;
-  margin: 15px 0 10px 0 !important;
-}
-.tailor__form__footer {
+.employee__form__footer,
+.employee__register__form__footer {
   display: flex;
   flex-direction: row;
 }
-.tailor__signIn__button,
-.tailor__register__button {
+.employee__signIn__button,
+.employee__register__button {
   border: none;
   width: 180px;
   height: 45px;
@@ -52,8 +39,8 @@ p {
   color: white;
 }
 @media screen and (max-width: 567px) {
-  .tailor__signIn__container,
-  .tailor__register__container {
+  .employee__signIn__container,
+  .employee__register__container {
     padding: 15px 10px;
     margin-left: 4px;
     margin-right: 4px;

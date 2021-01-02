@@ -1,0 +1,14 @@
+.work__detail__progress,
+.materials__needed,
+.work__customer__details {
+  font-size: 13px;
+  text-align: left;
+}
+.employee__work__details,
+.employee__work__customer__details {
+  margin-bottom: 8px;
+}
+.material__image {
+  max-width: 100%;
+  min-width: 100%;
+}

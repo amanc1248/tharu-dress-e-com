@@ -2,7 +2,7 @@
     padding-left: 0;
   }
     } */
-.account-tab-list-item {
+.another-tab-list-item {
   /* display: inline-block; */
   font-weight: 500;
   list-style: none;
@@ -14,27 +14,27 @@
     padding: 0.5rem 0.75rem; */
 }
 
-.account-tab-list-active {
+.another-tab-list-active {
   text-decoration: underline;
 }
 /* .individual__tab__list {
 } */
-.account-tab-list {
+.another-tab-list {
   text-align: left;
 }
-.account-tabs {
+.another-tabs {
   background-color: #e7e7e7;
   padding: 50px 40px;
 }
 @media screen and (max-width: 767px) {
-  .account-tabs {
+  .another-tabs {
     padding: 20px 15px;
   }
-  .account-tab-list {
+  .another-tab-list {
     display: flex;
     justify-content: space-between;
   }
-  .account-tab-list-item {
+  .another-tab-list-item {
     margin-bottom: 20px;
   }
 }
