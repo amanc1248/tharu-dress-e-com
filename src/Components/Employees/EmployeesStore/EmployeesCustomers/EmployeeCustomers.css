@@ -1,0 +1,21 @@
+.employee__customers {
+  padding: 10px;
+  background-color: #e7e7e7;
+}
+.employee__customer__title {
+  text-align: left;
+}
+
+#employee__customer__table {
+  background-color: #fff;
+}
+@media screen and (max-width: 767px) {
+  table#employee__customer__table td:nth-child(3),
+  table#employee__customer__table td:nth-child(4) {
+    display: none;
+  }
+  table#employee__customer__table th:nth-child(3),
+  table#employee__customer__table th:nth-child(4) {
+    display: none;
+  }
+}

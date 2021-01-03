@@ -1,4 +1,6 @@
 import React from "react";
+import EmployeeAccountDetails from "./EmployeesAccountDetails/EmployeeAccountDetails";
+import EmployeeCustomers from "./EmployeesCustomers/EmployeeCustomers";
 import EmployeeOrders from "./EmployeesOrders/EmployeeOrders";
 import EmployeeStoreTabs from "./EmployeeStoreTabs/EmployeeStoreTabs";
 import YourWork from "./YourWork/YourWork";
@@ -14,9 +16,11 @@ function EmployeesStore() {
           <EmployeeOrders></EmployeeOrders>
         </div>
         <div label="Customers">
-          <h1>Customers</h1>
+          <EmployeeCustomers></EmployeeCustomers>
         </div>
-        <div label="Account Details">Acccc details</div>
+        <div label="Account Details">
+          <EmployeeAccountDetails></EmployeeAccountDetails>
+        </div>
       </EmployeeStoreTabs>
     </div>
   );
