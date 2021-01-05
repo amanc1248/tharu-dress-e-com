@@ -5,7 +5,7 @@ import ProductCategory from "../ProductCategory";
 function MenProduct() {
   return (
     <div className="men__product">
-      <Header></Header>
+     {/* <Header headerSticky=""></Header> */}
       <ProductCategory
         product_category_title="Men"
         product_category_description="Dhoti with variety of design and the sexy you."

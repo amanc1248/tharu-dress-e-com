@@ -17,7 +17,6 @@ import ProductIndividual from "./Components/Product Individual/ProductIndividual
 import SignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
 import TailorHeader from "./Components/Tailor/TailorHeader/TailorHeader";
 import Tailor from "./Components/Tailor/TailorStore/Tailor";
-import TailorSignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
 import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegister/EmployeesSignInRegister";
 import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
 import EmployeeAndTailorRegister from "./Header/EmployeeAndTailorRegister";
@@ -84,9 +83,6 @@ function App() {
 
           <Route path="/filterOptions">
             <div className="NavButton__Container">
-              <NavButton></NavButton>
-              <NavButton></NavButton>
-              <NavButton></NavButton>
               <NavButton></NavButton>
             </div>
           </Route>

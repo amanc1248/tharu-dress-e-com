@@ -3,9 +3,6 @@ import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import PersonIcon from "@material-ui/icons/Person";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
-import { Link, useLocation } from "react-router-dom";
-// import MenuIcon from "@material-ui/icons/Menu";
-// import ScriptTag from "react-script-tag";
 import { Nav, Navbar } from "react-bootstrap";
 
 function Header() {

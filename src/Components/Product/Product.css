@@ -1,6 +1,9 @@
 .product__container {
   padding: 0.5px;
 }
+.product__name, .product__price{
+  color: rgba(0, 0, 0, 0.741);
+}
 .product {
   background-color: rgb(231, 231, 231);
   width: 100%;

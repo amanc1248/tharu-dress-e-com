@@ -35,7 +35,7 @@ function ProductCategory({
       </div>
 
       {/* 3rd section products section */}
-      <div className="products__list row">
+      <div className="products__list row ">
         <Product
           productName="Anchara With Red Boutique"
           productPrice="$120.00"

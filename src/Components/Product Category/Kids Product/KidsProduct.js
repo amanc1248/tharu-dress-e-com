@@ -6,7 +6,7 @@ import ProductCategory from "../ProductCategory";
 function KidsProduct() {
   return (
     <div className="kid__product">
-      <Header></Header>
+      {/* <Header headerSticky=""></Header> */}
       <ProductCategory
         product_category_title="Kids Wear"
         product_category_description="Cultural attire in your kid."

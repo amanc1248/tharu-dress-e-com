@@ -46,10 +46,26 @@
   height: 42px;
   width: 150px;
 }
-@media screen and (max-width: 500px) {
+.color__close {
+  text-align: right;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 0;
+  cursor: pointer;
+}
+@media screen and (max-width: 767px) {
   .filter__options__content {
-    width: 100vw;
-    right: 200px;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    /* background: rgba(255, 255, 255, 0.5); */
+    z-index: 4;
     /* left: 100px; */
   }
 }
