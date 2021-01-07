@@ -12,7 +12,6 @@ const components = {
 };
 function FilterOptions({ ourOptions }) {
   const [isShown, setIsShown] = useState(false);
-
   return (
     <div className="filter__option">
       {[ourOptions].map((ourOption) => {
@@ -30,7 +29,7 @@ function FilterOptions({ ourOptions }) {
             </div>
             {isShown && (
               <div className="filter__options__content">
-                <div className="color__close">
+                <div className="option__close">
                   <CloseIcon
                     onClick={() => {
                       setIsShown(false);
@@ -54,26 +53,26 @@ function Color() {
   let colors = ["ALL", "WHITE", "GREEN", "YELLOW"];
   let colorsOptions = colors.map((color) => {
     return (
-      <div className="color__options col-lg-6 col-md-6 col-sm-12">
+      <div className="options col-lg-6 col-md-6 col-sm-12">
         <Checkbox></Checkbox>
         {color}
       </div>
     );
   });
   return (
-    <div className="color">
-      <div className="color__container">
+    <div className="option">
+      <div className="options__container">
         <form action="">
           {/* color options row 👇 */}
-          <div className="color__options__row row justify-content-start">
+          <div className=" options__row row justify-content-start">
             {colorsOptions}
           </div>
           {/* color options button 👇 */}
-          <div className="color__options__button__row row justify-content-between">
-            <div className=" clear__button__container col-lg-6 col-md-6 col-6text-left ">
+          <div className=" options__button__row row justify-content-start">
+            <div className=" clear__button__container col-lg-6 col-md-6 col-6  ">
               <button className="clear__button">CLEAR</button>
             </div>
-            <div className=" show__results__button__container col-lg-6 col-md-6 col-6 text-left">
+            <div className=" show__results__button__container col-lg-6 col-md-6 col-6 ">
               <button className="show__results__button">SHOW RESULTS</button>
             </div>
           </div>
@@ -85,27 +84,77 @@ function Color() {
 
 //DESIGN👇
 function Design() {
+  let design = ["FLOWERS", "ART", "TEXT"];
+  let designOptions = design.map((design) => {
+    return (
+      <div className="options col-lg-6 col-md-6 col-sm-12">
+        <Checkbox></Checkbox>
+        {design}
+      </div>
+    );
+  });
   return (
-    <div>
-      <h1>This is design</h1>
+    <div className="option">
+      <div className="option__container">
+        <form action="">
+          {/* color options row 👇 */}
+          <div className=" options__row row justify-content-start">
+            {designOptions}
+          </div>
+          {/* color options button 👇 */}
+          <div className="options__button__row row justify-content-start">
+            <div className=" clear__button__container col-lg-6 col-md-6 col-6 ">
+              <button className="clear__button">CLEAR</button>
+            </div>
+            <div className=" show__results__button__container col-lg-6 col-md-6 col-6">
+              <button className="show__results__button">SHOW RESULTS</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
 
 //SIZE👇
 function Size() {
-  return (
-    <div>
-      <h1>This is size</h1>
-    </div>
-  );
+  return <div className="option">THis is size</div>;
 }
 
 //STYLE👇
 function Style() {
+  let style = [
+    "ALL ROUNDED FLOWERS",
+    "BOTTOM ONLY FLOWERS",
+    "BOTTOM ONLY TEXT",
+  ];
+  let styleOptions = style.map((style) => {
+    return (
+      <div className="options col-lg-6 col-md-6 col-sm-12">
+        <Checkbox></Checkbox>
+        {style}
+      </div>
+    );
+  });
   return (
-    <div>
-      <h1>This is style</h1>
+    <div className="option">
+      <div className="option__container">
+        <form action="">
+          {/* color options row 👇 */}
+          <div className=" options__row row justify-content-start">
+            {styleOptions}
+          </div>
+          {/* color options button 👇 */}
+          <div className="options__button__row row ">
+            <div className=" clear__button__container col-lg-6 col-md-6 col-6 ">
+              <button className="clear__button">CLEAR</button>
+            </div>
+            <div className=" show__results__button__container col-lg-6 col-md-6 col-6">
+              <button className="show__results__button">SHOW RESULTS</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

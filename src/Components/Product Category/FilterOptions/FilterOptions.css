@@ -28,7 +28,7 @@
   position: relative;
 }
 /* the filter options property */
-.color__options {
+.options {
   display: flex;
   align-items: center;
 }
@@ -46,12 +46,16 @@
   height: 42px;
   width: 150px;
 }
-.color__close {
+.option__close {
   text-align: right;
   padding-right: 15px;
   padding-top: 5px;
   padding-bottom: 0;
   cursor: pointer;
+}
+.clear__button__container,
+.show__results__button__container {
+  text-align: left;
 }
 @media screen and (max-width: 767px) {
   .filter__options__content {
@@ -60,12 +64,26 @@
     margin: 0;
 
     top: 0;
-    left: 0;
+    /* left: 0; */
 
     width: 100%;
     height: 100%;
     /* background: rgba(255, 255, 255, 0.5); */
     z-index: 4;
     /* left: 100px; */
+  }
+  .clear__button,
+  .show__results__button {
+    width: 30vw;
+  }
+}
+@media screen and (max-width: 567px) {
+  .clear__button,
+  .show__results__button {
+    width: 42vw;
+  }
+  .clear__button__container,
+  .show__results__button__container {
+    text-align: center;
   }
 }
