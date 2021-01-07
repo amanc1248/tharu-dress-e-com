@@ -10,6 +10,11 @@
   background-size: cover;
   position: relative; */
 }
+.second__carousel__image {
+  height: 80vh;
+  object-fit: cover;
+  object-position: top center;
+}
 .carousel-button {
   background-color: white;
   border: none;
@@ -24,8 +29,17 @@
 }
 .second__section__heading,
 .shopTheLookHeading {
-  margin: 3.5em 0;
-  text-align: center;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shop__the__look__button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-weight: bold;
+  text-decoration: underline;
 }
 /* .sale {
   height: 100vh;

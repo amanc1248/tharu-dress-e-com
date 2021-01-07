@@ -82,52 +82,94 @@ function Home() {
       </div>
 
       {/* 2nd Section) Second Carousel "New Arrival Section" */}
-      <div className="second__section__heading">
-        <h6>NEW ARRIVALS</h6>
-      </div>
-      <div className="carousel second__carousel">
-        <Carousel>
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel__image "
-              src="images\Home Carousel Image\images\[au.burberry.com][9593].jpg"
-              alt="First slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel__image"
-              src="images\Home Carousel Image\images\[au.burberry.com][10912].jpg"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel__image"
-              src="images\Home Carousel Image\images\[au.burberry.com][14779].jpg"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel__image"
-              src="images\Home Carousel Image\images\[au.burberry.com][63342].jpg"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel__image"
-              src="images\Home Carousel Image\images\[au.burberry.com][18608].jpg"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-        </Carousel>
-      </div>
-      <div className="shopTheLookBox">
-        <h6 className="shopTheLookHeading">
-          <u>SHOP THE LOOK</u>
-        </h6>
+      <div className="second__section">
+        <div className="second__section__heading">
+          <h6>NEW ARRIVALS</h6>
+        </div>
+        <div className="carousel second__carousel">
+          <Carousel>
+            <Carousel.Item>
+              <img
+                className="d-block w-100 second__carousel__image "
+                src="images\Home Carousel Image\images\[au.burberry.com][9593].jpg"
+                alt="First slide"
+              />
+              <Carousel.Caption>
+                <div className="shopTheLookBox">
+                  <h6 className="shopTheLookHeading">
+                    <button className="shop__the__look__button">
+                      SHOP THE LOOK
+                    </button>
+                  </h6>
+                </div>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100 second__carousel__image"
+                src="images\Home Carousel Image\images\[au.burberry.com][10912].jpg"
+                alt="Third slide"
+              />
+              <Carousel.Caption>
+                <div className="shopTheLookBox">
+                  <h6 className="shopTheLookHeading">
+                    <button className="shop__the__look__button">
+                      SHOP THE LOOK
+                    </button>
+                  </h6>
+                </div>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100 second__carousel__image"
+                src="images\Home Carousel Image\images\[au.burberry.com][14779].jpg"
+                alt="Third slide"
+              />
+              <Carousel.Caption>
+                <div className="shopTheLookBox">
+                  <h6 className="shopTheLookHeading">
+                    <button className="shop__the__look__button">
+                      SHOP THE LOOK
+                    </button>
+                  </h6>
+                </div>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100 second__carousel__image"
+                src="images\Home Carousel Image\images\[au.burberry.com][63342].jpg"
+                alt="Third slide"
+              />
+              <Carousel.Caption>
+                <div className="shopTheLookBox">
+                  <h6 className="shopTheLookHeading">
+                    <button className="shop__the__look__button">
+                      SHOP THE LOOK
+                    </button>
+                  </h6>
+                </div>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100 second__carousel__image"
+                src="images\Home Carousel Image\images\[au.burberry.com][18608].jpg"
+                alt="Third slide"
+              />
+              <Carousel.Caption>
+                <div className="shopTheLookBox">
+                  <h6 className="shopTheLookHeading">
+                    <button className="shop__the__look__button">
+                      SHOP THE LOOK
+                    </button>
+                  </h6>
+                </div>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+        </div>
       </div>
       {/* 3rd Section) Sales section */}
       <div className="sale">

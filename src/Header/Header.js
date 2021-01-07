@@ -10,7 +10,7 @@ function Header() {
   //so here I am using useState, (navbar-->current value), (setNavbar--> changing value)
   const [navbarColor, setNavbarColor] = useState(false);
   const changeHeaderBg = () => {
-    if (window.scrollY >= 50) {
+    if (window.scrollY >= 63) {
       setNavbarColor(true);
     } else {
       setNavbarColor(false);

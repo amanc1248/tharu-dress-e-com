@@ -1,5 +1,6 @@
 import React from "react";
 import "./Category.css";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 function Category({
   category_image,
   category_title,
@@ -35,7 +36,9 @@ function Category({
         >
           <div className="item__description">
             <span className="sub__category__title">{sub_category_title_1}</span>
-            <p className="discover__more__button">DISCOVER MORE {">"}</p>
+            <p className="discover__more__button">
+              DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
+            </p>
           </div>
         </div>
         <div className="second__third__item col-lg-6 col-md-6 p-0">
@@ -49,7 +52,9 @@ function Category({
               <span className="sub__category__title">
                 {sub_category_title_2}
               </span>
-              <p className="discover__more__button">DISCOVER MORE {">"}</p>
+              <p className="discover__more__button">
+                DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
+              </p>
             </div>
           </div>
           <div
@@ -62,7 +67,9 @@ function Category({
               <span className="sub__category__title">
                 {sub_category_title_3}
               </span>
-              <p className="discover__more__button">DISCOVER MORE {">"}</p>
+              <p className="discover__more__button">
+                DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
+              </p>
             </div>
           </div>
         </div>
@@ -77,7 +84,9 @@ function Category({
         >
           <div className="item__description">
             <span className="sub__category__title">{sub_category_title_4}</span>
-            <p className="discover__more__button">DISCOVER MORE {">"}</p>
+            <p className="discover__more__button">
+              DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
+            </p>
           </div>
         </div>
         <div
@@ -88,7 +97,9 @@ function Category({
         >
           <div className="item__description">
             <span className="sub__category__title">{sub_category_title_5}</span>
-            <p className="discover__more__button">DISCOVER MORE {">"}</p>
+            <p className="discover__more__button">
+              DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
+            </p>
           </div>
         </div>
       </div>
