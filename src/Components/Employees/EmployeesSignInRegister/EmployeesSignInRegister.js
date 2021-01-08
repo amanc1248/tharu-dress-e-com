@@ -1,10 +1,10 @@
 import { Checkbox } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./EmployesSignInRegister.css";
 function EmployeeSignInRegister() {
   return (
     <div className="employees__signIn__register row container-fluid no-gutters p-0">
-     
       <EmployeeSignIn></EmployeeSignIn>
       <EmployeeRegister></EmployeeRegister>
     </div>
@@ -43,7 +43,9 @@ export function EmployeeSignIn() {
               <p>
                 <u>Forgot Password</u>
               </p>
-              <button className="employee__signIn__button">Sign In</button>
+              <Link to="/employeeAccount">
+                <button className="employee__signIn__button">Sign In</button>
+              </Link>
             </div>
           </div>
         </form>
@@ -101,7 +103,11 @@ export function EmployeeRegister() {
               </small>
             </div>
             <div className="row justify-content-end">
-              <button className="employee__register__button ">Register</button>
+              <Link to="/employeeAccount">
+                <button className="employee__register__button ">
+                  Register
+                </button>
+              </Link>
             </div>
           </div>
         </form>

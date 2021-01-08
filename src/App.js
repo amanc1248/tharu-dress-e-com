@@ -20,88 +20,91 @@ import Tailor from "./Components/Tailor/TailorStore/Tailor";
 import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegister/EmployeesSignInRegister";
 import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
 import EmployeeAndTailorRegister from "./Header/EmployeeAndTailorRegister";
+import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Switch>
-          {/* Men Category Route  */}
-          <Route path="/men">
-            <Header></Header>
-            <Men></Men>
-            <Footer></Footer>
-          </Route>
+        <ScrollToTop>
+          <Switch>
+            {/* Men Category Route  */}
+            <Route path="/men">
+              <Header></Header>
+              <Men></Men>
+              <Footer></Footer>
+            </Route>
 
-          {/* Women Category Route  */}
-          <Route path="/women">
-            <Header></Header>
-            <Women></Women>
-            <Footer></Footer>
-          </Route>
-          {/* Women Category Route  */}
-          <Route path="/kids">
-            <Header></Header>
-            <Kids></Kids>
-            <Footer></Footer>
-          </Route>
-          {/* Authentication Route */}
+            {/* Women Category Route  */}
+            <Route path="/women">
+              <Header></Header>
+              <Women></Women>
+              <Footer></Footer>
+            </Route>
+            {/* Women Category Route  */}
+            <Route path="/kids">
+              <Header></Header>
+              <Kids></Kids>
+              <Footer></Footer>
+            </Route>
+            {/* Authentication Route */}
 
-          <Route path="/MenCategory">
-            <MenProduct></MenProduct>
-          </Route>
-          <Route path="/WomenCategory">
-            <WomenProduct></WomenProduct>
-          </Route>
-          <Route path="/KidCategory">
-            <KidsProduct></KidsProduct>
-          </Route>
-          <Route path="/signin">
-            <Header></Header>
-            <Authentication></Authentication>
-            <Footer></Footer>
-          </Route>
-          <Route path="/cart">
-            <Header></Header>
-            <Cart></Cart>
-            <Footer></Footer>
-          </Route>
-          <Route path="/productIndividual">
-            <ProductIndividual></ProductIndividual>
-            <Footer></Footer>
-          </Route>
-          <Route path="/tailorSignIn">
-            <EmployeeAndTailorRegister></EmployeeAndTailorRegister>
-            <SignInRegister></SignInRegister>
-            <Footer></Footer>
-          </Route>
-          <Route path="/tailorAccount">
-            <TailorHeader></TailorHeader>
-            <Tailor></Tailor>
-            <Footer></Footer>
-          </Route>
+            <Route path="/MenCategory">
+              <MenProduct></MenProduct>
+            </Route>
+            <Route path="/WomenCategory">
+              <WomenProduct></WomenProduct>
+            </Route>
+            <Route path="/KidCategory">
+              <KidsProduct></KidsProduct>
+            </Route>
+            <Route path="/signin">
+              <Header></Header>
+              <Authentication></Authentication>
+              <Footer></Footer>
+            </Route>
+            <Route path="/cart">
+              <Header></Header>
+              <Cart></Cart>
+              <Footer></Footer>
+            </Route>
+            <Route path="/productIndividual">
+              <ProductIndividual></ProductIndividual>
+              <Footer></Footer>
+            </Route>
+            <Route path="/tailorSignIn">
+              <EmployeeAndTailorRegister></EmployeeAndTailorRegister>
+              <SignInRegister></SignInRegister>
+              <Footer></Footer>
+            </Route>
+            <Route path="/tailorAccount">
+              <TailorHeader></TailorHeader>
+              <Tailor></Tailor>
+              <Footer></Footer>
+            </Route>
 
-          <Route path="/filterOptions">
-            <div className="NavButton__Container">
-              <NavButton></NavButton>
-            </div>
-          </Route>
-          <Route path="/employeeSignIn">
-            <EmployeeAndTailorRegister></EmployeeAndTailorRegister>
-            <EmployeeSignInRegister></EmployeeSignInRegister>
-            <Footer></Footer>
-          </Route>
-          <Route path="/employeeStore">
-            <TailorHeader></TailorHeader>
-            <EmployeesStore></EmployeesStore>
-          </Route>
-          {/* Home Route👇 */}
-          <Route path="/">
-            <Header></Header>
-            <Home></Home>
-            <Footer></Footer>
-          </Route>
-        </Switch>
+            <Route path="/filterOptions">
+              <div className="NavButton__Container">
+                <NavButton></NavButton>
+              </div>
+            </Route>
+            <Route path="/employeeSignIn">
+              <EmployeeAndTailorRegister></EmployeeAndTailorRegister>
+              <EmployeeSignInRegister></EmployeeSignInRegister>
+              <Footer></Footer>
+            </Route>
+            <Route path="/employeeAccount">
+              <TailorHeader></TailorHeader>
+              <EmployeesStore></EmployeesStore>
+            </Route>
+            {/* Home Route👇 */}
+            <Route path="/">
+              <Header></Header>
+              <Home></Home>
+              <Footer></Footer>
+            </Route>
+          </Switch>
+        </ScrollToTop>
       </div>
     </Router>
   );

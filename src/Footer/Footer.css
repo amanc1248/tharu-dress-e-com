@@ -8,14 +8,14 @@
 }
 .emailSignUpTitle,
 .followUsTitle {
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 17px !important;
-  font-weight: 500 !important;
+  /* font-family: "Noto Sans JP", sans-serif; */
+  font-size: 16px !important;
+  font-weight: 600 !important;
   margin-bottom: 0.5em;
 }
 .socialIcon {
-  font-size: xx-large !important;
-  width: 60px !important;
+  font-size: larger !important;
+  margin-right: 30px !important;
   color: black;
 }
 .footerPadding {
@@ -23,14 +23,28 @@
   color: black;
 }
 .secondSectionFooter {
-  padding: 1em 2em 2em 2em !important;
+  padding: 1em 2em 2em 1em !important;
 }
 .followUsLinks,
 .additionalInformationLinks {
   padding-bottom: 2em;
   font-size: 14px;
 }
-
+.input-group-prepend {
+  height: fit-content;
+  margin-top: 15px;
+}
+.footer__links__container {
+  text-align: left;
+}
+.footer__link {
+  color: black;
+}
+.footer__link:hover,
+.socialIcon:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 @media screen and (max-width: 1000px) {
   .secondSectionFooter {
     background-color: #f1f1f1;
@@ -38,5 +52,10 @@
   .followUsLinks,
   .additionalInformationLinks {
     text-align: left;
+  }
+}
+@media screen and (max-width: 567px) {
+  .middle__links__container {
+    padding-bottom: 1em;
   }
 }

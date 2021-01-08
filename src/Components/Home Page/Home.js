@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
 import "./Home.css";
 function Home() {
   return (
@@ -17,9 +18,11 @@ function Home() {
               <h4 className="headingClothShortDescription">
                 ANCHARA WITH RED BOUTIQUE
               </h4>
-              <button type="button" name="button" className="carousel-button">
-                SHOP ANCHARA
-              </button>
+              <Link to="/womenCategory">
+                <button type="button" name="button" className="carousel-button">
+                  SHOP ANCHARA
+                </button>
+              </Link>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -30,10 +33,14 @@ function Home() {
             />
 
             <Carousel.Caption>
-              <h4 className="headingClothShortDescription">ANCHARA FOR KIDS</h4>
-              <button type="button" name="button" className="carousel-button">
-                SHOP KIDS
-              </button>
+              <h4 className="headingClothShortDescription">
+                ANCHARA FOR WOMEN
+              </h4>
+              <Link to="/womenCategory">
+                <button type="button" name="button" className="carousel-button">
+                  SHOP WOMEN
+                </button>
+              </Link>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -44,10 +51,12 @@ function Home() {
             />
 
             <Carousel.Caption>
-              <h4 class="headingClothShortDescription">MULTI-COLOR ANCHARA</h4>
-              <button type="button" name="button" class="carousel-button">
-                SHOP WOMEN
-              </button>
+              <h4 class="headingClothShortDescription">MEN FABRIC</h4>
+              <Link to="/menCategory">
+                <button type="button" name="button" class="carousel-button">
+                  SHOP MEN
+                </button>
+              </Link>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -59,9 +68,11 @@ function Home() {
 
             <Carousel.Caption>
               <h4 className="headingClothShortDescription">ANCHARA FOR KIDS</h4>
-              <button type="button" name="button" className="carousel-button">
-                SHOP KIDS
-              </button>
+              <Link to="/kidCategory">
+                <button type="button" name="button" className="carousel-button">
+                  SHOP ANCHARA
+                </button>
+              </Link>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -72,10 +83,12 @@ function Home() {
             />
 
             <Carousel.Caption>
-              <h4 class="headingClothShortDescription">MULTI-COLOR ANCHARA</h4>
-              <button type="button" name="button" class="carousel-button">
-                SHOP WOMEN
-              </button>
+              <h4 class="headingClothShortDescription">MULTI-COLOR DHOTI</h4>
+              <Link to="/menCategory">
+                <button type="button" name="button" class="carousel-button">
+                  SHOP DHOTI
+                </button>
+              </Link>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>

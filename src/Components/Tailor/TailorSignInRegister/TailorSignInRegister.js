@@ -1,5 +1,6 @@
 import { Checkbox } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./TailorSignInRegister.css";
 function TailorSignInRegister() {
   return (
@@ -44,7 +45,9 @@ function TailorSignIn() {
               {" "}
               <u>Forgot Password</u>{" "}
             </p>
-            <button className="tailor__signIn__button">Sign In</button>
+            <Link to="/tailorAccount">
+              <button className="tailor__signIn__button">Sign In</button>
+            </Link>
           </div>
         </form>
       </div>
@@ -130,7 +133,9 @@ function TailorRegister() {
               </small>
             </div>
             <div className="row justify-content-end">
-              <button className="tailor__register__button ">Register</button>
+              <Link to="/tailorAccount ">
+                <button className="tailor__register__button ">Register</button>
+              </Link>
             </div>
           </div>
         </form>
