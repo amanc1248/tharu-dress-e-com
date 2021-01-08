@@ -17,6 +17,9 @@ function Men() {
         sub_category_title_4="Old Age Dhoti"
         sub_category_image_5="images/Men/Edited/rabin.jpg"
         sub_category_title_5="Old Age Dhoti"
+        firstLink="/menCategory"
+        secondLink="/menCategory"
+        thirdLink="/menCategory"
       ></Category>
     </div>
   );

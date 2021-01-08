@@ -1,6 +1,7 @@
 import React from "react";
 import "./Category.css";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { Link } from "react-router-dom";
 function Category({
   category_image,
   category_title,
@@ -14,6 +15,9 @@ function Category({
   sub_category_image_3,
   sub_category_image_4,
   sub_category_image_5,
+  firstLink,
+  secondLink,
+  thirdLink,
 }) {
   return (
     <div className="category">
@@ -36,9 +40,11 @@ function Category({
         >
           <div className="item__description">
             <span className="sub__category__title">{sub_category_title_1}</span>
-            <p className="discover__more__button">
-              DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
-            </p>
+            <Link to={firstLink}>
+              <p className="discover__more__button">
+                DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
+              </p>
+            </Link>
           </div>
         </div>
         <div className="second__third__item col-lg-6 col-md-6 p-0">
@@ -52,9 +58,11 @@ function Category({
               <span className="sub__category__title">
                 {sub_category_title_2}
               </span>
-              <p className="discover__more__button">
-                DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
-              </p>
+              <Link to={secondLink}>
+                <p className="discover__more__button">
+                  DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
+                </p>
+              </Link>
             </div>
           </div>
           <div
@@ -67,9 +75,11 @@ function Category({
               <span className="sub__category__title">
                 {sub_category_title_3}
               </span>
-              <p className="discover__more__button">
-                DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
-              </p>
+              <Link to={thirdLink}>
+                <p className="discover__more__button">
+                  DISCOVER MORE <ChevronRightIcon></ChevronRightIcon>
+                </p>
+              </Link>
             </div>
           </div>
         </div>
