@@ -2,8 +2,8 @@
   font-size: 25px !important;
   font-weight: 700 !important;
 }
-.our__toogler{
-  color: white!important;
+.our__toogler {
+  color: white !important;
 }
 .navbar__component__whenScrolled {
   color: black !important;
@@ -54,3 +54,57 @@
 .navbarWithSearchbar {
   position: relative;
 } */
+
+/* 👇Property of search bar */
+.search__bar {
+  background-color: white !important;
+}
+.searching__bar {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin: 0 10%;
+}
+.close__icon__container {
+  text-align: right;
+}
+.close__icon {
+  margin-right: 15px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.search__icon {
+  cursor: pointer;
+}
+.search__bar__content {
+  height: 50vh;
+
+  background-color: white;
+  border: none;
+  /* -webkit-box-shadow: 0 0 10px #fff; */
+  /* box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.16); */
+  width: 100vw;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 100%;
+  z-index: 1;
+}
+@media screen and (max-width: 767px) {
+  .search__bar__content {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+
+    top: 0;
+    /* left: 0; */
+
+    width: 100%;
+    height: 100%;
+    /* background: rgba(255, 255, 255, 0.5); */
+    z-index: 4;
+    /* left: 100px; */
+  }
+}

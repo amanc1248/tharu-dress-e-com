@@ -4,7 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import PersonIcon from "@material-ui/icons/Person";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import { Nav, Navbar } from "react-bootstrap";
-
+import CloseIcon from "@material-ui/icons/Close";
 function Header() {
   // const { pathname } = useLocation();
   //so here I am using useState, (navbar-->current value), (setNavbar--> changing value)
@@ -16,6 +16,10 @@ function Header() {
       setNavbarColor(false);
     }
   };
+
+  //forSearchIcon
+  const [search, setsearch] = useState(false);
+
   window.addEventListener("scroll", changeHeaderBg);
   return (
     <div className=" ">
@@ -77,7 +81,7 @@ function Header() {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Nav.Link>
+        {/* <Nav.Link>
           <SearchIcon
             className={
               navbarColor
@@ -85,7 +89,39 @@ function Header() {
                 : "navbar__component__whennotscrolled"
             }
           ></SearchIcon>
-        </Nav.Link>
+        </Nav.Link> */}
+
+        <div className="search__bar__container">
+          <div
+            className=""
+            onClick={() => {
+              // setIsShown(true);
+            }}
+          >
+            <Nav.Link>
+              <SearchIcon
+                className={
+                  navbarColor
+                    ? "navbar__component__whenScrolled"
+                    : "navbar__component__whennotscrolled"
+                }
+                onClick={() => {
+                  setsearch(true);
+                }}
+              ></SearchIcon>
+            </Nav.Link>
+          </div>
+          {search && (
+            <div className="search__bar__content">
+              <SearchBar
+                toggleSearch={() => {
+                  setsearch(false);
+                }}
+              />
+            </div>
+          )}
+        </div>
+
         <Nav.Link href="/signin">
           <PersonIcon
             className={
@@ -114,3 +150,16 @@ function Header() {
 }
 
 export default Header;
+export function SearchBar({ toggleSearch }) {
+  return (
+    <div className="search__bar">
+      <div className="close__icon__container">
+        <CloseIcon onClick={toggleSearch} className="close__icon"></CloseIcon>
+      </div>
+      <div className="searching__bar">
+        <input type="text" placeholder="search" className="searching__input" />
+        <SearchIcon className="search__icon"></SearchIcon>
+      </div>
+    </div>
+  );
+}

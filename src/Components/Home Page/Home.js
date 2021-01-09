@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
+
 import "./Home.css";
 function Home() {
   return (
@@ -188,12 +189,16 @@ function Home() {
       <div className="sale">
         <h1 className="saleHeading">SALE</h1>
         <div className="salesButton">
-          <button type="button" className="firstProduct">
-            DHOTI
-          </button>
-          <button type="button" className="secondProduct">
-            ANCHARA
-          </button>
+          <Link to="/menCategory">
+            <button type="button" className="firstProduct">
+              DHOTI
+            </button>
+          </Link>
+          <Link to="/womenCategory">
+            <button type="button" className="secondProduct">
+              ANCHARA
+            </button>
+          </Link>
         </div>
       </div>
       {/* 4th) Kids section */}
@@ -206,9 +211,11 @@ function Home() {
         <div className="kids__container">
           <div className="kidsProductDescription">SHOP YOUR KIDS SIZE</div>
           <div className="kidsButton">
-            <button type="button" className="shopKids__button">
-              SHOP KIDS{" "}
-            </button>
+            <Link to="/kidCategory">
+              <button type="button" className="shopKids__button">
+                SHOP KIDS{" "}
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import "./App.css";
 import Authentication from "./Components/Authentication/Authentication";
-import Header from "./Header/Header";
+import Header, { SearchBar } from "./Header/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Components/Home Page/Home";
 import Footer from "./Footer/Footer";
@@ -80,13 +80,12 @@ function App() {
             <Route path="/tailorAccount">
               <TailorHeader></TailorHeader>
               <Tailor></Tailor>
-              <Footer></Footer>
             </Route>
-
             <Route path="/filterOptions">
-              <div className="NavButton__Container">
+              <SearchBar></SearchBar>
+              {/* <div className="NavButton__Container">
                 <NavButton></NavButton>
-              </div>
+              </div> */}
             </Route>
             <Route path="/employeeSignIn">
               <EmployeeAndTailorRegister></EmployeeAndTailorRegister>

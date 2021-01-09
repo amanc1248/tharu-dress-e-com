@@ -133,7 +133,7 @@ function TailorRegister() {
               </small>
             </div>
             <div className="row justify-content-end">
-              <Link to="/tailorAccount ">
+              <Link to="/tailorAccount">
                 <button className="tailor__register__button ">Register</button>
               </Link>
             </div>

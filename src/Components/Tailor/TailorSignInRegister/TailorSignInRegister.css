@@ -4,7 +4,7 @@
 }
 .tailor__signIn__container,
 .tailor__register__container {
-  background-color: rgba(245, 245, 245, 0.81);
+  background-color: #e7e7e7;
   margin: 8px;
   padding: 20px 70px;
 }
