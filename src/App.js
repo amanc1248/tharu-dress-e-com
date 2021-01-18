@@ -12,7 +12,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import WomenProduct from "./Components/Product Category/Women Product/WomenProduct";
 import KidsProduct from "./Components/Product Category/Kids Product/KidsProduct";
 import Cart from "./Components/Cart/Cart";
-import NavButton from "./NavButton";
 import ProductIndividual from "./Components/Product Individual/ProductIndividual";
 import SignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
 import TailorHeader from "./Components/Tailor/TailorHeader/TailorHeader";
@@ -21,6 +20,8 @@ import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegist
 import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
 import EmployeeAndTailorRegister from "./Header/EmployeeAndTailorRegister";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
+import PlaygroundField from './Components/playground'
+import CustomerCheckout from "./Components/CustomerCheckout/CustomerCheckout";
 
 function App() {
   return (
@@ -92,9 +93,16 @@ function App() {
               <EmployeeSignInRegister></EmployeeSignInRegister>
               <Footer></Footer>
             </Route>
+            <Route path="/playground">
+              <PlaygroundField></PlaygroundField>
+            </Route>
             <Route path="/employeeAccount">
               <TailorHeader></TailorHeader>
               <EmployeesStore></EmployeesStore>
+            </Route>
+            <Route path="/checkOut">
+              <TailorHeader></TailorHeader>
+              <CustomerCheckout></CustomerCheckout>
             </Route>
             {/* Home Route👇 */}
             <Route path="/">

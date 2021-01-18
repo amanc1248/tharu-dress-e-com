@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ShoppingBagProduct from "./ShoppingBagProduct";
 
 function Bag() {
@@ -31,7 +32,9 @@ function Bag() {
           <div className="col-6 text-right">$100.00</div>
         </div>
         <div className="text-right">
-          <button className="checkout__button ">CHECK OUT</button>
+          <Link to="/checkOut">
+            <button className="checkout__button ">CHECK OUT</button>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,13 @@
 .tab-list {
   border-bottom: 1px solid #ccc;
   padding-left: 0;
+  display: flex;
+  justify-content: center;
+
+  overflow-x: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 .tab-list-item {

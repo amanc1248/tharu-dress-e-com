@@ -8,7 +8,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import allReducers from "./Components/Cart/Account Details/Account Information/Redux/Reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-
+// import "../node_modules/font-awesome/css/font-awesome.min.css";
 const store = createStore(
   allReducers,
 

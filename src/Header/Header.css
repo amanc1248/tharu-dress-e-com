@@ -2,8 +2,9 @@
   font-size: 25px !important;
   font-weight: 700 !important;
 }
-.our__toogler {
+.hamburger__toogler {
   color: white !important;
+  border-color: #fff;
 }
 .navbar__component__whenScrolled {
   color: black !important;

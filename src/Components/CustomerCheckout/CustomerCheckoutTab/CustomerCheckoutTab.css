@@ -1,0 +1,33 @@
+.checkout-tab-list {
+  /* border-bottom: 1px solid #ccc; */
+  padding-left: 0;
+}
+
+.checkout-tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin-left: 64px;
+  margin-right: 64px;
+  margin-bottom: -1px;
+  padding: 0.5rem 0.75rem;
+}
+
+/* properties of inactive tab */
+.checkout-tab-list-item .the__label .the__number__label {
+  color: rgb(161, 161, 161, 1);
+  background-color: white;
+  border: 1px rgb(161, 161, 161, 1) solid;
+}
+.checkout-tab-list-item .the__label .the__text__label {
+  color: rgb(161, 161, 161, 1);
+}
+
+/* properties of active tab */
+.checkout-tab-list-active .the__label .the__number__label {
+  color: white;
+  background-color: black;
+  border: none;
+}
+.checkout-tab-list-active .the__label .the__text__label {
+  color: black;
+}

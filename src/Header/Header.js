@@ -5,6 +5,9 @@ import PersonIcon from "@material-ui/icons/Person";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import { Nav, Navbar } from "react-bootstrap";
 import CloseIcon from "@material-ui/icons/Close";
+// import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Header() {
   // const { pathname } = useLocation();
   //so here I am using useState, (navbar-->current value), (setNavbar--> changing value)
@@ -16,7 +19,6 @@ function Header() {
       setNavbarColor(false);
     }
   };
-
   //forSearchIcon
   const [search, setsearch] = useState(false);
 
@@ -81,15 +83,6 @@ function Header() {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        {/* <Nav.Link>
-          <SearchIcon
-            className={
-              navbarColor
-                ? "navbar__component__whenScrolled"
-                : "navbar__component__whennotscrolled"
-            }
-          ></SearchIcon>
-        </Nav.Link> */}
 
         <div className="search__bar__container">
           <div
@@ -141,9 +134,19 @@ function Header() {
           ></LocalMallIcon>
         </Nav.Link>
         <Navbar.Toggle
-          aria-controls="basic-navbar-nav"
-          className="our__toogler"
-        />
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="">
+            {/* <i className="fas fa-bars hamburger"></i> */}
+            <FontAwesomeIcon icon={faBars} className="hamburger__toogler" />
+          </span>
+        </Navbar.Toggle>
       </Navbar>
     </div>
   );
