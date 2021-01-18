@@ -34,8 +34,8 @@ function AccountInformationEdit() {
             <input type="text" />
           </label>
         </div>
-        <div className="account__information__buttons row justify-content-between">
-          <div className="edit__button__container col-6">
+        <div className="account__information__buttons row no-gutters justify-content-between">
+          <div className="edit__button__container  ">
             <button
               className="edit__button"
               onClick={() => dispatch(goToAccountEdit())}
@@ -43,7 +43,7 @@ function AccountInformationEdit() {
               SAVE
             </button>
           </div>
-          <div className="changepassword__button__container col-6">
+          <div className="changepassword__button__container ">
             <button
               className="changepassword__button"
               onClick={() => dispatch(goToAccountEdit())}

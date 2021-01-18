@@ -31,3 +31,52 @@
 .checkout-tab-list-active .the__label .the__text__label {
   color: black;
 }
+.checkout-tab-content {
+  background-color: #e7e7e7;
+  padding: 20px 15px;
+}
+
+/* individual tab property */
+.cc__account__info {
+  font-size: 13px;
+  text-align: left;
+}
+.cc__account__info__inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.checkout__cart__container {
+  background-color: white;
+  padding: 20px 15px;
+}
+
+/* Checkout cart property */
+.checkout__item {
+  display: flex;
+  border-bottom: 1px rgb(161, 161, 161, 1) solid;
+  padding-bottom: 7px;
+  margin-bottom: 7px;
+}
+.checkout__item__title__desc {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.checkout__item__price {
+  width: 10%;
+}
+.checkout__item__title {
+  font-size: 18px;
+  font-weight: 400;
+}
+.checkout__next__button__container{
+    text-align: right;
+}
+.checkout__next__button {
+  background-color: black;
+  border: none;
+  color: white;
+  height: 42px;
+  width: 190px;
+}

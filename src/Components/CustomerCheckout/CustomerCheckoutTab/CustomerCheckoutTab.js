@@ -68,8 +68,13 @@ export class CustomerCheckoutTabs extends Component {
             );
           })}
         </ul>
+        <div className="checkout-tab-content">
+          {children.map((child) => {
+            if (child.props.label !== activeTab) return undefined;
+            return child.props.children;
+          })}
+        </div>
       </div>
     );
   }
 }
-
