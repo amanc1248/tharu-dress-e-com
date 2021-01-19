@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ShoppingBagProduct from "./ShoppingBagProduct";
 
-function Bag() {
+function Bag({bagTitle}) {
   return (
     <div className="bag">
       <div className="bag__title">
-        <h5>SHOPPING BAG</h5>
+        <h5>{bagTitle}</h5>
       </div>
       <div className="product__section">
         <ShoppingBagProduct></ShoppingBagProduct>

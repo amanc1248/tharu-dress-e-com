@@ -63,12 +63,12 @@
   margin-bottom: 7px;
 }
 .checkout__item__title__desc {
-  width: 90%;
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
 .checkout__item__price {
-  width: 10%;
+  width: 20%;
 }
 .checkout__item__title {
   font-size: 18px;

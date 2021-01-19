@@ -38,6 +38,7 @@ img.resize {
 .remove,
 .edit {
   font-size: 12px;
+  cursor: pointer;
 }
 .product__handling {
   vertical-align: middle;
