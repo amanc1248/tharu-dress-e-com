@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
 function Login() {
   return (
@@ -32,7 +33,9 @@ function Login() {
               {" "}
               <u>Forgot Password</u>{" "}
             </p>
-            <button className="signIn__button">Sign In</button>
+            <Link to="/cart">
+              <button className="signIn__button">Sign In</button>
+            </Link>
           </div>
         </form>
       </div>

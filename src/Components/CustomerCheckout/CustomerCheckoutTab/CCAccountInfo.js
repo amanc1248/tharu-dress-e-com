@@ -2,7 +2,7 @@ import React from "react";
 
 function CCAccountInfo() {
   return (
-    <div className="cc__account__info row">
+    <div className="cc__account__info row justify-content-between">
       <div className="cc__account__info__container  col-lg-6 col-md-6 col-sm-12">
         <form action="">
           <div className="cc__account__info__inputs">
@@ -22,14 +22,10 @@ function CCAccountInfo() {
           <CheckOutNextButton></CheckOutNextButton>
         </form>
       </div>
-      <div className="checkout__cart col-lg-4 col-md-6 col-sm-12">
-        <strong>YOUR CART</strong>
-        <div className="checkout__cart__container">
-          <CheckoutCartItem></CheckoutCartItem>
-          <CheckoutCartItem></CheckoutCartItem>
-          <CheckoutCartItem></CheckoutCartItem>
-          <CheckoutCartItem></CheckoutCartItem>
-        </div>
+
+      <div className="checkout__cart col-lg-4 col-md-6 col-sm-12 ">
+        {" "}
+        <CheckoutCart></CheckoutCart>
       </div>
     </div>
   );
@@ -43,7 +39,7 @@ export function CheckOutNextButton() {
     </div>
   );
 }
-export function CheckoutCartItem() {
+export function CheckoutCart() {
   let checkOutItem = (
     <div className="checkout__item">
       <div className="checkout__item__title__desc">
@@ -53,5 +49,16 @@ export function CheckoutCartItem() {
       <div className="checkout__item__price">Rs. 13000</div>
     </div>
   );
-  return <div> {checkOutItem}</div>;
+  return (
+    <div>
+      <strong>YOUR CART</strong>
+      <div className="checkout__cart__container">
+        {checkOutItem}
+        {checkOutItem}
+        {checkOutItem}
+        {checkOutItem}
+        {checkOutItem}
+      </div>
+    </div>
+  );
 }

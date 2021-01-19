@@ -1,5 +1,6 @@
 import { Checkbox } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Signup.css";
 function Signup() {
   return (
@@ -60,7 +61,9 @@ function Signup() {
               </small>
             </div>
             <div className="row justify-content-end">
-              <button className="register__button ">Register</button>
+              <Link to="/tailorAcartccount">
+                <button className="register__button ">Register</button>
+              </Link>
             </div>
           </div>
         </form>
