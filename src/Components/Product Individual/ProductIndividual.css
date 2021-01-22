@@ -1,6 +1,10 @@
 .length__options,
 .width__options {
   display: flex;
+  overflow-x: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 .product__color__style__design__container {
   display: flex;
@@ -70,5 +74,9 @@
 @media screen and (max-width: 500px) {
   .product__individual__carousel__image {
     height: 50vh;
+  }
+  .product__details__part2 {
+    margin: 20px 0;
+    padding: 0 15px;
   }
 }

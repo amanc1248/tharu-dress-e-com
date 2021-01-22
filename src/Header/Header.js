@@ -91,7 +91,7 @@ function Header() {
               // setIsShown(true);
             }}
           >
-            <Nav.Link>
+            <Nav.Link className="the__header__icon">
               <SearchIcon
                 className={
                   navbarColor
@@ -115,7 +115,7 @@ function Header() {
           )}
         </div>
 
-        <Nav.Link href="/signin">
+        <Nav.Link href="/signin" className="the__header__icon">
           <PersonIcon
             className={
               navbarColor
@@ -124,7 +124,7 @@ function Header() {
             }
           ></PersonIcon>
         </Nav.Link>
-        <Nav.Link href="/cart">
+        <Nav.Link href="/cart" className="the__header__icon">
           <LocalMallIcon
             className={
               navbarColor

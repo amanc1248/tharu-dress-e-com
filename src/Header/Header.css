@@ -109,3 +109,11 @@
     /* left: 100px; */
   }
 }
+@media screen and (max-width: 567px) {
+  .navbar__brand {
+    width: 20vw;
+  }
+  .the__header__icon {
+    width: 15vw;
+  }
+}

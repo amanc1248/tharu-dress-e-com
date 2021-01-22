@@ -1,6 +1,7 @@
 .filter__options {
   display: flex;
 }
+
 /* .filter__option{
     position: relative;
 } */
@@ -9,6 +10,10 @@
   background-color: white;
   margin-right: 4px;
   cursor: pointer;
+  overflow-x: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 .filter__options__content {
