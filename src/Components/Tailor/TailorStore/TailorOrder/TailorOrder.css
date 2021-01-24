@@ -37,12 +37,27 @@
   background-color: #fff;
 }
 @media screen and (max-width: 767px) {
-  table#tailor__products__table td:nth-child(4),
-  table#tailor__products__table td:nth-child(5) {
+  table#orders__table td:nth-child(2),
+  table#orders__table td:nth-child(4),
+  table#orders__table td:nth-child(5),
+  table#orders__table td:nth-child(7) {
     display: none;
   }
-  table#tailor__products__table th:nth-child(4),
-  table#tailor__products__table th:nth-child(5) {
+  table#orders__table th:nth-child(2),
+  table#orders__table th:nth-child(4),
+  table#orders__table th:nth-child(5),
+  table#orders__table th:nth-child(7) {
     display: none;
   }
+}
+@media screen and (max-width: 567px) {
+  table#orders__table td:nth-child(6) {
+    display: none;
+  }
+  table#orders__table th:nth-child(6) {
+    display: none;
+  }
+}
+.thePlay {
+  z-index: 1;
 }
