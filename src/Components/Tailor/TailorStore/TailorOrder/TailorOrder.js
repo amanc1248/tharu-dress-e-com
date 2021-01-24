@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./TailorOrder.css";
 import SearchIcon from "@material-ui/icons/Search";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import PlaygroundField from "../../../playground";
+import { PlaygroundField } from "../../../playground";
 function TailorOrder() {
   const [moreAction, setMoreAction] = useState(false);
 
@@ -76,16 +76,7 @@ function TailorOrder() {
               <td>Manturam Chaudhary</td>
               <td>Rs. 12,000</td>
               <td className="see__more__data">
-                <MoreHorizIcon
-                  onClick={() => {
-                    setMoreAction(true);
-                  }}
-                ></MoreHorizIcon>
-                {moreAction === true ? (
-                  <PlaygroundField></PlaygroundField>
-                ) : (
-                  <></>
-                )}
+                <MoreHorizIcon></MoreHorizIcon>
               </td>
             </tr>
             <tr>
@@ -150,6 +141,35 @@ function TailorOrder() {
             </tr>
           </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">
+                Previous
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">
+                1
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">
+                2
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">
+                3
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">
+                Next
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );

@@ -20,8 +20,9 @@ import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegist
 import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
 import EmployeeAndTailorRegister from "./Header/EmployeeAndTailorRegister";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
-import PlaygroundField from './Components/playground'
+import PlaygroundField, { AddProduct } from "./Components/playground";
 import CustomerCheckout from "./Components/CustomerCheckout/CustomerCheckout";
+import ModalApp from "./Components/playground";
 
 function App() {
   return (
@@ -94,7 +95,9 @@ function App() {
               <Footer></Footer>
             </Route>
             <Route path="/playground">
-              <PlaygroundField></PlaygroundField>
+              {/* <PlaygroundField></PlaygroundField> */}
+              {/* <ModalApp></ModalApp> */}
+              <AddProduct></AddProduct>
             </Route>
             <Route path="/employeeAccount">
               <TailorHeader></TailorHeader>
