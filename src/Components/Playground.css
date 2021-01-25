@@ -82,7 +82,7 @@
   top: 100%;
 }
 
-/* Style for adding the new products */
+/* Style for adding the new products 👇👇👇*/
 .add__product {
   padding: 20px 10px;
   text-align: left;
@@ -91,28 +91,7 @@
   box-shadow: 0 0 2px rgb(21, 20, 20);
   border-radius: 5px;
 }
-/* .new__product__inputBox > label > input {
-  -webkit-box-shadow: 0 0 2px rgb(187, 183, 183);
-  box-shadow: 0 0 2px rgb(187, 183, 183);
-  border-radius: 5px;
-  height: 42px;
-  width: 100%;
-}
 
-.new__product__inputBox > div > label {
-  width: 100%;
-}
-.new__product__inputBox > div > label > select {
-  -webkit-box-shadow: 0 0 2px rgb(187, 183, 183);
-  box-shadow: 0 0 2px rgb(187, 183, 183);
-  border-radius: 5px;
-  height: 42px;
-  width: 100%;
-}
-.new__product__inputBox,
-.new__product__title {
-  margin: 0 10px;
-} */
 .the__title {
   font-size: 18;
   font-weight: bold;
@@ -122,6 +101,17 @@
 } */
 .new__product__row {
   display: flex;
+}
+.new__product__title,
+.product__cloth__desc,
+.product__image__upload,
+.new__product__size {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.newProductSubmitButton {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .new__product__container {
   width: 50%;
@@ -133,16 +123,38 @@
 .new__product__container > label {
   width: 100%;
 }
+.new__product__row > div > label {
+  width: 100%;
+}
 /* .new__product__row */
-.new__product__inputBox {
+.new__product__inputBox,
+.select__employee__inputBox {
   -webkit-box-shadow: 0 0 2px rgb(187, 183, 183);
   box-shadow: 0 0 2px rgb(187, 183, 183);
   border-radius: 5px;
   height: 42px;
   width: 100%;
 }
-.new__product__lenth__options {
+.new__product__lenth__options,
+.new__product__width__options {
   display: flex;
+}
+.product__cloth__desc,
+.product__image__upload {
+  width: 100%;
+}
+.product__cloth__desc .new__product__inputBox {
+  height: 200px;
+}
+.newProductSubmitButton,
+.assignWorkSubmitButton {
+  height: 42px;
+  background-color: #6a29ff;
+  border: none;
+  border-radius: 5px;
+  width: 120px;
+  color: white;
+  font-weight: 600;
 }
 @media screen and (max-width: 567px) {
   .new__product__row {
@@ -154,6 +166,33 @@
     width: 100%;
   }
   #new__product__inputs {
+    width: 100vw;
+  }
+  .newProductSubmitButton,
+  .assignWorkSubmitButton {
+    width: 50%;
+  }
+}
+
+/* styling for assign work 👇👇👇 */
+
+.assign__work__row > label {
+  width: 100%;
+}
+.assign__work__container {
+  padding: 20px 10px;
+  text-align: left;
+  width: 400px;
+  -webkit-box-shadow: 0 0 2px rgb(21, 20, 20);
+  box-shadow: 0 0 2px rgb(21, 20, 20);
+  border-radius: 5px;
+}
+.assign__work__title {
+  font-weight: 600;
+  font-size: 15px;
+}
+@media screen and (max-width: 567px) {
+  .assign__work__container {
     width: 100vw;
   }
 }

@@ -105,25 +105,34 @@ export function PlaygroundField() {
 // }
 
 // export default ModalApp;
-let newProductLengthOptions = ["3.5", "4", "4.5", "5", "5.5"];
-let newProductLengthOption = newProductLengthOptions.map((obj) => {
-  return (
-    <NewProductLength
-      key={obj.toString()}
-      checkBoxText={obj}
-    ></NewProductLength>
-  );
-});
-function NewProductLength({ checkBoxText }) {
-  return (
-    <div className="new__product__length">
-      <Checkbox></Checkbox>
-      <small>{checkBoxText}</small>
-    </div>
-  );
-}
 
 export function AddProduct() {
+  let newProductLengthOptions = ["3.5", "4", "4.5", "5", "5.5"];
+  let newProductWidthOptions = ["3.5", "4", "4.5", "5", "5.5"];
+  let newProductLengthOption = newProductLengthOptions.map((obj) => {
+    return (
+      <NewProductLength
+        key={obj.toString()}
+        checkBoxText={obj}
+      ></NewProductLength>
+    );
+  });
+  let newProductWidthOption = newProductWidthOptions.map((obj) => {
+    return (
+      <NewProductLength
+        key={obj.toString()}
+        checkBoxText={obj}
+      ></NewProductLength>
+    );
+  });
+  function NewProductLength({ checkBoxText }) {
+    return (
+      <div className="new__product__length">
+        <Checkbox></Checkbox>
+        <small>{checkBoxText}</small>
+      </div>
+    );
+  }
   return (
     <div className="add__product">
       <div className="new__product__title">
@@ -220,8 +229,99 @@ export function AddProduct() {
             {newProductLengthOption}
           </div>
           <p>
-            <small>Width</small>
+            <small>Width m</small>
+            <div className="new__product__width__options">
+              {newProductWidthOption}
+            </div>
           </p>
+        </div>
+        <div className="new__product__row">
+          <div className="product__cloth__desc">
+            <label htmlFor="">
+              Product Description
+              <textarea
+                name="Text1"
+                cols="40"
+                rows="5"
+                className="new__product__inputBox"
+              ></textarea>
+            </label>
+          </div>
+        </div>
+        <div className="new__product__row">
+          <div className="product__cloth__desc">
+            <label htmlFor="">
+              Cloth Description
+              <textarea
+                name="Text1"
+                cols="40"
+                rows="5"
+                className="new__product__inputBox"
+              ></textarea>
+            </label>
+          </div>
+        </div>
+        <div className="new__product__row">
+          <div className="product__image__upload">
+            <input
+              type="file"
+              id="avatar"
+              name="avatar"
+              accept="image/png, image/jpeg"
+              placeholder="choose image"
+              className="new__product__inputBox"
+            ></input>
+          </div>
+        </div>
+        <div className="new__product__row">
+          <button className="newProductSubmitButton">DONE</button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export function AssignWork() {
+  return (
+    <div className="assign__work">
+      <form action="" id="assign__work__inputs">
+        <div className="assign__work__container">
+          <div className="assign__work__title">Assign Work</div>
+          <div className="assign__work__desc">Assign work to your employee</div>
+          <div className="assign__work__row">
+            <label htmlFor="">
+              Select Employee
+              <select name="" id="" className="select__employee__inputBox">
+                <option value="Aman Chaudhary">Aman Chaudhary</option>
+                <option value="Sima Chaudhary">Sima Chaudhary</option>
+                <option value="Bhara Chaudhary">Bhara Chaudhary</option>
+                <option value="Aman Chaudhary">Aman Chaudhary</option>
+                <option value="Aman Chaudhary">Aman Chaudhary</option>
+                <option value="Aman Chaudhary">Aman Chaudhary</option>
+                <option value="Aman Chaudhary">Aman Chaudhary</option>
+                <option value="Aman Chaudhary">Aman Chaudhary</option>
+              </select>
+            </label>
+          </div>
+          <div className="assign__work__row">
+            <label htmlFor="">
+              Select Order
+              <select name="" id="" className="select__employee__inputBox">
+                <option value="Order 1">Order 1</option>
+                <option value="Order 2">Order 2</option>
+                <option value="Order 3">Order 3</option>
+                <option value="Order 3">Order 3</option>
+                <option value="Order 3">Order 3</option>
+                <option value="Order 3">Order 3</option>
+                <option value="Order 3">Order 3</option>
+                <option value="Order 3">Order 3</option>
+                <option value="Order 3">Order 3</option>
+              </select>
+            </label>
+          </div>
+          <div className="assign__work__row">
+            <button className="assignWorkSubmitButton">DONE</button>
+          </div>
         </div>
       </form>
     </div>
