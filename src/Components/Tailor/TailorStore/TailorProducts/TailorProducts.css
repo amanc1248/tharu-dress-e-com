@@ -1,10 +1,11 @@
 .tailor__products {
-  padding: 10px;
+  padding: 5px;
+  position: relative;
 }
 #tailor__products__table {
   background-color: #fff;
 }
-.tailor__products__title {
+.tailor__products__heading {
   text-align: left;
 }
 .tailor__add__products {
@@ -33,34 +34,34 @@
 
 /* Style for adding the new products 👇👇👇*/
 .add__product {
-  text-align: left;
-  width: max-content;
   -webkit-box-shadow: 0 0 2px rgb(21, 20, 20);
   box-shadow: 0 0 2px rgb(21, 20, 20);
-  border-radius: 5px;
-  position: fixed; /* Stay in place */
+  position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
 }
-.add__product__container {
-  width: max-content;
+#add__product__inputs {
   position: absolute;
   right: 0;
   background-color: #fefefe;
-  /* margin: auto; */
   border: 1px solid #888;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
-  padding: 20px 10px;
 }
-
+.add__product__container {
+  padding: 20px 10px;
+  text-align: left;
+  width: 400px;
+  -webkit-box-shadow: 0 0 2px rgb(21, 20, 20);
+  box-shadow: 0 0 2px rgb(21, 20, 20);
+  border-radius: 5px;
+}
 .the__title {
   font-size: 18;
   font-weight: bold;
@@ -83,39 +84,11 @@
   margin-right: 10px;
 }
 .new__product__container {
-  /* -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s; */
   width: 50%;
   padding-left: 10px;
   padding-right: 10px;
-  /* margin-left: 10px;
-  margin-right: 10px; */
-}
-/* Add Animation */
-
-/* @-webkit-keyframes animatetop {
-  from {
-    left: -300px;
-    opacity: 0;
-  }
-  to {
-    left: 0;
-    opacity: 1;
-  }
 }
 
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
-} */
 .new__product__container > label {
   width: 100%;
 }
@@ -158,11 +131,11 @@
     flex-direction: column;
     width: 100%;
   }
+  .add__product__container {
+    width: 100vw;
+  }
   .new__product__container {
     width: 100%;
-  }
-  .add__product {
-    padding-left: 20%;
   }
   .newProductSubmitButton,
   .assignWorkSubmitButton {

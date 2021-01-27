@@ -1,5 +1,6 @@
 .tailor__employees {
   padding: 5px;
+  position: relative;
 }
 .tailor__employees__title {
   text-align: left;
@@ -15,5 +16,52 @@
   table#tailor__employees__table th:nth-child(2),
   table#tailor__employees__table th:nth-child(4) {
     display: none;
+  }
+}
+
+/* styling for assign employee👇👇👇 */
+.assign__work {
+  -webkit-box-shadow: 0 0 2px rgb(21, 20, 20);
+  box-shadow: 0 0 2px rgb(21, 20, 20);
+  /* position: fixed; Stay in place */
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1; /* Sit on top */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+#assign__work__inputs {
+  position: absolute;
+  right: 0;
+  background-color: #fefefe;
+  /* margin: auto; */
+  border: 1px solid #888;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  /* padding: 20px 10px; */
+}
+
+.assign__work__row > label {
+  width: 100%;
+}
+.assign__work__container {
+  padding: 20px 10px;
+  text-align: left;
+  width: 400px;
+  -webkit-box-shadow: 0 0 2px rgb(21, 20, 20);
+  box-shadow: 0 0 2px rgb(21, 20, 20);
+  border-radius: 5px;
+}
+.assign__work__title {
+  font-weight: 600;
+  font-size: 15px;
+}
+@media screen and (max-width: 567px) {
+  .assign__work__container {
+    width: 100vw;
   }
 }
