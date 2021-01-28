@@ -118,6 +118,9 @@ export function ParticularOrderDetail() {
         <ParticularPackage></ParticularPackage>
         <ParticularPackage></ParticularPackage>
         <ParticularPackage></ParticularPackage>
+
+        {/* part 3👇👇  Order summary*/}
+        <OrderSummary></OrderSummary>
       </div>
     </div>
   );
@@ -132,6 +135,47 @@ export function ParticularPackage() {
       <div className="delivered__date">Delivered on Oct 11 2020</div>
       <hr />
       <ParticularOrderPackage></ParticularOrderPackage>
+    </div>
+  );
+}
+export function OrderSummary() {
+  return (
+    <div className="order__summary row no-gutters">
+      <div className="order__summary__part col-lg-4 col-md-4 col-sm-12">
+        <div className="order__summary__part__container">
+          <h6>SHIPPING ADDRES</h6>
+          <p>Aman</p>
+          <p>Biratnagar, Jute Mill</p>
+          <p>3251145512</p>
+        </div>
+      </div>
+      <div className="order__summary__part__middle col-lg-4 col-md-4 col-sm-12">
+        <div className="order__summary__part__container">
+          <h6>BILLING ADDRES</h6>
+          <p>Aman</p>
+          <p>Biratnagar, Jute Mill</p>
+          <p>3251145512</p>
+        </div>
+      </div>
+      <div className="order__summary__part col-lg-4 col-md-4 col-sm-12">
+        <div className="order__summary__part__container">
+          <h6>TOTAL SUMMARY</h6>
+          <div className="sub__total row no-gutters justify-content-between">
+            <div className="sub__total__title">Sub Total</div>
+            <div className="sub__total__fee">Rs. 4523</div>
+          </div>
+          <div className="shipping__fee row no-gutters justify-content-between">
+            <div className="shipping__fee__title">Shipping Fee</div>
+            <div className="shipping__fee__fee">Rs. 88</div>
+          </div>
+          <hr />
+          <div className="order__summary__total row no-gutters justify-content-between">
+            <div className="order__summary__total__title">Total</div>
+            <div className="order__summary__total__fee">Rs. 33333</div>
+          </div>
+          <div className="paid__by__means">Paid by cash on delivery</div>{" "}
+        </div>
+      </div>
     </div>
   );
 }
