@@ -16,7 +16,6 @@ function AccountDetails() {
   const editAccount = useSelector((state) => state.editAccount);
   const changePassword = useSelector((state) => state.changePassword);
   const addressBookEdit = useSelector((state) => state.addressBookEdit);
-  // const changePassword = useDispatch();
   return (
     <div className="account__details">
       <AnotherTabs>

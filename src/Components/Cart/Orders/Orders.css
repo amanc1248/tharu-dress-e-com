@@ -15,3 +15,59 @@
 .orders-tab-list-active {
   background-color: #e7e7e7;
 }
+.orders-tab-content {
+  background-color: #e7e7e7;
+  padding: 10px;
+}
+.per__order__container {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.order__number__placed {
+  text-align: left;
+}
+.manage__order__container {
+  text-align: right;
+}
+.order__number__title {
+  font-weight: 500;
+}
+.order__number {
+  color: #649cc0;
+  cursor: pointer;
+}
+.order__placed {
+  font-size: small;
+  color: #9d9494;
+}
+.manage__order {
+  cursor: pointer;
+  color: #649cc0;
+}
+.particular__order_detail {
+  background-color: #e7e7e7;
+  padding: 10px;
+}
+.particular__order__detail__part1,
+.particular__order__detail__part2 {
+  background-color: #fff;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+/* for the particular order detail part1👇 */
+.total__price {
+  text-align: right;
+}
+
+/* style for the particular order detail part 2 */
+.particular__order__detail__part2 {
+  text-align: left;
+}
+.package__number {
+  font-weight: 500;
+}
+.delivered__date {
+  font-size: small;
+  color: #9d9494;
+}

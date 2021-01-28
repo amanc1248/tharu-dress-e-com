@@ -13,3 +13,6 @@ export const goToAddressBookEdit = () => {
     type: "ADDRESSBOOKEDIT",
   };
 };
+export const goToOrderDetails = () => {
+  return { type: "SEEORDERDETAILS" };
+};

@@ -61,7 +61,7 @@ function Signup() {
               </small>
             </div>
             <div className="row justify-content-end">
-              <Link to="/tailorAcartccount">
+              <Link to="/cart">
                 <button className="register__button ">Register</button>
               </Link>
             </div>

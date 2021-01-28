@@ -9,7 +9,7 @@ function ShoppingBagProduct() {
         to="/productIndividual"
         style={{ color: "inherit", textDecoration: "inherit" }}
       >
-        <div className="product__details row container-fluid h-50">
+        <div className="product__details row no-gutters">
           <div className=" the__image__container col-lg-2 col-5 pl-2 pr-2">
             <img
               src="images/The gucci products men/639398_ZAF7Y_2066_001_100_0000_Light-Cotton-pant-with-Interlocking-G-patch.jpg"
