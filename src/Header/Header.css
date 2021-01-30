@@ -81,16 +81,14 @@
 }
 .search__bar__content {
   height: 50vh;
-
   background-color: white;
   border: none;
   /* -webkit-box-shadow: 0 0 10px #fff; */
   /* box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.16); */
   width: 100vw;
   position: absolute;
-  right: 0;
   left: 0;
-  top: 100%;
+  top: 0;
   z-index: 1;
 }
 @media screen and (max-width: 767px) {

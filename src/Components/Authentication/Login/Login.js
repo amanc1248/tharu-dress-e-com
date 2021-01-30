@@ -6,7 +6,7 @@ function Login() {
     <div className="login col-lg-6 col-md-6 p-0">
       <div className="login__container">
         <div className="title__subTitle">
-          <h6>SIGN IN</h6>
+          <h4>SIGN IN</h4>
           <p className="subtitle">
             Please enter your email and password to access your account
           </p>

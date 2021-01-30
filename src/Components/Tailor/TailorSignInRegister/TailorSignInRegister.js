@@ -18,7 +18,7 @@ function TailorSignIn() {
     <div className="tailor__signIn col-lg-6 col-md-6 p-0">
       <div className="tailor__signIn__container">
         <div className="title__subTitle">
-          <h6>SIGN IN</h6>
+          <h4>SIGN IN</h4>
           <p className="subtitle">
             Please enter your email and password to access your account
           </p>
@@ -43,7 +43,7 @@ function TailorSignIn() {
           <div className="tailor__form__footer row justify-content-between mr-0 ml-0">
             <p>
               {" "}
-              <u>Forgot Password</u>{" "}
+              <u className="forgot__password">Forgot Password</u>{" "}
             </p>
             <Link to="/tailorAccount">
               <button className="tailor__signIn__button">Sign In</button>
@@ -60,7 +60,7 @@ function TailorRegister() {
     <div className="tailor__register col-lg-6 col-md-6 p-0">
       <div className="tailor__register__container">
         <div className="title__subTitle">
-          <h6>REGISTER</h6>
+          <h4>REGISTER</h4>
           <p className="subtitle">
             Please register below to create an account.
           </p>

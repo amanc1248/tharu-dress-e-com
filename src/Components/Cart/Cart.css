@@ -1,5 +1,5 @@
 .welcome__user {
-  margin: 35px 0;
+  margin: 15px 0;
 }
 /* .cart__options__list {
   display: flex;
@@ -16,4 +16,8 @@
 .bag__title {
   text-align: left;
   margin: 8px;
+}
+.contact__us__instruction {
+  padding: 0 30px;
+  font-size: smaller;
 }

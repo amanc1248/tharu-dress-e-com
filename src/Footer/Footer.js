@@ -10,7 +10,7 @@ function Footer() {
   return (
     <div className="footer">
       <div className="website__footer row no-gutters">
-        <div className="col-lg-3 col-md-3 firstSectionFooter">
+        <div className="col-lg-4 col-md-6 col-12 firstSectionFooter">
           <div className="emailSignUpTitle">EMAIL SIGN-UP</div>
           <div className="emailSignUpInstruction">
             Sign up for email updates on the latest Dasa collections, campaigns
@@ -28,9 +28,10 @@ function Footer() {
             </InputGroup.Prepend>
           </InputGroup>
         </div>
-        <div className="col-lg-9 secondSectionFooter">
-          <div className="row justify-content-around">
-            <div className="col-lg-3 col-md-3 footer__links__container">
+        <div className=" col-lg-8 secondSectionFooter">
+          <div className="row">
+            {/* lets grow together section 👇*/}
+            <div className="col-lg-3 col-md-3 col-6 footer__links__container">
               <div className="followUsTitle">LET'S GROW TOGETHER</div>
               <Link to="/tailorSignin">
                 <p className="footer__link ">Be Tailor</p>
@@ -39,20 +40,41 @@ function Footer() {
                 <p className="footer__link">Be Employee</p>
               </Link>
             </div>
-            <div className="col-lg-3 col-md-3 footer__links__container middle__links__container">
-              <div className="followUsTitle">FOLLOW US</div>
+
+            {/* Need help section 👇 */}
+            <div className="col-lg-3 col-md-3 col-6 footer__links__container">
+              <div className="followUsTitle">NEED HELP</div>
+              <Link to="/">
+                <p className="footer__link ">Contact Us</p>
+              </Link>
+              <Link to="/">
+                <p className="footer__link">Shipping Service</p>
+              </Link>
+              <Link to="/">
+                <p className="footer__link ">Payment Options</p>
+              </Link>
+              <Link to="/">
+                <p className="footer__link">FAQs</p>
+              </Link>
+            </div>
+
+            {/* The Company Section👇 */}
+            <div className="col-lg-3 col-md-3 col-6 footer__links__container">
+              <div className="followUsTitle">THE COMPANY</div>
+              <p className="footer__link">About DASA</p>
+              <p className="footer__link">Legal</p>
+              <p className="footer__link">Privacy Policy</p>
+            </div>
+
+            {/* Find us on seciton 👇 */}
+            <div className="col-lg-3 col-md-3 col-6 footer__links__container middle__links__container">
+              <div className="followUsTitle">FIND US ON</div>
               <div className="socialMediaIcons">
                 <FacebookIcon className="socialIcon"></FacebookIcon>
                 <YouTubeIcon className="socialIcon"></YouTubeIcon>
                 <InstagramIcon className="socialIcon"></InstagramIcon>
                 <TwitterIcon className="socialIcon"></TwitterIcon>
               </div>
-            </div>
-            <div className="col-lg-3 col-md-3 footer__links__container">
-              <div className="followUsTitle">LEGAL</div>
-              <p className="footer__link">FAQs</p>
-              <p className="footer__link">Know Us</p>
-              <p className="footer__link">Privacy Policy</p>
             </div>
           </div>
         </div>

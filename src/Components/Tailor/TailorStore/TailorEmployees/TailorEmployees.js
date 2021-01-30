@@ -1,10 +1,17 @@
 import React, { useRef, useState } from "react";
 import "./TailorEmployees.css";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+
 import "../TailorProducts/TailorProducts.css";
 function TailorEmployees() {
   const [addEmployee, setaddEmployee] = useState(false);
   const addEmployeeClick = () => {
     setaddEmployee(!addEmployee);
+  };
+  const [seeMoreEmployee, setseeMoreEmployee] = useState(false);
+  const showHideEmployee = () => {
+    setseeMoreEmployee(!seeMoreEmployee);
   };
   return (
     <div className="tailor__employees">
@@ -31,6 +38,7 @@ function TailorEmployees() {
               <th scope="col">Work Assigned</th>
               <th scope="col">Phone</th>
               <th scope="col">Status</th>
+              <th scope="col">See More</th>
             </tr>
           </thead>
           <tbody>
@@ -40,6 +48,10 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
+              <td className="see__more__data">
+                <MoreHorizIcon onClick={showHideEmployee}></MoreHorizIcon>
+                {seeMoreEmployee && <SeeMoreEmployees></SeeMoreEmployees>}
+              </td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -47,6 +59,9 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
+              <td>
+                <MoreHorizIcon></MoreHorizIcon>
+              </td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -54,6 +69,9 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
+              <td>
+                <MoreHorizIcon></MoreHorizIcon>
+              </td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -61,6 +79,9 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
+              <td>
+                <MoreHorizIcon></MoreHorizIcon>
+              </td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -68,6 +89,9 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
+              <td>
+                <MoreHorizIcon></MoreHorizIcon>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -75,8 +99,9 @@ function TailorEmployees() {
     </div>
   );
 }
-
 export default TailorEmployees;
+
+// Assign work function 👇
 function AssignWork({ clickOutside }) {
   const whenOutsideModal = (e) => {
     if (!myRef.current.contains(e.target)) {
@@ -126,6 +151,38 @@ function AssignWork({ clickOutside }) {
           </div>
         </div>
       </form>
+    </div>
+  );
+}
+
+//See more employees 👇
+export function SeeMoreEmployees() {
+  let seeMoreOptionsEmployees = [
+    {
+      icon: <AssignmentIndIcon></AssignmentIndIcon>,
+      iconText: "Employee Details",
+    },
+  ];
+  let seeMoreOptions = seeMoreOptionsEmployees.map((obj) => {
+    return (
+      <SeeMoreEmployee
+        key={obj.toString()}
+        theIcon={obj.icon}
+        theIconText={obj.iconText}
+      ></SeeMoreEmployee>
+    );
+  });
+  function SeeMoreEmployee({ theIcon, theIconText }) {
+    return (
+      <div className="see__more__individual__container">
+        <div className="see__more__icon">{theIcon}</div>
+        <div className="see__more__text">{theIconText}</div>
+      </div>
+    );
+  }
+  return (
+    <div className="see__more">
+      <div className="see__more__container">{seeMoreOptions}</div>
     </div>
   );
 }

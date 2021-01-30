@@ -3,7 +3,6 @@ import "./TailorHeader.css";
 function TailorHeader() {
   return (
     <div className="tailor__header">
-      <div className="tailor__header__title">DASA</div>
       <div className="tailor__header__image">
         <img
           className="authentication__logo  w-100"
@@ -12,9 +11,9 @@ function TailorHeader() {
         />
       </div>
       <div className="welcome__user">
-        <h4>WELCOME, AMAN</h4>
+        <h5>WELCOME, AMAN</h5>
       </div>
-      <p>
+      <p className="contact__us__instruction">
         If you have any queries or need further assistance, please Contact Us
       </p>
     </div>

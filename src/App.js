@@ -22,6 +22,7 @@ import EmployeeAndTailorRegister from "./Header/EmployeeAndTailorRegister";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import PlaygroundField, { AssignWork } from "./Components/playground";
 import CustomerCheckout from "./Components/CustomerCheckout/CustomerCheckout";
+import OutsideAlerter from "./Components/playground";
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
               <Footer></Footer>
             </Route>
             <Route path="/productIndividual">
+              <Header></Header>
               <ProductIndividual></ProductIndividual>
               <Footer></Footer>
             </Route>
@@ -96,7 +98,7 @@ function App() {
             <Route path="/playground">
               {/* <PlaygroundField></PlaygroundField> */}
               {/* <ModalApp></ModalApp> */}
-              <AssignWork></AssignWork>
+              <OutsideAlerter></OutsideAlerter>
             </Route>
             <Route path="/employeeAccount">
               <TailorHeader></TailorHeader>

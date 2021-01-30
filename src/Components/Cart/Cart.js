@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import AccountDetails from "./Account Details/AccountDetails";
 import Bag from "./Bag/Bag";
 import "./Cart.css";
@@ -17,9 +17,9 @@ function Cart() {
         alt="authentication background"
       />
       <div className="welcome__user">
-        <h4>WELCOME, AMAN</h4>
+        <h5>WELCOME, AMAN</h5>
       </div>
-      <p>
+      <p className="contact__us__instruction">
         If you have any queries or need further assistance, please Contact Us
       </p>
       <Tabs>

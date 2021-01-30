@@ -39,6 +39,8 @@
 }
 .footer__link {
   color: black;
+  font-size: smaller;
+  margin-bottom: 8px !important;
 }
 .footer__link:hover,
 .socialIcon:hover {

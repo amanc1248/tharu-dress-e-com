@@ -7,7 +7,7 @@ function Signup() {
     <div className="signup col-lg-6 col-md-6 p-0">
       <div className="signup__container">
         <div className="title__subtitle">
-          <h6>REGISTER</h6>
+          <h4>REGISTER</h4>
           <p className="subtitle">Please register below to create an account</p>
         </div>
         <form action="">
