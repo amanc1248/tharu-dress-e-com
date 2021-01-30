@@ -35,11 +35,8 @@ function ProductCategory({
       </div>
 
       {/* 3rd section products section */}
-      <div className="products__list row ">
-        <Product
-          productName="Anchara With Red Boutique"
-          productPrice="$120.00"
-        ></Product>
+      <div className="products__list row no-gutters h-100">
+        <Product productName="Yellow " productPrice="$120.00"></Product>
         <Product productName="Yellow Boutique" productPrice="$110.00"></Product>
         <Product
           productName="Anchara With Red Boutique"
@@ -74,7 +71,7 @@ function ProductCategory({
       </div>
 
       {/* 5th section, customer service */}
-      <div className="customer__service__container row">
+      <div className="customer__service__container row no-gutters">
         <div className="customer__service  col-lg-4 col-md-4 col-sm-4 col-sm-12   ">
           <LocalShippingIcon className="customer__service__icon"></LocalShippingIcon>
           <p className="customer__service__description">

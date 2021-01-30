@@ -11,6 +11,7 @@
 }
 
 .tab-list-item {
+  cursor: pointer;
   display: inline-block;
   list-style: none;
   margin-bottom: -1px;
@@ -19,6 +20,7 @@
 
 .tab-list-active {
   background-color: white;
-  border: solid #ccc;
-  border-width: 1px 1px 0 1px;
+  border-bottom: 3px solid black;
+  border-width: 3px;
+  font-weight: 500;
 }

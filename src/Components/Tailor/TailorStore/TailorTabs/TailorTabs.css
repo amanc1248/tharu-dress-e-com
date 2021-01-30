@@ -3,7 +3,6 @@
   padding-left: 0;
   display: flex;
   justify-content: center;
-
   overflow-x: scroll;
 }
 ::-webkit-scrollbar {
@@ -12,6 +11,8 @@
 
 .tailor-tab-list-item {
   display: inline-block;
+  cursor: pointer;
+  width: max-content;
   list-style: none;
   margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
@@ -19,8 +20,9 @@
 
 .tailor-tab-list-active {
   background-color: white;
-  border: solid #ccc;
-  border-width: 1px 1px 0 1px;
+  border-bottom: 3px solid black;
+  border-width: 3px;
+  font-weight: 500;
 }
 .tailor-tab-content {
   background-color: #e7e7e7;

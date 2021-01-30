@@ -13,6 +13,7 @@
   height: 42px;
   width: 150px;
   border: none;
+  font-weight: 500;
 }
 .product__category__info {
   height: 25vh;

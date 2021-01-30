@@ -1,7 +1,9 @@
 .product__container {
-  padding: 0.5px;
+  padding: 1px !important;
+  height: 100% !important;
 }
-.product__name, .product__price{
+.product__name,
+.product__price {
   color: rgba(0, 0, 0, 0.741);
 }
 .product {
