@@ -20,9 +20,9 @@ import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegist
 import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
 import EmployeeAndTailorRegister from "./Header/EmployeeAndTailorRegister";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
-import PlaygroundField, { AssignWork } from "./Components/playground";
 import CustomerCheckout from "./Components/CustomerCheckout/CustomerCheckout";
 import OutsideAlerter from "./Components/playground";
+import FooterFAQs from "./Footer/FooterFAQs/FooterFAQs";
 
 function App() {
   return (
@@ -107,6 +107,10 @@ function App() {
             <Route path="/checkOut">
               <TailorHeader></TailorHeader>
               <CustomerCheckout></CustomerCheckout>
+            </Route>
+            <Route path="/faqs">
+              <Header></Header>
+              <FooterFAQs></FooterFAQs>
             </Route>
             {/* Home Route👇 */}
             <Route path="/">
