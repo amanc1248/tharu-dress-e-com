@@ -44,16 +44,16 @@ function Footer() {
             {/* Need help section 👇 */}
             <div className="col-lg-3 col-md-3 col-6 footer__links__container">
               <div className="followUsTitle">NEED HELP</div>
-              <Link to="/">
+              <Link to="/faqs">
                 <p className="footer__link ">Contact Us</p>
               </Link>
-              <Link to="/">
+              <Link to="/faqs">
                 <p className="footer__link">Shipping Service</p>
               </Link>
-              <Link to="/">
+              <Link to="/faqs">
                 <p className="footer__link ">Payment Options</p>
               </Link>
-              <Link to="/">
+              <Link to="/faqs">
                 <p className="footer__link">FAQs</p>
               </Link>
             </div>

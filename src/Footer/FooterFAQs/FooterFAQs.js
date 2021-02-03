@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FooterFAQ.css";
 import { FooterFAQsTabs } from "./FooterFAQsTabs";
 import {
@@ -11,11 +11,6 @@ import {
 function FooterFAQs({ faqsData }) {
   return (
     <div className="footer__faqs">
-      {/* <img
-        className="authentication__logo  w-100"
-        src="images/croped.jpg"
-        alt="authentication background"
-      /> */}
       <div
         className="theBackgroundImage"
         style={{
@@ -62,6 +57,12 @@ function FooterFAQs({ faqsData }) {
 
 export default FooterFAQs;
 function FAQContent({ title, thedata }) {
+  // Expand all state👇
+  const [contentToogle, setContentToogle] = useState(false);
+  const contentToogling = () => {
+    setContentToogle(true);
+  };
+
   const questionsAnswers = thedata.map((obj) => {
     return (
       <div className="question__answer">
@@ -78,7 +79,9 @@ function FAQContent({ title, thedata }) {
       {/* Title Part👇 */}
       <div className="faq__content__title__expand">
         <div className="faq__content__title">{title}</div>
-        <div className="faq__content__toogle">Expand All</div>
+        <div className="faq__content__toogle" onClick={contentToogling}>
+          Expand All
+        </div>
       </div>
       {/* Content part 👇 */}
       {questionsAnswers}

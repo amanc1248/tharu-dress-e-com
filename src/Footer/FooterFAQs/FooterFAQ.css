@@ -82,6 +82,7 @@
   font-weight: 400;
   font-style: normal;
   color: #313131;
+  display: none;
   font-size: 14px;
   letter-spacing: 0.9px;
   font-variant-ligatures: none;
@@ -97,7 +98,7 @@
 }
 @media screen and (max-width: 767px) {
   .faq__content__title {
-    font-size: 18px;
+    font-size: 22px;
     height: 37px;
     letter-spacing: 0.8px;
     font-variant-ligatures: none;

@@ -23,6 +23,7 @@ import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import CustomerCheckout from "./Components/CustomerCheckout/CustomerCheckout";
 import OutsideAlerter from "./Components/playground";
 import FooterFAQs from "./Footer/FooterFAQs/FooterFAQs";
+import AboutDasa from "./Footer/TheCompany/TheCompany";
 
 function App() {
   return (
@@ -111,6 +112,12 @@ function App() {
             <Route path="/faqs">
               <Header></Header>
               <FooterFAQs></FooterFAQs>
+              <Footer></Footer>
+            </Route>
+            <Route path="/aboutus">
+              <Header></Header>
+              <AboutDasa></AboutDasa>
+              <Footer></Footer>
             </Route>
             {/* Home Route👇 */}
             <Route path="/">
