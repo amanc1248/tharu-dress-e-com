@@ -61,7 +61,9 @@ function Footer() {
             {/* The Company Section👇 */}
             <div className="col-lg-3 col-md-3 col-6 footer__links__container">
               <div className="followUsTitle">THE COMPANY</div>
-              <p className="footer__link">About DASA</p>
+              <Link to="/aboutus">
+                <p className="footer__link">About DASA</p>
+              </Link>
               <p className="footer__link">Legal</p>
               <p className="footer__link">Privacy Policy</p>
             </div>

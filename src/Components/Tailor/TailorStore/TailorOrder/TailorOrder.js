@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./TailorOrder.css";
 import SearchIcon from "@material-ui/icons/Search";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
@@ -9,8 +9,6 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
 function TailorOrder() {
-  const [moreAction, setMoreAction] = useState(false);
-
   return (
     <div className="tailor__order">
       <div className="tailor__heading row no-gutters">
@@ -61,15 +59,7 @@ function TailorOrder() {
               <td>Swarnima Chaudhary</td>
               <td>1 item</td>
               <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>{" "}
-              <td className="see__more__data">
-                <MoreHorizIcon
-                  onClick={() => {
-                    setMoreAction(!moreAction);
-                  }}
-                ></MoreHorizIcon>
-                {moreAction && <SeeMore></SeeMore>}
-              </td>
+              <td>Rs. 12,000</td> <td>{seeMoreFunction()}</td>
             </tr>
 
             <tr>
@@ -80,9 +70,7 @@ function TailorOrder() {
               <td>1 item</td>
               <td>Manturam Chaudhary</td>
               <td>Rs. 12,000</td>
-              <td className="see__more__data">
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#124fdf</th>
@@ -92,9 +80,7 @@ function TailorOrder() {
               <td>1 item</td>
               <td>Manturam Chaudhary</td>
               <td>Rs. 12,000</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#124fdf</th>
@@ -104,9 +90,7 @@ function TailorOrder() {
               <td>1 item</td>
               <td>Manturam Chaudhary</td>
               <td>Rs. 12,000</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#124fdf</th>
@@ -116,9 +100,7 @@ function TailorOrder() {
               <td>1 item</td>
               <td>Manturam Chaudhary</td>
               <td>Rs. 12,000</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#124fdf</th>
@@ -128,9 +110,7 @@ function TailorOrder() {
               <td>1 item</td>
               <td>Manturam Chaudhary</td>
               <td>Rs. 12,000</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#124fdf</th>
@@ -140,9 +120,7 @@ function TailorOrder() {
               <td>1 item</td>
               <td>Manturam Chaudhary</td>
               <td>Rs. 12,000</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
           </tbody>
         </table>
@@ -171,35 +149,31 @@ function TailorOrder() {
     </div>
   );
 }
+let seeMoreOptionsList = [
+  { icon: <VisibilityIcon></VisibilityIcon>, iconText: "Order Details" },
+  {
+    icon: <AssignmentIndIcon></AssignmentIndIcon>,
+    iconText: "Employee Details",
+  },
+  { icon: <PersonIcon></PersonIcon>, iconText: "Customer Details" },
+  {
+    icon: <LocalShippingIcon></LocalShippingIcon>,
+    iconText: "Mark as delivered",
+  },
+  { icon: <CheckBoxIcon></CheckBoxIcon>, iconText: "Mark as paid" },
+  { icon: <DescriptionIcon></DescriptionIcon>, iconText: "Send Invoice" },
+];
+const seeMoreFunction = () => {
+  return <SeeMoreToogle theList={seeMoreOptionsList}></SeeMoreToogle>;
+};
+export function SeeMoreToogle({ theList }) {
+  const [moreAction, setMoreAction] = useState(false);
+  const hideMoreAction = () => {
+    setMoreAction(!moreAction);
+  };
 
-function SeeMore() {
-  let seeMoreOptionsList = [
-    { icon: <VisibilityIcon></VisibilityIcon>, iconText: "Order Details" },
-    {
-      icon: <AssignmentIndIcon></AssignmentIndIcon>,
-      iconText: "Employee Details",
-    },
-    { icon: <PersonIcon></PersonIcon>, iconText: "Customer Details" },
-    {
-      icon: <LocalShippingIcon></LocalShippingIcon>,
-      iconText: "Mark as delivered",
-    },
-    { icon: <CheckBoxIcon></CheckBoxIcon>, iconText: "Mark as paid" },
-    { icon: <DescriptionIcon></DescriptionIcon>, iconText: "Send Invoice" },
-  ];
-  let seeMoreOptions = seeMoreOptionsList.map((obj) => {
-    return (
-      <SeeMoreIndividual
-        key={obj.toString()}
-        theIcon={obj.icon}
-        theIconText={obj.iconText}
-      >
-        {" "}
-      </SeeMoreIndividual>
-    );
-  });
   console.log("This is console log");
-  console.log(seeMoreOptions[1].props.theIcon);
+  // console.log(seeMoreOptions[1].props.theIcon);
 
   function SeeMoreIndividual({ theIcon, theIconText }) {
     return (
@@ -209,10 +183,49 @@ function SeeMore() {
       </div>
     );
   }
+  function SeeMoreContainer({ seeMoreRef }) {
+    let seeMoreOptions = theList.map((obj) => {
+      return (
+        <SeeMoreIndividual
+          key={obj.toString()}
+          theIcon={obj.icon}
+          theIconText={obj.iconText}
+        >
+          {" "}
+        </SeeMoreIndividual>
+      );
+    });
+    return (
+      <div className="see__more__container" ref={seeMoreRef}>
+        {seeMoreOptions}
+      </div>
+    );
+  }
+  const seeMoreRef = useRef(null);
+  useEffect(() => {
+    function hideSeeMore(event) {
+      if (seeMoreRef.current && !seeMoreRef.current.contains(event.target)) {
+        hideMoreAction();
+      }
+    }
+    document.addEventListener("mousedown", hideSeeMore);
+    return () => {
+      document.removeEventListener("mousedown", hideSeeMore);
+    };
+  }, [moreAction, seeMoreRef]);
   return (
-    <div className="see__more">
-      <div className="see__more__container">{seeMoreOptions}</div>
+    <div className="see__more__data">
+      <MoreHorizIcon
+        className="more__horizon__icon"
+        onClick={() => {
+          setMoreAction(!moreAction);
+        }}
+      ></MoreHorizIcon>
+      {moreAction && (
+        <SeeMoreContainer seeMoreRef={seeMoreRef}></SeeMoreContainer>
+      )}
     </div>
   );
 }
+
 export default TailorOrder;

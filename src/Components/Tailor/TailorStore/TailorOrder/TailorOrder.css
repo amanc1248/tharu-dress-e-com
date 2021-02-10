@@ -36,6 +36,9 @@
 .order__table {
   background-color: #fff;
 }
+.more__horizon__icon:hover {
+  cursor: pointer;
+}
 @media screen and (max-width: 767px) {
   table#orders__table td:nth-child(2),
   table#orders__table td:nth-child(4),

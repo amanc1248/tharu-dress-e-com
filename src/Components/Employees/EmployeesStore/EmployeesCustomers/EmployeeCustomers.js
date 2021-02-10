@@ -1,5 +1,8 @@
 import React from "react";
 import "./EmployeeCustomers.css";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import { SeeMoreEmployeeToogle } from "../EmployeesStore";
+
 function EmployeeCustomers() {
   return (
     <div className="employee__customers">
@@ -15,6 +18,7 @@ function EmployeeCustomers() {
               <th scope="col">Phone</th>
               <th scope="col">Location</th>
               <th scope="col">Last Order</th>
+              <th scope="col">See more</th>
             </tr>
           </thead>
           <tbody>
@@ -24,6 +28,7 @@ function EmployeeCustomers() {
               <td>+9779804355969</td>
               <td>Itahari -07</td>
               <td>10 Feb, 2020</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -31,6 +36,7 @@ function EmployeeCustomers() {
               <td>+9779804355969</td>
               <td>Itahari -07</td>
               <td>10 Feb, 2020</td>
+              <td>{seeMoreFunction()}</td>
             </tr>{" "}
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -38,6 +44,7 @@ function EmployeeCustomers() {
               <td>+9779804355969</td>
               <td>Itahari -07</td>
               <td>10 Feb, 2020</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -45,6 +52,7 @@ function EmployeeCustomers() {
               <td>+9779804355969</td>
               <td>Itahari -07</td>
               <td>10 Feb, 2020</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -52,6 +60,7 @@ function EmployeeCustomers() {
               <td>+9779804355969</td>
               <td>Itahari -07</td>
               <td>10 Feb, 2020</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
           </tbody>
         </table>
@@ -61,3 +70,11 @@ function EmployeeCustomers() {
 }
 
 export default EmployeeCustomers;
+let seeMoreOptionsList = [
+  { icon: <VisibilityIcon></VisibilityIcon>, iconText: "Customer Details" },
+];
+const seeMoreFunction = () => {
+  return (
+    <SeeMoreEmployeeToogle theList={seeMoreOptionsList}></SeeMoreEmployeeToogle>
+  );
+};

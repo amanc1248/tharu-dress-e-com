@@ -4,6 +4,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 import "../TailorProducts/TailorProducts.css";
+import { SeeMoreToogle } from "../TailorOrder/TailorOrder";
 function TailorEmployees() {
   const [addEmployee, setaddEmployee] = useState(false);
   const addEmployeeClick = () => {
@@ -48,10 +49,7 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
-              <td className="see__more__data">
-                <MoreHorizIcon onClick={showHideEmployee}></MoreHorizIcon>
-                {seeMoreEmployee && <SeeMoreEmployees></SeeMoreEmployees>}
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -59,9 +57,7 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -69,9 +65,7 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -79,9 +73,7 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">Sudeep Bhattrai</th>
@@ -89,9 +81,7 @@ function TailorEmployees() {
               <td>See Details</td>
               <td>+9779804355969</td>
               <td>Working</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
           </tbody>
         </table>
@@ -156,33 +146,12 @@ function AssignWork({ clickOutside }) {
 }
 
 //See more employees 👇
-export function SeeMoreEmployees() {
-  let seeMoreOptionsEmployees = [
-    {
-      icon: <AssignmentIndIcon></AssignmentIndIcon>,
-      iconText: "Employee Details",
-    },
-  ];
-  let seeMoreOptions = seeMoreOptionsEmployees.map((obj) => {
-    return (
-      <SeeMoreEmployee
-        key={obj.toString()}
-        theIcon={obj.icon}
-        theIconText={obj.iconText}
-      ></SeeMoreEmployee>
-    );
-  });
-  function SeeMoreEmployee({ theIcon, theIconText }) {
-    return (
-      <div className="see__more__individual__container">
-        <div className="see__more__icon">{theIcon}</div>
-        <div className="see__more__text">{theIconText}</div>
-      </div>
-    );
-  }
-  return (
-    <div className="see__more">
-      <div className="see__more__container">{seeMoreOptions}</div>
-    </div>
-  );
-}
+let seeMoreOptionsEmployees = [
+  {
+    icon: <AssignmentIndIcon></AssignmentIndIcon>,
+    iconText: "Employee Details",
+  },
+];
+const seeMoreFunction = () => {
+  return <SeeMoreToogle theList={seeMoreOptionsEmployees}></SeeMoreToogle>;
+};

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./TailorProducts.css";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import EditIcon from "@material-ui/icons/Edit";
@@ -6,39 +6,9 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import Checkbox from "@material-ui/core/Checkbox";
 import DeleteIcon from "@material-ui/icons/Delete";
-let seeMoreOptionsListProducts = [
-  { icon: <EditIcon></EditIcon>, iconText: "Edit Product" },
-  { icon: <VisibilityIcon></VisibilityIcon>, iconText: "View Product" },
-  {
-    icon: <FeaturedPlayListIcon></FeaturedPlayListIcon>,
-    iconText: "Product Orders",
-  },
-  { icon: <DeleteIcon></DeleteIcon>, iconText: "Remove Product" },
-];
-let seeMoreOptionProducts = seeMoreOptionsListProducts.map((obj) => {
-  return (
-    <SeeMoreIndividual
-      key={obj.toString()}
-      theIcon={obj.icon}
-      theIconText={obj.iconText}
-    >
-      {" "}
-    </SeeMoreIndividual>
-  );
-});
-function SeeMoreIndividual({ theIcon, theIconText }) {
-  return (
-    <div className="see__more__individual__container">
-      <div className="see__more__icon">{theIcon}</div>
-      <div className="see__more__text">{theIconText}</div>
-    </div>
-  );
-}
-function SeeMoreContainer() {
-  return <div className="see__more__container">{seeMoreOptionProducts}</div>;
-}
+import { SeeMoreToogle } from "../TailorOrder/TailorOrder";
+
 function TailorProducts() {
-  const [moreAction, setMoreAction] = useState(false);
   const [addProduct, setAddProduct] = useState(false);
   const addProductClick = () => {
     setAddProduct(!addProduct);
@@ -80,14 +50,7 @@ function TailorProducts() {
               <th scope="row">Kids Anchara</th>
               <td>Rs. 12,000</td>
               <td>Men</td>
-              <td className="see__more__data">
-                <MoreHorizIcon
-                  onClick={() => {
-                    setMoreAction(!moreAction);
-                  }}
-                ></MoreHorizIcon>
-                {moreAction && <SeeMoreContainer></SeeMoreContainer>}
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <td>
@@ -97,9 +60,7 @@ function TailorProducts() {
               <th scope="row">Kids Anchara</th>
               <td>Rs. 12,000</td>
               <td>Men</td>
-              <td className="see__more__data">
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <td>
@@ -109,9 +70,7 @@ function TailorProducts() {
               <th scope="row">Kids Anchara</th>
               <td>Rs. 12,000</td>
               <td>Men</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <td>
@@ -121,9 +80,7 @@ function TailorProducts() {
               <th scope="row">Kids Anchara</th>
               <td>Rs. 12,000</td>
               <td>Men</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <td>
@@ -133,9 +90,7 @@ function TailorProducts() {
               <th scope="row">Kids Anchara</th>
               <td>Rs. 12,000</td>
               <td>Men</td>
-              <td>
-                <MoreHorizIcon></MoreHorizIcon>
-              </td>
+              <td>{seeMoreFunction()}</td>
             </tr>
           </tbody>
         </table>
@@ -143,8 +98,18 @@ function TailorProducts() {
     </div>
   );
 }
-
-export default TailorProducts;
+let seeMoreOptionsListProducts = [
+  { icon: <EditIcon></EditIcon>, iconText: "Edit Product" },
+  { icon: <VisibilityIcon></VisibilityIcon>, iconText: "View Product" },
+  {
+    icon: <FeaturedPlayListIcon></FeaturedPlayListIcon>,
+    iconText: "Product Orders",
+  },
+  { icon: <DeleteIcon></DeleteIcon>, iconText: "Remove Product" },
+];
+const seeMoreFunction = () => {
+  return <SeeMoreToogle theList={seeMoreOptionsListProducts}></SeeMoreToogle>;
+};
 
 export function AddProduct({ clickOutside }) {
   const myRef = useRef();
@@ -329,3 +294,4 @@ export function AddProduct({ clickOutside }) {
     </div>
   );
 }
+export default TailorProducts;

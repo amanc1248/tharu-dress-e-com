@@ -1,6 +1,9 @@
 import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import "./EmployeeOrders.css";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+
+import { SeeMoreEmployeeToogle } from "../EmployeesStore";
 function EmployeeOrders() {
   return (
     <div className="employee__orders">
@@ -26,6 +29,7 @@ function EmployeeOrders() {
               <th scope="col">Name</th>
               <th scope="col">Status</th>
               <th scope="col">Total</th>
+              <th scope="col">See more</th>
             </tr>
           </thead>
           <tbody>
@@ -35,6 +39,7 @@ function EmployeeOrders() {
               <td>Dipu Chaudhary</td>
               <td>Completed</td>
               <td>Rs. 12,000</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#akkjj32kdf</th>
@@ -42,6 +47,7 @@ function EmployeeOrders() {
               <td>Dipu Chaudhary</td>
               <td>Completed</td>
               <td>Rs. 12,000</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#akkjj32kdf</th>
@@ -49,6 +55,7 @@ function EmployeeOrders() {
               <td>Dipu Chaudhary</td>
               <td>Completed</td>
               <td>Rs. 12,000</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#akkjj32kdf</th>
@@ -56,6 +63,7 @@ function EmployeeOrders() {
               <td>Dipu Chaudhary</td>
               <td>Completed</td>
               <td>Rs. 12,000</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#akkjj32kdf</th>
@@ -63,6 +71,7 @@ function EmployeeOrders() {
               <td>Dipu Chaudhary</td>
               <td>Completed</td>
               <td>Rs. 12,000</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#akkjj32kdf</th>
@@ -70,6 +79,7 @@ function EmployeeOrders() {
               <td>Dipu Chaudhary</td>
               <td>Completed</td>
               <td>Rs. 12,000</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#akkjj32kdf</th>
@@ -77,6 +87,7 @@ function EmployeeOrders() {
               <td>Dipu Chaudhary</td>
               <td>Completed</td>
               <td>Rs. 12,000</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
             <tr>
               <th scope="row">#akkjj32kdf</th>
@@ -84,6 +95,7 @@ function EmployeeOrders() {
               <td>Dipu Chaudhary</td>
               <td>Completed</td>
               <td>Rs. 12,000</td>
+              <td>{seeMoreFunction()}</td>
             </tr>
           </tbody>
         </table>
@@ -93,3 +105,12 @@ function EmployeeOrders() {
 }
 
 export default EmployeeOrders;
+
+let seeMoreOptionsList = [
+  { icon: <VisibilityIcon></VisibilityIcon>, iconText: "Order Details" },
+];
+const seeMoreFunction = () => {
+  return (
+    <SeeMoreEmployeeToogle theList={seeMoreOptionsList}></SeeMoreEmployeeToogle>
+  );
+};

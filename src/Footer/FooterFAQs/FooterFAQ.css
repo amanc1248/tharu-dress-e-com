@@ -97,8 +97,11 @@
   }
 }
 @media screen and (max-width: 767px) {
+  .faq__title {
+    font-size: 25px;
+  }
   .faq__content__title {
-    font-size: 22px;
+    font-size: 18px;
     height: 37px;
     letter-spacing: 0.8px;
     font-variant-ligatures: none;
@@ -107,9 +110,7 @@
   .faq__content {
     padding: 0 20px;
   }
-  .faq__title {
-    font-size: 25px;
-  }
+
   .question {
     font-size: 18px;
   }
