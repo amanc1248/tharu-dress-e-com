@@ -60,18 +60,32 @@ function FAQContent({ title, thedata }) {
   // Expand all state👇
   const [contentToogle, setContentToogle] = useState(false);
   const contentToogling = () => {
-    setContentToogle(true);
+    setContentToogle(!contentToogle);
   };
 
-  const questionsAnswers = thedata.map((obj) => {
+  function QuestionAnswer({ question, answer }) {
+    const [answerToogle, setanswerToogle] = useState(false);
+    const answerToggling = () => {
+      setanswerToogle(!answerToogle);
+    };
     return (
       <div className="question__answer">
         <div className="question__expand">
-          <div className="question">{obj.question}</div>
-          <div className="question__answer__toogle">+</div>
+          <div className="question">{question}</div>
+          <div className="question__answer__toogle" onClick={answerToggling}>
+            {answerToogle ? "-" : "+"}{" "}
+          </div>
         </div>
-        <div className="answer">{obj.answer}</div>
+        {answerToogle ? <div className="answer">{answer}</div> : null}
       </div>
+    );
+  }
+  const questionsAnswers = thedata.map((obj) => {
+    return (
+      <QuestionAnswer
+        question={obj.question}
+        answer={obj.answer}
+      ></QuestionAnswer>
     );
   });
   return (
@@ -80,7 +94,7 @@ function FAQContent({ title, thedata }) {
       <div className="faq__content__title__expand">
         <div className="faq__content__title">{title}</div>
         <div className="faq__content__toogle" onClick={contentToogling}>
-          Expand All
+          {contentToogle ? "Collapse All" : "Expand All"}
         </div>
       </div>
       {/* Content part 👇 */}
