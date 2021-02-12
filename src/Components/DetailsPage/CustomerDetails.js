@@ -1,43 +1,35 @@
-import React, { useEffect, useRef, useState } from "react";
-import "./TailorOrder.css";
-import SearchIcon from "@material-ui/icons/Search";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import React from "react";
+import { SeeMoreToogle } from "../Tailor/TailorStore/TailorOrder/TailorOrder";
+import TailorTabs from "../Tailor/TailorStore/TailorTabs/TailorTabs";
+import DetailsPage from "./DetailsPage";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
-import LocalShippingIcon from "@material-ui/icons/LocalShipping";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import DescriptionIcon from "@material-ui/icons/Description";
-import PersonIcon from "@material-ui/icons/Person";
-import { Link } from "react-router-dom";
-function TailorOrder() {
+import { CustomerDetailsForEmployee } from "../Employees/EmployeesStore/YourWork/YourWork";
+function CustomerDetails() {
   return (
-    <div className="tailor__order">
-      <div className="tailor__heading row no-gutters">
-        <div className="tailor__heading__part1 col-lg-6 col-md-6 col-12">
-          {" "}
-          <h5>ORDERS</h5>
-        </div>
-        <div className="tailor__heading__part2 col-lg-4 col-md-5 col-12 justify-content-end">
-          <div className="tailor__quick__search">
-            <input
-              type="text"
-              placeholder="Quick search by id"
-              className="tailor__quick__search__input"
-            />
-            <SearchIcon className="quick__search__icon"></SearchIcon>
-          </div>
-          <div className="tailor__status">
-            <select name="" id="" className="tailor__status__options">
-              <option value="Delivered">Delivered</option>
-              <option value="Pending">Pending</option>
-              <option value="Working">Working</option>
-              <option selected value="Paid">
-                Paid
-              </option>
-            </select>
+    <div className="customer__details">
+      <DetailsPage
+        title="CUSTOMER DETAILS"
+        detailName="Soni Chaudhary's"
+      ></DetailsPage>
+      <TailorTabs>
+        <div label="Soni's Information">
+          <div className="customer__info">
+            <CustomerDetailsForEmployee></CustomerDetailsForEmployee>
           </div>
         </div>
-      </div>
+        <div label="Soni's Orders">
+          <CustomerOrders></CustomerOrders>
+        </div>
+      </TailorTabs>
+    </div>
+  );
+}
+
+//Creating customer orders 👇👇👇👇
+export function CustomerOrders() {
+  return (
+    <div className="customer__orders">
       <div className="tailor__orders">
         <table class="table order__table" id="orders__table">
           <thead>
@@ -161,90 +153,8 @@ let seeMoreOptionsList = [
     iconText: "Employee Details",
     theLink: "/employeeDetails",
   },
-  {
-    icon: <PersonIcon></PersonIcon>,
-    iconText: "Customer Details",
-    theLink: "/customerDetails",
-  },
-  {
-    icon: <LocalShippingIcon></LocalShippingIcon>,
-    iconText: "Mark as delivered",
-  },
-  {
-    icon: <CheckBoxIcon></CheckBoxIcon>,
-    iconText: "Mark as paid",
-  },
-  {
-    icon: <DescriptionIcon></DescriptionIcon>,
-    iconText: "Send Invoice",
-  },
 ];
 const seeMoreFunction = () => {
   return <SeeMoreToogle theList={seeMoreOptionsList}></SeeMoreToogle>;
 };
-export function SeeMoreToogle({ theList }) {
-  const [moreAction, setMoreAction] = useState(false);
-  const hideMoreAction = () => {
-    setMoreAction(!moreAction);
-  };
-
-  console.log("This is console log");
-  // console.log(seeMoreOptions[1].props.theIcon);
-
-  function SeeMoreIndividual({ theIcon, theIconText, theLink }) {
-    return (
-      <Link to={theLink} style={{ textDecoration: "none", color: "none" }}>
-        <div className="see__more__individual__container">
-          <div className="see__more__icon">{theIcon}</div>
-          <div className="see__more__text">{theIconText}</div>
-        </div>
-      </Link>
-    );
-  }
-  function SeeMoreContainer({ seeMoreRef }) {
-    let seeMoreOptions = theList.map((obj) => {
-      return (
-        <SeeMoreIndividual
-          key={obj.toString()}
-          theLink={obj.theLink}
-          theIcon={obj.icon}
-          theIconText={obj.iconText}
-        >
-          {" "}
-        </SeeMoreIndividual>
-      );
-    });
-    return (
-      <div className="see__more__container" ref={seeMoreRef}>
-        {seeMoreOptions}
-      </div>
-    );
-  }
-  const seeMoreRef = useRef(null);
-  useEffect(() => {
-    function hideSeeMore(event) {
-      if (seeMoreRef.current && !seeMoreRef.current.contains(event.target)) {
-        hideMoreAction();
-      }
-    }
-    document.addEventListener("mousedown", hideSeeMore);
-    return () => {
-      document.removeEventListener("mousedown", hideSeeMore);
-    };
-  }, [moreAction, seeMoreRef]);
-  return (
-    <div className="see__more__data">
-      <MoreHorizIcon
-        className="more__horizon__icon"
-        onClick={() => {
-          setMoreAction(!moreAction);
-        }}
-      ></MoreHorizIcon>
-      {moreAction && (
-        <SeeMoreContainer seeMoreRef={seeMoreRef}></SeeMoreContainer>
-      )}
-    </div>
-  );
-}
-
-export default TailorOrder;
+export default CustomerDetails;

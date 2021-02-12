@@ -1,0 +1,19 @@
+.detail__name {
+  color: #625a5a;
+  font-weight: 600;
+  font-size: small;
+}
+
+/* For customer orders 👇👇👇 */
+.customer__orders {
+  padding: 10px;
+}
+.customer__info,
+.employee__info {
+  text-align: center;
+  padding: 10px;
+}
+.see__order__details:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

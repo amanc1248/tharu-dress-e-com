@@ -10,10 +10,7 @@ function TailorEmployees() {
   const addEmployeeClick = () => {
     setaddEmployee(!addEmployee);
   };
-  const [seeMoreEmployee, setseeMoreEmployee] = useState(false);
-  const showHideEmployee = () => {
-    setseeMoreEmployee(!seeMoreEmployee);
-  };
+
   return (
     <div className="tailor__employees">
       {addEmployee ? (
@@ -150,6 +147,7 @@ let seeMoreOptionsEmployees = [
   {
     icon: <AssignmentIndIcon></AssignmentIndIcon>,
     iconText: "Employee Details",
+    theLink: "/employeeDetails",
   },
 ];
 const seeMoreFunction = () => {

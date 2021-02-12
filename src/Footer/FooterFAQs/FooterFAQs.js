@@ -8,7 +8,7 @@ import {
   returnsAndExchange,
   myDasaAccount,
 } from "../../Data/FooterData/FooterDataFaqs";
-function FooterFAQs({ faqsData }) {
+function FooterFAQs() {
   return (
     <div className="footer__faqs">
       <div

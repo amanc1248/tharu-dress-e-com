@@ -20,10 +20,14 @@ import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegist
 import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
 import EmployeeAndTailorRegister from "./Header/EmployeeAndTailorRegister";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
-import CustomerCheckout from "./Components/CustomerCheckout/CustomerCheckout";
 import OutsideAlerter from "./Components/playground";
 import FooterFAQs from "./Footer/FooterFAQs/FooterFAQs";
 import AboutDasa from "./Footer/TheCompany/TheCompany";
+import DetailsPage from "./Components/DetailsPage/DetailsPage";
+import CustomerDetails from "./Components/DetailsPage/CustomerDetails";
+import OrdersDetails from "./Components/DetailsPage/OrdersDetails";
+import EmployeeDetails from "./Components/DetailsPage/EmployeeDetails";
+import CustomerCheckout from "./Components/CustomerCheckout/CustomerCheckout";
 
 function App() {
   return (
@@ -108,6 +112,21 @@ function App() {
             <Route path="/checkOut">
               <TailorHeader></TailorHeader>
               <CustomerCheckout></CustomerCheckout>
+            </Route>
+            <Route path="/detailsPage">
+              <DetailsPage
+                title="Customer Details"
+                detailName="Soni Chaudhary's Detail"
+              ></DetailsPage>
+            </Route>
+            <Route path="/orderDetails">
+              <OrdersDetails></OrdersDetails>
+            </Route>
+            <Route path="/customerDetails">
+              <CustomerDetails></CustomerDetails>
+            </Route>
+            <Route path="/employeeDetails">
+              <EmployeeDetails></EmployeeDetails>
             </Route>
             <Route path="/faqs">
               <Header></Header>

@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import React from "react";
 import "./TailorCustomer.css";
 import PersonIcon from "@material-ui/icons/Person";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import { SeeMoreToogle } from "../TailorOrder/TailorOrder";
 
 function TailorCustomer() {
-  const [seeMoreCustomers, setseeMoreCustomers] = useState(false);
-  const showHideSeeMoreCustomers = () => {
-    setseeMoreCustomers(!seeMoreCustomers);
-  };
   return (
     <div className="tailor__customer">
       <div className="tailor__customer__title">
@@ -77,7 +72,11 @@ function TailorCustomer() {
 export default TailorCustomer;
 // for the customer see more
 let seeMoreOptionsCustomer = [
-  { icon: <PersonIcon></PersonIcon>, iconText: "Customer Details" },
+  {
+    icon: <PersonIcon></PersonIcon>,
+    iconText: "Customer Details",
+    theLink: "/customerDetails",
+  },
   {
     icon: <FeaturedPlayListIcon></FeaturedPlayListIcon>,
     iconText: "Product Orders",

@@ -37,6 +37,9 @@
   color: #649cc0;
   cursor: pointer;
 }
+.order__number:hover {
+  text-decoration: underline;
+}
 .order__placed {
   font-size: small;
   color: #9d9494;
@@ -44,6 +47,9 @@
 .manage__order {
   cursor: pointer;
   color: #649cc0;
+}
+.manage__order:hover {
+  text-decoration: underline;
 }
 .particular__order_detail {
   background-color: #e7e7e7;

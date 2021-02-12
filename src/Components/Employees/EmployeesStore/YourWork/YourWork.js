@@ -12,13 +12,13 @@ function YourWork() {
           <MaterialsNeeded></MaterialsNeeded>
         </div>
         <div label="Customer Details">
-          <CustomerDetails></CustomerDetails>
+          <CustomerDetailsForEmployee></CustomerDetailsForEmployee>
         </div>
       </AnotherTabs>
     </div>
   );
 }
-function WorkDetailsAndProgress() {
+export function WorkDetailsAndProgress() {
   return (
     <div className="work__detail__progress">
       <div className="work__detail__progress__instruction">
@@ -66,7 +66,7 @@ function WorkDetailsAndProgress() {
     </div>
   );
 }
-function MaterialsNeeded() {
+export function MaterialsNeeded() {
   return (
     <div className="materials__needed">
       <div className="work__detail__progress__instruction">
@@ -94,7 +94,7 @@ function MaterialsNeeded() {
     </div>
   );
 }
-function CustomerDetails() {
+export function CustomerDetailsForEmployee() {
   return (
     <div className="work__customer__details">
       <div className="work__detail__progress__instruction">

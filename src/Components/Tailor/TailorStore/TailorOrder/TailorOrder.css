@@ -68,6 +68,7 @@
 /* see more 👇 styling */
 .see__more__individual__container {
   display: flex;
+  color: black;
 }
 .see__more__individual__container:hover {
   background-color: #e5e9f2;
