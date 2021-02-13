@@ -107,7 +107,11 @@ function EmployeeOrders() {
 export default EmployeeOrders;
 
 let seeMoreOptionsList = [
-  { icon: <VisibilityIcon></VisibilityIcon>, iconText: "Order Details" },
+  {
+    icon: <VisibilityIcon></VisibilityIcon>,
+    iconText: "Order Details",
+    theLink: "/orderDetails",
+  },
 ];
 const seeMoreFunction = () => {
   return (

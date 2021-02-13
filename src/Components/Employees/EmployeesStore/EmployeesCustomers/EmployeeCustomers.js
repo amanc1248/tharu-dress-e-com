@@ -71,7 +71,11 @@ function EmployeeCustomers() {
 
 export default EmployeeCustomers;
 let seeMoreOptionsList = [
-  { icon: <VisibilityIcon></VisibilityIcon>, iconText: "Customer Details" },
+  {
+    icon: <VisibilityIcon></VisibilityIcon>,
+    iconText: "Customer Details",
+    theLink: "/customerDetails",
+  },
 ];
 const seeMoreFunction = () => {
   return (

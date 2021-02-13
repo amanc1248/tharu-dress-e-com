@@ -1,6 +1,6 @@
 import React from "react";
 import "./TheCompany.css";
-import { aboutUs } from "../../Data/FooterData/TheCompany";
+import { aboutUs } from "../../../../Data/FooterData/TheCompany";
 function AboutDasa() {
   return (
     <div className="about__dasa">

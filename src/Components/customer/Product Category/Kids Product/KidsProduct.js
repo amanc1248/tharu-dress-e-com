@@ -1,8 +1,6 @@
 import React from "react";
-import Footer from "../../../Footer/Footer";
-import Header from "../../../Header/Header";
 import ProductCategory from "../ProductCategory";
-
+import Footer from "../../Footer/Footer";
 function KidsProduct() {
   return (
     <div className="kid__product">

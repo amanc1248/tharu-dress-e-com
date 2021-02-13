@@ -1,5 +1,5 @@
 import React from "react";
-import { ParticularOrderDetail } from "../Cart/Orders/Orders";
+import { ParticularOrderDetail } from "../customer/Cart/Orders/Orders";
 import DetailsPage from "./DetailsPage";
 
 function OrdersDetails() {

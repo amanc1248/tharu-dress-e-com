@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import allReducers from "./Components/Cart/Account Details/Account Information/Redux/Reducers";
+import allReducers from "./Components/customer/Cart/Account Details/Account Information/Redux/Reducers";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 // import "../node_modules/font-awesome/css/font-awesome.min.css";

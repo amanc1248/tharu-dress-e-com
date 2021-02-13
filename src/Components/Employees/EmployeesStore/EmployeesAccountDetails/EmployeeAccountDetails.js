@@ -1,12 +1,10 @@
 import React from "react";
-import AccountInformation from "../../../Cart/Account Details/Account Information/AccountInformation";
-import AddressBook from "../../../Cart/Account Details/Address Book/AddressBook";
-import AnotherTabs from "../../../Cart/Account Details/AnotherTabs/AnotherTabs";
+import AddressBook from "../../../customer/Cart/Account Details/Address Book/AddressBook";
+import AnotherTabs from "../../../customer/Cart/Account Details/AnotherTabs/AnotherTabs";
 import { useSelector } from "react-redux";
-import AccountInformationEdit from "../../../Cart/Account Details/Account Information/AccountInformationEdit/AccountInformationEdit";
-import ChangePassword from "../../../Cart/Account Details/Account Information/ChangePassword/ChangePassword";
-import AddressBookEdit from "../../../Cart/Account Details/Address Book/AddreBookEdit/AddressBookEdit";
-
+import AddressBookEdit from "../../../customer/Cart/Account Details/Address Book/AddreBookEdit/AddressBookEdit";
+import AccountInformationEdit from "../../../customer/Cart/Account Details/Account Information/AccountInformationEdit/AccountInformationEdit";
+import ChangePassword from "../../../customer/Cart/Account Details/Account Information/ChangePassword/ChangePassword";
 function EmployeeAccountDetails() {
   const editAccount = useSelector((state) => state.editAccount);
   const changePassword = useSelector((state) => state.changePassword);
@@ -16,7 +14,7 @@ function EmployeeAccountDetails() {
       <AnotherTabs>
         <div label="Account Information">
           {editAccount === false && changePassword === false ? (
-            <AccountInformation></AccountInformation>
+            <AccountInformationEdit></AccountInformationEdit>
           ) : (
             <>
               {editAccount === true && changePassword === false ? (

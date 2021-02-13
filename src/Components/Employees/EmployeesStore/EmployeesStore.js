@@ -5,6 +5,7 @@ import EmployeeOrders from "./EmployeesOrders/EmployeeOrders";
 import EmployeeStoreTabs from "./EmployeeStoreTabs/EmployeeStoreTabs";
 import YourWork from "./YourWork/YourWork";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import { Link } from "react-router-dom";
 
 function EmployeesStore() {
   return (
@@ -38,12 +39,14 @@ export function SeeMoreEmployeeToogle({ theList }) {
   console.log("This is console log");
   // console.log(seeMoreOptions[1].props.theIcon);
 
-  function SeeMoreIndividualEmployee({ theIcon, theIconText }) {
+  function SeeMoreIndividualEmployee({ theIcon, theIconText, theLink }) {
     return (
-      <div className="see__more__individual__container">
-        <div className="see__more__icon">{theIcon}</div>
-        <div className="see__more__text">{theIconText}</div>
-      </div>
+      <Link to={theLink} style={{ color: "none", textDecoration: "none" }}>
+        <div className="see__more__individual__container">
+          <div className="see__more__icon">{theIcon}</div>
+          <div className="see__more__text">{theIconText}</div>
+        </div>
+      </Link>
     );
   }
   function SeeMoreContainer({ seeMoreRef }) {
@@ -51,6 +54,7 @@ export function SeeMoreEmployeeToogle({ theList }) {
       return (
         <SeeMoreIndividualEmployee
           key={obj.toString()}
+          theLink={obj.theLink}
           theIcon={obj.icon}
           theIconText={obj.iconText}
         >

@@ -7,7 +7,7 @@ import {
   gifts,
   returnsAndExchange,
   myDasaAccount,
-} from "../../Data/FooterData/FooterDataFaqs";
+} from "../../../../Data/FooterData/FooterDataFaqs.js";
 function FooterFAQs() {
   return (
     <div className="footer__faqs">

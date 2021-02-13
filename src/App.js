@@ -1,33 +1,32 @@
-import "./App.css";
-import Authentication from "./Components/Authentication/Authentication";
-import Header, { SearchBar } from "./Header/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./Components/Home Page/Home";
-import Footer from "./Footer/Footer";
-import Men from "./Components/Category/Men/Men";
-import Women from "./Components/Category/Women/Women";
-import Kids from "./Components/Category/Kids/Kids";
-import MenProduct from "./Components/Product Category/Men Product/MenProduct";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import WomenProduct from "./Components/Product Category/Women Product/WomenProduct";
-import KidsProduct from "./Components/Product Category/Kids Product/KidsProduct";
-import Cart from "./Components/Cart/Cart";
-import ProductIndividual from "./Components/Product Individual/ProductIndividual";
-import SignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
-import TailorHeader from "./Components/Tailor/TailorHeader/TailorHeader";
-import Tailor from "./Components/Tailor/TailorStore/Tailor";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ScrollToTop from "./adapters/ScrollToTop/ScrollToTop";
+import "./App.css";
+import Authentication from "./Components/customer/Authentication/Authentication";
+import Cart from "./Components/customer/Cart/Cart";
+import Kids from "./Components/customer/Category/Kids/Kids";
+import Men from "./Components/customer/Category/Men/Men";
+import Women from "./Components/customer/Category/Women/Women";
+import CustomerCheckout from "./Components/customer/CustomerCheckout/CustomerCheckout";
+import Footer from "./Components/customer/Footer/Footer";
+import FooterFAQs from "./Components/customer/Footer/FooterFAQs/FooterFAQs";
+import AboutDasa from "./Components/customer/Footer/TheCompany/TheCompany";
+import EmployeeAndTailorRegister from "./Components/customer/Header/EmployeeAndTailorRegister";
+import Header, { SearchBar } from "./Components/customer/Header/Header";
+import Home from "./Components/customer/Home Page/Home";
+import KidsProduct from "./Components/customer/Product Category/Kids Product/KidsProduct";
+import MenProduct from "./Components/customer/Product Category/Men Product/MenProduct";
+import WomenProduct from "./Components/customer/Product Category/Women Product/WomenProduct";
+import ProductIndividual from "./Components/customer/Product Individual/ProductIndividual";
+import CustomerDetails from "./Components/DetailsPage/CustomerDetails";
+import DetailsPage from "./Components/DetailsPage/DetailsPage";
+import EmployeeDetails from "./Components/DetailsPage/EmployeeDetails";
+import OrdersDetails from "./Components/DetailsPage/OrdersDetails";
 import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegister/EmployeesSignInRegister";
 import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
-import EmployeeAndTailorRegister from "./Header/EmployeeAndTailorRegister";
-import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
-import OutsideAlerter from "./Components/playground";
-import FooterFAQs from "./Footer/FooterFAQs/FooterFAQs";
-import AboutDasa from "./Footer/TheCompany/TheCompany";
-import DetailsPage from "./Components/DetailsPage/DetailsPage";
-import CustomerDetails from "./Components/DetailsPage/CustomerDetails";
-import OrdersDetails from "./Components/DetailsPage/OrdersDetails";
-import EmployeeDetails from "./Components/DetailsPage/EmployeeDetails";
-import CustomerCheckout from "./Components/CustomerCheckout/CustomerCheckout";
+import TailorHeader from "./Components/Tailor/TailorHeader/TailorHeader";
+import SignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
+import Tailor from "./Components/Tailor/TailorStore/Tailor";
 
 function App() {
   return (
@@ -100,11 +99,7 @@ function App() {
               <EmployeeSignInRegister></EmployeeSignInRegister>
               <Footer></Footer>
             </Route>
-            <Route path="/playground">
-              {/* <PlaygroundField></PlaygroundField> */}
-              {/* <ModalApp></ModalApp> */}
-              <OutsideAlerter></OutsideAlerter>
-            </Route>
+            <Route path="/playground"></Route>
             <Route path="/employeeAccount">
               <TailorHeader></TailorHeader>
               <EmployeesStore></EmployeesStore>

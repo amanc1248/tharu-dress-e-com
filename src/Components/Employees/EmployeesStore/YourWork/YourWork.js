@@ -1,5 +1,5 @@
 import React from "react";
-import AnotherTabs from "../../../Cart/Account Details/AnotherTabs/AnotherTabs";
+import AnotherTabs from "../../../customer/Cart/Account Details/AnotherTabs/AnotherTabs";
 import "./YourWork.css";
 function YourWork() {
   return (
