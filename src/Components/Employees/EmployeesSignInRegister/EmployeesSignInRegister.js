@@ -18,7 +18,7 @@ export function EmployeeSignIn() {
     <div className="employee__signIn col-lg-6 col-md-6 ">
       <div className="employee__signIn__container">
         <div className="title__subTitle">
-          <h6>SIGN IN</h6>
+          <h4>SIGN IN</h4>
           <p className="subtitle">
             Please enter your email and password to access your account
           </p>
@@ -58,7 +58,7 @@ export function EmployeeRegister() {
     <div className="employee__register col-lg-6 col-md-6 ">
       <div className="employee__register__container">
         <div className="title__subTitle">
-          <h6>REGISTER</h6>
+          <h4>REGISTER</h4>
           <p className="subtitle">
             Please register below to create an account.
           </p>
@@ -102,7 +102,7 @@ export function EmployeeRegister() {
                 updates about Daasaa products, services and events.{" "}
               </small>
             </div>
-            <div className="row justify-content-end">
+            <div className="row justify-content-end no-gutters">
               <Link to="/employeeAccount">
                 <button className="employee__register__button ">
                   Register

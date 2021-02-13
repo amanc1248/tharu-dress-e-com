@@ -1,14 +1,15 @@
 import React from "react";
 
-function EmployeeAndTailorRegister() {
+function EmployeeAndTailorRegister({ theTitle }) {
   return (
     <div className="employee__and__tailor__register">
-      <div className="tailor__header__image">
-        <img
-          className="authentication__logo  w-100"
-          src="images/croped.jpg"
-          alt="authentication background"
-        />
+      <div
+        className="theBackgroundImage"
+        style={{
+          backgroundImage: `url("images/croped.jpg")`,
+        }}
+      >
+        <div className="faq__title">{theTitle}</div>
       </div>
     </div>
   );

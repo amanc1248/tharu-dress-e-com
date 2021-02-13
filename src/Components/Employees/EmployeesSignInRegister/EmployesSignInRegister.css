@@ -25,8 +25,7 @@
   height: 45px;
   margin: 15px 0 10px 0 !important;
 }
-.employee__form__footer,
-.employee__register__form__footer {
+.employee__form__footer {
   display: flex;
   flex-direction: row;
 }

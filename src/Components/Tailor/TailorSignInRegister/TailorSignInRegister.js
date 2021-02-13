@@ -132,7 +132,7 @@ function TailorRegister() {
                 updates about Daasaa products, services and events.{" "}
               </small>
             </div>
-            <div className="row justify-content-end">
+            <div className="row justify-content-end no-gutters">
               <Link to="/tailorAccount">
                 <button className="tailor__register__button ">Register</button>
               </Link>

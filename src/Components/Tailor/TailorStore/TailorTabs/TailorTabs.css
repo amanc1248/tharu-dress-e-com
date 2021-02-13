@@ -1,9 +1,9 @@
 .tailor-tab-list {
   border-bottom: 1px solid #ccc;
-  padding-left: 0;
   display: flex;
   justify-content: center;
-  overflow-x: scroll;
+  overflow-y: auto;
+  white-space: nowrap;
 }
 ::-webkit-scrollbar {
   display: none;

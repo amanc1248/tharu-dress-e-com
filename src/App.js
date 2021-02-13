@@ -80,7 +80,7 @@ function App() {
               <Footer></Footer>
             </Route>
             <Route path="/tailorSignIn">
-              <EmployeeAndTailorRegister></EmployeeAndTailorRegister>
+              <EmployeeAndTailorRegister theTitle="CREATE A TAILOR ACCOUNT"></EmployeeAndTailorRegister>
               <SignInRegister></SignInRegister>
               <Footer></Footer>
             </Route>
@@ -95,7 +95,7 @@ function App() {
               </div> */}
             </Route>
             <Route path="/employeeSignIn">
-              <EmployeeAndTailorRegister></EmployeeAndTailorRegister>
+              <EmployeeAndTailorRegister theTitle="CREATE AN EMPLOYEE ACCOUNT"></EmployeeAndTailorRegister>
               <EmployeeSignInRegister></EmployeeSignInRegister>
               <Footer></Footer>
             </Route>
@@ -105,7 +105,8 @@ function App() {
               <EmployeesStore></EmployeesStore>
             </Route>
             <Route path="/checkOut">
-              <TailorHeader></TailorHeader>
+              <Header></Header>
+              <EmployeeAndTailorRegister theTitle="CHECKOUT"></EmployeeAndTailorRegister>
               <CustomerCheckout></CustomerCheckout>
             </Route>
             <Route path="/detailsPage">

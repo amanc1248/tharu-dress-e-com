@@ -60,7 +60,7 @@ function Signup() {
                 updates about Daasaa products, services and events.{" "}
               </small>
             </div>
-            <div className="row justify-content-end">
+            <div className="row justify-content-end no-gutters">
               <Link to="/cart">
                 <button className="register__button ">Register</button>
               </Link>

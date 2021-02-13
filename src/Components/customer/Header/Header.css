@@ -2,6 +2,9 @@
   font-size: 25px !important;
   font-weight: 700 !important;
 }
+/* .the__navbar:hover {
+  background-color: #fff;
+} */
 .hamburger__toogler {
   color: white !important;
   border-color: #fff;
@@ -80,11 +83,9 @@
   cursor: pointer;
 }
 .search__bar__content {
-  height: 50vh;
+  height: 100vh;
   background-color: white;
   border: none;
-  /* -webkit-box-shadow: 0 0 10px #fff; */
-  /* box-shadow: 1px 1px 1px 1px hsla(0, 0%, 0%, 0.16); */
   width: 100vw;
   position: absolute;
   left: 0;

@@ -18,3 +18,9 @@
 .the__text__label {
   font-size: small;
 }
+@media screen and (max-width: 667px) {
+  .the__number__label {
+    height: 30px;
+    width: 30px;
+  }
+}

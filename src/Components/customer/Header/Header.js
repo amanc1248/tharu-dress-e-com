@@ -5,12 +5,9 @@ import PersonIcon from "@material-ui/icons/Person";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import { Nav, Navbar } from "react-bootstrap";
 import CloseIcon from "@material-ui/icons/Close";
-// import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Header() {
-  // const { pathname } = useLocation();
-  //so here I am using useState, (navbar-->current value), (setNavbar--> changing value)
   const [navbarColor, setNavbarColor] = useState(false);
   const changeHeaderBg = () => {
     if (window.scrollY >= 63) {
@@ -26,7 +23,9 @@ function Header() {
   return (
     <div className=" ">
       <Navbar
-        bg
+        onClick={() => {
+          setNavbarColor(true);
+        }}
         expand="lg"
         fixed="top"
         className={navbarColor ? "headerWhenScrolled" : "headerWhenNotScrolled"}

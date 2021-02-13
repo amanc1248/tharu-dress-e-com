@@ -25,7 +25,6 @@
 @media screen and (max-width: 576px) {
   .edit__button,
   .changepassword__button {
-    width: 45vw;
-    /* margin-right: 10px; */
+    width: 42vw;
   }
 }
