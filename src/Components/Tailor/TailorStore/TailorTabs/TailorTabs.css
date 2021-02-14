@@ -2,7 +2,7 @@
   border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: center;
-  overflow-y: auto;
+  overflow-x: auto;
   white-space: nowrap;
 }
 ::-webkit-scrollbar {

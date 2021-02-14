@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "./FilterOptions.css";
 import CloseIcon from "@material-ui/icons/Close";
@@ -12,6 +12,21 @@ const components = {
 };
 function FilterOptions({ ourOptions }) {
   const [isShown, setIsShown] = useState(false);
+  const seeFilterContent = useRef(null);
+  useEffect(() => {
+    function hideSeeMore(event) {
+      if (
+        seeFilterContent.current &&
+        !seeFilterContent.current.contains(event.target)
+      ) {
+        setIsShown(false);
+      }
+    }
+    document.addEventListener("mousedown", hideSeeMore);
+    return () => {
+      document.removeEventListener("mousedown", hideSeeMore);
+    };
+  }, [isShown, seeFilterContent]);
   return (
     <div className="filter__option">
       {[ourOptions].map((ourOption) => {
@@ -28,7 +43,7 @@ function FilterOptions({ ourOptions }) {
               <ExpandMoreIcon className="expandmore__icon"></ExpandMoreIcon>
             </div>
             {isShown && (
-              <div className="filter__options__content">
+              <div className="filter__options__content" ref={seeFilterContent}>
                 <div className="option__close">
                   <CloseIcon
                     onClick={() => {
@@ -36,7 +51,8 @@ function FilterOptions({ ourOptions }) {
                     }}
                   ></CloseIcon>
                 </div>
-                <Component />
+
+                <Component></Component>
               </div>
             )}
           </div>

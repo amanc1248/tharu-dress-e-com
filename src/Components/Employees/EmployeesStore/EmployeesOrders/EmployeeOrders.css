@@ -17,10 +17,12 @@
   margin-top: 10px;
 }
 @media screen and (max-width: 767px) {
+  table#employee__orders__table td:nth-child(2),
   table#employee__orders__table td:nth-child(3),
   table#employee__orders__table td:nth-child(5) {
     display: none;
   }
+  table#employee__orders__table th:nth-child(2),
   table#employee__orders__table th:nth-child(3),
   table#employee__orders__table th:nth-child(5) {
     display: none;

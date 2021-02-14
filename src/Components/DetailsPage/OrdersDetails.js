@@ -7,7 +7,7 @@ function OrdersDetails() {
     <div className="order__details">
       <DetailsPage
         title="ORDER DETAILS"
-        detailName="743ukdf02ufd order details"
+        detailName="743ukdf02ufd order"
       ></DetailsPage>
       <ParticularOrderDetail></ParticularOrderDetail>
     </div>

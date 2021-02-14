@@ -143,7 +143,14 @@ function Header() {
         >
           <span className="">
             {/* <i className="fas fa-bars hamburger"></i> */}
-            <FontAwesomeIcon icon={faBars} className="hamburger__toogler" />
+            <FontAwesomeIcon
+              icon={faBars}
+              className={
+                navbarColor
+                  ? "navbar__component__whenScrolled"
+                  : "navbar__component__whennotscrolled"
+              }
+            />
           </span>
         </Navbar.Toggle>
       </Navbar>
