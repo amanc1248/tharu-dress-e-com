@@ -103,27 +103,6 @@ function TailorOrder() {
             {tableRow}
           </tbody>
         </table>
-        {/* <nav aria-label="Page navigation example">
-          <ul className="pagination justify-content-end">
-            <li className="page-item disabled">
-              <a className="page-link" tabindex="-1">
-                Previous
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">1</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">2</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">3</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">Next</a>
-            </li>
-          </ul>
-        </nav> */}
       </div>
     </div>
   );
@@ -165,9 +144,6 @@ export function SeeMoreToogle({ theList }) {
   const hideMoreAction = () => {
     setMoreAction(!moreAction);
   };
-
-  console.log("This is console log");
-  // console.log(seeMoreOptions[1].props.theIcon);
 
   function SeeMoreIndividual({ theIcon, theIconText, theLink }) {
     return (
