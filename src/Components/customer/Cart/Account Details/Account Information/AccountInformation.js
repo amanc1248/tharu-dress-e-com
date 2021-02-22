@@ -1,7 +1,10 @@
 import React from "react";
 import "./AccountInformation.css";
 import { useDispatch } from "react-redux";
-import { goToAccountEdit, goToChangePassword } from "./Redux/Actions";
+import {
+  goToAccountEdit,
+  goToChangePassword,
+} from "../../../../../contexts/Customer/Redux/Actions/index";
 
 function AccountInformation() {
   const dispatch = useDispatch();

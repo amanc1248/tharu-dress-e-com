@@ -5,7 +5,31 @@ import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 import "../TailorProducts/TailorProducts.css";
 import { SeeMoreToogle } from "../TailorOrder/TailorOrder";
+import { Link } from "react-router-dom";
 function TailorEmployees() {
+  const tableStatus = (
+    <div className="table__status__container">
+      <div class="table__status__icon"></div>
+      <div className="table__status__text">Delivered</div>
+    </div>
+  );
+  const tableRow = (
+    <tr>
+      <th scope="row" className="table__customer">
+        Sudeep Bhattrai
+      </th>
+      <td className="table__date">20 Feb, 2020</td>
+      <td className="work__assigned">
+        {" "}
+        <Link to="/employeeDetails">See Details</Link>{" "}
+      </td>
+      <td className="table__customer">+9779804355969</td>
+      <td>
+        <div className="table__status"> {tableStatus}</div>
+      </td>
+      <td>{seeMoreFunction()}</td>
+    </tr>
+  );
   const [addEmployee, setaddEmployee] = useState(false);
   const addEmployeeClick = () => {
     setaddEmployee(!addEmployee);
@@ -17,7 +41,7 @@ function TailorEmployees() {
         <AssignWork clickOutside={addEmployeeClick}></AssignWork>
       ) : null}
       <div className="tailor__employees__title">
-        <h5>EMPLOYEES</h5>
+        <h5 className="tailor__tabs__title">EMPLOYEES</h5>
       </div>
       <div className="tailor__add__products ">
         <button
@@ -31,55 +55,35 @@ function TailorEmployees() {
         <table className="table" id="tailor__employees__table">
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Date Joined</th>
-              <th scope="col">Work Assigned</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Status</th>
-              <th scope="col">See More</th>
+              <th scope="col" className="table__header">
+                Name
+              </th>
+              <th scope="col" className="table__header">
+                Date Joined
+              </th>
+              <th scope="col" className="table__header">
+                Work Assigned
+              </th>
+              <th scope="col" className="table__header">
+                Phone
+              </th>
+              <th scope="col" className="table__header">
+                Status
+              </th>
+              <th scope="col" className="table__header">
+                See More
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Sudeep Bhattrai</th>
-              <td>20 Feb, 2020</td>
-              <td>See Details</td>
-              <td>+9779804355969</td>
-              <td>Working</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">Sudeep Bhattrai</th>
-              <td>20 Feb, 2020</td>
-              <td>See Details</td>
-              <td>+9779804355969</td>
-              <td>Working</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">Sudeep Bhattrai</th>
-              <td>20 Feb, 2020</td>
-              <td>See Details</td>
-              <td>+9779804355969</td>
-              <td>Working</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">Sudeep Bhattrai</th>
-              <td>20 Feb, 2020</td>
-              <td>See Details</td>
-              <td>+9779804355969</td>
-              <td>Working</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">Sudeep Bhattrai</th>
-              <td>20 Feb, 2020</td>
-              <td>See Details</td>
-              <td>+9779804355969</td>
-              <td>Working</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
           </tbody>
         </table>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./AccountInformationEdit.css";
 import { useDispatch } from "react-redux";
-import { goToAccountEdit } from "../Redux/Actions";
+import { goToAccountEdit } from "../../../../../../contexts/Customer/Redux/Actions/index";
 function AccountInformationEdit() {
   const dispatch = useDispatch();
 

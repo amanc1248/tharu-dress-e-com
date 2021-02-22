@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { goToAddressBookEdit } from "../../Account Information/Redux/Actions";
+import { goToAddressBookEdit } from "../../../../../../contexts/Customer/Redux/Actions/index";
 import "./AddressBookEdit.css";
 function AddressBookEdit() {
   const dispatch = useDispatch();

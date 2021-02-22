@@ -46,7 +46,9 @@
 .socialIcon:hover {
   text-decoration: underline;
   cursor: pointer;
+  color: #0c88ef;
 }
+
 @media screen and (max-width: 1000px) {
   .secondSectionFooter {
     background-color: #f1f1f1;

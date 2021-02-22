@@ -1,15 +1,10 @@
 import React from "react";
+import ImageWithTitle from "../../Global/ImageWithTitle";
 import "./TailorHeader.css";
 function TailorHeader() {
   return (
     <div className="tailor__header">
-      <div className="tailor__header__image">
-        <img
-          className="authentication__logo  w-100"
-          src="images/croped.jpg"
-          alt="authentication background"
-        />
-      </div>
+      <ImageWithTitle theTitle="TAILOR ACCOUNT"></ImageWithTitle>
       <div className="welcome__user">
         <h5>WELCOME, AMAN</h5>
       </div>

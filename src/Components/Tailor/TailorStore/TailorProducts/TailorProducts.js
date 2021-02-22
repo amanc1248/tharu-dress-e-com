@@ -9,6 +9,32 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { SeeMoreToogle } from "../TailorOrder/TailorOrder";
 
 function TailorProducts() {
+  const tableRow = (
+    <tr>
+      <td>
+        {" "}
+        <Checkbox></Checkbox>{" "}
+      </td>
+      <th scope="row" className="">
+        <div className="table__product__container">
+          <div className="table__product__image__container">
+            <img
+              src="productImage.png"
+              alt="product"
+              className="table__product__image"
+            />
+          </div>
+          <div className="table__product__name">Kids Anchara</div>
+        </div>
+      </th>
+      <td className="table__price">
+        {" "}
+        <span className="table__rs__title">Rs.</span> 12,000
+      </td>{" "}
+      <td>Men</td>
+      <td>{seeMoreFunction()}</td>
+    </tr>
+  );
   const [addProduct, setAddProduct] = useState(false);
   const addProductClick = () => {
     setAddProduct(!addProduct);
@@ -19,7 +45,7 @@ function TailorProducts() {
         <AddProduct clickOutside={addProductClick}></AddProduct>
       ) : null}
       <div className="tailor__products__heading">
-        <h5>PRODUCTS</h5>
+        <h5 className="tailor__tabs__title">PRODUCTS</h5>
       </div>
       <div className="tailor__add__products">
         <button
@@ -34,64 +60,28 @@ function TailorProducts() {
         <table className="table " id="tailor__products__table">
           <thead>
             <tr>
-              <th scope="col"></th>
-              <th scope="col">Name</th>
-              <th scope="col">Price</th>
-              <th scope="col">Category</th>
-              <th scope="col">See More</th>
+              <th scope="col" className="table__header"></th>
+              <th scope="col" className="table__header">
+                Name
+              </th>
+              <th scope="col" className="table__header">
+                Price
+              </th>
+              <th scope="col" className="table__header">
+                Category
+              </th>
+              <th scope="col" className="table__header">
+                See More
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                {" "}
-                <Checkbox></Checkbox>{" "}
-              </td>
-              <th scope="row">Kids Anchara</th>
-              <td>Rs. 12,000</td>
-              <td>Men</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Checkbox></Checkbox>{" "}
-              </td>
-              <th scope="row">Kids Anchara</th>
-              <td>Rs. 12,000</td>
-              <td>Men</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Checkbox></Checkbox>{" "}
-              </td>
-              <th scope="row">Kids Anchara</th>
-              <td>Rs. 12,000</td>
-              <td>Men</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Checkbox></Checkbox>{" "}
-              </td>
-              <th scope="row">Kids Anchara</th>
-              <td>Rs. 12,000</td>
-              <td>Men</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <Checkbox></Checkbox>{" "}
-              </td>
-              <th scope="row">Kids Anchara</th>
-              <td>Rs. 12,000</td>
-              <td>Men</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
           </tbody>
         </table>
       </div>

@@ -28,6 +28,7 @@
   left: 0;
   top: 100%;
   z-index: 1;
+  font-size: 12px !important;
 }
 .filter__options__container {
   position: relative;

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 .tailor__order {
   padding: 10px;
 }
@@ -39,6 +40,73 @@
 .more__horizon__icon:hover {
   cursor: pointer;
 }
+
+/* 👇styling table */
+.table__header {
+  color: #8094ae;
+  font-size: 13px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 300;
+}
+.table__order__number {
+  color: #9d72ff;
+  font-size: 14px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+}
+.table__date {
+  color: #8094ae;
+  font-size: 14px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+}
+.table__rs__title {
+  color: #526484;
+  font-weight: 400;
+}
+.table__price,
+.table__purchased__item,
+.table__customer,
+.table__assigned {
+  /* color: #364a63; */
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+.table__purchased__item {
+  color: #854fff;
+}
+.table__customer,
+.table__assigned {
+  color: #8094ae;
+}
+.table__status__icon {
+  margin: 6px 5px;
+  align-items: center !important;
+  height: 8px;
+  width: 8px;
+  border-radius: 50px;
+  background-color: #ffc400;
+}
+.table__status {
+  display: flex;
+  justify-content: center;
+}
+.table__status__container {
+  display: flex;
+  /* justify-content: space-around; */
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  max-width: max-content;
+  padding: 1px 8px;
+  border-radius: 20px;
+  background-color: rgba(244, 189, 14, 0.15);
+}
+.table__status__text {
+  color: #e2b110;
+}
+
 @media screen and (max-width: 767px) {
   table#orders__table td:nth-child(2),
   table#orders__table td:nth-child(4),

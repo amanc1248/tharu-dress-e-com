@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import ImageWithTitle from "../../Global/ImageWithTitle";
 import AccountDetails from "./Account Details/AccountDetails";
 import Bag from "./Bag/Bag";
 import "./Cart.css";
@@ -11,11 +12,7 @@ function Cart() {
   const seeOrderDetails = useSelector((state) => state.seeOrderDetails);
   return (
     <div className="cart">
-      <img
-        className="authentication__logo  w-100"
-        src="images/croped.jpg"
-        alt="authentication background"
-      />
+      <ImageWithTitle theTitle="YOUR CART"></ImageWithTitle>
       <div className="welcome__user">
         <h5>WELCOME, AMAN</h5>
       </div>

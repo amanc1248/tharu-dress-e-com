@@ -166,7 +166,11 @@ export function SearchBar({ toggleSearch }) {
         <CloseIcon onClick={toggleSearch} className="close__icon"></CloseIcon>
       </div>
       <div className="searching__bar">
-        <input type="text" placeholder="search" className="searching__input" />
+        <input
+          type="search"
+          placeholder="search"
+          className="searching__input"
+        />
         <SearchIcon className="search__icon"></SearchIcon>
       </div>
     </div>

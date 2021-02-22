@@ -1,6 +1,6 @@
 import React from "react";
 
-function EmployeeAndTailorRegister({ theTitle }) {
+function ImageWithTitle({ theTitle }) {
   return (
     <div className="employee__and__tailor__register">
       <div
@@ -15,4 +15,4 @@ function EmployeeAndTailorRegister({ theTitle }) {
   );
 }
 
-export default EmployeeAndTailorRegister;
+export default ImageWithTitle;

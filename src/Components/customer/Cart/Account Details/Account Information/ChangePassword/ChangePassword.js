@@ -1,5 +1,5 @@
 import React from "react";
-import { goToChangePassword } from "../Redux/Actions";
+import { goToChangePassword } from "../../../../../../contexts/Customer/Redux/Actions/index";
 import { useDispatch } from "react-redux";
 import "./ChangePassword.css";
 // import { goToChangePassword } from "../Redux/Actions";

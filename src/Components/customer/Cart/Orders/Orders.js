@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { goToOrderDetails } from "../Account Details/Account Information/Redux/Actions";
+import { goToOrderDetails } from "../../../../contexts/Customer/Redux/Actions/index";
 import "./Orders.css";
 import RedeemIcon from "@material-ui/icons/Redeem";
 function Orders() {

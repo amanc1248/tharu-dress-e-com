@@ -8,14 +8,40 @@ import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { Link } from "react-router-dom";
 function TailorOrder() {
+  const tableStatus = (
+    <div className="table__status__container">
+      <div class="table__status__icon"></div>
+      <div className="table__status__text">Delivered</div>
+    </div>
+  );
+  const tableRow = (
+    <tr>
+      <th scope="row" className="table__order__number">
+        #124fdf
+      </th>
+      <td className="table__date">June 4, 2020</td>
+      <td>
+        <div className="table__status"> {tableStatus}</div>
+      </td>
+      <td className="table__customer">Swarnima Chaudhary</td>
+      <td className="table__purchased__item">1 item</td>
+      <td className="table__assigned">Manturam Chaudhary</td>
+      <td className="table__price">
+        {" "}
+        <span className="table__rs__title">Rs.</span> 12,000
+      </td>{" "}
+      <td>{seeMoreFunction()}</td>
+    </tr>
+  );
   return (
     <div className="tailor__order">
       <div className="tailor__heading row no-gutters">
         <div className="tailor__heading__part1 col-lg-6 col-md-6 col-12">
           {" "}
-          <h5>ORDERS</h5>
+          <h5 className="tailor__tabs__title">ORDERS</h5>
         </div>
         <div className="tailor__heading__part2 col-lg-4 col-md-5 col-12 justify-content-end">
           <div className="tailor__quick__search">
@@ -42,87 +68,39 @@ function TailorOrder() {
         <table class="table order__table" id="orders__table">
           <thead>
             <tr>
-              <th scope="col">Orders</th>
-              <th scope="col">Date</th>
-              <th scope="col">Status</th>
-              <th scope="col">Customer</th>
-              <th scope="col">Purchased</th>
-              <th scope="col">Assigned To</th>
-              <th scope="col">Total</th>
-              <th scope="col">See more</th>
+              <th scope="col" className="table__header">
+                Order No.
+              </th>
+              <th scope="col" className="table__header">
+                Date
+              </th>
+              <th scope="col" className="table__header">
+                Status
+              </th>
+              <th scope="col" className="table__header">
+                Customer
+              </th>
+              <th scope="col" className="table__header">
+                Purchased
+              </th>
+              <th scope="col" className="table__header">
+                Assigned To
+              </th>
+              <th scope="col" className="table__header">
+                Total
+              </th>
+              <th scope="col" className="table__header">
+                See more
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td> <td>{seeMoreFunction()}</td>
-            </tr>
-
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
+            {tableRow}
           </tbody>
         </table>
         {/* <nav aria-label="Page navigation example">

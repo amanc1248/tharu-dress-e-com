@@ -1,0 +1,83 @@
+.authentication__logo {
+  height: 45vh;
+  /* width: 100%; */
+  /* background-position: center; */
+
+  object-fit: cover;
+}
+@media screen and (max-width: 500px) {
+  .authentication__logo {
+    height: 30vh;
+  }
+}
+
+/* Login👇👇 */
+.login {
+  text-align: left;
+}
+.login__container {
+  background-color: #e7e7e7;
+  margin: 8px;
+  padding: 20px 70px;
+}
+.signin__inputs {
+  display: flex;
+  flex-direction: column;
+}
+.subtitle {
+  margin: 10px 0;
+}
+form,
+p {
+  font-size: 14px;
+}
+
+input {
+  border: none;
+  width: 100%;
+  height: 45px;
+  margin: 15px 0 10px 0 !important;
+}
+.login__form__footer {
+  display: flex;
+  flex-direction: row;
+}
+.signIn__button {
+  border: none;
+  width: 180px;
+  height: 45px;
+  background-color: #000000;
+  color: white;
+}
+
+/* Signup 👇👇👇 */
+.signup {
+  text-align: left;
+}
+.signup__container {
+  background-color: #e7e7e7;
+  margin: 8px;
+  padding: 20px 70px;
+}
+.register__inputs {
+  display: flex;
+  flex-direction: column;
+}
+.register__button {
+  border: none;
+  width: 180px;
+  height: 45px;
+  background-color: #000000;
+  color: white;
+}
+.security__text {
+  margin: 15px 0;
+}
+@media screen and (max-width: 500px) {
+  .signup__container,
+  .login__container {
+    padding: 15px 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}

@@ -2,16 +2,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./adapters/ScrollToTop/ScrollToTop";
 import "./App.css";
-import Authentication from "./Components/customer/Authentication/Authentication";
 import Cart from "./Components/customer/Cart/Cart";
 import Kids from "./Components/customer/Category/Kids/Kids";
 import Men from "./Components/customer/Category/Men/Men";
 import Women from "./Components/customer/Category/Women/Women";
 import CustomerCheckout from "./Components/customer/CustomerCheckout/CustomerCheckout";
+import CustomerLoginSignup from "./Components/customer/CustomerLoginSignup/CustomerLoginSignup";
 import Footer from "./Components/customer/Footer/Footer";
 import FooterFAQs from "./Components/customer/Footer/FooterFAQs/FooterFAQs";
 import AboutDasa from "./Components/customer/Footer/TheCompany/TheCompany";
-import EmployeeAndTailorRegister from "./Components/customer/Header/EmployeeAndTailorRegister";
 import Header, { SearchBar } from "./Components/customer/Header/Header";
 import Home from "./Components/customer/Home Page/Home";
 import KidsProduct from "./Components/customer/Product Category/Kids Product/KidsProduct";
@@ -24,6 +23,7 @@ import EmployeeDetails from "./Components/DetailsPage/EmployeeDetails";
 import OrdersDetails from "./Components/DetailsPage/OrdersDetails";
 import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegister/EmployeesSignInRegister";
 import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
+import ImageWithTitle from "./Components/Global/ImageWithTitle";
 import TailorHeader from "./Components/Tailor/TailorHeader/TailorHeader";
 import SignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
 import Tailor from "./Components/Tailor/TailorStore/Tailor";
@@ -66,7 +66,7 @@ function App() {
             </Route>
             <Route path="/signin">
               <Header></Header>
-              <Authentication></Authentication>
+              <CustomerLoginSignup></CustomerLoginSignup>
               <Footer></Footer>
             </Route>
             <Route path="/cart">
@@ -80,7 +80,7 @@ function App() {
               <Footer></Footer>
             </Route>
             <Route path="/tailorSignIn">
-              <EmployeeAndTailorRegister theTitle="CREATE A TAILOR ACCOUNT"></EmployeeAndTailorRegister>
+              <ImageWithTitle theTitle="CREATE A TAILOR ACCOUNT"></ImageWithTitle>
               <SignInRegister></SignInRegister>
               <Footer></Footer>
             </Route>
@@ -95,7 +95,7 @@ function App() {
               </div> */}
             </Route>
             <Route path="/employeeSignIn">
-              <EmployeeAndTailorRegister theTitle="CREATE AN EMPLOYEE ACCOUNT"></EmployeeAndTailorRegister>
+              <ImageWithTitle theTitle="CREATE AN EMPLOYEE ACCOUNT"></ImageWithTitle>
               <EmployeeSignInRegister></EmployeeSignInRegister>
               <Footer></Footer>
             </Route>
@@ -106,7 +106,7 @@ function App() {
             </Route>
             <Route path="/checkOut">
               <Header></Header>
-              <EmployeeAndTailorRegister theTitle="CHECKOUT"></EmployeeAndTailorRegister>
+              <ImageWithTitle theTitle="CHECKOUT"></ImageWithTitle>
               <CustomerCheckout></CustomerCheckout>
             </Route>
             <Route path="/detailsPage">

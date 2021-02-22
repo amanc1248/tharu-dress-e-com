@@ -3,6 +3,9 @@ import "./TailorSales.css";
 function TailorSales() {
   return (
     <div className="tailor__sales">
+      <div className="tailor__products__heading">
+        <h5 className="tailor__tabs__title">DASHBOARD</h5>
+      </div>
       <div className="tailor__sales__container">
         <div className="total__sales">
           <h4>Total Sales</h4>
