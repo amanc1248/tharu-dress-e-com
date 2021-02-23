@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
+.admin__tabs__title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+}
+/* .admin__dashboard__card1 {
+  height: 241px !important;
+} */
+.admin__dashbaord__card1__container {
+  height: 241px !important;
+
+  background-color: white;
+  border-radius: 8px;
+  text-align: left;
+  padding: 20px 25px !important;
+  margin: 10px !important;
+}
+.admin__dashbaord__card1__title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+.total__amount,
+.this__week__amount {
+  font-family: "DM Sans", sans-serif;
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.last__month__amount {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.875rem;
+  color: #d4c2ff;
+}
+.this__week__text {
+  margin: 20px 0 10px 0;
+  color: white;
+  font-family: "DM Sans", sans-serif;
+}
+.this__week__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.this__week__status {
+  text-align: right;
+}
+.this__week__status__amount {
+  font-family: "DM Sans", sans-serif;
+  color: #1ee0ac;
+}
+.this__week__status__text {
+  font-family: "DM Sans", sans-serif;
+  color: #d4c2ff;
+  font-size: 0.875rem;
+}
+
+/* Styling average orders 👇 */
+.this__week__average {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.this__week__average__amount {
+  font-family: "DM Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #364a63;
+}
+.avearage__order__status__text {
+  font-size: 0.875rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #526484;
+}

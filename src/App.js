@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./adapters/ScrollToTop/ScrollToTop";
 import "./App.css";
+import Admin from "./Components/Admin/Admin";
 import Cart from "./Components/customer/Cart/Cart";
 import Kids from "./Components/customer/Category/Kids/Kids";
 import Men from "./Components/customer/Category/Men/Men";
@@ -133,6 +134,11 @@ function App() {
               <Header></Header>
               <AboutDasa></AboutDasa>
               <Footer></Footer>
+            </Route>
+
+            {/* Admin routes👇 */}
+            <Route path="/admin">
+              <Admin></Admin>
             </Route>
             {/* Home Route👇 */}
             <Route path="/">
