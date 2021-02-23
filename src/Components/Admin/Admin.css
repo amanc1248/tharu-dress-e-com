@@ -8,10 +8,22 @@
 /* .admin__dashboard__card1 {
   height: 241px !important;
 } */
-.admin__dashbaord__card1__container {
-  height: 241px !important;
 
+.admin__dashbaord__card1__container {
+  /* height: 241px; */
+}
+
+@media screen and (max-width: 500px) {
+  .admin__dashbaord__card1__container {
+    height: max-content;
+  }
+}
+
+.admin__dashbaord__card2__container {
   background-color: white;
+}
+.admin__dashbaord__card1__container,
+.admin__dashbaord__card2__container {
   border-radius: 8px;
   text-align: left;
   padding: 20px 25px !important;
@@ -75,4 +87,46 @@
   font-weight: 400;
   line-height: 1.65;
   color: #526484;
+}
+.admin__dashboard__card2 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #526484;
+}
+
+/* Styling product requests 👇 */
+.products__requests__element {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.625rem 0;
+  line-height: 1.2;
+}
+.product__request__first__part {
+  display: flex;
+}
+.product__request__second__part {
+  text-align: right;
+}
+.product__request__image__container {
+  height: 50px;
+  width: 50px;
+}
+.product__request__title {
+  font-size: 0.9375rem;
+  color: #364a63;
+  margin-bottom: 0.25rem;
+  font-family: "DM Sans", sans-serif;
+}
+
+.product__request__price {
+  font-size: 0.8125rem;
+  color: #8094ae;
+  margin-bottom: 1px;
+  font-family: "DM Sans", sans-serif;
+}
+.see__request__detail {
+  font-family: "DM Sans", sans-serif;
+  font-size: smaller;
+  cursor: pointer;
 }

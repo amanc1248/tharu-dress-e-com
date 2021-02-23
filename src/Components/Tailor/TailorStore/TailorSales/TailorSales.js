@@ -92,7 +92,13 @@ function DashBoardCard2({ title, dashBoardContent, colLength }) {
 }
 
 function StoreStatistics() {
-  function StoreStatisticsElement({ title, amount, icon, containerColor }) {
+  function StoreStatisticsElement({
+    title,
+    amount,
+    icon,
+    containerColor,
+    iconColor,
+  }) {
     return (
       <div className="store__statistics__element">
         <div className="store__statistics__data">
@@ -102,38 +108,48 @@ function StoreStatistics() {
         <div className="store__statistic__design">
           <div
             className="store__statistics__container"
-            style={{ backgroundColor: "#EFE8FF" }}
+            style={{ backgroundColor: `${containerColor}` }}
           >
-            {icon}
+            <div className="the__icon" style={{ fill: `${iconColor}` }}>
+              {icon}
+            </div>
           </div>
         </div>
       </div>
     );
   }
   const storeStatisticsData = [
-    { title: "Orders", amount: "1,254", icon: <LocalMallIcon></LocalMallIcon> },
+    {
+      title: "Orders",
+      amount: "1,254",
+      icon: <LocalMallIcon style={{ color: "#854FFF" }}></LocalMallIcon>,
+      containerColor: "#EFE8FF",
+      iconColor: "#854FFF",
+    },
     {
       title: "Revenue",
       amount: "10,005",
-      icon: <AttachMoneyIcon></AttachMoneyIcon>,
-      containerColor: "#EFE8FF",
+      icon: <AttachMoneyIcon style={{ color: "#09C2DE" }}></AttachMoneyIcon>,
+      containerColor: "#DFF7FB",
     },
     {
       title: "Customers",
       amount: "254",
-      icon: <PeopleOutlineIcon></PeopleOutlineIcon>,
-      containerColor: "#DFF7FB",
+      icon: (
+        <PeopleOutlineIcon style={{ color: "#FF63B6" }}></PeopleOutlineIcon>
+      ),
+      containerColor: "#FFEBF3",
     },
     {
       title: "Products",
       amount: "54",
-      icon: <WebAssetIcon></WebAssetIcon>,
-      containerColor: "#DFF7FB",
+      icon: <WebAssetIcon style={{ color: "#816BFF" }}></WebAssetIcon>,
+      containerColor: "#EFECFF",
     },
     {
       title: "Categories",
       amount: "14",
-      icon: <DnsIcon></DnsIcon>,
+      icon: <DnsIcon style={{ color: "#09C2DE" }}></DnsIcon>,
       containerColor: "#DFF7FB",
     },
   ];
