@@ -76,8 +76,10 @@ input {
 @media screen and (max-width: 500px) {
   .signup__container,
   .login__container {
-    padding: 15px 10px;
-    margin-left: 4px;
-    margin-right: 4px;
+    padding: 15px 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 25px;
+    margin-top: 25px;
   }
 }

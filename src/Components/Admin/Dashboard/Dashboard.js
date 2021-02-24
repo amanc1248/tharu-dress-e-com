@@ -13,8 +13,9 @@ import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
-import { SeeMoreToogle } from "../../Tailor/TailorStore/TailorOrder/TailorOrder";
-
+import { WorkOutlineOutlined, PersonPinOutlined } from "@material-ui/icons";
+import { Doughnut } from "react-chartjs-2";
+import { SeeMoreToogle } from "../../Global/SeeMoreContainer";
 function Dashboard() {
   return (
     <div className="dashboard">
@@ -103,8 +104,8 @@ function Dashboard() {
           title="Order Statistics"
           backgroundColor="white"
           titleColor="#526484"
-          theWidth="col-lg-4 col-md-6 col-12"
-          // theContent={}
+          theWidth="col-lg-6 col-md-6 col-12"
+          theContent={<OrderStatisticsAdmin></OrderStatisticsAdmin>}
           height="max-content"
         ></AdminDashboardCard1>
         <AdminDashboardCard1
@@ -437,17 +438,17 @@ function StoreStatisticsAdmin() {
       title: "Tailors",
       amount: "254",
       icon: (
-        <PeopleOutlineIcon style={{ color: "#FF63B6" }}></PeopleOutlineIcon>
+        <PersonPinOutlined style={{ color: "#9A6BFF" }}></PersonPinOutlined>
       ),
-      containerColor: "#FFEBF3",
+      containerColor: "#9a6bff35",
     },
     {
       title: "Employees",
       amount: "254",
       icon: (
-        <PeopleOutlineIcon style={{ color: "#FF63B6" }}></PeopleOutlineIcon>
+        <WorkOutlineOutlined style={{ color: "#FFD752" }}></WorkOutlineOutlined>
       ),
-      containerColor: "#FFEBF3",
+      containerColor: "#ffd75275",
     },
     {
       title: "Products",
@@ -578,6 +579,31 @@ function RecentOrdersAdmin() {
           </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+function OrderStatisticsAdmin() {
+  return (
+    <div className="order__statistics">
+      <Doughnut
+        data={{
+          labels: ["Processing", "Cancelled", "Completed"],
+          datasets: [
+            {
+              data: [38, 9, 239],
+              backgroundColor: ["#00C0EB", "#FF5CA0", "#6347FF"],
+            },
+          ],
+        }}
+        options={{
+          legend: {
+            display: true,
+            position: "bottom",
+            fontFamily: "Arial",
+            postion: "right",
+          },
+        }}
+      />
     </div>
   );
 }

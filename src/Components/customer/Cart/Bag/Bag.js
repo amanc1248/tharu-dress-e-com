@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ShoppingBagProduct from "./ShoppingBagProduct";
 
-function Bag({bagTitle}) {
+function Bag({ bagTitle }) {
   return (
     <div className="bag">
       <div className="bag__title">

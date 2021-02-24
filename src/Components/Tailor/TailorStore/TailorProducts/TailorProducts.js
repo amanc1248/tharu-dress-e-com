@@ -6,7 +6,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import Checkbox from "@material-ui/core/Checkbox";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { SeeMoreToogle } from "../TailorOrder/TailorOrder";
+import { SeeMoreToogle } from "../../../Global/SeeMoreContainer";
 
 function TailorProducts() {
   const tableRow = (

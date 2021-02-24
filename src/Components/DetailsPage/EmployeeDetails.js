@@ -9,7 +9,7 @@ import TailorTabs from "../Tailor/TailorStore/TailorTabs/TailorTabs";
 import { CustomerOrders } from "./CustomerDetails";
 import DetailsPage from "./DetailsPage";
 import PersonIcon from "@material-ui/icons/Person";
-import { SeeMoreToogle } from "../Tailor/TailorStore/TailorOrder/TailorOrder";
+import { SeeMoreToogle } from "../Global/SeeMoreContainer";
 function EmployeeDetails() {
   return (
     <div className="employee__details">
@@ -41,7 +41,7 @@ function EmployeeDetails() {
           <CustomerOrders></CustomerOrders>
         </div>
         <div label="Ankita's Customers">
-        <EmployeeCustomers></EmployeeCustomers>
+          <EmployeeCustomers></EmployeeCustomers>
         </div>
       </TailorTabs>
     </div>

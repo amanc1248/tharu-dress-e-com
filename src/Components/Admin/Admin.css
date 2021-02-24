@@ -28,6 +28,7 @@
   text-align: left;
   padding: 20px 25px !important;
   margin: 10px !important;
+  /* height: ; */
 }
 .admin__dashbaord__card1__title {
   font-family: "DM Sans", sans-serif;
@@ -129,4 +130,8 @@
   font-family: "DM Sans", sans-serif;
   font-size: smaller;
   cursor: pointer;
+}
+.a{
+  color: #9a6bff35;
+  color: #ffd75275;
 }

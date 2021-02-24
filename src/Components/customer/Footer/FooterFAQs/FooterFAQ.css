@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
 .faq__title {
   position: absolute;
   top: 50%;
+  font-family: "DM Sans", sans-serif;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 36px;
@@ -99,6 +102,7 @@
 @media screen and (max-width: 767px) {
   .faq__title {
     font-size: 25px;
+    font-weight: 600;
   }
   .faq__content__title {
     font-size: 18px;

@@ -11,7 +11,7 @@ import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
-import { SeeMoreToogle } from "../TailorOrder/TailorOrder";
+import { SeeMoreToogle } from "../../../Global/SeeMoreContainer";
 function TailorSales() {
   const dashBoardCard1Contents = [
     { title: "Today Orders", amount: "1,584", status: "4.76%" },

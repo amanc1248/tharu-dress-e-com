@@ -3,6 +3,7 @@ import ImageWithTitle from "../Global/ImageWithTitle";
 import TailorTabs from "../Tailor/TailorStore/TailorTabs/TailorTabs";
 import Dashboard from "./Dashboard/Dashboard";
 import "./Admin.css";
+import ProductRequest from "./ProductRequests/ProductRequest";
 function Admin() {
   return (
     <div className="admin__dashboard">
@@ -18,7 +19,9 @@ function Admin() {
         <div label="DashBoard">
           <Dashboard></Dashboard>
         </div>
-        <div label="Product Requests"></div>
+        <div label="Product Requests">
+          <ProductRequest></ProductRequest>
+        </div>
         <div label="Customers"></div>
         <div label="Tailors"></div>
         <div label="Employees"></div>

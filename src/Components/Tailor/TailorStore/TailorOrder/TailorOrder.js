@@ -1,15 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import "./TailorOrder.css";
 import SearchIcon from "@material-ui/icons/Search";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import { Link } from "react-router-dom";
+import { SeeMoreToogle } from "../../../Global/SeeMoreContainer";
 function TailorOrder() {
   const tableStatus = (
     <div className="table__status__container">
@@ -139,66 +137,5 @@ let seeMoreOptionsList = [
 const seeMoreFunction = () => {
   return <SeeMoreToogle theList={seeMoreOptionsList}></SeeMoreToogle>;
 };
-export function SeeMoreToogle({ theList }) {
-  const [moreAction, setMoreAction] = useState(false);
-  const hideMoreAction = () => {
-    setMoreAction(!moreAction);
-  };
-
-  function SeeMoreIndividual({ theIcon, theIconText, theLink }) {
-    return (
-      <Link to={theLink} style={{ textDecoration: "none", color: "none" }}>
-        <div className="see__more__individual__container">
-          <div className="see__more__icon">{theIcon}</div>
-          <div className="see__more__text">{theIconText}</div>
-        </div>
-      </Link>
-    );
-  }
-  function SeeMoreContainer({ seeMoreRef }) {
-    let seeMoreOptions = theList.map((obj) => {
-      return (
-        <SeeMoreIndividual
-          key={obj.toString()}
-          theLink={obj.theLink}
-          theIcon={obj.icon}
-          theIconText={obj.iconText}
-        >
-          {" "}
-        </SeeMoreIndividual>
-      );
-    });
-    return (
-      <div className="see__more__container" ref={seeMoreRef}>
-        {seeMoreOptions}
-      </div>
-    );
-  }
-  const seeMoreRef = useRef(null);
-  useEffect(() => {
-    function hideSeeMore(event) {
-      if (seeMoreRef.current && !seeMoreRef.current.contains(event.target)) {
-        hideMoreAction();
-      }
-    }
-    document.addEventListener("mousedown", hideSeeMore);
-    return () => {
-      document.removeEventListener("mousedown", hideSeeMore);
-    };
-  }, [moreAction, seeMoreRef]);
-  return (
-    <div className="see__more__data">
-      <MoreHorizIcon
-        className="more__horizon__icon"
-        onClick={() => {
-          setMoreAction(!moreAction);
-        }}
-      ></MoreHorizIcon>
-      {moreAction && (
-        <SeeMoreContainer seeMoreRef={seeMoreRef}></SeeMoreContainer>
-      )}
-    </div>
-  );
-}
 
 export default TailorOrder;

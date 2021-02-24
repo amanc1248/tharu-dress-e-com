@@ -1,10 +1,10 @@
 import React from "react";
-import { SeeMoreToogle } from "../Tailor/TailorStore/TailorOrder/TailorOrder";
 import TailorTabs from "../Tailor/TailorStore/TailorTabs/TailorTabs";
 import DetailsPage from "./DetailsPage";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import { CustomerDetailsForEmployee } from "../Employees/EmployeesStore/YourWork/YourWork";
+import { SeeMoreToogle } from "../Global/SeeMoreContainer";
 function CustomerDetails() {
   return (
     <div className="customer__details">

@@ -2,8 +2,8 @@ import React from "react";
 import "./TailorCustomer.css";
 import PersonIcon from "@material-ui/icons/Person";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
-import { SeeMoreToogle } from "../TailorOrder/TailorOrder";
 import "../../Tailors.css";
+import { SeeMoreToogle } from "../../../Global/SeeMoreContainer";
 function TailorCustomer() {
   const tableRow = (
     <tr>

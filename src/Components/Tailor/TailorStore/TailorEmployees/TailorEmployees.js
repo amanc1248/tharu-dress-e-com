@@ -4,8 +4,8 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 import "../TailorProducts/TailorProducts.css";
-import { SeeMoreToogle } from "../TailorOrder/TailorOrder";
 import { Link } from "react-router-dom";
+import { SeeMoreToogle } from "../../../Global/SeeMoreContainer";
 function TailorEmployees() {
   const tableStatus = (
     <div className="table__status__container">
