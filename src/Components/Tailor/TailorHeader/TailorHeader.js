@@ -4,7 +4,7 @@ import "./TailorHeader.css";
 function TailorHeader() {
   return (
     <div className="tailor__header">
-      <ImageWithTitle theTitle="EMPLOYEE ACCOUNT"></ImageWithTitle>
+      <ImageWithTitle theTitle="TAILOR ACCOUNT"></ImageWithTitle>
       <div className="welcome__user">
         <h5>WELCOME, AMAN</h5>
       </div>

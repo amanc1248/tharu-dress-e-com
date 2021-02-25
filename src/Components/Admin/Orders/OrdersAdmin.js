@@ -1,32 +1,36 @@
 import React from "react";
 
+import SearchIcon from "@material-ui/icons/Search";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
-import { BackspaceOutlined } from "@material-ui/icons";
 import { SeeMoreToogle } from "../../Global/SeeMoreContainer";
 import { Link } from "@material-ui/core";
 
-function ProductRequests() {
+function OrdersAdmin() {
   let seeMoreOptionsList = [
     {
       icon: <VisibilityIcon></VisibilityIcon>,
-      iconText: "See Request Details",
+      iconText: "Order Details",
       theLink: "/orderDetails",
+    },
+    {
+      icon: <AssignmentIndIcon></AssignmentIndIcon>,
+      iconText: "Tailor Details",
+      theLink: "/tailorAccount",
+    },
+    {
+      icon: <AssignmentIndIcon></AssignmentIndIcon>,
+      iconText: "Employee Details",
+      theLink: "/employeeDetails",
     },
     {
       icon: <PersonIcon></PersonIcon>,
-      iconText: "Tailor Details",
-      theLink: "/orderDetails",
-    },
-
-    {
-      icon: <CheckBoxIcon></CheckBoxIcon>,
-      iconText: "Mark as approved",
-    },
-    {
-      icon: <BackspaceOutlined></BackspaceOutlined>,
-      iconText: "Mark as declined",
+      iconText: "Customer Details",
+      theLink: "/customerDetails",
     },
   ];
   const seeMoreFunction = () => {
@@ -40,18 +44,15 @@ function ProductRequests() {
       </th>
       <td className="table__customer">Anchara With Red Boutique</td>
       <td className="table__date">June 4, 2020</td>
-      <td className="table__date">
-        <Link>See Details</Link>
-      </td>
-      <td className="table__price">
-        {" "}
-        <span className="table__rs__title">Rs.</span> 12,000
-      </td>{" "}
+      <td className="table__date">Pujan Prasai</td>
+      <td className="table__date">Soni Chaudhary</td>
+      <td className="table__date">Sanju </td>
+
       <td>{seeMoreFunction()}</td>
     </tr>
   );
   return (
-    <div>
+    <div className="orders__admin">
       <div className="tailor__products__heading">
         <h5 className="admin__tabs__title">PRODUCT REQUESTS</h5>
       </div>
@@ -60,20 +61,23 @@ function ProductRequests() {
           <thead>
             <tr>
               <th scope="col" className="table__header">
-                Tailor
+                Order Id
               </th>
               <th scope="col" className="table__header">
-                Title
+                Ordered Date
               </th>
               <th scope="col" className="table__header">
-                Requested Date
+                Status
               </th>
 
               <th scope="col" className="table__header">
-                Design
+                Customer
               </th>
               <th scope="col" className="table__header">
-                Price Allocated
+                Tailor
+              </th>
+              <th scope="col" className="table__header">
+                Employee Assigned
               </th>
               <th scope="col" className="table__header">
                 See more
@@ -94,4 +98,4 @@ function ProductRequests() {
   );
 }
 
-export default ProductRequests;
+export default OrdersAdmin;

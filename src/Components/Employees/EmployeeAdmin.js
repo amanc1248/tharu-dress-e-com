@@ -1,32 +1,13 @@
 import React from "react";
-
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import PersonIcon from "@material-ui/icons/Person";
-import { BackspaceOutlined } from "@material-ui/icons";
-import { SeeMoreToogle } from "../../Global/SeeMoreContainer";
-import { Link } from "@material-ui/core";
+import { SeeMoreToogle } from "../Global/SeeMoreContainer";
 
-function ProductRequests() {
+function EmployeeAdmin() {
   let seeMoreOptionsList = [
     {
       icon: <VisibilityIcon></VisibilityIcon>,
-      iconText: "See Request Details",
+      iconText: "See Employee Details",
       theLink: "/orderDetails",
-    },
-    {
-      icon: <PersonIcon></PersonIcon>,
-      iconText: "Tailor Details",
-      theLink: "/orderDetails",
-    },
-
-    {
-      icon: <CheckBoxIcon></CheckBoxIcon>,
-      iconText: "Mark as approved",
-    },
-    {
-      icon: <BackspaceOutlined></BackspaceOutlined>,
-      iconText: "Mark as declined",
     },
   ];
   const seeMoreFunction = () => {
@@ -38,42 +19,38 @@ function ProductRequests() {
       <th scope="row" className="table__customer">
         Dipraj Rai
       </th>
-      <td className="table__customer">Anchara With Red Boutique</td>
-      <td className="table__date">June 4, 2020</td>
-      <td className="table__date">
-        <Link>See Details</Link>
-      </td>
-      <td className="table__price">
-        {" "}
-        <span className="table__rs__title">Rs.</span> 12,000
-      </td>{" "}
+      <td className="table__customer">April 5, 2019</td>
+      <td className="table__date">155</td>
+      <td className="table__customer">Abhishek Neupane</td>
+      <td className="table__location">Biratnagar</td>
       <td>{seeMoreFunction()}</td>
     </tr>
   );
+
   return (
-    <div>
+    <div className="employee__admin">
       <div className="tailor__products__heading">
-        <h5 className="admin__tabs__title">PRODUCT REQUESTS</h5>
+        <h5 className="admin__tabs__title">CUSTOMERS</h5>
       </div>
       <div className="tailor__orders">
         <table class="table order__table" id="orders__table">
           <thead>
             <tr>
               <th scope="col" className="table__header">
-                Tailor
+                Name
               </th>
               <th scope="col" className="table__header">
-                Title
+                Date Joined
               </th>
               <th scope="col" className="table__header">
-                Requested Date
+                Total Completed Orders
               </th>
 
               <th scope="col" className="table__header">
-                Design
+                Associated Taior
               </th>
               <th scope="col" className="table__header">
-                Price Allocated
+                Location
               </th>
               <th scope="col" className="table__header">
                 See more
@@ -94,4 +71,4 @@ function ProductRequests() {
   );
 }
 
-export default ProductRequests;
+export default EmployeeAdmin;
