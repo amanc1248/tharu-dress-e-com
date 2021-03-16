@@ -10,6 +10,12 @@ import { Link } from "react-router-dom";
 function EmployeesStore() {
   return (
     <div className="employee__store">
+      <div className="welcome__user">
+        <h5>WELCOME, AMAN</h5>
+      </div>
+      <p className="contact__us__instruction">
+        If you have any queries or need further assistance, please Contact Us
+      </p>
       <EmployeeStoreTabs>
         <div label="Your Work">
           <YourWork></YourWork>

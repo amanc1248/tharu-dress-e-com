@@ -86,7 +86,8 @@ function App() {
               <Footer></Footer>
             </Route>
             <Route path="/tailorAccount">
-              <TailorHeader></TailorHeader>
+              <ImageWithTitle theTitle="TAILOR ACCOUNT"></ImageWithTitle>
+
               <Tailor></Tailor>
             </Route>
             <Route path="/filterOptions">
@@ -102,7 +103,8 @@ function App() {
             </Route>
             <Route path="/playground"></Route>
             <Route path="/employeeAccount">
-              <TailorHeader></TailorHeader>
+              <ImageWithTitle theTitle="EMPLOYEE ACCOUNT"></ImageWithTitle>
+
               <EmployeesStore></EmployeesStore>
             </Route>
             <Route path="/checkOut">

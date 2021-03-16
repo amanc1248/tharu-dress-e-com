@@ -30,7 +30,7 @@ function EmployeeAdmin() {
   return (
     <div className="employee__admin">
       <div className="tailor__products__heading">
-        <h5 className="admin__tabs__title">CUSTOMERS</h5>
+        <h5 className="admin__tabs__title">EMPLOYEES</h5>
       </div>
       <div className="tailor__orders">
         <table class="table order__table" id="orders__table">

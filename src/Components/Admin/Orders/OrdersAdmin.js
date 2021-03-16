@@ -54,7 +54,7 @@ function OrdersAdmin() {
   return (
     <div className="orders__admin">
       <div className="tailor__products__heading">
-        <h5 className="admin__tabs__title">PRODUCT REQUESTS</h5>
+        <h5 className="admin__tabs__title">ORDERS</h5>
       </div>
       <div className="tailor__orders">
         <table class="table order__table" id="orders__table">

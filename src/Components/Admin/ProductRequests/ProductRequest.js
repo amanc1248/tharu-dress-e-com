@@ -17,7 +17,7 @@ function ProductRequests() {
     {
       icon: <PersonIcon></PersonIcon>,
       iconText: "Tailor Details",
-      theLink: "/orderDetails",
+      theLink: "/tailorAccount",
     },
 
     {
