@@ -3,7 +3,7 @@ import TailorTabs from "../Tailor/TailorStore/TailorTabs/TailorTabs";
 import Dashboard from "./Dashboard/Dashboard";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import "./Admin.css";
-import theSideBarData from "./AdminData";
+import theAdminSideBarData from "./AdminData";
 import ProductRequest from "./ProductRequests/ProductRequest";
 import CustomerAdmin from "./Customer/CustomerAdmin";
 import TailorAdmin from "./Tailor/TailorAdmin";
@@ -12,7 +12,28 @@ import OrdersAdmin from "./Orders/OrdersAdmin";
 import ProductsAdmin from "./Products/ProductsAdmin";
 import React, { useState, useEffect, useRef } from "react";
 import { FaBars, FaArrowLeft } from "react-icons/fa";
+const ourTabs = [
+  <Dashboard></Dashboard>,
+  <ProductRequest></ProductRequest>,
+  <CustomerAdmin></CustomerAdmin>,
+  <TailorAdmin></TailorAdmin>,
+  <EmployeeAdmin></EmployeeAdmin>,
+  <OrdersAdmin></OrdersAdmin>,
+  <ProductsAdmin></ProductsAdmin>,
+];
 function Admin() {
+  return (
+    <div>
+      <TheEntireSidebar
+        ourTabs={ourTabs}
+        name="Aman Chaudhary"
+        type="Administrator"
+        theData={theAdminSideBarData}
+      ></TheEntireSidebar>
+    </div>
+  );
+}
+export function TheEntireSidebar({ ourTabs, type, name, theData }) {
   const [sidebar, setSidebar] = useState(false);
   useEffect(() => {
     showHideSidebar();
@@ -45,15 +66,7 @@ function Admin() {
 
   // for changing tabs
   const [value, setValue] = useState(0);
-  const ourTabs = [
-    <Dashboard></Dashboard>,
-    <ProductRequest></ProductRequest>,
-    <CustomerAdmin></CustomerAdmin>,
-    <TailorAdmin></TailorAdmin>,
-    <EmployeeAdmin></EmployeeAdmin>,
-    <OrdersAdmin></OrdersAdmin>,
-    <ProductsAdmin></ProductsAdmin>,
-  ];
+
   return (
     <div className="side__bar">
       <div className="top__side__bar">
@@ -79,8 +92,8 @@ function Admin() {
           </div>
 
           <div className="admin__detail">
-            <div className="admin__title">Administrator</div>
-            <div className="admin__name">Aman Chaudhary</div>
+            <div className="admin__title">{type}</div>
+            <div className="admin__name">{name}</div>
           </div>
         </div>
       </div>
@@ -114,7 +127,7 @@ function Admin() {
               <></>
             )}
           </div>
-          {theSideBarData.map((obj, index) => {
+          {theData.map((obj, index) => {
             return (
               <SidebarComponent
                 index={index}
@@ -123,10 +136,6 @@ function Admin() {
               ></SidebarComponent>
             );
           })}
-          {/* <SidebarTabs>
-            <div label="Dashboard">This is the dashboard</div>
-            <div label="Customer"> Customer</div>
-          </SidebarTabs> */}
         </div>
       </div>
     );

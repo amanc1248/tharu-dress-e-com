@@ -29,7 +29,7 @@ function Dashboard() {
           title="Total Sales"
           backgroundColor="#3A2272"
           titleColor="white"
-          theWidth="col-lg-4 col-md-6 col-12"
+          theWidth="col-lg-6  col-12"
           theContent={<TotalSales></TotalSales>}
           height="max-content"
         ></AdminDashboardCard1>
@@ -37,7 +37,7 @@ function Dashboard() {
           title="Average Orders"
           backgroundColor="white"
           titleColor="#526484"
-          theWidth="col-lg-4 col-md-6 col-12"
+          theWidth="col-lg-6  col-12"
           theContent={<AverageOrder></AverageOrder>}
           height="241px"
         ></AdminDashboardCard1>
@@ -73,7 +73,7 @@ function Dashboard() {
         <AdminDashboardCard1
           title="Product Requests"
           backgroundColor="#DFF7FB"
-          theWidth="col-lg-4 col-md-6 col-12"
+          theWidth="col-lg-6  col-12"
           titleColor="#526484"
           theContent={<ProductRequests></ProductRequests>}
           height="max-content"
@@ -82,7 +82,7 @@ function Dashboard() {
         <AdminDashboardCard1
           title="Top Requests"
           backgroundColor="white"
-          theWidth="col-lg-4 col-md-6 col-12"
+          theWidth="col-lg-6 col-12"
           titleColor="#526484"
           theContent={<TopProductsAdmin></TopProductsAdmin>}
           height="max-content"
@@ -95,7 +95,7 @@ function Dashboard() {
           title="Store Statistics"
           backgroundColor="white"
           titleColor="#526484"
-          theWidth="col-lg-4 col-md-6 col-12"
+          theWidth="col-lg-6 col-12"
           theContent={<StoreStatisticsAdmin></StoreStatisticsAdmin>}
           height="max-content"
         ></AdminDashboardCard1>
@@ -104,7 +104,7 @@ function Dashboard() {
           title="Order Statistics"
           backgroundColor="white"
           titleColor="#526484"
-          theWidth="col-lg-6 col-md-6 col-12"
+          theWidth="col-lg-6 col-12"
           theContent={<OrderStatisticsAdmin></OrderStatisticsAdmin>}
           height="max-content"
         ></AdminDashboardCard1>
@@ -112,7 +112,7 @@ function Dashboard() {
           title="User by location"
           backgroundColor="white"
           titleColor="#526484"
-          theWidth="col-lg-4 col-md-6 col-12"
+          theWidth="col-lg-6 col-12"
           // theContent={}
           height="max-content"
         ></AdminDashboardCard1>
@@ -160,7 +160,7 @@ function AdminDashboardCard1({
 }
 function AdminDashboardCard2({ title, amount, status }) {
   return (
-    <div className="admin__dashbaord__card2 col-lg-4 col-md-6 col-12">
+    <div className="admin__dashbaord__card2 col-lg-6 col-12">
       <div className="admin__dashbaord__card2__container">
         <div className="admin__dashboard__card2">{title}</div>
         <div className="this__week__average">

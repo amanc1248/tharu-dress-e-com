@@ -24,7 +24,7 @@ function TailorSales() {
       <div className="tailor__products__heading">
         <h5 className="tailor__tabs__title">DASHBOARD</h5>
       </div>
-      <div className="row no-gutters">
+      <div className="row">
         {dashBoardCard1Contents.map((obj) => {
           return (
             <DashBoardCard1
@@ -35,7 +35,7 @@ function TailorSales() {
           );
         })}
       </div>
-      <div className="row no-gutters">
+      <div className="row">
         <DashBoardCard2
           title="Order Statistics"
           colLength="col-lg-4 col-md-6 col-12"
@@ -68,13 +68,14 @@ function TailorSales() {
 
 function DashBoardCard1({ dashBoardTitle, dashBoardAmount, dashBoardStatus }) {
   return (
-    <div className="dashBoard__card col-lg-4 col-md-6 col-12">
+    <div className="dashBoard__card col-lg-6 col-12">
       <div className="dashBoard__card__container">
         <div className="dashBoardCard__title">{dashBoardTitle}</div>
         <div className="dashBoardCard__amount">{dashBoardAmount}</div>
-        <div className="dashBoardCard__status">
-          <span className="dashBoard__status__amount">{dashBoardStatus}</span>
-          <span className="dashBoard__status__text"> vs. Last Week</span>
+
+        <div className="this__week__status">
+          <div className="this__week__status__amount">{dashBoardStatus}</div>
+          <div className="avearage__order__status__text">vs. last week</div>
         </div>
       </div>
     </div>

@@ -86,8 +86,6 @@ function App() {
               <Footer></Footer>
             </Route>
             <Route path="/tailorAccount">
-              <ImageWithTitle theTitle="TAILOR ACCOUNT"></ImageWithTitle>
-
               <Tailor></Tailor>
             </Route>
             <Route path="/filterOptions">
