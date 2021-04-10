@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
+import { listCategoryProducts } from "../../../actions/productActions";
 function Home() {
+  // const dispatch = useDispatch();
+  // const productCategoryList = useSelector((state) => state.productCategoryList);
+  // const { products } = productCategoryList;
+  // useEffect(() => {
+  //   dispatch(listCategoryProducts);
+  // }, [dispatch]);
   return (
     <div className="home">
       {/* 1st section) First Carousel */}
