@@ -22,9 +22,9 @@ img.resize {
   width: auto;
   height: 100px;
 }
-.product__info__bag {
+.order_product__info__bag {
   text-align: left;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
 }
 .dude {

@@ -36,15 +36,12 @@ function TailorSales() {
         })}
       </div>
       <div className="row">
-        <DashBoardCard2
-          title="Order Statistics"
-          colLength="col-lg-4 col-md-6 col-12"
-        >
+        <DashBoardCard2 title="Order Statistics" colLength="col-lg-6 col-12">
           this is order
         </DashBoardCard2>
         <DashBoardCard2
           title="Store Statistics"
-          colLength="col-lg-4 col-md-6 col-12"
+          colLength="col-lg-6 col-12"
           dashBoardContent={<StoreStatistics></StoreStatistics>}
         ></DashBoardCard2>
       </div>
@@ -58,7 +55,7 @@ function TailorSales() {
       <div className="row no-gutters">
         <DashBoardCard2
           title="Top Products"
-          colLength="col-lg-4 col-md-6 col-12"
+          colLength="col-lg-6 col-12"
           dashBoardContent={<TopProducts></TopProducts>}
         ></DashBoardCard2>
       </div>
@@ -177,11 +174,7 @@ function RecentOrders() {
       iconText: "Order Details",
       theLink: "/orderDetails",
     },
-    {
-      icon: <AssignmentIndIcon></AssignmentIndIcon>,
-      iconText: "Employee Details",
-      theLink: "/employeeDetails",
-    },
+
     {
       icon: <PersonIcon></PersonIcon>,
       iconText: "Customer Details",
@@ -220,7 +213,6 @@ function RecentOrders() {
       </td>
       <td className="table__customer">Swarnima Chaudhary</td>
       <td className="table__purchased__item">1 item</td>
-      <td className="table__assigned">Manturam Chaudhary</td>
       <td className="table__price">
         {" "}
         <span className="table__rs__title">Rs.</span> 12,000
@@ -231,7 +223,7 @@ function RecentOrders() {
   return (
     <div>
       <div className="tailor__orders">
-        <table class="table order__table" id="orders__table">
+        <table class="table order__table" id="admin__recentOrders__table">
           <thead>
             <tr>
               <th scope="col" className="table__header">
@@ -249,9 +241,7 @@ function RecentOrders() {
               <th scope="col" className="table__header">
                 Purchased
               </th>
-              <th scope="col" className="table__header">
-                Assigned To
-              </th>
+
               <th scope="col" className="table__header">
                 Total
               </th>

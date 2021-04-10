@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
 .orders-tab-list {
   padding-left: 15px;
   display: flex;
@@ -16,7 +18,7 @@
   background-color: #e7e7e7;
 }
 .orders-tab-content {
-  background-color: #e7e7e7;
+  /* background-color: #e7e7e7; */
   padding: 10px;
 }
 .per__order__container {
@@ -54,6 +56,15 @@
 .particular__order_detail {
   background-color: #e7e7e7;
   padding: 10px;
+}
+.order_product__info__bag {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.particular__order__detail__container {
+  margin: 50px 150px;
+  border-radius: 8px;
 }
 .particular__order__detail__part1,
 .particular__order__detail__part2 {
@@ -111,4 +122,9 @@
   text-align: left;
   font-size: small;
   color: #9d9494;
+}
+
+/* Table style */
+Table {
+  font-family: "DM Sans", sans-serif;
 }

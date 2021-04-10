@@ -5,6 +5,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import { CustomerDetailsForEmployee } from "../Employees/EmployeesStore/YourWork/YourWork";
 import { SeeMoreToogle } from "../Global/SeeMoreContainer";
+import "./DetailsPage.css";
 function CustomerDetails() {
   return (
     <div className="customer__details">

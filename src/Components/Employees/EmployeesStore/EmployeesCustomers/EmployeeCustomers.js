@@ -2,14 +2,13 @@ import React from "react";
 import "./EmployeeCustomers.css";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { SeeMoreEmployeeToogle } from "../EmployeesStore";
+import TailorCustomer from "../../../Tailor/TailorStore/TailorCustomer/TailorCustomer";
 
 function EmployeeCustomers() {
   return (
     <div className="employee__customers">
-      <div className="employee__customer__title">
-        <h5>CUSTOMERS</h5>
-      </div>
-      <div className="employee__customer__container">
+      <TailorCustomer></TailorCustomer>
+      {/* <div className="employee__customer__container">
         <table className="table" id="employee__customer__table">
           <thead>
             <tr>
@@ -64,7 +63,7 @@ function EmployeeCustomers() {
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 }

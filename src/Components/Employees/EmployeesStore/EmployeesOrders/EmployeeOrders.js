@@ -4,10 +4,11 @@ import "./EmployeeOrders.css";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 
 import { SeeMoreEmployeeToogle } from "../EmployeesStore";
+import TailorOrder from "../../../Tailor/TailorStore/TailorOrder/TailorOrder";
 function EmployeeOrders() {
   return (
     <div className="employee__orders">
-      <div className="employee__orders__heading row no-gutters">
+      {/* <div className="employee__orders__heading row no-gutters">
         <div className="tailor__heading__part1 col-lg-6 col-md-6 col-sm-12">
           <h5>ORDERS</h5>
         </div>
@@ -19,8 +20,9 @@ function EmployeeOrders() {
           />
           <SearchIcon className="quick__search__icon"></SearchIcon>
         </div>
-      </div>
-      <div className="employee__orders__container">
+      </div> */}
+      <TailorOrder></TailorOrder>
+      {/* <div className="employee__orders__container">
         <table className="table" id="employee__orders__table">
           <thead>
             <tr>
@@ -99,7 +101,7 @@ function EmployeeOrders() {
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 }

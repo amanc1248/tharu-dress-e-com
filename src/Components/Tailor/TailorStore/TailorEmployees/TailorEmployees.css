@@ -12,6 +12,7 @@
 }
 .work__assigned {
   font-family: "DM Sans", sans-serif;
+  font-size: 13px;
 }
 @media screen and (max-width: 767px) {
   table#tailor__employees__table td:nth-child(2),

@@ -81,7 +81,7 @@ export function TheEntireSidebar({ ourTabs, type, name, theData }) {
             <FaBars></FaBars>
           </div>
         </div>
-        <div className="second__part">
+        <div className="second__part__sidebar">
           <div className="person__icon__circle">
             <div
               className="person__icon"

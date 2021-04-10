@@ -2,7 +2,22 @@
 .materials__needed,
 .work__customer__details {
   font-size: 13px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  width: 500px;
   text-align: left;
+  padding: 30px 20px;
+  -webkit-box-shadow: 0 0 10px rgb(187, 183, 183);
+  box-shadow: 0 0 10px rgba(187, 183, 183, 0.241);
+  border-bottom: 0.1px solid rgb(233, 229, 229);
+}
+@media screen and (max-width: 700px) {
+  .work__detail__progress,
+  .materials__needed,
+  .work__customer__details {
+    width: 100%;
+  }
 }
 .employee__work__details,
 .employee__work__customer__details {

@@ -18,14 +18,14 @@ function ShoppingBagProduct() {
             />
           </div>
           <div className="product__info__bag col-lg-8 col-7">
-            <span>
+            <div>
               {" "}
               <strong>White Anchara with red boutique</strong>{" "}
-            </span>
-            <span>Item 12439thjvlxgl</span>
-            <span>Full boutique</span>
-            <span>Size 3 m</span>
-            <span>Quantity 1</span>
+            </div>
+            <div>Item 12439thjvlxgl</div>
+            <div>Full boutique</div>
+            <div>Size 3 m</div>
+            <div>Quantity 1</div>
           </div>
           {/* align items works only inside row */}
           <div className=" product__price__container col-lg-2   align-self-end">

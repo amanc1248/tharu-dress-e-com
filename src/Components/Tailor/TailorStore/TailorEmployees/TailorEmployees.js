@@ -125,15 +125,11 @@ function AssignWork({ clickOutside }) {
             <label htmlFor="">
               Select Order
               <select name="" id="" className="select__employee__inputBox">
-                <option value="Order 1">Order 1</option>
-                <option value="Order 2">Order 2</option>
-                <option value="Order 3">Order 3</option>
-                <option value="Order 3">Order 3</option>
-                <option value="Order 3">Order 3</option>
-                <option value="Order 3">Order 3</option>
-                <option value="Order 3">Order 3</option>
-                <option value="Order 3">Order 3</option>
-                <option value="Order 3">Order 3</option>
+                <option value="Order 1 product 1">Order 1 product 1</option>
+                <option value="Order 1 product 2">Order 1 product 2</option>
+                <option value="Order 1 product 3">Order 1 product 3</option>
+                <option value="Order 2 product 1">Order 2 product 1</option>
+                <option value="Order 9 product 6">Order 9 product 6</option>
               </select>
             </label>
           </div>

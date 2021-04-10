@@ -17,3 +17,8 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* customer or employee information */
+.work__customer__details {
+  text-align: center;
+}

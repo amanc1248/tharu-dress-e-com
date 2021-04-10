@@ -1,14 +1,13 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { goToOrderDetails } from "../../../../contexts/Customer/Redux/Actions/index";
+import { Button, Table } from "react-bootstrap";
+
+import { LinkContainer } from "react-router-bootstrap";
+
 import "./Orders.css";
 import RedeemIcon from "@material-ui/icons/Redeem";
 function Orders() {
   return (
     <div className="orders">
-      <ParticulalrOrder></ParticulalrOrder>
-      <ParticulalrOrder></ParticulalrOrder>
-      <ParticulalrOrder></ParticulalrOrder>
       <ParticulalrOrder></ParticulalrOrder>
     </div>
   );
@@ -17,44 +16,93 @@ function Orders() {
 export default Orders;
 // For the particular order
 function ParticulalrOrder() {
-  const dispatch = useDispatch();
-
   return (
-    <div>
-      {/* per order container */}
-      <div className="per__order__container">
-        {/* For managing the order row */}
-        <div className="manage__order__row row no-gutters justify-content-between">
-          <div className="order__number__placed col-8">
-            <div>
-              <span className="order__number__title">Order</span>
-              <span
-                className="order__number"
-                onClick={() => dispatch(goToOrderDetails())}
-              >
-                #jasjdf879s
-              </span>
-            </div>
-            <div className="order__placed">placed on 28 Nov 2020 09:44:40</div>
-          </div>
-          <div className="manage__order__container col-4">
-            <span
-              className="manage__order"
-              onClick={() => dispatch(goToOrderDetails())}
-            >
-              Manage
-            </span>
-          </div>
-        </div>
-        <hr />
-        {/* for showing the order */}
-        <div className="order__show">
-          <ParticularOrderPackage></ParticularOrderPackage>
-          <ParticularOrderPackage></ParticularOrderPackage>
-          <ParticularOrderPackage></ParticularOrderPackage>
-        </div>
-      </div>
-    </div>
+    <Table striped hover responsive bordered className="table-sm">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>DATE</th>
+          <th>TOTAL</th>
+          <th>PAID</th>
+          <th>DELIVERED</th>
+          <th>DETAILS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#**$@aisfd9999</td>
+          <td>2021-02-5</td>
+          <td>Rs. 15,000</td>
+          <td>
+            <i className="fas fa-times" style={{ color: "red" }}></i>
+          </td>
+          <td>
+            <i className="fas fa-times" style={{ color: "red" }}></i>
+          </td>
+          <td>
+            <LinkContainer to="/">
+              <Button className="btn-sm" variant="light">
+                Details
+              </Button>
+            </LinkContainer>
+          </td>
+        </tr>
+        <tr>
+          <td>#**$@aisfd9999</td>
+          <td>2021-02-5</td>
+          <td>Rs. 15,000</td>
+          <td>
+            <i className="fas fa-times" style={{ color: "red" }}></i>
+          </td>
+          <td>
+            <i className="fas fa-times" style={{ color: "red" }}></i>
+          </td>
+          <td>
+            <LinkContainer to="/">
+              <Button className="btn-sm" variant="light">
+                Details
+              </Button>
+            </LinkContainer>
+          </td>
+        </tr>{" "}
+        <tr>
+          <td>#**$@aisfd9999</td>
+          <td>2021-02-5</td>
+          <td>Rs. 15,000</td>
+          <td>
+            <i className="fas fa-times" style={{ color: "red" }}></i>
+          </td>
+          <td>
+            <i className="fas fa-times" style={{ color: "red" }}></i>
+          </td>
+          <td>
+            <LinkContainer to="/">
+              <Button className="btn-sm" variant="light">
+                Details
+              </Button>
+            </LinkContainer>
+          </td>
+        </tr>{" "}
+        <tr>
+          <td>#**$@aisfd9999</td>
+          <td>2021-02-5</td>
+          <td>Rs. 15,000</td>
+          <td>
+            <i className="fas fa-times" style={{ color: "red" }}></i>
+          </td>
+          <td>
+            <i className="fas fa-times" style={{ color: "red" }}></i>
+          </td>
+          <td>
+            <LinkContainer to="/">
+              <Button className="btn-sm" variant="light">
+                Details
+              </Button>
+            </LinkContainer>
+          </td>
+        </tr>
+      </tbody>
+    </Table>
   );
 }
 
@@ -69,7 +117,7 @@ function ParticularOrderPackage() {
           className="product__image"
         />
       </div>
-      <div className="product__info__bag col-lg-8 col-7">
+      <div className="order_product__info__bag col-lg-8 col-7">
         <span>
           {" "}
           <strong>White Anchara with red boutique</strong>{" "}

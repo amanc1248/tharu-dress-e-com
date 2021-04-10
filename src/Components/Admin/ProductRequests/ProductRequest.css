@@ -1,0 +1,23 @@
+.product_requests__table {
+  border-radius: 8px;
+}
+@media screen and (max-width: 1000px) {
+  table#product__requests__orders__table td:nth-child(2),
+  table#product__requests__orders__table td:nth-child(3),
+  table#product__requests__orders__table td:nth-child(5) {
+    display: none;
+  }
+  table#product__requests__orders__table th:nth-child(2),
+  table#product__requests__orders__table th:nth-child(3),
+  table#product__requests__orders__table th:nth-child(5) {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  table#product__requests__orders__table td:nth-child(4) {
+    display: none;
+  }
+  table#product__requests__orders__table th:nth-child(4) {
+    display: none;
+  }
+}

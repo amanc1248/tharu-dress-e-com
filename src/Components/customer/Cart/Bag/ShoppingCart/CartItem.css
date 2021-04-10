@@ -1,0 +1,64 @@
+.cartItems {
+  background-color: white;
+  flex: 0.7;
+  text-align: left;
+  margin-right: 18px;
+  margin-bottom: 18px;
+  padding: 20px;
+}
+.cartItem {
+  display: flex;
+  padding: 15px 0;
+  border-bottom: 2px solid rgb(232, 228, 228);
+}
+.cartItem-info {
+  flex-grow: 1;
+}
+
+.item-actions {
+  display: flex;
+}
+.item-quantity-stock {
+  padding: 5px 8px;
+}
+.item-quantity-stock:focus {
+  outline: none;
+}
+.item-action-divider {
+  margin: 0 8px;
+}
+.info-title h2 {
+  margin: 10px 0;
+  font-size: 18px;
+  color: rgb(7, 106, 101);
+}
+.info-stock {
+  color: rgb(7, 106, 101);
+}
+.cartItem-price {
+  font-weight: 500;
+  margin-left: 16px;
+}
+.cartItem-info {
+  margin: 0 15px;
+}
+.cartItem-Image {
+  width: 180px;
+  height: 180px;
+  /* below code simply means, donot grow or shrink the div at all */
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.cartItem-Image img {
+  object-fit: contain;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .cartItem {
+    flex-direction: column;
+  }
+  .cartItems {
+    margin-right: 0;
+  }
+}

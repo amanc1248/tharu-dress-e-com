@@ -6,6 +6,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import { BackspaceOutlined } from "@material-ui/icons";
 import { SeeMoreToogle } from "../../Global/SeeMoreContainer";
 import { Link } from "@material-ui/core";
+import "./ProductRequest.css";
 
 function ProductRequests() {
   let seeMoreOptionsList = [
@@ -56,7 +57,10 @@ function ProductRequests() {
         <h5 className="admin__tabs__title">PRODUCT REQUESTS</h5>
       </div>
       <div className="tailor__orders">
-        <table class="table order__table" id="orders__table">
+        <table
+          class="table order__table product_requests__table"
+          id="product__requests__orders__table"
+        >
           <thead>
             <tr>
               <th scope="col" className="table__header">

@@ -11,10 +11,6 @@ import { SeeMoreToogle } from "../../../Global/SeeMoreContainer";
 function TailorProducts() {
   const tableRow = (
     <tr>
-      <td>
-        {" "}
-        <Checkbox></Checkbox>{" "}
-      </td>
       <th scope="row" className="">
         <div className="table__product__container">
           <div className="table__product__image__container">
@@ -31,7 +27,7 @@ function TailorProducts() {
         {" "}
         <span className="table__rs__title">Rs.</span> 12,000
       </td>{" "}
-      <td>Men</td>
+      <td className="product__category">Men</td>
       <td>{seeMoreFunction()}</td>
     </tr>
   );
@@ -60,7 +56,6 @@ function TailorProducts() {
         <table className="table " id="tailor__products__table">
           <thead>
             <tr>
-              <th scope="col" className="table__header"></th>
               <th scope="col" className="table__header">
                 Name
               </th>

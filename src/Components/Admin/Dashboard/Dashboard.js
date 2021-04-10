@@ -80,7 +80,7 @@ function Dashboard() {
         ></AdminDashboardCard1>
 
         <AdminDashboardCard1
-          title="Top Requests"
+          title="Top Products"
           backgroundColor="white"
           theWidth="col-lg-6 col-12"
           titleColor="#526484"
@@ -479,6 +479,7 @@ function StoreStatisticsAdmin() {
   );
 }
 
+// Recent Orders Admin 👇👇
 function RecentOrdersAdmin() {
   let seeMoreOptionsList = [
     {
@@ -540,7 +541,7 @@ function RecentOrdersAdmin() {
   return (
     <div>
       <div className="tailor__orders">
-        <table class="table order__table" id="orders__table">
+        <table class="table " id="admin__recentOrders__table">
           <thead>
             <tr>
               <th scope="col" className="table__header">

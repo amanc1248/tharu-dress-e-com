@@ -26,7 +26,6 @@ function TailorOrder() {
       </td>
       <td className="table__customer">Swarnima Chaudhary</td>
       <td className="table__purchased__item">1 item</td>
-      <td className="table__assigned">Manturam Chaudhary</td>
       <td className="table__price">
         {" "}
         <span className="table__rs__title">Rs.</span> 12,000
@@ -81,9 +80,7 @@ function TailorOrder() {
               <th scope="col" className="table__header">
                 Purchased
               </th>
-              <th scope="col" className="table__header">
-                Assigned To
-              </th>
+
               <th scope="col" className="table__header">
                 Total
               </th>
@@ -111,11 +108,7 @@ let seeMoreOptionsList = [
     iconText: "Order Details",
     theLink: "/orderDetails",
   },
-  {
-    icon: <AssignmentIndIcon></AssignmentIndIcon>,
-    iconText: "Employee Details",
-    theLink: "/employeeDetails",
-  },
+
   {
     icon: <PersonIcon></PersonIcon>,
     iconText: "Customer Details",

@@ -25,7 +25,6 @@ import OrdersDetails from "./Components/DetailsPage/OrdersDetails";
 import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegister/EmployeesSignInRegister";
 import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
 import ImageWithTitle from "./Components/Global/ImageWithTitle";
-import TailorHeader from "./Components/Tailor/TailorHeader/TailorHeader";
 import SignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
 import Tailor from "./Components/Tailor/TailorStore/Tailor";
 

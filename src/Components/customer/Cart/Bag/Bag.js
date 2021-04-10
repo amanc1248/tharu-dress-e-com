@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ShoppingBagProduct from "./ShoppingBagProduct";
-
+import CartItems from "./ShoppingCart/CartItems";
+import CartItem from "./ShoppingCart/CartItem";
+import CartTotal from "./ShoppingCart/CartTotal";
+import "./ShoppingCart/CartItems.css";
+import "./ShoppingCart/CartItem.css";
+import data from "./Data";
 function Bag({ bagTitle }) {
+  const [cartItems, setCartItems] = useState(data);
+
   return (
     <div className="bag">
-      <div className="bag__title">
+      <div className="App_main row no-gutters">
+        <div className="col-lg-8 col-12">
+          <CartItems items={cartItems} setCartItems={setCartItems}></CartItems>
+        </div>
+
+        <div className="col-lg-4 col-12">
+          <CartTotal items={cartItems}></CartTotal>
+        </div>
+      </div>
+
+      {/* <div className="bag__title">
         <h5>{bagTitle}</h5>
       </div>
       <div className="product__section">
@@ -36,7 +52,7 @@ function Bag({ bagTitle }) {
             <button className="checkout__button ">CHECK OUT</button>
           </Link>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
