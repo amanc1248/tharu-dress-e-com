@@ -1,32 +1,29 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./adapters/ScrollToTop/ScrollToTop";
 import "./App.css";
-import Admin from "./Components/Admin/Admin";
-import Cart from "./Components/customer/Cart/Cart";
-import Kids from "./Components/customer/Category/Kids/Kids";
-import Men from "./Components/customer/Category/Men/Men";
-import Women from "./Components/customer/Category/Women/Women";
-import CustomerCheckout from "./Components/customer/CustomerCheckout/CustomerCheckout";
-import CustomerLoginSignup from "./Components/customer/CustomerLoginSignup/CustomerLoginSignup";
 import Footer from "./Components/customer/Footer/Footer";
 import FooterFAQs from "./Components/customer/Footer/FooterFAQs/FooterFAQs";
 import AboutDasa from "./Components/customer/Footer/TheCompany/TheCompany";
-import Header, { SearchBar } from "./Components/customer/Header/Header";
-import Home from "./Components/customer/Home Page/Home";
-import KidsProduct from "./Components/customer/Product Category/Kids Product/KidsProduct";
-import MenProduct from "./Components/customer/Product Category/Men Product/MenProduct";
-import WomenProduct from "./Components/customer/Product Category/Women Product/WomenProduct";
-import ProductIndividual from "./Components/customer/Product Individual/ProductIndividual";
-import CustomerDetails from "./Components/DetailsPage/CustomerDetails";
-import DetailsPage from "./Components/DetailsPage/DetailsPage";
-import EmployeeDetails from "./Components/DetailsPage/EmployeeDetails";
-import OrdersDetails from "./Components/DetailsPage/OrdersDetails";
-import EmployeeSignInRegister from "./Components/Employees/EmployeesSignInRegister/EmployeesSignInRegister";
-import EmployeesStore from "./Components/Employees/EmployeesStore/EmployeesStore";
-import ImageWithTitle from "./Components/Global/ImageWithTitle";
-import SignInRegister from "./Components/Tailor/TailorSignInRegister/TailorSignInRegister";
-import Tailor from "./Components/Tailor/TailorStore/Tailor";
+import Header from "./Components/customer/Header";
+import ImageWithTitle from "./Components/ImageWithTitle";
+
+import CustomerHomeScreen from "./Screens/customer/CustomerHomeScreen";
+import CustomerSignInScreen from "./Screens/customer/CustomerSignInScreen";
+import CustomerWomenScreen from "./Screens/customer/CustomerWomenScreen";
+import CustomerKidsScreen from "./Screens/customer/CustomerKidsScreen";
+import CustomerMenScreen from "./Screens/customer/CustomerMenScreen";
+import CustomerProductsScreen from "./Screens/customer/CustomerProductsScreen";
+import CustomerCartScreen from "./Screens/customer/CustomerCartScreens/CustomerCartScreen";
+import CustomerProductScreen from "./Screens/customer/CustomerProductScreen";
+import TailorSignInScreen from "./Screens/tailor/TailorSignInScreen";
+import TailorScreen from "./Screens/tailor/TailorScreen";
+import EmployeeSignInScreen from "./Screens/employee/EmployeeSignInScreen";
+import EmployeeScreen from "./Screens/employee/EmployeeScreen";
+import CustomerCheckOutScreen from "./Screens/customer/CustomerCheckOutScreen";
+import CustomerDetailsScreen from "./Screens/customer/CustomerDetailsScreen";
+import EmployeeDetailsScreen from "./Screens/employee/EmployeeDetailsScreen";
+import AdminScreen from "./Screens/admin/AdminScreen";
+import ScrollToTop from "./Components/ScrollToTop";
 
 function App() {
   return (
@@ -34,95 +31,86 @@ function App() {
       <div className="App">
         <ScrollToTop>
           <Switch>
-            {/* Men Category Route  */}
+            {/* Category section 👇*/}
             <Route path="/men">
               <Header></Header>
-              <Men></Men>
+              <CustomerMenScreen></CustomerMenScreen>
               <Footer></Footer>
             </Route>
-
-            {/* Women Category Route  */}
             <Route path="/women">
               <Header></Header>
-              <Women></Women>
+              <CustomerWomenScreen></CustomerWomenScreen>
               <Footer></Footer>
             </Route>
-            {/* Women Category Route  */}
             <Route path="/kids">
               <Header></Header>
-              <Kids></Kids>
+              <CustomerKidsScreen></CustomerKidsScreen>
               <Footer></Footer>
             </Route>
-            {/* Authentication Route */}
 
+            {/* Product category section👇 */}
             <Route path="/MenCategory">
-              <MenProduct></MenProduct>
+              <CustomerProductsScreen></CustomerProductsScreen>
             </Route>
             <Route path="/WomenCategory">
-              <WomenProduct></WomenProduct>
+              <CustomerProductsScreen></CustomerProductsScreen>
             </Route>
             <Route path="/KidCategory">
-              <KidsProduct></KidsProduct>
+              <CustomerProductsScreen></CustomerProductsScreen>
             </Route>
+
+            {/* customer signin 👇 */}
             <Route path="/signin">
               <Header></Header>
-              <CustomerLoginSignup></CustomerLoginSignup>
+              <CustomerSignInScreen></CustomerSignInScreen>
               <Footer></Footer>
             </Route>
+
             <Route path="/cart">
               <Header></Header>
-              <Cart></Cart>
+              <CustomerCartScreen></CustomerCartScreen>
               <Footer></Footer>
             </Route>
             <Route path="/productIndividual">
               <Header></Header>
-              <ProductIndividual></ProductIndividual>
+              <CustomerProductScreen></CustomerProductScreen>
               <Footer></Footer>
             </Route>
             <Route path="/tailorSignIn">
               <ImageWithTitle theTitle="CREATE A TAILOR ACCOUNT"></ImageWithTitle>
-              <SignInRegister></SignInRegister>
+              <TailorSignInScreen></TailorSignInScreen>
               <Footer></Footer>
             </Route>
             <Route path="/tailorAccount">
-              <Tailor></Tailor>
+              <TailorScreen></TailorScreen>
             </Route>
-            <Route path="/filterOptions">
-              <SearchBar></SearchBar>
-              {/* <div className="NavButton__Container">
-                <NavButton></NavButton>
-              </div> */}
-            </Route>
+
             <Route path="/employeeSignIn">
               <ImageWithTitle theTitle="CREATE AN EMPLOYEE ACCOUNT"></ImageWithTitle>
-              <EmployeeSignInRegister></EmployeeSignInRegister>
+              <EmployeeSignInScreen></EmployeeSignInScreen>
               <Footer></Footer>
             </Route>
-            <Route path="/playground"></Route>
+
             <Route path="/employeeAccount">
               <ImageWithTitle theTitle="EMPLOYEE ACCOUNT"></ImageWithTitle>
 
-              <EmployeesStore></EmployeesStore>
+              <EmployeeScreen></EmployeeScreen>
             </Route>
+
             <Route path="/checkOut">
               <Header></Header>
               <ImageWithTitle theTitle="CHECKOUT"></ImageWithTitle>
-              <CustomerCheckout></CustomerCheckout>
+              <CustomerCheckOutScreen></CustomerCheckOutScreen>
             </Route>
-            <Route path="/detailsPage">
-              <DetailsPage
-                title="Customer Details"
-                detailName="Soni Chaudhary's Detail"
-              ></DetailsPage>
-            </Route>
+
             <Route path="/orderDetails">
-              <OrdersDetails></OrdersDetails>
+              {/* <OrdersDetails></OrdersDetails> */}
             </Route>
             <Route path="/customerDetails">
-              <CustomerDetails></CustomerDetails>
+              <CustomerDetailsScreen></CustomerDetailsScreen>
             </Route>
             <Route path="/employeeDetails">
-              <EmployeeDetails></EmployeeDetails>
+              <EmployeeDetailsScreen></EmployeeDetailsScreen>
             </Route>
             <Route path="/faqs">
               <Header></Header>
@@ -137,12 +125,12 @@ function App() {
 
             {/* Admin routes👇 */}
             <Route path="/admin">
-              <Admin></Admin>
+              <AdminScreen></AdminScreen>
             </Route>
             {/* Home Route👇 */}
             <Route path="/">
               <Header></Header>
-              <Home></Home>
+              <CustomerHomeScreen></CustomerHomeScreen>
               <Footer></Footer>
             </Route>
           </Switch>

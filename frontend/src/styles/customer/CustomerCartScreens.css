@@ -1,0 +1,298 @@
+/* CART👇👇👇 */
+.welcome__user {
+  margin: 15px 0;
+}
+/* .cart__options__list {
+  display: flex;
+  flex-direction: row;
+  margin: 25px 0;
+  justify-content: center;
+  align-items: center;
+}
+.cart__option {
+  margin: 0 15px;
+  font-size: 16px;
+  font-weight: 400;
+} */
+.bag__title {
+  text-align: left;
+  margin: 8px;
+}
+.contact__us__instruction {
+  padding: 0 30px;
+  font-size: smaller;
+}
+
+/* ACCOUNT DETAILS 👇👇👇 */
+/* Account information edit 👇 */
+.account__information__edit {
+  font-size: 13px;
+  text-align: left;
+}
+.address__book__edit__inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+/* Account Information👇 */
+.account__information {
+  font-size: 13px;
+  text-align: left;
+}
+.account__information__container {
+  margin: 20px 0;
+}
+.userDetails {
+  margin-bottom: 8px;
+}
+.edit__button {
+  background-color: black;
+  border: none;
+  color: white;
+  height: 42px;
+  width: 190px;
+}
+.changepassword__button {
+  background-color: white;
+  border: none;
+  color: black;
+  height: 42px;
+  width: 190px;
+}
+@media screen and (max-width: 576px) {
+  .edit__button,
+  .changepassword__button {
+    width: 42vw;
+  }
+}
+
+/* change password👇 */
+.change__password {
+  font-size: 13px;
+  text-align: left;
+  /* width: 85%; */
+}
+.change__password__inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.work__detail__progress__title {
+  margin: 10px 0;
+}
+
+/* Address book 👇 */
+.address__book {
+  font-size: 13px;
+}
+.address__book__title,
+.address__book__shippingAddress,
+.address__book__billingAddress {
+  margin-top: 20px;
+}
+.address__book__billingAddress {
+  margin-bottom: 20px;
+}
+.address__book__edit__button {
+  background-color: black;
+  border: none;
+  color: white;
+  height: 42px;
+  width: 190px;
+}
+.address__book__changepassword__button {
+  background-color: white;
+  border: none;
+  color: black;
+  height: 42px;
+  width: 190px;
+}
+.address__book {
+  text-align: left;
+}
+@media screen and (max-width: 576px) {
+  .address__book__edit__button,
+  .address__book__changepassword__button {
+    width: 45vw;
+    /* margin-right: 10px; */
+  }
+}
+
+/* Address book edit 👇 */
+.address__book__edit {
+  font-size: 13px;
+  text-align: left;
+}
+.Shipping__address__edit__inputs,
+.billing__address__edit__inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.address__book__edit__title {
+  margin: 20px 0;
+}
+
+/* CUSTOMER BAG👇👇👇 */
+/* .product__image>img.resize {
+  width: auto;
+  height: 100px;
+} */
+.bag {
+  margin: 10px;
+}
+.shopping__bag__product {
+  border: 1px solid;
+  border-color: rgba(155, 155, 155, 0.81);
+  padding-top: 4px;
+  margin-bottom: 5px;
+}
+.product__details {
+  margin-bottom: 5px;
+}
+.product__image {
+  max-width: 100%;
+  max-height: 100%;
+}
+img.resize {
+  width: auto;
+  height: 100px;
+}
+.order_product__info__bag {
+  text-align: left;
+  display: flex !important;
+  flex-direction: column;
+}
+.dude {
+  height: 500px;
+}
+.product__save__remove {
+  display: flex;
+  flex-direction: row;
+}
+.save__for__later,
+.remove,
+.edit {
+  font-size: 12px;
+  cursor: pointer;
+}
+.product__handling {
+  vertical-align: middle;
+  background-color: rgba(245, 245, 245, 0.81);
+  height: 25px;
+}
+.order__summary__container {
+  background-color: rgba(245, 245, 245, 0.81);
+  padding: 10px;
+}
+.checkout__button {
+  background-color: black;
+  color: white;
+  border: none;
+  height: 42px;
+  width: 150px;
+  margin-top: 12px;
+}
+
+/* cart item 👇 */
+.cartItems {
+  background-color: white;
+  flex: 0.7;
+  text-align: left;
+  margin-right: 18px;
+  margin-bottom: 18px;
+  padding: 20px;
+}
+.cartItem {
+  display: flex;
+  padding: 15px 0;
+  border-bottom: 2px solid rgb(232, 228, 228);
+}
+.cartItem-info {
+  flex-grow: 1;
+}
+
+.item-actions {
+  display: flex;
+}
+.item-quantity-stock {
+  padding: 5px 8px;
+}
+.item-quantity-stock:focus {
+  outline: none;
+}
+.item-action-divider {
+  margin: 0 8px;
+}
+.info-title h2 {
+  margin: 10px 0;
+  font-size: 18px;
+  color: rgb(7, 106, 101);
+}
+.info-stock {
+  color: rgb(7, 106, 101);
+}
+.cartItem-price {
+  font-weight: 500;
+  margin-left: 16px;
+}
+.cartItem-info {
+  margin: 0 15px;
+}
+.cartItem-Image {
+  width: 180px;
+  height: 180px;
+  /* below code simply means, donot grow or shrink the div at all */
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.cartItem-Image img {
+  object-fit: contain;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .cartItem {
+    flex-direction: column;
+  }
+  .cartItems {
+    margin-right: 0;
+  }
+}
+
+/* cart items👇 */
+.App_main {
+  display: flex;
+  padding: 14px 18px 0 18px;
+  background-color: #e7e7e7;
+}
+
+/* cart total👇 */
+.cartTotal {
+  background-color: white;
+  flex: 0.3;
+  height: 200px;
+  padding: 20px;
+}
+
+.cartTotal button {
+  background-color: black;
+  font-size: 16px;
+  width: 100%;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: white;
+}
+.cart-total-price {
+  margin-left: 8px;
+}
+.cartTotal button:focus {
+  outline: none;
+}
+
+/* FAVOURITES 👇👇👇 */
+.favorite__products__container {
+  display: flex;
+  flex-direction: row;
+}

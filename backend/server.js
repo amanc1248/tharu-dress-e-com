@@ -15,9 +15,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/products", productRoutes);
-app.use(notFound);
 
-app.use(errorHandler);
 // main route
 const PORT = process.env.PORT || 5000;
 app.get("/", (req, res) => {

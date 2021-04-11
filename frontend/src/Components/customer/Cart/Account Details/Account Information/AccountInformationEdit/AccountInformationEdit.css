@@ -1,9 +1,0 @@
-.account__information__edit {
-  font-size: 13px;
-  text-align: left;
-}
-.address__book__edit__inputs {
-  display: flex;
-  flex-direction: column;
-  margin: 20px 0;
-}

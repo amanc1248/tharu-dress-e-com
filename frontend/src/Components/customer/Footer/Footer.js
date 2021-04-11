@@ -4,7 +4,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
-import "./Footer.css";
+import "../../../styles/components/Footer.css";
 import { Link } from "react-router-dom";
 function Footer() {
   return (
