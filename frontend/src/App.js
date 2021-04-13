@@ -24,6 +24,7 @@ import CustomerDetailsScreen from "./Screens/customer/CustomerDetailsScreen";
 import EmployeeDetailsScreen from "./Screens/employee/EmployeeDetailsScreen";
 import AdminScreen from "./Screens/admin/AdminScreen";
 import ScrollToTop from "./Components/ScrollToTop";
+import Playground from "./playground";
 
 function App() {
   return (
@@ -49,14 +50,17 @@ function App() {
             </Route>
 
             {/* Product category section👇 */}
-            <Route path="/MenCategory">
+            <Route path="/menCategory">
               <CustomerProductsScreen></CustomerProductsScreen>
+              <Footer></Footer>
             </Route>
-            <Route path="/WomenCategory">
+            <Route path="/womenCategory">
               <CustomerProductsScreen></CustomerProductsScreen>
+              <Footer></Footer>
             </Route>
-            <Route path="/KidCategory">
+            <Route path="/kidCategory">
               <CustomerProductsScreen></CustomerProductsScreen>
+              <Footer></Footer>
             </Route>
 
             {/* customer signin 👇 */}
@@ -71,7 +75,7 @@ function App() {
               <CustomerCartScreen></CustomerCartScreen>
               <Footer></Footer>
             </Route>
-            <Route path="/productIndividual">
+            <Route path="/productIndividual/:id">
               <Header></Header>
               <CustomerProductScreen></CustomerProductScreen>
               <Footer></Footer>
@@ -126,6 +130,10 @@ function App() {
             {/* Admin routes👇 */}
             <Route path="/admin">
               <AdminScreen></AdminScreen>
+            </Route>
+
+            <Route path="/playground">
+              <Playground></Playground>
             </Route>
             {/* Home Route👇 */}
             <Route path="/">

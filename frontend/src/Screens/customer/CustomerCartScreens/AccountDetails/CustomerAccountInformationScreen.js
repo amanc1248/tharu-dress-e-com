@@ -4,14 +4,16 @@ import "../../../../styles/customer/CustomerCartScreens.css";
 import { useDispatch } from "react-redux";
 
 import AnotherTabs from "../../../../Components/AnotherTabs/AnotherTabs";
+
+import CustomerPaymentOptionsScreens from "./CustomerPaymentOptionsScreens";
+
 import CustomerAddressBookScreen, {
   AddressBookEdit,
 } from "./CustomerAddressBookScreen";
-import CustomerPaymentOptionsScreens from "./CustomerPaymentOptionsScreens";
 import {
   goToAccountEdit,
   goToChangePassword,
-} from "../../../../contexts/Customer/Redux/Actions";
+} from "../../../../actions/accountDetailsActions";
 // import {
 //   goToAccountEdit,
 //   goToChangePassword,

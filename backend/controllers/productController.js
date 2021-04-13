@@ -8,7 +8,7 @@ const getProducts = asyncHandler(async (req, res) => {
 
   db.query(sql, (err, result) => {
     if (err) throw err;
-    console.log(result);
+    // console.log(result);
     res.json(result);
   });
 });
@@ -29,4 +29,21 @@ const getProductById = asyncHandler(async (req, res) => {
     }
   });
 });
-export { getProducts, getProductById };
+
+//@desc fetch single product specification
+//@route GET /api/products/:id
+//@access PUBLIC
+const getProductSpecificatonById = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  let sql = "select * from product_specification where product_id = ?;";
+  db.query(sql, [id], (err, result) => {
+    if (err) throw err;
+    if (result) {
+      res.json(result);
+    } else {
+      res.status(404);
+      throw new Error("Product Specification Not Found");
+    }
+  });
+});
+export { getProducts, getProductById, getProductSpecificatonById };

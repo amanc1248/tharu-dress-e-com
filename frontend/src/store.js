@@ -1,10 +1,26 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { productCategoryListReducers } from "./reducers/productReducers";
+import {
+  categoryProductsReducers,
+  productDetailsReducers,
+  productSpecificationReducers,
+} from "./reducers/productReducers";
+import {
+  addressBookEditReducers,
+  changePasswordReducers,
+  editAccountReducers,
+} from "./reducers/accountDetailsReducers";
 
 const reducer = combineReducers({
-  productCategoryList: productCategoryListReducers,
+  // for account details 👇
+  changePassword: changePasswordReducers,
+  editAccount: editAccountReducers,
+  addressBookEdit: addressBookEditReducers,
+
+  categoryProducts: categoryProductsReducers,
+  productDetails: productDetailsReducers,
+  productSpecification: productSpecificationReducers,
 });
 
 const middleware = [thunk];

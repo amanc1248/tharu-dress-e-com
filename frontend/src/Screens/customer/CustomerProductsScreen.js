@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/customer/CustomerProductsScreen.css";
-import LocalShippingIcon from "@material-ui/icons/LocalShipping";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import FilterOptions from "../../Components/customer/FilterOptions";
 import Product from "../../Components/customer/Product";
-
+import CustomerService from "../../Components/customer/CustomerService";
+import { useSelector, useDispatch } from "react-redux";
+import { listCategoryProducts } from "../../actions/productActions";
 function CustomerProductsScreen() {
+  const categoryProducts = useSelector((state) => state.categoryProducts);
+
+  const { products } = categoryProducts;
+  console.log("====================================");
+  console.log(categoryProducts);
+  console.log("====================================");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(listCategoryProducts());
+  }, [dispatch]);
   return (
     <div className="product__category">
       {/* 1st Section Product category information */}
@@ -33,32 +42,9 @@ function CustomerProductsScreen() {
 
       {/* 3rd section products section */}
       <div className="products__list row no-gutters h-100">
-        <Product productName="Yellow " productPrice="$120.00"></Product>
-        <Product productName="Yellow Boutique" productPrice="$110.00"></Product>
-        <Product
-          productName="Anchara With Red Boutique"
-          productPrice="$120.00"
-        ></Product>
-        <Product
-          productName="Anchara With Red Boutique"
-          productPrice="$120.00"
-        ></Product>
-        <Product
-          productName="Anchara With Red Boutique"
-          productPrice="$120.00"
-        ></Product>
-        <Product
-          productName="Anchara With Red Boutique"
-          productPrice="$120.00"
-        ></Product>
-        <Product
-          productName="Anchara With Red Boutique"
-          productPrice="$120.00"
-        ></Product>
-        <Product
-          productName="Anchara With Red Boutique"
-          productPrice="$120.00"
-        ></Product>
+        {products.map((product) => (
+          <Product key={product.product_id} product={product}></Product>
+        ))}
       </div>
       {/*  4th section, view more button*/}
       <div className="view__more__container">
@@ -66,24 +52,7 @@ function CustomerProductsScreen() {
           VIEW MORE
         </button>
       </div>
-
-      {/* 5th section, customer service */}
-      <div className="customer__service__container row no-gutters">
-        <div className="customer__service  col-lg-4 col-md-4 col-sm-4 col-sm-12   ">
-          <LocalShippingIcon className="customer__service__icon"></LocalShippingIcon>
-          <p className="customer__service__description">
-            Shipping And Exchange
-          </p>
-        </div>
-        <div className="customer__service col-lg-4 col-md-4 col-sm-4 col-sm-12   ">
-          <CheckBoxIcon className="customer__service__icon"></CheckBoxIcon>
-          <p className="customer__service__description">Free Packaging</p>
-        </div>
-        <div className="customer__service col-lg-4 col-md-4 col-sm-4 col-sm-12   ">
-          <InsertEmoticonIcon className="customer__service__icon"></InsertEmoticonIcon>
-          <p className="customer__service__description">Get your avatar</p>
-        </div>
-      </div>
+      <CustomerService></CustomerService>
     </div>
   );
 }

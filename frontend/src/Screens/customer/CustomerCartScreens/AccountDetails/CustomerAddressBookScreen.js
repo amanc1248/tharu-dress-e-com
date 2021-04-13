@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../../styles/customer/CustomerCartScreens.css";
 import { useDispatch } from "react-redux";
-import { goToAddressBookEdit } from "../../../../contexts/Customer/Redux/Actions";
+import { goToAddressBookEdit } from "../../../../actions/accountDetailsActions";
 function CustomerAddressBookScreen() {
   const dispatch = useDispatch();
 
