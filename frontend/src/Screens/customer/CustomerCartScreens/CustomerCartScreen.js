@@ -1,12 +1,26 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import ImageWithTitle from "../../../Components/ImageWithTitle";
 import CustomerBagScreen from "./BagScreens/CustomerBagScreen";
 import Tabs from "../../../Components/Tabs/Tabs";
 import CustomerFavoriteScreen from "./FavouritesScreens/CustomerFavouriteScreen";
 import CustomerAccountInformationScreen from "./AccountDetails/CustomerAccountInformationScreen";
-function CustomerCartScreen() {
-  const seeOrderDetails = useSelector((state) => state.seeOrderDetails);
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../../actions/cartActions";
+import { useEffect } from "react";
+function CustomerCartScreen({ match, location, history }) {
+  const productId = match.params.id;
+  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+  const dispatch = useDispatch();
+
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  console.log("Cart Items for cart 👇👇👇");
+  console.log(cartItems);
+  useEffect(() => {
+    if (productId) {
+      dispatch(addToCart(productId, qty));
+    }
+  }, [dispatch, qty, productId]);
   return (
     <div className="cart">
       <ImageWithTitle theTitle="YOUR CART"></ImageWithTitle>

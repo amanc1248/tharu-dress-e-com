@@ -6,29 +6,29 @@ import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox"
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import "../../styles/customer/CustomerProductScreen.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  listProductDetails,
-  listProductSpecificationDetails,
-} from "../../actions/productActions";
-function CustomerProductScreen() {
+import { listProductDetails } from "../../actions/productActions";
+function CustomerProductScreen({ match, history }) {
   const [showProductDetails, setshowProductDetails] = useState(false);
+
   const changeShowProductDetails = () => {
     setshowProductDetails(!showProductDetails);
   };
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
-  const { product } = productDetails;
+  const { product, productSpec } = productDetails;
+  console.log("THis is productDetails");
+  console.log(productDetails);
 
-  const productSpecification = useSelector(
-    (state) => state.productSpecification
-  );
-  const { productSpec } = productSpecification;
+  console.log("THis is product");
+  console.log(product);
+
+  console.log("THis is product spec");
+  console.log(productSpec);
 
   useEffect(() => {
-    dispatch(listProductDetails("pod2"));
-    dispatch(listProductSpecificationDetails("pod2"));
-  }, [dispatch]);
+    dispatch(listProductDetails(match.params.id));
+  }, [dispatch, match]);
 
   return (
     <div className="product__individual">
@@ -56,6 +56,8 @@ function CustomerProductScreen() {
             <ProductDetailsPart1
               showingProductDetails={changeShowProductDetails}
               product={product}
+              match={match}
+              history={history}
             ></ProductDetailsPart1>
           )}
         </div>
@@ -65,33 +67,56 @@ function CustomerProductScreen() {
 }
 export default CustomerProductScreen;
 
-function LengthOptionButton({ size, sizeName }) {
-  return (
-    <div>
-      <button className="length__options__button">
-        <span>{size}</span>
-        <span>
-          <small>{sizeName}</small>
-        </span>
-      </button>
-    </div>
-  );
-}
+function ProductDetailsPart1({
+  showingProductDetails,
+  product,
+  history,
+  match,
+}) {
+  const [quantity, setQuantity] = useState(1);
+  const [lengthValue, setLengthValue] = useState(2);
+  const [widthValue, setWidthValue] = useState(2);
 
-function WidthOptionButton({ size, sizeName }) {
-  return (
-    <div>
-      <button className="width__options__button">
-        <span>{size}</span>
-        <span>
-          <small>{sizeName}</small>
-        </span>
-      </button>
-    </div>
-  );
-}
+  const LengthOptionButton = ({ size, sizeName, index }) => {
+    return (
+      <div>
+        <button
+          className={`length__options__button ${
+            index === lengthValue && `active___btn`
+          }`}
+          onClick={() => {
+            setLengthValue(index);
+          }}
+        >
+          <span>{size}</span>
+          <span>
+            <small>{sizeName}</small>
+          </span>
+        </button>
+      </div>
+    );
+  };
 
-function ProductDetailsPart1({ showingProductDetails, product }) {
+  const WidthOptionButton = ({ size, sizeName, index }) => {
+    return (
+      <div>
+        <button
+          className={`width__options__button ${
+            index === widthValue && `active___btn`
+          }`}
+          onClick={() => {
+            setWidthValue(index);
+          }}
+        >
+          <span>{size}</span>
+          <span>
+            <small>{sizeName}</small>
+          </span>
+        </button>
+      </div>
+    );
+  };
+
   let lenghtOptions = [
     { size: 3.5, sizeName: "Short" },
     { size: 4, sizeName: "" },
@@ -106,24 +131,39 @@ function ProductDetailsPart1({ showingProductDetails, product }) {
     { size: 110, sizeName: "" },
     { size: 120, sizeName: "Long" },
   ];
-  let lengthChooseOptions = lenghtOptions.map((obj) => {
+  let lengthChooseOptions = lenghtOptions.map((obj, index) => {
     return (
       <LengthOptionButton
         key={obj.toString()}
         size={obj.size}
         sizeName={obj.sizeName}
+        index={index}
       ></LengthOptionButton>
     );
   });
-  let widthChooseOptions = widthOptions.map((obj) => {
+  let widthChooseOptions = widthOptions.map((obj, index) => {
     return (
       <WidthOptionButton
         key={obj.toString()}
         size={obj.size}
         sizeName={obj.sizeName}
+        index={index}
       ></WidthOptionButton>
     );
   });
+
+  const subtractQuantity = () => {
+    quantity === 1 ? setQuantity(quantity) : setQuantity(quantity - 1);
+  };
+
+  const addQuantity = () => {
+    quantity !== product[0].in_stock
+      ? setQuantity(quantity + 1)
+      : setQuantity(quantity);
+  };
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${quantity}`);
+  };
   return (
     <div className="product__details__part1">
       <div className="product__title__price">
@@ -132,7 +172,7 @@ function ProductDetailsPart1({ showingProductDetails, product }) {
         ) : null}
 
         {product && product.length ? (
-          <p className="product__price">{product[0].price}</p>
+          <p className="product__price">Rs. {product[0].price}</p>
         ) : null}
       </div>
       <hr />
@@ -180,16 +220,20 @@ function ProductDetailsPart1({ showingProductDetails, product }) {
       <div className="quantity__add__section">
         <span className="quantity__title">QUATITY </span>
         <span>
-          <IndeterminateCheckBoxIcon></IndeterminateCheckBoxIcon>
+          <IndeterminateCheckBoxIcon
+            onClick={subtractQuantity}
+          ></IndeterminateCheckBoxIcon>
         </span>
-        <span className="product__quantity__number">1</span>
+        <span className="product__quantity__number">{quantity}</span>
         <span>
-          <AddBoxIcon></AddBoxIcon>
+          <AddBoxIcon onClick={addQuantity}></AddBoxIcon>
         </span>{" "}
       </div>
       <hr />
       <div className="add__to__cart">
-        <button className="add__to__cart__button">ADD TO CART</button>
+        <button className="add__to__cart__button" onClick={addToCartHandler}>
+          ADD TO CART
+        </button>
       </div>
     </div>
   );

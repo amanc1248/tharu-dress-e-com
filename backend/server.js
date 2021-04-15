@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import db from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
 import { notFound, errorHandler } from "./middleWare/middleWare.js";
-
+import userRoutes from "./routes/userRoutes.js";
 dotenv.config();
 const app = express();
 
@@ -15,6 +15,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 // main route
 const PORT = process.env.PORT || 5000;

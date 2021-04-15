@@ -33,28 +33,13 @@ export const listProductDetails = (id) => async (dispatch) => {
     const { data } = await axios.get(`/api/products/${id}`);
     console.log("this is the data");
     console.log(data);
+    console.log(data[0]);
+    console.log(data[1]);
+
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
       type: PRODUCT_DETAILS_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
-
-export const listProductSpecificationDetails = (id) => async (dispatch) => {
-  try {
-    dispatch({ type: PRODUCT_SPECIFICATION_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/products/specification/${id}`);
-    console.log("this is the data");
-    console.log(data);
-    dispatch({ type: PRODUCT_SPECIFICATION_DETAILS_SUCCESS, payload: data });
-  } catch (error) {
-    dispatch({
-      type: PRODUCT_SPECIFICATION_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

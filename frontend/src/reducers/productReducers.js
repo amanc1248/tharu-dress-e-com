@@ -26,35 +26,20 @@ export const categoryProductsReducers = (state = { products: [] }, action) => {
 };
 
 // productbyid
-export const productDetailsReducers = (state = { product: [] }, action) => {
+export const productDetailsReducers = (
+  state = { product: [], productSpec: [] },
+  action
+) => {
   switch (action.type) {
     case PRODUCT_DETAILS_REQUEST:
       return { loading: true, ...state };
     case PRODUCT_DETAILS_SUCCESS:
       return {
         loading: false,
-        product: action.payload,
+        product: action.payload[0],
+        productSpec: action.payload[1],
       };
     case PRODUCT_DETAILS_FAIL:
-      return { loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
-
-export const productSpecificationReducers = (
-  state = { productSpec: [] },
-  action
-) => {
-  switch (action.type) {
-    case PRODUCT_SPECIFICATION_DETAILS_REQUEST:
-      return { loading: true, productSpec: [] };
-    case PRODUCT_SPECIFICATION_DETAILS_SUCCESS:
-      return {
-        loading: false,
-        productSpec: action.payload,
-      };
-    case PRODUCT_SPECIFICATION_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

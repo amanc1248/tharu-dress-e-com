@@ -6,7 +6,7 @@ function ImageWithTitle({ theTitle }) {
       <div
         className="theBackgroundImage"
         style={{
-          backgroundImage: `url("images/croped.jpg")`,
+          backgroundImage: `url("/images/croped.jpg")`,
         }}
       >
         <div className="faq__title">{theTitle}</div>

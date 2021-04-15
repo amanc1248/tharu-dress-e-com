@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
+.product__individual {
+  font-family: "DM Sans", sans-serif;
+}
+
 .length__options,
 .width__options {
   display: flex;
@@ -26,7 +32,7 @@
 .length__options__button,
 .width__options__button {
   background-color: #fff;
-  border: #707070 solid 0.5px;
+  border: #d6d2d2 solid 0.5px;
   display: flex;
   flex-direction: column;
   height: 50px;
@@ -34,6 +40,18 @@
   text-align: center;
   align-items: center;
   margin-right: 10px;
+}
+.length__options__button:hover {
+  background-color: #e7e7e7;
+  font-weight: 800;
+}
+.width__options__button :hover {
+  background-color: #e7e7e7;
+  font-weight: 800;
+}
+.active___btn {
+  background-color: #e7e7e7;
+  font-weight: 800;
 }
 .size__length,
 .size__width {
@@ -53,6 +71,7 @@
   height: 42px;
   width: 190px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 .product__details__part2 {
   margin: 50px 0;

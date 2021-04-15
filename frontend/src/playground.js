@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "./actions/productActions";
 
-const Playground = () => {
+const Playground = ({ match }) => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { product } = productDetails;
@@ -10,8 +10,8 @@ const Playground = () => {
   console.log("This is the data 👇👇👇:)    ");
   console.log(productDetails);
   useEffect(() => {
-    dispatch(listProductDetails("pod2"));
-  }, [dispatch]);
+    dispatch(listProductDetails(match.params.id));
+  }, [dispatch, match]);
   return (
     <div>
       <div>

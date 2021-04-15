@@ -51,14 +51,17 @@ function App() {
 
             {/* Product category section👇 */}
             <Route path="/menCategory">
+              <Header></Header>
               <CustomerProductsScreen></CustomerProductsScreen>
               <Footer></Footer>
             </Route>
             <Route path="/womenCategory">
+              <Header></Header>
               <CustomerProductsScreen></CustomerProductsScreen>
               <Footer></Footer>
             </Route>
             <Route path="/kidCategory">
+              <Header></Header>
               <CustomerProductsScreen></CustomerProductsScreen>
               <Footer></Footer>
             </Route>
@@ -70,16 +73,11 @@ function App() {
               <Footer></Footer>
             </Route>
 
-            <Route path="/cart">
-              <Header></Header>
-              <CustomerCartScreen></CustomerCartScreen>
-              <Footer></Footer>
-            </Route>
-            <Route path="/productIndividual/:id">
-              <Header></Header>
-              <CustomerProductScreen></CustomerProductScreen>
-              <Footer></Footer>
-            </Route>
+            <Route path="/cart/:id?" component={CustomerCartScreen}></Route>
+            <Route
+              path="/productIndividual/:id"
+              component={CustomerProductScreen}
+            ></Route>
             <Route path="/tailorSignIn">
               <ImageWithTitle theTitle="CREATE A TAILOR ACCOUNT"></ImageWithTitle>
               <TailorSignInScreen></TailorSignInScreen>
@@ -105,6 +103,7 @@ function App() {
               <Header></Header>
               <ImageWithTitle theTitle="CHECKOUT"></ImageWithTitle>
               <CustomerCheckOutScreen></CustomerCheckOutScreen>
+              <Footer></Footer>
             </Route>
 
             <Route path="/orderDetails">
@@ -132,9 +131,12 @@ function App() {
               <AdminScreen></AdminScreen>
             </Route>
 
-            <Route path="/playground">
+            <Route path="/playground/:id">
+              <Header></Header>
               <Playground></Playground>
             </Route>
+            <Route path="/playground/:id" component={Playground}></Route>
+
             {/* Home Route👇 */}
             <Route path="/">
               <Header></Header>

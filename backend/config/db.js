@@ -8,6 +8,7 @@ const db = mysql.createConnection({
   user: "root",
   password: "password",
   database: "dasa",
+  multipleStatements: true,
 });
 // Connect
 db.connect((err) => {

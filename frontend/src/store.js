@@ -4,13 +4,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   categoryProductsReducers,
   productDetailsReducers,
-  productSpecificationReducers,
 } from "./reducers/productReducers";
 import {
   addressBookEditReducers,
   changePasswordReducers,
   editAccountReducers,
 } from "./reducers/accountDetailsReducers";
+import { cartReducer } from "./reducers/cartReducers";
 
 const reducer = combineReducers({
   // for account details 👇
@@ -20,12 +20,21 @@ const reducer = combineReducers({
 
   categoryProducts: categoryProductsReducers,
   productDetails: productDetailsReducers,
-  productSpecification: productSpecificationReducers,
+  cart: cartReducer,
 });
+const cartItemsFromStorage = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : [];
 
+const initialState = {
+  cart: {
+    cartItems: cartItemsFromStorage,
+  },
+};
 const middleware = [thunk];
 const store = createStore(
   reducer,
+  initialState,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 

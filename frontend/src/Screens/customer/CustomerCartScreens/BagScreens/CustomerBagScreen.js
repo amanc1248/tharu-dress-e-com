@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import data from "../../../../Data/CartItemsData";
-function CustomerBagScreen({ bagTitle }) {
-  const [cartItems, setCartItems] = useState(data);
+import { withRouter } from "react-router";
+import { addToCart, removeFromCart } from "../../../../actions/cartActions";
+function CustomerBagScreen({ match, location, bagTitle, history }) {
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  console.log("Cart Items for bag 👇👇👇");
+  console.log(cartItems);
+
+  const productId = match.params.id;
+  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+  const dispatch = useDispatch();
 
   return (
     <div className="bag">
       <div className="App_main row no-gutters">
         <div className="col-lg-8 col-12">
-          <CartItems items={cartItems} setCartItems={setCartItems}></CartItems>
+          <CartItems items={cartItems}></CartItems>
         </div>
 
         <div className="col-lg-4 col-12">
-          <CartTotal items={cartItems}></CartTotal>
+          <CartTotal items={cartItems} history={history}></CartTotal>
         </div>
       </div>
     </div>
@@ -25,89 +34,69 @@ export function CartItem({
   image,
   price,
   quantity,
-  changeCartQuantity,
-  deleteCartItem,
-  index,
+  productId,
+  history,
 }) {
+  const dispatch = useDispatch();
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
+
   return (
     <div className="cartItem">
       <div className="cartItem-Image">
-        <img
-          src={process.env.PUBLIC_URL + "/items/" + image}
-          alt="cartproduct"
-        />
+        <img src={`/` + image} alt="cartproduct" />
       </div>
       <div className="cartItem-info">
         <div className="info-title">
-          <h2>{title}</h2>
+          <Link to={`/productIndividual/${productId}`}>{title}</Link>
         </div>
-        <div className="info-stock">{stock}</div>
         <div className="item-actions">
           <div className="item-quantity">
             <select
               value={quantity}
               className="item-quantity-stock"
               onChange={(e) => {
-                changeCartQuantity(e, index);
+                dispatch(addToCart(productId, Number(e.target.value)));
               }}
             >
-              <option value="1">Qty: 1</option>
-              <option value="2">Qty: 2</option>
-              <option value="3">Qty: 3</option>
-              <option value="4">Qty: 4</option>
-              <option value="5">Qty: 5</option>
-              <option value="6">Qty: 6</option>
-              <option value="7">Qty: 7</option>
-              <option value="8">Qty: 8</option>
+              {[...Array(stock).keys()].map((x) => (
+                <option key={x + 1} value={x + 1}>
+                  {x + 1}
+                </option>
+              ))}
             </select>
           </div>
           <div className="item-action-divider">|</div>
           <div className="item-delete">
             {/* 👉👉👉you got to understand here, why are we doing .bind and this */}
-            <button onClick={deleteCartItem.bind(this, index)}>Delete</button>
+            <button
+              onClick={() => {
+                removeFromCartHandler(productId);
+              }}
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
-      <div className="cartItem-price">${price}</div>
+      <div className="cartItem-price">Rs. {price}</div>
     </div>
   );
 }
 
-export function CartItems({ items, setCartItems }) {
-  // For changing cart quantity👇👇👇
-  const changeCartQuantity = (e, index) => {
-    // When we select a quantity on item, we pass it in here
-    console.log("This is changeCartQuantity");
-    console.log(e.target.value);
-    const newItems = [...items];
-    newItems[index].quantity = e.target.value;
-    setCartItems(newItems);
-  };
-
-  // For deleting cart item👇👇👇
-  const deleteCartItem = (indexToDelete) => {
-    const remainingItems = items.filter(
-      (item, index) => index !== indexToDelete
-    );
-    setCartItems(remainingItems);
-    console.log("This is the item");
-    console.log(remainingItems);
-    // return remainingItems;
-  };
-  // For generating cart items👇👇👇
-  const cartItemsList = items.map((item, index) => {
+export function CartItems({ items }) {
+  const cartItemsList = items.map((item) => {
     // here the naz has used index as a key that is a bad practice. Inform this in slack
     return (
       <CartItem
-        changeCartQuantity={changeCartQuantity}
-        deleteCartItem={deleteCartItem}
-        index={index}
-        key={item.toString()}
-        title={item.title}
+        key={item.productId}
+        productId={item.productId}
+        title={item.name}
         image={item.image}
         price={item.price}
-        stock={item.stock}
-        quantity={item.quantity}
+        stock={item.in_stock}
+        quantity={item.qty}
       ></CartItem>
     );
   });
@@ -121,13 +110,13 @@ export function CartItems({ items, setCartItems }) {
   );
 }
 
-export function CartTotal({ items }) {
+export function CartTotal({ items, history }) {
   // Calculating the total price 👇👇
   const getTotalPrice = () => {
     // Here while calculating the total price why Naz has not converted the price which is in string into the integer
     var theTotalPrice = 0;
     items.map((item) => {
-      return (theTotalPrice += item.price * item.quantity);
+      return (theTotalPrice += item.price * item.qty);
     });
     return theTotalPrice;
   };
@@ -136,10 +125,13 @@ export function CartTotal({ items }) {
   const getTotalCartItems = () => {
     let totalCartItems = 0;
     items.forEach((item) => {
-      return (totalCartItems += parseInt(item.quantity));
+      return (totalCartItems += parseInt(item.qty));
     });
 
     return totalCartItems;
+  };
+  const checkoutHandler = () => {
+    history.push("/signin?redirect=shipping");
   };
   return (
     <div className="cartTotal">
@@ -147,11 +139,9 @@ export function CartTotal({ items }) {
         Subtotal({getTotalCartItems()} items)
         <span className="cart-total-price">${getTotalPrice().toFixed(2)}</span>
       </h3>
-      <Link to="/checkout">
-        <button>PROCEED TO CHECKOUT</button>
-      </Link>
+      <button onClick={checkoutHandler}>PROCEED TO CHECKOUT</button>
     </div>
   );
 }
 
-export default CustomerBagScreen;
+export default withRouter(CustomerBagScreen);
