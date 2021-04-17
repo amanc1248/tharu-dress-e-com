@@ -29,7 +29,7 @@ function CustomerSignInScreen({ location, history }) {
 export function Login({ location, history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  const redirect = location.search ? location.search.split("=")[1] : "/cart";
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
   useEffect(() => {
@@ -80,8 +80,8 @@ export function Login({ location, history }) {
           </div>
           <div className="login__form__footer row justify-content-between mr-0 ml-0">
             <p>
-              {" "}
-              <u>Forgot Password</u>{" "}
+              <u> New Customer?</u>
+              <Link to="/register"> Register</Link>
             </p>
             <Link to="/cart">
               <button className="signIn__button" onClick={loginHandler}>

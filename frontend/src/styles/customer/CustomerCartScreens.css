@@ -1,19 +1,20 @@
 /* CART👇👇👇 */
 .welcome__user {
-  margin: 15px 0;
+  margin: 30px 0;
 }
-/* .cart__options__list {
-  display: flex;
-  flex-direction: row;
-  margin: 25px 0;
-  justify-content: center;
-  align-items: center;
+.welcome__the__user {
+  font: 16px/20px "Apercu Bold", Helvetica, Arial, Sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  word-spacing: normal;
+  font-weight: 700;
 }
-.cart__option {
-  margin: 0 15px;
-  font-size: 16px;
-  font-weight: 400;
-} */
+.user_logout {
+  font-size: 12px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
 .bag__title {
   text-align: left;
   margin: 8px;

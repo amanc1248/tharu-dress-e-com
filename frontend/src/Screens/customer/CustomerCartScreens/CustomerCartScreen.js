@@ -7,25 +7,44 @@ import CustomerAccountInformationScreen from "./AccountDetails/CustomerAccountIn
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../actions/cartActions";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { logout } from "../../../actions/userActions";
 function CustomerCartScreen({ match, location, history }) {
   const productId = match.params.id;
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+  const redirect = location.search ? location.search.split("=")[1] : "/signin";
+
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   console.log("Cart Items for cart 👇👇👇");
   console.log(cartItems);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  console.log(userInfo);
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
-  }, [dispatch, qty, productId]);
+    if (!userInfo) {
+      history.push(redirect);
+    }
+  }, [dispatch, qty, productId, userInfo, history, redirect]);
   return (
     <div className="cart">
       <ImageWithTitle theTitle="YOUR CART"></ImageWithTitle>
       <div className="welcome__user">
-        <h5>WELCOME, AMAN</h5>
+        <span className="welcome__the__user">
+          WELCOME, {userInfo && userInfo["firstName"]}
+        </span>
+        <span className="user_logout" onClick={logoutHandler}>
+          {" "}
+          <u>Sign Out</u>
+        </span>
       </div>
       <p className="contact__us__instruction">
         If you have any queries or need further assistance, please Contact Us

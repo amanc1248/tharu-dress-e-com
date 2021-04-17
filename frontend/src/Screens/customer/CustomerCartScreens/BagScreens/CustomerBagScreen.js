@@ -127,7 +127,7 @@ export function CartTotal({ items, history }) {
     return totalCartItems;
   };
   const checkoutHandler = () => {
-    history.push("/signin?redirect=shipping");
+    history.push("/signin?redirect=checkout");
   };
   return (
     <div className="cartTotal">

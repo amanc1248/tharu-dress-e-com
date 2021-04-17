@@ -29,8 +29,8 @@ const authUser = asyncHandler(async (req, res) => {
       } else {
         if (MatchPassword(password, result[2]["0"]["password"])) {
           res.json({
-            first_name: result[0][0]["first_name"],
-            last_name: result[0][0]["last_name"],
+            firstName: result[0][0]["first_name"],
+            lastName: result[0][0]["last_name"],
             email: result[0][0]["email"],
             userId: result[1]["0"]["@finaluid:= `user_id`"],
             customerId: result[2]["0"]["customer_id"],
@@ -63,8 +63,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
     if (result.length > 0) {
       if (result) {
         res.json({
-          first_name: result[0][0]["first_name"],
-          last_name: result[0][0]["last_name"],
+          firstName: result[0][0]["first_name"],
+          lastName: result[0][0]["last_name"],
           email: result[0][0]["email"],
           userId: result[1]["0"]["@finaluid:= `user_id`"],
           customerId: result[2]["0"]["customer_id"],
@@ -89,14 +89,17 @@ const registerUser = asyncHandler(async (req, res) => {
   let sql =
     "select @uid:=`user_id` from dasa_user as var, (SELECT @uid := NULL) init_var  where email=?;select type from user_type where user_id=@uid AND type='customer';";
   db.query(sql, [email], (err, result) => {
-    if (err) throw error;
+    if (err) {
+      res.status(401).send({ message: "Please fill all the fields" });
+    }
     if (result.length > 0) {
       if (result[1][0] != null) {
-        res.status(400).send({ message: "customer already exists" });
+        res.status(401).send({ message: "customer already exists" });
         console.log(result);
         // no action needed
       } else if (result[0][0] != null) {
         // create customer with same user id👇👇
+        // res.status(401).send({ message: "user exists but no customer" });
         let sql =
           "INSERT INTO user_type values(?, 'customer', 'active');select @customerCount:= count(*)+1 from customer; select @customerID:=concat('cus', @customerCount);INSERT INTO customer values (@customerID, ?, ?, current_date());select * from dasa_user where email=?; select customer_id from customer where user_id= ?;";
         db.query(
@@ -133,7 +136,6 @@ const registerUser = asyncHandler(async (req, res) => {
           sql,
           [first_name, last_name, email, phone, finalPassword, email],
           (err, result) => {
-            if (err) throw error;
             if (result.length > 0) {
               res.json({
                 userId: result[7][0]["user_id"],
@@ -148,26 +150,10 @@ const registerUser = asyncHandler(async (req, res) => {
           }
         );
       }
+    } else {
+      res.status(401).send({ message: "Please fill all the fields" });
     }
   });
-
-  // const user = await User.create({
-  //   name,
-  //   email,
-  //   password,
-  // });
-  // if (user) {
-  //   res.status(201).json({
-  //     _id: user._id,
-  //     name: user.name,
-  //     email: user.email,
-  //     isAdmin: user.isAdmin,
-  //     token: generateToken(user._id),
-  //   });
-  // } else {
-  //   res.status(400);
-  //   throw new Error("User Not Found");
-  // }
 });
 
 export { authUser, getUserProfile, registerUser };
