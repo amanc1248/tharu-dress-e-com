@@ -25,6 +25,7 @@ import EmployeeDetailsScreen from "./Screens/employee/EmployeeDetailsScreen";
 import AdminScreen from "./Screens/admin/AdminScreen";
 import ScrollToTop from "./Components/ScrollToTop";
 import Playground from "./playground";
+import CustomerRegisterScreen from "./Screens/customer/CustomerRegisterScreen";
 
 function App() {
   return (
@@ -67,11 +68,8 @@ function App() {
             </Route>
 
             {/* customer signin 👇 */}
-            <Route path="/signin">
-              <Header></Header>
-              <CustomerSignInScreen></CustomerSignInScreen>
-              <Footer></Footer>
-            </Route>
+            <Route path="/signin" component={CustomerSignInScreen}></Route>
+            <Route path="/register" component={CustomerRegisterScreen}></Route>
 
             <Route path="/cart/:id?" component={CustomerCartScreen}></Route>
             <Route

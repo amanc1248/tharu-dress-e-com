@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
@@ -8,10 +8,6 @@ function CustomerBagScreen({ match, location, bagTitle, history }) {
   const { cartItems } = cart;
   console.log("Cart Items for bag 👇👇👇");
   console.log(cartItems);
-
-  const productId = match.params.id;
-  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-  const dispatch = useDispatch();
 
   return (
     <div className="bag">
