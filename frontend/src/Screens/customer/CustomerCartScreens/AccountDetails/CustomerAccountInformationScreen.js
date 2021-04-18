@@ -79,15 +79,11 @@ export function AccountInformationEdit() {
             <input type="text" />
           </label>
           <label>
-            Location
+            Email
             <input type="text" />
           </label>
           <label>
             Phone
-            <input type="text" />
-          </label>
-          <label>
-            Email
             <input type="text" />
           </label>
         </div>
@@ -131,12 +127,12 @@ export function ChangePassword() {
       <form action="">
         <div className="change__password__inputs">
           <label>
-            Old Password
-            <input type="text" />
+            Password
+            <input type="password" />
           </label>
           <label>
-            New Password
-            <input type="text" />
+            Confirm Password
+            <input type="password" />
           </label>
         </div>
         <div className="account__information__buttons row justify-content-between">
@@ -188,13 +184,7 @@ export function AccountInformation() {
           </span>
           <span>Chaudhary</span>
         </div>
-        <div className="userDetails">
-          <span>
-            {" "}
-            <strong>Location:</strong>{" "}
-          </span>
-          <span>Itahari-07, Sunsari</span>
-        </div>
+
         <div className="userDetails">
           <span>
             {" "}

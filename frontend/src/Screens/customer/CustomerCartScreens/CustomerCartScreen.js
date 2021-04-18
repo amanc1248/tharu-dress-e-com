@@ -7,8 +7,9 @@ import CustomerAccountInformationScreen from "./AccountDetails/CustomerAccountIn
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../actions/cartActions";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { logout } from "../../../actions/userActions";
+import Footer from "../../../Components/customer/Footer/Footer";
+import Header from "../../../Components/customer/Header";
 function CustomerCartScreen({ match, location, history }) {
   const productId = match.params.id;
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
@@ -35,35 +36,39 @@ function CustomerCartScreen({ match, location, history }) {
     }
   }, [dispatch, qty, productId, userInfo, history, redirect]);
   return (
-    <div className="cart">
-      <ImageWithTitle theTitle="YOUR CART"></ImageWithTitle>
-      <div className="welcome__user">
-        <span className="welcome__the__user">
-          WELCOME, {userInfo && userInfo["firstName"]}
-        </span>
-        <span className="user_logout" onClick={logoutHandler}>
-          {" "}
-          <u>Sign Out</u>
-        </span>
+    <>
+      <Header></Header>
+      <div className="cart">
+        <ImageWithTitle theTitle="YOUR CART"></ImageWithTitle>
+        <div className="welcome__user">
+          <span className="welcome__the__user">
+            WELCOME, {userInfo && userInfo["firstName"]}
+          </span>
+          <span className="user_logout" onClick={logoutHandler}>
+            {" "}
+            <u>Sign Out</u>
+          </span>
+        </div>
+        <p className="contact__us__instruction">
+          If you have any queries or need further assistance, please Contact Us
+        </p>
+        <Tabs>
+          <div label="Bag">
+            <CustomerBagScreen bagTitle="SHOPPING BAG"></CustomerBagScreen>
+          </div>
+          <div label="Favorites">
+            <CustomerFavoriteScreen></CustomerFavoriteScreen>
+          </div>
+          <div label="Orders">
+            <h1>This is orders</h1>
+          </div>
+          <div label="Account Details">
+            <CustomerAccountInformationScreen></CustomerAccountInformationScreen>
+          </div>
+        </Tabs>
       </div>
-      <p className="contact__us__instruction">
-        If you have any queries or need further assistance, please Contact Us
-      </p>
-      <Tabs>
-        <div label="Bag">
-          <CustomerBagScreen bagTitle="SHOPPING BAG"></CustomerBagScreen>
-        </div>
-        <div label="Favorites">
-          <CustomerFavoriteScreen></CustomerFavoriteScreen>
-        </div>
-        <div label="Orders">
-          <h1>This is orders</h1>
-        </div>
-        <div label="Account Details">
-          <CustomerAccountInformationScreen></CustomerAccountInformationScreen>
-        </div>
-      </Tabs>
-    </div>
+      <Footer></Footer>
+    </>
   );
 }
 

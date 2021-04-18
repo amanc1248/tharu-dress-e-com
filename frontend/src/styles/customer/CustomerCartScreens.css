@@ -1,4 +1,10 @@
 /* CART👇👇👇 */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
+.cart__tabs {
+  font-size: smaller;
+}
+
 .welcome__user {
   margin: 30px 0;
 }
@@ -20,8 +26,13 @@
   margin: 8px;
 }
 .contact__us__instruction {
+  font: 14px/20px "Apercu Regular", Helvetica, Arial, Sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+  word-spacing: normal;
+  margin-bottom: 38px;
   padding: 0 30px;
-  font-size: smaller;
+  font-family: "DM Sans", sans-serif;
 }
 
 /* ACCOUNT DETAILS 👇👇👇 */

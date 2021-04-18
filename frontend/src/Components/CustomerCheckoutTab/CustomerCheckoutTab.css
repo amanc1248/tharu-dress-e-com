@@ -42,13 +42,15 @@
 .cc__payment {
   font-size: 13px;
   text-align: left;
+  margin-top: 20px auto;
+  margin: auto;
+  width: 50%;
 }
 .cc__account__info__inputs,
 .cc__delivery__info__shipping__inputs,
 .cc__delivery__info__billing__inputs {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
 }
 
 /* Checkout cart property */
@@ -101,4 +103,12 @@
   .checkout-tab-list-item {
     margin: 0;
   }
+  .cc__account__info,
+  .cc__delivery__info,
+  .cc__payment {
+    width: 100%;
+  }
+}
+.checkOut__heading {
+  letter-spacing: 6px;
 }

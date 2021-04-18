@@ -1,18 +1,21 @@
+import {
+  ADDRESS_BOOK_EDIT,
+  CHANGE_PASSWORD,
+  EDIT_ACCOUNT,
+} from "../constants/accountDetailsConstants";
+
 export const goToAccountEdit = () => {
   return {
-    type: "EDITACCOUNT",
+    type: EDIT_ACCOUNT,
   };
 };
 export const goToChangePassword = () => {
   return {
-    type: "CHANGEPASSWORD",
+    type: CHANGE_PASSWORD,
   };
 };
 export const goToAddressBookEdit = () => {
   return {
-    type: "ADDRESSBOOKEDIT",
+    type: ADDRESS_BOOK_EDIT,
   };
-};
-export const goToOrderDetails = () => {
-  return { type: "SEEORDERDETAILS" };
 };
