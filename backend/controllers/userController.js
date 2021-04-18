@@ -3,8 +3,12 @@ import bcrypt from "bcryptjs";
 import db from "../config/db.js";
 import generateToken from "../utils/generateToken.js";
 
-// async function matchPassword(enteredPassword, dbpassword) {
-//   return await bcrypt.compare(enteredPassword, dbpassword);
+// async function MatchPassword(enteredPassword, dbpassword) {
+//   if (await bcrypt.compare(enteredPassword, dbpassword)) {
+//     return true;
+//   } else {
+//     return false;
+//   }
 // }
 
 function MatchPassword(enteredPassword, dbPassword) {
@@ -20,7 +24,7 @@ function MatchPassword(enteredPassword, dbPassword) {
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   let sql =
-    "select @uid :=`user_id`, first_name, last_name, email from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select customer_id, password from customer where user_id =@finaluid;";
+    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select customer_id, password from customer where user_id =@finaluid;";
   db.query(sql, [email], (err, result) => {
     if (err) throw err;
     if (result.length > 0) {
@@ -32,6 +36,7 @@ const authUser = asyncHandler(async (req, res) => {
             firstName: result[0][0]["first_name"],
             lastName: result[0][0]["last_name"],
             email: result[0][0]["email"],
+            phone: result[0][0]["phone"],
             userId: result[1]["0"]["@finaluid:= `user_id`"],
             customerId: result[2]["0"]["customer_id"],
             token: generateToken(result[0][0]["email"]),
@@ -56,7 +61,7 @@ const authUser = asyncHandler(async (req, res) => {
 //@access PRIVATE
 const getUserProfile = asyncHandler(async (req, res) => {
   let sql =
-    "select @uid :=`user_id`, first_name, last_name, email from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select customer_id, password from customer where user_id =@finaluid;";
+    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select customer_id, password from customer where user_id =@finaluid;";
 
   db.query(sql, [req.user[0][0]["email"]], (err, result) => {
     if (err) throw err;
@@ -66,6 +71,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
           firstName: result[0][0]["first_name"],
           lastName: result[0][0]["last_name"],
           email: result[0][0]["email"],
+          phone: result[0][0]["phone"],
           userId: result[1]["0"]["@finaluid:= `user_id`"],
           customerId: result[2]["0"]["customer_id"],
           password: result[2]["0"]["password"],
@@ -156,4 +162,63 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 });
 
-export { authUser, getUserProfile, registerUser };
+//@desc update user profile
+//@route PUT /api/users/profile
+//@access PUBLIC
+const updateUserProfile = asyncHandler(async (req, res) => {
+  let sql =
+    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select customer_id, password from customer where user_id =@finaluid;";
+
+  db.query(sql, [req.user[0][0]["email"]], (err, result) => {
+    if (err) throw err;
+    if (result.length > 0) {
+      if (result) {
+        console.log(result);
+        let firstName = req.body.firstName || result[0][0]["first_name"];
+        let lastName = req.body.lastName || result[0][0]["last_name"];
+        let email = req.body.email || result[0][0]["email"];
+        let phone = req.body.phone || result[0][0]["phone"];
+
+        // save to database
+        let sql =
+          "UPDATE dasa_user SET first_name = ?, last_name=?, email=?, phone=? WHERE email=?;SELECT user_id,first_name,last_name,email,phone from dasa_user WHERE email=?;select customer_id from customer where user_id= ?;";
+        db.query(
+          sql,
+          [
+            firstName,
+            lastName,
+            email,
+            phone,
+            req.user[0][0]["email"],
+            email,
+            result[1][0]["@finaluid:= `user_id`"],
+          ],
+          (err, result) => {
+            // if (err) {
+            //   res.status(401).send({ message: err });
+            // }
+            console.log(result);
+            if (result) {
+              res.json({
+                firstName: result[1][0]["first_name"],
+                lastName: result[1][0]["last_name"],
+                email: result[1][0]["email"],
+                phone: result[1][0]["phone"],
+                userId: result[1]["0"]["@finaluid:= `user_id`"],
+                customerId: result[2]["0"]["customer_id"],
+                token: generateToken(result[1][0]["email"]),
+              });
+            } else {
+              res.status(401).send({ Message: "Error occured" });
+            }
+          }
+        );
+        // give he response
+      } else {
+        res.status(404);
+        throw new Error("user not found");
+      }
+    }
+  });
+});
+export { authUser, getUserProfile, registerUser, updateUserProfile };

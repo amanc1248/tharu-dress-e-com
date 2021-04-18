@@ -8,7 +8,8 @@
   list-style: none;
   margin-left: 64px;
   margin-right: 64px;
-  margin-bottom: -1px;
+  margin-bottom: 20px;
+  margin-top: 30px;
   padding: 0.5rem 0.75rem;
 }
 
@@ -101,7 +102,8 @@
     width: 100%;
   }
   .checkout-tab-list-item {
-    margin: 0;
+    margin: 30px;
+    padding: 0;
   }
   .cc__account__info,
   .cc__delivery__info,
