@@ -170,6 +170,32 @@ export function AccountInformationEdit() {
 
 export function ChangePassword() {
   const dispatch = useDispatch();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [message, setMessage] = useState();
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
+
+  // useEffect(() => {}, [user, dispatch]);
+
+  const updatePasswordHandler = (e) => {
+    // dispatch update profile
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setMessage("Password do not match");
+    } else {
+      dispatch(updateUserProfile({ password }));
+      dispatch(goToChangePassword());
+    }
+
+    // dispatch(getUserDetails("profile"));
+  };
 
   return (
     <div className="change__password">
@@ -179,24 +205,33 @@ export function ChangePassword() {
       </div>
       <div className="change__password__title">
         <h4>CHANGE PASSWORD</h4>
+        {message && <Message variant="danger">{message} </Message>}
+        {error && <Message variant="danger">{error} </Message>}
+        {success && <Message variant="danger">Successfully updated </Message>}
+        {loading && <Loader> </Loader>}
       </div>
       <form action="">
         <div className="change__password__inputs">
           <label>
             Password
-            <input type="password" />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
           </label>
           <label>
             Confirm Password
-            <input type="password" />
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            ></input>
           </label>
         </div>
         <div className="account__information__buttons row justify-content-between">
           <div className="edit__button__container col-6">
-            <button
-              className="edit__button"
-              onClick={() => dispatch(goToChangePassword())}
-            >
+            <button className="edit__button" onClick={updatePasswordHandler}>
               SAVE
             </button>
           </div>
@@ -222,7 +257,7 @@ export function AccountInformation() {
   const { loading, error, user } = userDetails;
 
   useEffect(() => {
-    if (!user.firstName) {
+    if (!user.firstName || !user.lastName || !user.email || !user.phone) {
       dispatch(getUserDetails("profile"));
     }
   }, [user, dispatch]);

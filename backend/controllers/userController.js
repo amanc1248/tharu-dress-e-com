@@ -173,15 +173,22 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     if (err) throw err;
     if (result.length > 0) {
       if (result) {
+        console.log("First RESULT");
         console.log(result);
+        console.log(result[0][0]["first_name"]);
+
         let firstName = req.body.firstName || result[0][0]["first_name"];
         let lastName = req.body.lastName || result[0][0]["last_name"];
         let email = req.body.email || result[0][0]["email"];
         let phone = req.body.phone || result[0][0]["phone"];
+        let password;
+        if (req.body.password) {
+          password = req.body.password || result[2][0]["password"];
+        }
 
         // save to database
         let sql =
-          "UPDATE dasa_user SET first_name = ?, last_name=?, email=?, phone=? WHERE email=?;SELECT user_id,first_name,last_name,email,phone from dasa_user WHERE email=?;select customer_id from customer where user_id= ?;";
+          "UPDATE dasa_user SET first_name = ?, last_name=?, email=?, phone=? WHERE email=?;SELECT user_id,first_name,last_name,email,phone from dasa_user WHERE email=?;select customer_id from customer where user_id= ?;UPDATE customer SET password=? where user_id=?;";
         db.query(
           sql,
           [
@@ -191,6 +198,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             phone,
             req.user[0][0]["email"],
             email,
+            result[1][0]["@finaluid:= `user_id`"],
+            password,
             result[1][0]["@finaluid:= `user_id`"],
           ],
           (err, result) => {
@@ -209,7 +218,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
                 token: generateToken(result[1][0]["email"]),
               });
             } else {
-              res.status(401).send({ Message: "Error occured" });
+              res.status(401).send({ Message: err });
             }
           }
         );
