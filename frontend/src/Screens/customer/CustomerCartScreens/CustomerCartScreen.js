@@ -42,7 +42,7 @@ function CustomerCartScreen({ match, location, history }) {
         <ImageWithTitle theTitle="YOUR CART"></ImageWithTitle>
         <div className="welcome__user">
           <span className="welcome__the__user">
-            WELCOME, {userInfo["firstName"]}
+            WELCOME, {userInfo && userInfo["firstName"]}
           </span>
           <span className="user_logout" onClick={logoutHandler}>
             {" "}

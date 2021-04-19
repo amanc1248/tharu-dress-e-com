@@ -61,12 +61,13 @@ const authUser = asyncHandler(async (req, res) => {
 //@access PRIVATE
 const getUserProfile = asyncHandler(async (req, res) => {
   let sql =
-    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select customer_id, password from customer where user_id =@finaluid;";
+    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select @customerId:=`customer_id`, password from customer where user_id =@finaluid;SELECT @locId:=`location_id` from customer_location where customer_id = @customerId;SELECT city, street from location where location_id = @locId; ";
 
   db.query(sql, [req.user[0][0]["email"]], (err, result) => {
     if (err) throw err;
     if (result.length > 0) {
       if (result) {
+        console.log(result);
         res.json({
           firstName: result[0][0]["first_name"],
           lastName: result[0][0]["last_name"],
@@ -74,7 +75,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
           phone: result[0][0]["phone"],
           userId: result[1]["0"]["@finaluid:= `user_id`"],
           customerId: result[2]["0"]["customer_id"],
-          password: result[2]["0"]["password"],
+          city: result[4]["0"]["city"],
+          street: result[4]["0"]["street"],
         });
       } else {
         res.status(404);
@@ -167,7 +169,7 @@ const registerUser = asyncHandler(async (req, res) => {
 //@access PUBLIC
 const updateUserProfile = asyncHandler(async (req, res) => {
   let sql =
-    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select customer_id, password from customer where user_id =@finaluid;";
+    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select @customerId:=`customer_id` , password from customer where user_id =@finaluid;SELECT @locId:=`location_id` from customer_location where customer_id = @customerId;SELECT city, street from location where location_id = @locId; ";
 
   db.query(sql, [req.user[0][0]["email"]], (err, result) => {
     if (err) throw err;
@@ -176,11 +178,14 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         console.log("First RESULT");
         console.log(result);
         console.log(result[0][0]["first_name"]);
+        console.log(result[3][0]["@locId:=`location_id`"]);
 
         let firstName = req.body.firstName || result[0][0]["first_name"];
         let lastName = req.body.lastName || result[0][0]["last_name"];
         let email = req.body.email || result[0][0]["email"];
         let phone = req.body.phone || result[0][0]["phone"];
+        let city = req.body.city || result[4][0]["city"];
+        let street = req.body.street || result[4][0]["street"];
         let password;
         if (req.body.password) {
           password = req.body.password || result[2][0]["password"];
@@ -188,7 +193,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
         // save to database
         let sql =
-          "UPDATE dasa_user SET first_name = ?, last_name=?, email=?, phone=? WHERE email=?;SELECT user_id,first_name,last_name,email,phone from dasa_user WHERE email=?;select customer_id from customer where user_id= ?;UPDATE customer SET password=? where user_id=?;";
+          "UPDATE dasa_user SET first_name = ?, last_name=?, email=?, phone=? WHERE email=?;SELECT user_id,first_name,last_name,email,phone from dasa_user WHERE email=?;select customer_id from customer where user_id= ?;UPDATE customer SET password=? where user_id=?;UPDATE location SET city=?,  street=? where location_id='loc1';";
         db.query(
           sql,
           [
@@ -201,6 +206,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             result[1][0]["@finaluid:= `user_id`"],
             password,
             result[1][0]["@finaluid:= `user_id`"],
+            city,
+            street,
           ],
           (err, result) => {
             // if (err) {
@@ -229,5 +236,13 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       }
     }
   });
+});
+
+//@desc update user address
+//@route PUT /api/users/profile
+//@access PUBLIC
+const updateAddressBook = asyncHandler(async (req, res) => {
+  let sql =
+    "SELECT @locId:=`location_id` from customer_location where customer_id =?;SELECT city, street from location where location_id = @locId;";
 });
 export { authUser, getUserProfile, registerUser, updateUserProfile };

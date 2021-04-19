@@ -97,12 +97,7 @@ function App() {
               <EmployeeScreen></EmployeeScreen>
             </Route>
 
-            <Route path="/checkOut">
-              <Header></Header>
-              <ImageWithTitle theTitle="CHECKOUT"></ImageWithTitle>
-              <CustomerCheckOutScreen></CustomerCheckOutScreen>
-              <Footer></Footer>
-            </Route>
+            <Route path="/checkOut" component={CustomerCheckOutScreen}></Route>
 
             <Route path="/orderDetails">
               {/* <OrdersDetails></OrdersDetails> */}

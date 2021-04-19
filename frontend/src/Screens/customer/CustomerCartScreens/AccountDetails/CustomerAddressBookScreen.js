@@ -1,9 +1,23 @@
 import React from "react";
 import "../../../../styles/customer/CustomerCartScreens.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { goToAddressBookEdit } from "../../../../actions/accountDetailsActions";
+import { useEffect } from "react";
+import {
+  getUserDetails,
+  updateUserProfile,
+} from "../../../../actions/userActions";
+import { useState } from "react";
 function CustomerAddressBookScreen() {
   const dispatch = useDispatch();
+  const userDetails = useSelector((state) => state.userDetails);
+  const { user } = userDetails;
+
+  useEffect(() => {
+    if (!user.city || !user.street) {
+      dispatch(getUserDetails("profile"));
+    }
+  }, [user, dispatch]);
 
   return (
     <div className="address__book">
@@ -18,23 +32,16 @@ function CustomerAddressBookScreen() {
         <div className="userDetails">
           <span>
             {" "}
-            <strong>Location:</strong>{" "}
-          </span>
-          <span>Itahari-07, Sunsari</span>
-        </div>
-        <div className="userDetails">
-          <span>
-            {" "}
             <strong>City:</strong>{" "}
           </span>
-          <span>Duhabi</span>
+          <span>{user.city}</span>
         </div>
         <div className="userDetails">
           <span>
             {" "}
             <strong>Street</strong>{" "}
           </span>
-          <span>Duhabi, Pachira, 07</span>
+          <span>{user.street}</span>
         </div>
       </div>
       <div className="address__book__buttons row justify-content-between">
@@ -52,6 +59,31 @@ function CustomerAddressBookScreen() {
 }
 export function AddressBookEdit() {
   const dispatch = useDispatch();
+  const [city, setCity] = useState();
+  const [street, setStreet] = useState();
+
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
+
+  useEffect(() => {
+    if (!user.city) {
+      dispatch(getUserDetails("profile"));
+    } else {
+      setCity(user.city);
+      setStreet(user.street);
+    }
+  }, [user, dispatch]);
+
+  const updateProfileHandler = (e) => {
+    e.preventDefault();
+    // dispatch update profile
+    dispatch(updateUserProfile({ city, street }));
+    dispatch(goToAddressBookEdit());
+    dispatch(getUserDetails("profile"));
+  };
 
   return (
     <div className="address__book__edit">
@@ -64,19 +96,24 @@ export function AddressBookEdit() {
         <div className="Shipping__address__edit__inputs">
           <label>
             City
-            <input type="text" />
+            <input
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            ></input>
           </label>
           <label>
             Street
-            <input type="text" />
+            <input
+              type="text"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            ></input>
           </label>
         </div>
         <div className="account__information__buttons row justify-content-between">
           <div className="edit__button__container col-6">
-            <button
-              className="edit__button"
-              onClick={() => dispatch(goToAddressBookEdit())}
-            >
+            <button className="edit__button" onClick={updateProfileHandler}>
               SAVE
             </button>
           </div>

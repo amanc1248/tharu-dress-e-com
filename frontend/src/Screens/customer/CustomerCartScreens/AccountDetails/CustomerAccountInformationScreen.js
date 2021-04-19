@@ -254,7 +254,7 @@ export default CustomerAccountInformationScreen;
 export function AccountInformation() {
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.userDetails);
-  const { loading, error, user } = userDetails;
+  const { user } = userDetails;
 
   useEffect(() => {
     if (!user.firstName || !user.lastName || !user.email || !user.phone) {
