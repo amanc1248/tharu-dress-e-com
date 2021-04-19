@@ -1,14 +1,21 @@
 import { Checkbox } from "@material-ui/core";
 import React, { useState } from "react";
 import "../../styles/customer/CustomerCheckOutScreen.css";
-import { CustomerCheckoutTabs } from "../../Components/CustomerCheckoutTab/CustomerCheckoutTab";
 import Footer from "../../Components/customer/Footer/Footer";
 import Header from "../../Components/customer/Header";
 import ImageWithTitle from "../../Components/ImageWithTitle";
 import { saveShippingAddress } from "../../actions/cartActions";
 import { useDispatch, useSelector } from "react-redux";
-
 function CustomerCheckOutScreen({ history, location }) {
+  const [value, setValue] = useState(0);
+  const changeValue = () => {
+    setValue(1);
+  };
+  const theLabelData = [
+    { label: 1, text: "shipping" },
+    { label: 2, text: "payment" },
+    { label: 3, text: "placeorder" },
+  ];
   let checkOutFirstLabel = (
     <div className="the__label">
       <div className="the__number__label">1</div>
@@ -27,20 +34,45 @@ function CustomerCheckOutScreen({ history, location }) {
       <div className="the__text__label">Place Order</div>
     </div>
   );
+  const ourCheckOutTabs = [
+    {
+      label: checkOutFirstLabel,
+      theTab: <CCShipping value={changeValue}></CCShipping>,
+    },
+    {
+      label: checkOutSecondLabel,
+      theTab: <CCPayment></CCPayment>,
+    },
+    {
+      label: checkOutThirdLabel,
+      theTab: <CCShipping></CCShipping>,
+    },
+  ];
   return (
     <>
       <Header></Header>
       <ImageWithTitle theTitle="CHECKOUT"></ImageWithTitle>
       <div className="customer__checkout">
-        <CustomerCheckoutTabs>
-          <div label={checkOutFirstLabel}>
-            <CCShipping history={history}></CCShipping>
-          </div>
-          <div label={checkOutSecondLabel}>
-            <CCPayment></CCPayment>
-          </div>
-          <div label={checkOutThirdLabel}></div>
-        </CustomerCheckoutTabs>
+        <div className="customer__checkout__tabs">
+          {theLabelData.map((obj, index) => (
+            <div className="the__label" key={index.toString}>
+              <div
+                className={`the__number__label ${
+                  index <= value && "the__active__tab"
+                } `}
+                onClick={() => {
+                  setValue(index);
+                }}
+              >
+                {obj.label}
+              </div>
+              <div className="the__text__label">{obj.text}</div>
+            </div>
+          ))}
+        </div>
+        <div className="checkout-tab-content">
+          {ourCheckOutTabs[value].theTab}
+        </div>
       </div>
       <Footer></Footer>
     </>
@@ -49,7 +81,7 @@ function CustomerCheckOutScreen({ history, location }) {
 
 export default CustomerCheckOutScreen;
 
-export function CCShipping({ history }) {
+export function CCShipping({ history, value }) {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
   const [city, setCity] = useState(shippingAddress.city);
@@ -59,7 +91,7 @@ export function CCShipping({ history }) {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress({ city, street }));
-    history.push("/payment");
+    value();
   };
   return (
     <div className="cc__account__info ">

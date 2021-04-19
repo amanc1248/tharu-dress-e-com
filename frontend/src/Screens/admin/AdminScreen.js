@@ -103,9 +103,7 @@ export function TheEntireSidebar({ ourTabs, type, name, theData }) {
       ) : (
         <></>
       )}
-      <div className="the__content__section">
-        <h1>{ourTabs[value]}</h1>
-      </div>
+      <div className="the__content__section">{ourTabs[value]}</div>
     </div>
   );
   function TheSideBar() {

@@ -48,7 +48,7 @@ export function SeeMoreToogle({ theList }) {
     return () => {
       document.removeEventListener("mousedown", hideSeeMore);
     };
-  }, [moreAction, seeMoreRef]);
+  }, [moreAction, seeMoreRef, hideMoreAction]);
   return (
     <div className="see__more__data">
       <MoreHorizIcon
