@@ -76,6 +76,8 @@ function ProductDetailsPart1({
   const [quantity, setQuantity] = useState(1);
   const [lengthValue, setLengthValue] = useState(2);
   const [widthValue, setWidthValue] = useState(2);
+  const [lengthSize, setLengthSize] = useState(4.5);
+  const [widthSize, setWidthSize] = useState(1);
 
   const LengthOptionButton = ({ size, sizeName, index }) => {
     return (
@@ -86,6 +88,7 @@ function ProductDetailsPart1({
           }`}
           onClick={() => {
             setLengthValue(index);
+            setLengthSize(size);
           }}
         >
           <span>{size}</span>
@@ -106,6 +109,7 @@ function ProductDetailsPart1({
           }`}
           onClick={() => {
             setWidthValue(index);
+            setWidthSize(size);
           }}
         >
           <span>{size}</span>
@@ -125,11 +129,11 @@ function ProductDetailsPart1({
     { size: 5.5, sizeName: "Long" },
   ];
   let widthOptions = [
-    { size: 80, sizeName: "Short" },
-    { size: 90, sizeName: "" },
-    { size: 100, sizeName: "Standad" },
-    { size: 110, sizeName: "" },
-    { size: 120, sizeName: "Long" },
+    { size: 0.25, sizeName: "Short" },
+    { size: 0.5, sizeName: "" },
+    { size: 1, sizeName: "Standad" },
+    { size: 1.25, sizeName: "" },
+    { size: 2, sizeName: "Long" },
   ];
   let lengthChooseOptions = lenghtOptions.map((obj, index) => {
     return (
@@ -162,7 +166,9 @@ function ProductDetailsPart1({
       : setQuantity(quantity);
   };
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}?qty=${quantity}`);
+    history.push(
+      `/cart/${match.params.id}?qty=${quantity}?length=${lengthSize}?width=${widthSize}`
+    );
   };
   return (
     <div className="product__details__part1">

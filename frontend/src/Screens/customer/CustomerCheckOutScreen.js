@@ -14,6 +14,7 @@ import { Col } from "react-bootstrap";
 import { Row, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Message from "../../Components/Message";
+import { createOrder } from "../../actions/orderActions";
 
 function CustomerCheckOutScreen({ history, location }) {
   const [value, setValue] = useState(0);
@@ -198,29 +199,33 @@ export function PlaceOrder({ history }) {
     Number(cart.shippingPrice) +
     Number(cart.taxPrice)
   ).toFixed(2);
-  // const orderCreate = useSelector((state) => state.orderCreate);
-  // const { order, success, error } = orderCreate;
-  // useEffect(() => {
-  //   if (success) {
-  //     history.push(`order/${order._id}`);
-  //   }
-  //   // eslint-disable-next-line
-  // }, [success, order]);
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const orderCreate = useSelector((state) => state.orderCreate);
+  const { order, success, error } = orderCreate;
+  useEffect(() => {
+    if (success) {
+      history.push(`order/${order.orderId}`);
+    }
+    // eslint-disable-next-line
+  }, [success, order]);
   const placeOrderHandler = () => {
-    // dispatch(
-    //   createOrder({
-    //     orderItems: cart.cartItems,
-    //     shippingAddress: cart.shippingAddress,
-    //     paymentMethod: cart.paymentMethod,
-    //     itemsPrice: cart.itemsPrice,
-    //     taxPrice: cart.taxPrice,
-    //     totalPrice: cart.totalPrice,
-    //   })
-    // );
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        // shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        // itemsPrice: cart.itemsPrice,
+        totalPrice: cart.totalPrice,
+        shippingPrice: cart.shippingPrice,
+        customerId: userInfo.customerId,
+      })
+    );
   };
   return (
     <>
-      <Row className="no-gutters px-2 py-4 text-left">
+      <Row className="no-gutters  text-left">
         <Col md={8} className="px-2">
           <ListGroup variant="flush">
             <ListGroup.Item>
@@ -306,7 +311,7 @@ export function PlaceOrder({ history }) {
               <ListGroup.Item>
                 <Button
                   type="button"
-                  className="btn-block"
+                  className="btn-block the__placeorder__button"
                   disabled={cart.cartItems === 0}
                   onClick={placeOrderHandler}
                 >

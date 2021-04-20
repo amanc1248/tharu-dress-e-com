@@ -6,7 +6,10 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
 } from "../constants/cartConstants";
 
-export const addToCart = (id, qty) => async (dispatch, getState) => {
+export const addToCart = (id, qty, length, width) => async (
+  dispatch,
+  getState
+) => {
   const { data } = await axios.get(`/api/products/${id}`);
 
   dispatch({
@@ -18,6 +21,8 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
       price: data[0][0].price,
       in_stock: data[0][0].in_stock,
       qty,
+      length,
+      width,
     },
   });
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));

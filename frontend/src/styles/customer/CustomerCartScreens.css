@@ -283,9 +283,11 @@ img.resize {
 /* cart total👇 */
 .cartTotal {
   background-color: white;
+  text-align: left;
   flex: 0.3;
   height: 200px;
   padding: 20px;
+  font-family: "DM Sans", sans-serif;
 }
 
 .cartTotal button {

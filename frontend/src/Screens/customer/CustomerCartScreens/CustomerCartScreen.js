@@ -12,7 +12,16 @@ import Footer from "../../../Components/customer/Footer/Footer";
 import Header from "../../../Components/customer/Header";
 function CustomerCartScreen({ match, location, history }) {
   const productId = match.params.id;
-  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+  const qty = location.search
+    ? Number(location.search.split("qty=")[1].split("?length=")[0])
+    : 1;
+  const length = location.search
+    ? Number(location.search.split("length=")[1].split("?width=")[0])
+    : 4.5;
+  const width = location.search
+    ? Number(location.search.split("width=")[1])
+    : 1;
+
   const redirect = location.search ? location.search.split("=")[1] : "/signin";
 
   const dispatch = useDispatch();
@@ -29,17 +38,17 @@ function CustomerCartScreen({ match, location, history }) {
   };
   useEffect(() => {
     if (productId) {
-      dispatch(addToCart(productId, qty));
+      dispatch(addToCart(productId, qty, length, width));
     }
     if (!userInfo) {
       history.push(redirect);
     }
-  }, [dispatch, qty, productId, userInfo, history, redirect]);
+  }, [dispatch, qty, productId, userInfo, history, redirect, length, width]);
   return (
     <>
       <Header></Header>
       <div className="cart">
-        <ImageWithTitle theTitle="YOUR CART"></ImageWithTitle>
+        <ImageWithTitle theTitle="MY ACCOUNT"></ImageWithTitle>
         <div className="welcome__user">
           <span className="welcome__the__user">
             WELCOME, {userInfo && userInfo["firstName"]}

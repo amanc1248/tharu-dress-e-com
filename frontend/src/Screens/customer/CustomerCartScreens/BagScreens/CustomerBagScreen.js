@@ -32,6 +32,8 @@ export function CartItem({
   quantity,
   productId,
   history,
+  length,
+  width,
 }) {
   const dispatch = useDispatch();
   const removeFromCartHandler = (id) => {
@@ -62,7 +64,10 @@ export function CartItem({
                 </option>
               ))}
             </select>
+            <div>Length: {length}m</div>
+            <div>Width: {width}m</div>
           </div>
+
           <div className="item-action-divider">|</div>
           <div className="item-delete">
             {/* 👉👉👉you got to understand here, why are we doing .bind and this */}
@@ -93,17 +98,13 @@ export function CartItems({ items }) {
         price={item.price}
         stock={item.in_stock}
         quantity={item.qty}
+        length={item.length}
+        width={item.width}
       ></CartItem>
     );
   });
 
-  return (
-    <div className="cartItems">
-      <h1>Shopping Cart</h1>
-      <hr />
-      {cartItemsList}
-    </div>
-  );
+  return <div className="cartItems">{cartItemsList}</div>;
 }
 
 export function CartTotal({ items, history }) {
@@ -133,7 +134,9 @@ export function CartTotal({ items, history }) {
     <div className="cartTotal">
       <h3>
         Subtotal({getTotalCartItems()} items)
-        <span className="cart-total-price">${getTotalPrice().toFixed(2)}</span>
+        <span className="cart-total-price">
+          Rs.{getTotalPrice().toFixed(2)}
+        </span>
       </h3>
       <button onClick={checkoutHandler}>PROCEED TO CHECKOUT</button>
     </div>

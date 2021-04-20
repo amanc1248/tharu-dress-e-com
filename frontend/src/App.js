@@ -26,6 +26,7 @@ import AdminScreen from "./Screens/admin/AdminScreen";
 import ScrollToTop from "./Components/ScrollToTop";
 import Playground from "./playground";
 import CustomerRegisterScreen from "./Screens/customer/CustomerRegisterScreen";
+import CustomerOrderDetailsScreen from "./Screens/customer/CustomerOrderDetailsScreen";
 
 function App() {
   return (
@@ -130,6 +131,10 @@ function App() {
             </Route>
             <Route path="/playground/:id" component={Playground}></Route>
 
+            <Route
+              path="/order/:orderId?"
+              component={CustomerOrderDetailsScreen}
+            ></Route>
             {/* Home Route👇 */}
             <Route path="/">
               <Header></Header>
