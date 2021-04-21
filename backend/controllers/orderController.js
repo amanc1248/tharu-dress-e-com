@@ -94,12 +94,13 @@ const getOrderById = asyncHandler(async (req, res) => {
   console.log(req.params.orderId);
   let orderId = req.params.orderId;
   let sql =
-    "SELECT * FROM the_order where order_id=?; select * from order_item where order_id=?";
+    "SELECT *, @oId:=`order_id`, @shId:=`sh_id` FROM the_order where order_id=?;select * from order_item join product on order_item.product_id = product.product_id where order_item.order_id = @oId;select * from shipping_address where shipping_id=@shId;";
   db.query(sql, [orderId, orderId], (err, result) => {
     if (err) {
       throw err;
     }
     if (result) {
+      console.log(result);
       res.json(result);
     }
   });
