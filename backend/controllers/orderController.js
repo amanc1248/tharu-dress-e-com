@@ -110,4 +110,20 @@ const getOrderById = asyncHandler(async (req, res) => {
   });
 });
 
-export { addOrderItems, getOrderById };
+//@desc get logged in user orders
+//@route GET /api/order/myorders
+//@access Private
+const getMyOrders = asyncHandler(async (req, res) => {
+  console.log("this is my orderss");
+  const customerId = req.user[2][0]["customer_id"];
+  let sql = "select * from the_order where customer_id=?;";
+  db.query(sql, customerId, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      res.json(result);
+    }
+  });
+});
+export { addOrderItems, getOrderById, getMyOrders };

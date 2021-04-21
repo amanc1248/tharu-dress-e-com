@@ -74,7 +74,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
           email: result[0][0]["email"],
           phone: result[0][0]["phone"],
           userId: result[1]["0"]["@finaluid:= `user_id`"],
-          customerId: result[2]["0"]["customer_id"],
+          customerId: result[2]["0"]["@customerId:=`customer_id`"],
           city: result[4]["0"]["city"],
           street: result[4]["0"]["street"],
         });

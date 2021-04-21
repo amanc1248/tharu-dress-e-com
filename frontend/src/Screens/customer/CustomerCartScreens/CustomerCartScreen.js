@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { logout } from "../../../actions/userActions";
 import Footer from "../../../Components/customer/Footer/Footer";
 import Header from "../../../Components/customer/Header";
+import CustomerOrdersScreen from "./OrdersScreens/CustomerOrdersScreen";
 function CustomerCartScreen({ match, location, history }) {
   const productId = match.params.id;
   const qty = location.search
@@ -69,7 +70,7 @@ function CustomerCartScreen({ match, location, history }) {
             <CustomerFavoriteScreen></CustomerFavoriteScreen>
           </div>
           <div label="Orders">
-            <h1>This is orders</h1>
+            <CustomerOrdersScreen></CustomerOrdersScreen>
           </div>
           <div label="Account Details">
             <CustomerAccountInformationScreen></CustomerAccountInformationScreen>
