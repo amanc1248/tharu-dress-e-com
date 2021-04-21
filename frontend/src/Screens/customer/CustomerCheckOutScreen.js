@@ -206,7 +206,7 @@ export function PlaceOrder({ history }) {
   const { order, success, error } = orderCreate;
   useEffect(() => {
     if (success) {
-      history.push(`order/${order.orderId}`);
+      history.push(`orders/${order.orderId}`);
     }
     // eslint-disable-next-line
   }, [success, order]);

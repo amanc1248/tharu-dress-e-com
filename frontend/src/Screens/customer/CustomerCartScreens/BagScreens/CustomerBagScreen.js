@@ -11,15 +11,19 @@ function CustomerBagScreen({ match, location, bagTitle, history }) {
 
   return (
     <div className="bag">
-      <div className="App_main row no-gutters">
-        <div className="col-lg-8 col-12">
-          <CartItems items={cartItems}></CartItems>
-        </div>
+      {cartItems.length === 0 ? (
+        <h2>No items in cart</h2>
+      ) : (
+        <div className="App_main row no-gutters">
+          <div className="col-lg-8 col-12">
+            <CartItems items={cartItems}></CartItems>
+          </div>
 
-        <div className="col-lg-4 col-12">
-          <CartTotal items={cartItems} history={history}></CartTotal>
+          <div className="col-lg-4 col-12">
+            <CartTotal items={cartItems} history={history}></CartTotal>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -43,7 +47,7 @@ export function CartItem({
   return (
     <div className="cartItem">
       <div className="cartItem-Image">
-        <img src={`/` + image} alt="cartproduct" />
+        <img src={image} alt="cartproduct" />
       </div>
       <div className="cartItem-info">
         <div className="info-title">

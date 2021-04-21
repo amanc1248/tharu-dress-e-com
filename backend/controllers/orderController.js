@@ -101,7 +101,11 @@ const getOrderById = asyncHandler(async (req, res) => {
     }
     if (result) {
       console.log(result);
-      res.json(result);
+      res.json({
+        orderDetails: result[0][0],
+        orderItems: result[1],
+        shippingAddress: result[2][0],
+      });
     }
   });
 });

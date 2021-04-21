@@ -132,7 +132,7 @@ function App() {
             <Route path="/playground/:id" component={Playground}></Route>
 
             <Route
-              path="/order/:orderId?"
+              path="/orders/:orderId?"
               component={CustomerOrderDetailsScreen}
             ></Route>
             {/* Home Route👇 */}
