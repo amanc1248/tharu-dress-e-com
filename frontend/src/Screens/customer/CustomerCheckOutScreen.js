@@ -86,7 +86,7 @@ export function CCShipping({ history, value }) {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
   const [city, setCity] = useState(shippingAddress.city);
-  const [street, setStreet] = useState(shippingAddress.city);
+  const [street, setStreet] = useState(shippingAddress.street);
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
@@ -214,7 +214,7 @@ export function PlaceOrder({ history }) {
     dispatch(
       createOrder({
         orderItems: cart.cartItems,
-        // shippingAddress: cart.shippingAddress,
+        shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         // itemsPrice: cart.itemsPrice,
         totalPrice: cart.totalPrice,
