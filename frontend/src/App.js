@@ -15,7 +15,6 @@ import CustomerMenScreen from "./Screens/customer/CustomerMenScreen";
 import CustomerProductsScreen from "./Screens/customer/CustomerProductsScreen";
 import CustomerCartScreen from "./Screens/customer/CustomerCartScreens/CustomerCartScreen";
 import CustomerProductScreen from "./Screens/customer/CustomerProductScreen";
-import TailorSignInScreen from "./Screens/tailor/TailorSignInScreen";
 import TailorScreen from "./Screens/tailor/TailorScreen";
 import EmployeeSignInScreen from "./Screens/employee/EmployeeSignInScreen";
 import EmployeeScreen from "./Screens/employee/EmployeeScreen";
@@ -27,6 +26,8 @@ import ScrollToTop from "./Components/ScrollToTop";
 import Playground from "./playground";
 import CustomerRegisterScreen from "./Screens/customer/CustomerRegisterScreen";
 import CustomerOrderDetailsScreen from "./Screens/customer/CustomerOrderDetailsScreen";
+import TailorSignIn from "./Screens/tailor/TailorSignInScreen";
+import TailorRegister from "./Screens/tailor/tailorRegisterScreen";
 
 function App() {
   return (
@@ -78,10 +79,16 @@ function App() {
               component={CustomerProductScreen}
             ></Route>
             <Route path="/tailorSignIn">
-              <ImageWithTitle theTitle="CREATE A TAILOR ACCOUNT"></ImageWithTitle>
-              <TailorSignInScreen></TailorSignInScreen>
+              <ImageWithTitle theTitle="SIGN IN TO YOUR TAILOR ACCOUNT"></ImageWithTitle>
+              <TailorSignIn></TailorSignIn>
               <Footer></Footer>
             </Route>
+            <Route path="/tailorRegister">
+              <ImageWithTitle theTitle="CREATE A TAILOR ACCOUNT"></ImageWithTitle>
+              <TailorRegister></TailorRegister>
+              <Footer></Footer>
+            </Route>
+
             <Route path="/tailorAccount">
               <TailorScreen></TailorScreen>
             </Route>
