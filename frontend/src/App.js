@@ -89,9 +89,7 @@ function App() {
               <Footer></Footer>
             </Route>
 
-            <Route path="/tailorAccount">
-              <TailorScreen></TailorScreen>
-            </Route>
+            <Route path="/tailorAccount" component={TailorScreen}></Route>
 
             <Route path="/employeeSignIn">
               <ImageWithTitle theTitle="CREATE AN EMPLOYEE ACCOUNT"></ImageWithTitle>

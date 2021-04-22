@@ -33,7 +33,13 @@ function AdminScreen() {
     </div>
   );
 }
-export function TheEntireSidebar({ ourTabs, type, name, theData }) {
+export function TheEntireSidebar({
+  ourTabs,
+  type,
+  name,
+  theData,
+  signOutHandler,
+}) {
   const [sidebar, setSidebar] = useState(false);
   useEffect(() => {
     showHideSidebar();
@@ -105,7 +111,11 @@ export function TheEntireSidebar({ ourTabs, type, name, theData }) {
             </div>
           </div>
         </div>
-        {showSignOut && <div className="signOut__option">Sign Out</div>}
+        {showSignOut && (
+          <div className="signOut__option" onClick={signOutHandler}>
+            Sign Out
+          </div>
+        )}
       </div>
       {sidebar ? (
         <div>
