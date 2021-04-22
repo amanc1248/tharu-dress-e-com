@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import db from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import tailorUserRoutes from "./routes/tailorUserRoutes.js";
 import { notFound, errorHandler } from "./middleWare/middleWare.js";
 import userRoutes from "./routes/userRoutes.js";
 import morgan from "morgan";
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/tailor", tailorUserRoutes);
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
