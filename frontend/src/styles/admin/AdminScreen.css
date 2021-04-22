@@ -336,3 +336,26 @@
     display: none;
   }
 }
+
+.signOut__option {
+  padding: 20px 5px;
+  -webkit-box-shadow: 0 0 10px rgb(187, 183, 183);
+  box-shadow: 0 0 10px rgb(187, 183, 183);
+  width: 110px;
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  z-index: 1;
+  background-color: white;
+  border-radius: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+}
+.signOut__option:hover {
+  background-color: #ebeef2;
+  color: #9d72ff;
+}
+.signout__arrow {
+  cursor: pointer;
+}

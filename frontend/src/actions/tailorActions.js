@@ -5,7 +5,7 @@ import {
   TAILOR_LOGIN_SUCCESS,
 } from "../constants/tailorConstants";
 
-export const tailorLogin = (email, password) => async (dispatch) => {
+export const tailorLoginAction = (email, password) => async (dispatch) => {
   try {
     dispatch({
       type: TAILOR_LOGIN_REQUEST,

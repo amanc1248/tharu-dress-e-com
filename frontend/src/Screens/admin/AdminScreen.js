@@ -10,6 +10,7 @@ import AdminTailorsScreen from "./AdminTailorsScreen";
 import AdminEmployeeScreen from "./AdminEmployeeScreen";
 import AdminOrdersScreen from "./AdminOrdersScreen";
 import AdminProductsScreen from "./AdminProductsScreen";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import theAdminSideBarData from "../../Data/AdminData";
 const ourTabs = [
   <AdminDashboardScreen></AdminDashboardScreen>,
@@ -65,6 +66,7 @@ export function TheEntireSidebar({ ourTabs, type, name, theData }) {
 
   // for changing tabs
   const [value, setValue] = useState(0);
+  const [showSignOut, setShowSignOut] = useState(false);
 
   return (
     <div className="side__bar">
@@ -92,9 +94,18 @@ export function TheEntireSidebar({ ourTabs, type, name, theData }) {
 
           <div className="admin__detail">
             <div className="admin__title">{type}</div>
-            <div className="admin__name">{name}</div>
+            <div className="admin__name">
+              {name}
+              <KeyboardArrowDownIcon
+                className="signout__arrow"
+                onClick={(e) => {
+                  setShowSignOut(!showSignOut);
+                }}
+              ></KeyboardArrowDownIcon>
+            </div>
           </div>
         </div>
+        {showSignOut && <div className="signOut__option">Sign Out</div>}
       </div>
       {sidebar ? (
         <div>

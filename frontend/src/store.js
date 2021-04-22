@@ -22,6 +22,7 @@ import {
   orderDetailsReducer,
   orderListMyReducer,
 } from "./reducers/orderReducers";
+import { tailorLoginReducer } from "./reducers/tailorUserReducers";
 
 const reducer = combineReducers({
   // for account details 👇
@@ -39,6 +40,9 @@ const reducer = combineReducers({
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderListMy: orderListMyReducer,
+
+  // Tailor👇
+  tailorLogin: tailorLoginReducer,
 });
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
@@ -49,12 +53,18 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
   ? JSON.parse(localStorage.getItem("shippingAddress"))
   : {};
+
+// Tailor local storage
+const tailorInfoFromStorage = localStorage.getItem("tailorInfo")
+  ? JSON.parse(localStorage.getItem("tailorInfo"))
+  : null;
 const initialState = {
   cart: {
     cartItems: cartItemsFromStorage,
     shippingAddress: shippingAddressFromStorage,
   },
   userLogin: { userInfo: userInfoFromStorage },
+  tailorLogin: { tailorInfo: tailorInfoFromStorage },
 };
 const middleware = [thunk];
 const store = createStore(

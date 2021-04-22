@@ -49,22 +49,9 @@ function TailorRegister() {
             </label>
             <label htmlFor="">
               No. Of Employees
-              <select name="" id="">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
+              <input type="number"></input>
             </label>
-            <label htmlFor="">
-              Experience Certificate of yours or your employees
-              <input
-                type="file"
-                placeholder="Add photo:"
-                alt="Experience Certificate"
-              ></input>
-            </label>
+
             <label htmlFor="">
               Password
               <input type="text"></input>
@@ -82,7 +69,11 @@ function TailorRegister() {
                 updates about Daasaa products, services and events.{" "}
               </small>
             </div>
-            <div className="row justify-content-end no-gutters">
+            <div className="row justify-content-between no-gutters">
+              <p>
+                <u>Already a tailor?</u>
+                <Link to="/tailorSignIn"> SignIn</Link>
+              </p>
               <Link to="/tailorAccount">
                 <button className="tailor__register__button ">Register</button>
               </Link>
