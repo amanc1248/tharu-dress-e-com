@@ -36,7 +36,7 @@ function TailorScreen({ history }) {
     <div>
       <TheEntireSidebar
         ourTabs={ourTabs}
-        name="Dipraj Rai"
+        name={tailorInfo && tailorInfo.firstName}
         type="Tailor"
         theData={theTailorSidebarData}
         signOutHandler={signOutHandler}
