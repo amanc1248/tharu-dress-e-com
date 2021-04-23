@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "../../styles/tailor/TailorSalesScreen.css";
 import "../../styles/tailor/TailorOrdersScreen.css";
+import { withRouter } from "react-router-dom";
 
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
@@ -15,19 +16,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
 import { tailorSalesDetailsAction } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";
-function TailorSalesScreen() {
+function TailorSalesScreen({ history }) {
   const tailorSalesDetails = useSelector((state) => state.tailorSalesDetails);
   const { loading, error, tailorSales } = tailorSalesDetails;
 
   const tailorLogin = useSelector((state) => state.tailorLogin);
   const { tailorInfo } = tailorLogin;
-  const tailId = tailorInfo.tailorId;
   const dispatch = useDispatch();
   useEffect(() => {
     if (tailorInfo) {
+      const tailId = tailorInfo.tailorId;
+      console.log("screen id" + tailId);
       dispatch(tailorSalesDetailsAction(tailId));
+    } else {
+      history.push("/");
     }
-  }, [dispatch, tailorInfo, tailId]);
+  }, [dispatch, tailorInfo, history]);
   const dashBoardCard1Contents = [
     {
       title: "Today Orders",
@@ -269,4 +273,4 @@ function RecentOrders() {
   );
 }
 
-export default TailorSalesScreen;
+export default withRouter(TailorSalesScreen);

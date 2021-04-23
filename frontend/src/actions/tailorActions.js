@@ -101,6 +101,7 @@ export const tailorRegisterAction = (
 };
 
 export const tailorSalesDetailsAction = (tailorId) => async (dispatch) => {
+  console.log("action tailId" + tailorId);
   try {
     dispatch({
       type: TAILOR_SALES_DETAILS_REQUEST,
@@ -111,8 +112,7 @@ export const tailorSalesDetailsAction = (tailorId) => async (dispatch) => {
       },
     };
     const { data } = await axios.get(
-      "/api/tailor/tailorSales",
-      { tailorId },
+      `/api/tailor/tailorSales/${tailorId}`,
       config
     );
     dispatch({

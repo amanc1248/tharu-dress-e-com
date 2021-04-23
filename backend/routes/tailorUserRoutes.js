@@ -6,7 +6,7 @@ import {
 } from "../controllers/tailorUserController.js";
 import { protect } from "../middleWare/authMiddleware.js";
 const router = express.Router();
-router.get("/tailorSales", tailorSales);
+router.route("/tailorSales/:id").get(tailorSales);
 router.post("/tailorsignin", authTailorUser);
 router.post("/tailorregister", registerTailorUser);
 

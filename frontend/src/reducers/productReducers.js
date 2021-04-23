@@ -5,9 +5,6 @@ import {
   PRODUCT_DETAILS_FAIL,
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
-  PRODUCT_SPECIFICATION_DETAILS_FAIL,
-  PRODUCT_SPECIFICATION_DETAILS_REQUEST,
-  PRODUCT_SPECIFICATION_DETAILS_SUCCESS,
 } from "../constants/productConstants.js";
 export const categoryProductsReducers = (state = { products: [] }, action) => {
   switch (action.type) {

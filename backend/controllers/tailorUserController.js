@@ -175,7 +175,13 @@ const registerTailorUser = asyncHandler(async (req, res) => {
 //@route GET /api/tailor/tailorSales
 //@access PRIVATE
 const tailorSales = asyncHandler(async (req, res) => {
-  const { tailorId } = req.body;
+  const tailorId = req.params.id;
+
+  console.log("This is tailor req👇👇👇");
+  console.log(tailorId);
+  console.log("This is tailor res👇👇👇");
+
+  console.log(res);
   let todaysDetailsSql =
     "select COUNT(the_order.order_id) as todays_orders,SUM(the_order.total_price) as todays_revenue, COUNT(DISTINCT the_order.customer_id) as todays_customer from the_order join order_through on the_order.order_id  =  order_through.order_id where order_through.tailor_id=? AND the_order.date_time=current_date();";
   let totalDetailsSql =
@@ -183,9 +189,9 @@ const tailorSales = asyncHandler(async (req, res) => {
   let totalProducts =
     "select  COUNT(product_id) as total_tailor_products from product where tailor_id=?;";
   let recentOrders =
-    "select the_order.order_id,the_order.date_time,the_order.status,the_order.customer_id,the_order.total_price,dasa_user.first_name  FROM the_order join order_through on the_order.order_id = order_through.order_id  join customer on customer.customer_id = the_order.customer_id join dasa_user  on dasa_user.user_id = customer.user_id where order_through.tailor_id='tail4' ORDER BY the_order.date_time DESC limit 7;";
+    "select the_order.order_id,the_order.date_time,the_order.status,the_order.customer_id,the_order.total_price,dasa_user.first_name  FROM the_order join order_through on the_order.order_id = order_through.order_id  join customer on customer.customer_id = the_order.customer_id join dasa_user  on dasa_user.user_id = customer.user_id where order_through.tailor_id=? ORDER BY the_order.date_time DESC limit 7;";
   let sql = todaysDetailsSql + totalDetailsSql + totalProducts + recentOrders;
-  db.query(sql, [tailorId, tailorId, tailorId], (err, result) => {
+  db.query(sql, [tailorId, tailorId, tailorId, tailorId], (err, result) => {
     if (err) {
       throw err;
     }
