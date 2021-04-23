@@ -24,6 +24,7 @@ import {
 } from "./reducers/orderReducers";
 import {
   tailorLoginReducer,
+  tailorOrdersReducer,
   tailorRegisterReducer,
   tailorSalesDetailsReducer,
 } from "./reducers/tailorUserReducers";
@@ -49,6 +50,7 @@ const reducer = combineReducers({
   tailorLogin: tailorLoginReducer,
   tailorRegister: tailorRegisterReducer,
   tailorSalesDetails: tailorSalesDetailsReducer,
+  tailorOrders: tailorOrdersReducer,
 });
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))

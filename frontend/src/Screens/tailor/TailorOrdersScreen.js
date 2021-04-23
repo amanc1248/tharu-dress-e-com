@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/tailor/TailorOrdersScreen.css";
 import SearchIcon from "@material-ui/icons/Search";
 import VisibilityIcon from "@material-ui/icons/Visibility";
@@ -7,32 +7,43 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
 import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
-function TailorOrdersScreen() {
+import { useDispatch, useSelector } from "react-redux";
+import { tailorOrdersAction } from "../../actions/tailorActions";
+import Loader from "../../Components/Loader";
+function TailorOrdersScreen({ history }) {
+  const tailorLogin = useSelector((state) => state.tailorLogin);
+  const { tailorInfo } = tailorLogin;
+  const tailorOrders = useSelector((state) => state.tailorOrders);
   const tableStatus = (
     <div className="table__status__container">
       <div class="table__status__icon"></div>
       <div className="table__status__text">Delivered</div>
     </div>
   );
-  const tableRow = (
-    <tr>
-      <th scope="row" className="table__order__number">
-        #124fdf
-      </th>
-      <td className="table__date">June 4, 2020</td>
-      <td>
-        <div className="table__status"> {tableStatus}</div>
-      </td>
-      <td className="table__customer">Swarnima Chaudhary</td>
-      <td className="table__purchased__item">1 item</td>
-      <td className="table__price">
-        {" "}
-        <span className="table__rs__title">Rs.</span> 12,000
-      </td>{" "}
-      <td>{seeMoreFunction()}</td>
-    </tr>
+  const tableStatusNotDeliverd = (
+    <div className="table__status__notDelivered__container">
+      <div class="table__status__icon"></div>
+      <div className="table__status__text">Not Delivered</div>
+    </div>
   );
-  return (
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (tailorInfo) {
+      const tailId = tailorInfo.tailorId;
+      dispatch(tailorOrdersAction(tailId));
+    } else {
+      history.push("/tailorSignin");
+    }
+  }, [dispatch, tailorInfo, history]);
+  // const tableRow = (
+  const { loading, error, orders } = tailorOrders;
+  // orders = tai
+  const theOrders = tailorOrders && tailorOrders.orders;
+
+  // );
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="tailor__order">
       <div className="tailor__heading row no-gutters">
         <div className="tailor__heading__part1 col-lg-6 col-md-6 col-12">
@@ -89,12 +100,30 @@ function TailorOrdersScreen() {
             </tr>
           </thead>
           <tbody>
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
+            {theOrders &&
+              theOrders.map((order) => (
+                <tr>
+                  <th scope="row" className="table__order__number">
+                    {order.order_id}
+                  </th>
+                  <td className="table__date">{order.date_time}</td>
+                  <td>
+                    <div className="table__status">
+                      {" "}
+                      {order.status === "delivered"
+                        ? tableStatus
+                        : tableStatusNotDeliverd}
+                    </div>
+                  </td>
+                  <td className="table__customer">{order.first_name}</td>
+                  <td className="table__price">
+                    {" "}
+                    <span className="table__rs__title">Rs.</span>
+                    {order.total_price}
+                  </td>{" "}
+                  <td>{seeMoreFunction()}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

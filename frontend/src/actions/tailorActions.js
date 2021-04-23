@@ -4,6 +4,9 @@ import {
   TAILOR_LOGIN_REQUEST,
   TAILOR_LOGIN_SUCCESS,
   TAILOR_LOGOUT,
+  TAILOR_ORDERS_DETAILS_FAIL,
+  TAILOR_ORDERS_DETAILS_REQUEST,
+  TAILOR_ORDERS_DETAILS_SUCCESS,
   TAILOR_REGISTER_FAIL,
   TAILOR_REGISTER_REQUEST,
   TAILOR_REGISTER_SUCCESS,
@@ -122,6 +125,35 @@ export const tailorSalesDetailsAction = (tailorId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: TAILOR_SALES_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const tailorOrdersAction = (tailorId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: TAILOR_ORDERS_DETAILS_REQUEST,
+    });
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.get(
+      `/api/tailor/tailorOrders/${tailorId}`,
+      config
+    );
+    dispatch({
+      type: TAILOR_ORDERS_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: TAILOR_ORDERS_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -29,7 +29,7 @@ function TailorSalesScreen({ history }) {
     if (tailorInfo) {
       const tailId = tailorInfo.tailorId;
       console.log("screen id" + tailId);
-      dispatch(tailorSalesDetailsAction("tail4"));
+      dispatch(tailorSalesDetailsAction(tailId));
     } else {
       history.push("/");
     }

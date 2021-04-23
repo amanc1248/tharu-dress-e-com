@@ -211,4 +211,23 @@ const tailorSales = asyncHandler(async (req, res) => {
   });
 });
 
-export { authTailorUser, registerTailorUser, tailorSales };
+//@desc tailororders
+//@route GET /api/tailor/tailororders
+//@access PUBLIC
+const tailorOrders = asyncHandler(async (req, res) => {
+  const tailorId = req.params.id;
+
+  let sql =
+    "select the_order.order_id,the_order.date_time,the_order.status,the_order.customer_id,the_order.total_price,dasa_user.first_name  FROM the_order join order_through on the_order.order_id = order_through.order_id  join customer on customer.customer_id = the_order.customer_id join dasa_user  on dasa_user.user_id = customer.user_id where order_through.tailor_id=?";
+  db.query(sql, [tailorId], (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+
+export { authTailorUser, registerTailorUser, tailorSales, tailorOrders };
