@@ -230,4 +230,27 @@ const tailorOrders = asyncHandler(async (req, res) => {
   });
 });
 
-export { authTailorUser, registerTailorUser, tailorSales, tailorOrders };
+//@desc tailorproducts
+//@route GET /api/tailor/tailorproducts
+//@access PUBLIC
+const tailorProducts = asyncHandler(async (req, res) => {
+  const tailorId = req.params.id;
+
+  let sql = "select * from product where tailor_id=?;";
+  db.query(sql, [tailorId], (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+export {
+  authTailorUser,
+  registerTailorUser,
+  tailorSales,
+  tailorOrders,
+  tailorProducts,
+};

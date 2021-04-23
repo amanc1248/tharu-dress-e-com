@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../styles/tailor/TailorProductsScreen.css";
 import EditIcon from "@material-ui/icons/Edit";
 import VisibilityIcon from "@material-ui/icons/Visibility";
@@ -6,30 +6,25 @@ import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import Checkbox from "@material-ui/core/Checkbox";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import { useDispatch, useSelector } from "react-redux";
+import { tailorProductsAction } from "../../actions/tailorActions";
 
 function TailorProductsScreen() {
-  const tableRow = (
-    <tr>
-      <th scope="row" className="">
-        <div className="table__product__container">
-          <div className="table__product__image__container">
-            <img
-              src="productImage.png"
-              alt="product"
-              className="table__product__image"
-            />
-          </div>
-          <div className="table__product__name">Kids Anchara</div>
-        </div>
-      </th>
-      <td className="table__price">
-        {" "}
-        <span className="table__rs__title">Rs.</span> 12,000
-      </td>{" "}
-      <td className="product__category">Men</td>
-      <td>{seeMoreFunction()}</td>
-    </tr>
-  );
+  const tailorLogin = useSelector((state) => state.tailorLogin);
+  const { tailorInfo } = tailorLogin;
+  const tailorProducts = useSelector((state) => state.tailorProducts);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (tailorInfo) {
+      const tailId = tailorInfo.tailorId;
+      dispatch(tailorProductsAction(tailId));
+    } else {
+    }
+  }, [dispatch, tailorInfo]);
+  const { loading, error, products } = tailorProducts;
+  // orders = tai
+  const theProducts = tailorProducts && tailorProducts.products;
+
   const [addProduct, setAddProduct] = useState(false);
   const addProductClick = () => {
     setAddProduct(!addProduct);
@@ -70,12 +65,30 @@ function TailorProductsScreen() {
             </tr>
           </thead>
           <tbody>
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
+            {theProducts &&
+              theProducts.map((product) => (
+                <tr key={product.product_id}>
+                  <th scope="row" className="">
+                    <div className="table__product__container">
+                      <div className="table__product__image__container">
+                        <img
+                          src={product.image}
+                          alt="product"
+                          className="table__product__image"
+                        />
+                      </div>
+                      <div className="table__product__name">{product.name}</div>
+                    </div>
+                  </th>
+                  <td className="table__price">
+                    {" "}
+                    <span className="table__rs__title">Rs.</span>{" "}
+                    {product.price}
+                  </td>{" "}
+                  <td className="product__category">{product.category}</td>
+                  <td>{seeMoreFunction()}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

@@ -6,6 +6,9 @@ import {
   TAILOR_ORDERS_DETAILS_FAIL,
   TAILOR_ORDERS_DETAILS_REQUEST,
   TAILOR_ORDERS_DETAILS_SUCCESS,
+  TAILOR_PRODUCTS_DETAILS_FAIL,
+  TAILOR_PRODUCTS_DETAILS_REQUEST,
+  TAILOR_PRODUCTS_DETAILS_SUCCESS,
   TAILOR_REGISTER_FAIL,
   TAILOR_REGISTER_REQUEST,
   TAILOR_REGISTER_SUCCESS,
@@ -62,6 +65,19 @@ export const tailorOrdersReducer = (state = {}, action) => {
     case TAILOR_ORDERS_DETAILS_SUCCESS:
       return { loading: false, orders: action.payload };
     case TAILOR_ORDERS_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const tailorProductsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TAILOR_PRODUCTS_DETAILS_REQUEST:
+      return { loading: true };
+    case TAILOR_PRODUCTS_DETAILS_SUCCESS:
+      return { loading: false, products: action.payload };
+    case TAILOR_PRODUCTS_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

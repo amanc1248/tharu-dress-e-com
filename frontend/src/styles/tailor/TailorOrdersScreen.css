@@ -38,6 +38,8 @@
 }
 .order__table {
   background-color: #fff;
+  border-radius: 8px !important;
+  padding: 20px 10px;
 }
 .more__horizon__icon:hover {
   cursor: pointer;

@@ -44,11 +44,11 @@
   height: auto;
 }
 @media screen and (max-width: 767px) {
-  table#tailor__products__table td:nth-child(4),
+  table#tailor__products__table td:nth-child(2),
   table#tailor__products__table td:nth-child(3) {
     display: none;
   }
-  table#tailor__products__table th:nth-child(4),
+  table#tailor__products__table th:nth-child(2),
   table#tailor__products__table th:nth-child(3) {
     display: none;
   }

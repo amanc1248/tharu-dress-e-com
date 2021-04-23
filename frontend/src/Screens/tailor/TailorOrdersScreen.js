@@ -87,9 +87,6 @@ function TailorOrdersScreen({ history }) {
               <th scope="col" className="table__header">
                 Customer
               </th>
-              <th scope="col" className="table__header">
-                Purchased
-              </th>
 
               <th scope="col" className="table__header">
                 Total
