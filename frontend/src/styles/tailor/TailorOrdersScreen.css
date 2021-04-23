@@ -103,7 +103,18 @@
   max-width: max-content;
   padding: 1px 8px;
   border-radius: 20px;
-  background-color: rgba(244, 189, 14, 0.15);
+  background-color: #9d72ff;
+}
+.table__status__notDelivered__container {
+  display: flex;
+  /* justify-content: space-around; */
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  max-width: max-content;
+  padding: 1px 8px;
+  border-radius: 20px;
+  background-color: rgb(226, 113, 113);
 }
 .table__status__text {
   color: #e2b110;

@@ -22,12 +22,14 @@ function TailorSalesScreen({ history }) {
 
   const tailorLogin = useSelector((state) => state.tailorLogin);
   const { tailorInfo } = tailorLogin;
+
+  // const tailorrSales = `${tailorSales ? tailorSales : 0}`;
   const dispatch = useDispatch();
   useEffect(() => {
     if (tailorInfo) {
       const tailId = tailorInfo.tailorId;
       console.log("screen id" + tailId);
-      dispatch(tailorSalesDetailsAction(tailId));
+      dispatch(tailorSalesDetailsAction("tail4"));
     } else {
       history.push("/");
     }
@@ -49,6 +51,37 @@ function TailorSalesScreen({ history }) {
       status: "1.6%",
     },
   ];
+  const storeStatisticsData = [
+    {
+      title: "Orders",
+      amount: `${tailorSales ? tailorSales.totalOrders : 0}`,
+      icon: <LocalMallIcon style={{ color: "#854FFF" }}></LocalMallIcon>,
+      containerColor: "#EFE8FF",
+      iconColor: "#854FFF",
+    },
+    {
+      title: "Revenue",
+      amount: `${tailorSales ? tailorSales.totalRevenue : 0}`,
+      icon: <AttachMoneyIcon style={{ color: "#09C2DE" }}></AttachMoneyIcon>,
+      containerColor: "#DFF7FB",
+    },
+    {
+      title: "Customers",
+      amount: `${tailorSales ? tailorSales.totalCustomer : 0}`,
+      icon: (
+        <PeopleOutlineIcon style={{ color: "#FF63B6" }}></PeopleOutlineIcon>
+      ),
+      containerColor: "#FFEBF3",
+    },
+    {
+      title: "Products",
+      amount: `${tailorSales ? tailorSales.totalTailorProducts : 0}`,
+      icon: <WebAssetIcon style={{ color: "#816BFF" }}></WebAssetIcon>,
+      containerColor: "#EFECFF",
+    },
+  ];
+  console.log(tailorSales && tailorSales.recentOrders);
+  const recentOrders = tailorSales && tailorSales.recentOrders;
 
   return loading ? (
     <Loader></Loader>
@@ -72,14 +105,20 @@ function TailorSalesScreen({ history }) {
         <DashBoardCard2
           title="Store Statistics"
           colLength="col-lg-6 col-12"
-          dashBoardContent={<StoreStatistics></StoreStatistics>}
+          dashBoardContent={
+            <StoreStatistics
+              storeStatisticsData={storeStatisticsData}
+            ></StoreStatistics>
+          }
         ></DashBoardCard2>
       </div>
       <div className="row no-gutters">
         <DashBoardCard2
           title="Recent Orders"
           colLength="col-12"
-          dashBoardContent={<RecentOrders></RecentOrders>}
+          dashBoardContent={
+            <RecentOrders recentOrders={recentOrders}></RecentOrders>
+          }
         ></DashBoardCard2>
       </div>
     </div>
@@ -112,7 +151,7 @@ function DashBoardCard2({ title, dashBoardContent, colLength }) {
   );
 }
 
-function StoreStatistics() {
+function StoreStatistics({ storeStatisticsData }) {
   function StoreStatisticsElement({
     title,
     amount,
@@ -139,35 +178,7 @@ function StoreStatistics() {
       </div>
     );
   }
-  const storeStatisticsData = [
-    {
-      title: "Orders",
-      amount: "1,254",
-      icon: <LocalMallIcon style={{ color: "#854FFF" }}></LocalMallIcon>,
-      containerColor: "#EFE8FF",
-      iconColor: "#854FFF",
-    },
-    {
-      title: "Revenue",
-      amount: "10,005",
-      icon: <AttachMoneyIcon style={{ color: "#09C2DE" }}></AttachMoneyIcon>,
-      containerColor: "#DFF7FB",
-    },
-    {
-      title: "Customers",
-      amount: "254",
-      icon: (
-        <PeopleOutlineIcon style={{ color: "#FF63B6" }}></PeopleOutlineIcon>
-      ),
-      containerColor: "#FFEBF3",
-    },
-    {
-      title: "Products",
-      amount: "54",
-      icon: <WebAssetIcon style={{ color: "#816BFF" }}></WebAssetIcon>,
-      containerColor: "#EFECFF",
-    },
-  ];
+
   return (
     <div>
       {storeStatisticsData.map((obj) => {
@@ -184,7 +195,19 @@ function StoreStatistics() {
   );
 }
 
-function RecentOrders() {
+function RecentOrders({ recentOrders }) {
+  // console.log("This is recent orders first element");
+  // console.log(recentOrders.length);
+  // console.log(recentOrders[0][0]);
+  // console.log(recentOrders[1]);
+  // console.log(recentOrders[2]);
+  // console.log(recentOrders[3]);
+  // console.log(recentOrders[4]);
+  // console.log(recentOrders[5]);
+  // console.log(recentOrders[6]);
+  // console.log(recentOrders[7]);
+
+  // recent orders data👇👇👇
   let seeMoreOptionsList = [
     {
       icon: <VisibilityIcon></VisibilityIcon>,
@@ -219,23 +242,16 @@ function RecentOrders() {
       <div className="table__status__text">Delivered</div>
     </div>
   );
-  const tableRow = (
-    <tr>
-      <th scope="row" className="table__order__number">
-        #124fdf
-      </th>
-      <td className="table__date">June 4, 2020</td>
-      <td>
-        <div className="table__status"> {tableStatus}</div>
-      </td>
-      <td className="table__customer">Swarnima Chaudhary</td>
-      <td className="table__price">
-        {" "}
-        <span className="table__rs__title">Rs.</span> 12,000
-      </td>{" "}
-      <td>{seeMoreFunction()}</td>
-    </tr>
+  const tableStatusNotDeliverd = (
+    <div className="table__status__notDelivered__container">
+      <div class="table__status__icon"></div>
+      <div className="table__status__text">Not Delivered</div>
+    </div>
   );
+
+  // const tableRow = (
+
+  // );
   return (
     <div>
       <div className="">
@@ -266,7 +282,33 @@ function RecentOrders() {
               </th>
             </tr>
           </thead>
-          <tbody>{tableRow}</tbody>
+          <tbody>
+            {/* {recentOrders[0]["first_name"]} */}
+            {recentOrders &&
+              recentOrders.map((order) => (
+                <tr>
+                  <th scope="row" className="table__order__number">
+                    {order.order_id}
+                  </th>
+                  <td className="table__date">{order.date_time}</td>
+                  <td>
+                    <div className="table__status">
+                      {" "}
+                      {order.status === "delivered"
+                        ? tableStatus
+                        : tableStatusNotDeliverd}
+                    </div>
+                  </td>
+                  <td className="table__customer">{order.first_name}</td>
+                  <td className="table__price">
+                    {" "}
+                    <span className="table__rs__title">Rs.</span>
+                    {order.total_price}
+                  </td>{" "}
+                  <td>{seeMoreFunction()}</td>
+                </tr>
+              ))}
+          </tbody>
         </table>
       </div>
     </div>
