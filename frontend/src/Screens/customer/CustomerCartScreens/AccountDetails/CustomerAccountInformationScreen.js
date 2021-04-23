@@ -102,7 +102,9 @@ export function AccountInformationEdit() {
     dispatch(getUserDetails("profile"));
   };
 
-  return (
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="account__information__edit">
       <div className="account__information__edit__instruction">
         Please update your personal account details, update your address book or

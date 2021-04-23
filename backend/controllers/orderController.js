@@ -45,12 +45,19 @@ const addOrderItems = asyncHandler(async (req, res) => {
                     `INSERT INTO order_item VALUES('${orderId}', '${item.productId}', '${item.qty}','${item.length}', '${item.width}','notassigned',0);`)
               );
             }
+            // finalsql =
+            //   finalsql +
+            //   `INSERT INTO shipping_address values(id,${shippingAddress.city}, ${shippingAddress.street}) `;
 
+            finalsql =
+              finalsql +
+              `select order_item.product_id, product.tailor_id from order_item join product on order_item.product_id = product.product_id where order_item.order_id='${orderId}';`;
             db.query(finalsql, (err, result) => {
               if (err) {
                 throw err;
               }
               if (result) {
+                // let order_throughSql = ``;
                 res.json({ orderId: orderId });
               }
             });
@@ -70,12 +77,16 @@ const addOrderItems = asyncHandler(async (req, res) => {
         console.log(result);
       } else {
         let sql =
-          "select @shippingCount:= count(*)+1 from shipping_address;select @shipping_id:=concat('sh_id', @shippingCount);";
-        db.query(sql, (err, result) => {
-          shippingId =
-            result[1][0]["@shipping_id:=concat('sh_id', @shippingCount)"];
-          SaveToOrder(shippingId);
-        });
+          "select @shippingCount:= count(*)+1 from shipping_address;select @shipping_id:=concat('sh_id', @shippingCount); INSERT INTO shipping_address values(@shipping_id,?, ?);";
+        db.query(
+          sql,
+          [shippingAddress.city, shippingAddress.street],
+          (err, result) => {
+            shippingId =
+              result[1][0]["@shipping_id:=concat('sh_id', @shippingCount)"];
+            SaveToOrder(shippingId);
+          }
+        );
       }
     });
 

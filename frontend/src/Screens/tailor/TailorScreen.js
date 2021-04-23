@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 
-import { FaBars, FaArrowLeft } from "react-icons/fa";
-import { TheEntireSidebar } from "../admin/AdminScreen";
 import TailorAccountDetailsScreen from "./TailorAccountDetailsScreens/TailorAccountDetailsScreen";
 import TailorCustomersScreen from "./TailorCustomersScreen";
 import TailorEmployeeScreen from "./TailorEmployeeScreen";
@@ -11,6 +9,7 @@ import TailorSalesScreen from "./TailorSalesScreen";
 import theTailorSidebarData from "../../Data/TailorData";
 import { useDispatch, useSelector } from "react-redux";
 import { tailorLogout } from "../../actions/tailorActions";
+import { TheEntireSidebar } from "../../Components/TheEntireSidebar";
 const ourTabs = [
   <TailorSalesScreen></TailorSalesScreen>,
   <TailorOrdersScreen></TailorOrdersScreen>,
