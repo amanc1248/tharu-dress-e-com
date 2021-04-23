@@ -6,6 +6,9 @@ import {
   TAILOR_REGISTER_FAIL,
   TAILOR_REGISTER_REQUEST,
   TAILOR_REGISTER_SUCCESS,
+  TAILOR_SALES_DETAILS_FAIL,
+  TAILOR_SALES_DETAILS_REQUEST,
+  TAILOR_SALES_DETAILS_SUCCESS,
 } from "../constants/tailorConstants";
 
 export const tailorLoginReducer = (state = {}, action) => {
@@ -30,6 +33,19 @@ export const tailorRegisterReducer = (state = {}, action) => {
     case TAILOR_REGISTER_SUCCESS:
       return { loading: false, tailorInfo: action.payload };
     case TAILOR_REGISTER_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const tailorSalesDetailsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TAILOR_SALES_DETAILS_REQUEST:
+      return { loading: true };
+    case TAILOR_SALES_DETAILS_SUCCESS:
+      return { loading: false, tailorSales: action.payload };
+    case TAILOR_SALES_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

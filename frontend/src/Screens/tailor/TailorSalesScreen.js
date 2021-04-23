@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/tailor/TailorSalesScreen.css";
-import DnsIcon from "@material-ui/icons/Dns";
+import "../../styles/tailor/TailorOrdersScreen.css";
+
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
@@ -10,15 +11,44 @@ import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
+import { useDispatch, useSelector } from "react-redux";
 import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import { tailorSalesDetailsAction } from "../../actions/tailorActions";
+import Loader from "../../Components/Loader";
 function TailorSalesScreen() {
+  const tailorSalesDetails = useSelector((state) => state.tailorSalesDetails);
+  const { loading, error, tailorSales } = tailorSalesDetails;
+
+  const tailorLogin = useSelector((state) => state.tailorLogin);
+  const { tailorInfo } = tailorLogin;
+  const tailId = tailorInfo.tailorId;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (tailorInfo) {
+      dispatch(tailorSalesDetailsAction(tailId));
+    }
+  }, [dispatch, tailorInfo, tailId]);
   const dashBoardCard1Contents = [
-    { title: "Today Orders", amount: "1,584", status: "4.76%" },
-    { title: "Today Revenue", amount: "584", status: "6%" },
-    { title: "Today Customers", amount: "4", status: "1.6%" },
+    {
+      title: "Today Orders",
+      amount: `${tailorSales ? tailorSales.todaysOrders : 0}`,
+      status: "4.76%",
+    },
+    {
+      title: "Today Revenue",
+      amount: `${tailorSales ? tailorSales.todaysRevenue : 0}`,
+      status: "6%",
+    },
+    {
+      title: "Today Customers",
+      amount: `${tailorSales ? tailorSales.todaysCustomer : 0}`,
+      status: "1.6%",
+    },
   ];
 
-  return (
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="tailor__sales">
       <div className="tailor__products__heading">
         <h5 className="tailor__tabs__title">DASHBOARD</h5>
@@ -35,9 +65,6 @@ function TailorSalesScreen() {
         })}
       </div>
       <div className="row">
-        <DashBoardCard2 title="Order Statistics" colLength="col-lg-6 col-12">
-          this is order
-        </DashBoardCard2>
         <DashBoardCard2
           title="Store Statistics"
           colLength="col-lg-6 col-12"
@@ -49,13 +76,6 @@ function TailorSalesScreen() {
           title="Recent Orders"
           colLength="col-12"
           dashBoardContent={<RecentOrders></RecentOrders>}
-        ></DashBoardCard2>
-      </div>
-      <div className="row no-gutters">
-        <DashBoardCard2
-          title="Top Products"
-          colLength="col-lg-6 col-12"
-          dashBoardContent={<TopProducts></TopProducts>}
         ></DashBoardCard2>
       </div>
     </div>
@@ -143,12 +163,6 @@ function StoreStatistics() {
       icon: <WebAssetIcon style={{ color: "#816BFF" }}></WebAssetIcon>,
       containerColor: "#EFECFF",
     },
-    {
-      title: "Categories",
-      amount: "14",
-      icon: <DnsIcon style={{ color: "#09C2DE" }}></DnsIcon>,
-      containerColor: "#DFF7FB",
-    },
   ];
   return (
     <div>
@@ -211,7 +225,6 @@ function RecentOrders() {
         <div className="table__status"> {tableStatus}</div>
       </td>
       <td className="table__customer">Swarnima Chaudhary</td>
-      <td className="table__purchased__item">1 item</td>
       <td className="table__price">
         {" "}
         <span className="table__rs__title">Rs.</span> 12,000
@@ -221,8 +234,8 @@ function RecentOrders() {
   );
   return (
     <div>
-      <div className="tailor__orders">
-        <table class="table order__table" id="admin__recentOrders__table">
+      <div className="">
+        <table class="table admin__recentOrders__table " id="">
           <thead>
             <tr>
               <th scope="col" className="table__header">
@@ -237,9 +250,9 @@ function RecentOrders() {
               <th scope="col" className="table__header">
                 Customer
               </th>
-              <th scope="col" className="table__header">
+              {/* <th scope="col" className="table__header">
                 Purchased
-              </th>
+              </th> */}
 
               <th scope="col" className="table__header">
                 Total
@@ -249,85 +262,11 @@ function RecentOrders() {
               </th>
             </tr>
           </thead>
-          <tbody>
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-          </tbody>
+          <tbody>{tableRow}</tbody>
         </table>
       </div>
     </div>
   );
 }
 
-function TopProducts() {
-  const topProductsList = [
-    {
-      image: "productImage.png",
-      title: "Anchara with red boutique",
-      price: 15000,
-      totalSold: 4,
-    },
-    {
-      image: "productImage.png",
-      title: "Men Dhoti",
-      price: 5000,
-      totalSold: 4,
-    },
-    {
-      image: "productImage.png",
-      title: "Kids Size Anchara",
-      price: 9000,
-      totalSold: 1,
-    },
-    {
-      image: "productImage.png",
-      title: "Flower Design Anchara",
-      price: 5000,
-      totalSold: 10,
-    },
-    {
-      image: "productImage.png",
-      title: "Anchara with red boutique",
-      price: 15000,
-      totalSold: 14,
-    },
-  ];
-  function TopProductsElement({ image, title, price, totalSold }) {
-    return (
-      <div className="top__products__element">
-        <div className="first__part">
-          <div className="top__product__image__container">
-            <img src={image} alt="topProduct" className="top__product__image" />
-          </div>
-          <div className="title__price">
-            <div className="top__product__title">{title}</div>
-            <div className="top__product__price">Rs. {price}</div>
-          </div>
-        </div>
-        <div className="second__part">
-          <div className="total__price">Rs. {price * totalSold}</div>
-          <div className="total__sold">{totalSold} Sold</div>
-        </div>
-      </div>
-    );
-  }
-  return (
-    <div className="top__products">
-      {topProductsList.map((obj) => {
-        return (
-          <TopProductsElement
-            title={obj.title}
-            price={obj.price}
-            totalSold={obj.totalSold}
-            image={obj.image}
-          ></TopProductsElement>
-        );
-      })}
-    </div>
-  );
-}
 export default TailorSalesScreen;

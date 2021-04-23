@@ -123,14 +123,20 @@
     display: none;
   }
 }
-/* @media screen and (max-width: 567px) {
-  table#orders__table td:nth-child(1) {
+@media screen and (max-width: 567px) {
+  .admin__recentOrders__table td:nth-child(4),
+  .admin__recentOrders__table td:nth-child(5),
+  .admin__recentOrders__table td:nth-child(2),
+  .admin__recentOrders__table td:nth-child(3) {
     display: none;
   }
-  table#orders__table th:nth-child(1) {
+  .admin__recentOrders__table th:nth-child(2),
+  .admin__recentOrders__table th:nth-child(4),
+  .admin__recentOrders__table th:nth-child(5),
+  .admin__recentOrders__table th:nth-child(3) {
     display: none;
   }
-} */
+}
 .thePlay {
   z-index: 1;
 }
@@ -148,7 +154,7 @@
   cursor: pointer;
 }
 .see__more__container {
-  /* padding: 10px 0; */
+  padding: 10px 0;
   width: max-content;
   background-color: white;
   border-radius: 5px;
