@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  TAILOR_CUSTOMERS_DETAILS_FAIL,
+  TAILOR_CUSTOMERS_DETAILS_REQUEST,
+  TAILOR_CUSTOMERS_DETAILS_SUCCESS,
   TAILOR_LOGIN_FAIL,
   TAILOR_LOGIN_REQUEST,
   TAILOR_LOGIN_SUCCESS,
@@ -186,6 +189,34 @@ export const tailorProductsAction = (tailorId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: TAILOR_PRODUCTS_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+export const tailorCustomersAction = (tailorId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: TAILOR_CUSTOMERS_DETAILS_REQUEST,
+    });
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.get(
+      `/api/tailor/tailorCustomers/${tailorId}`,
+      config
+    );
+    dispatch({
+      type: TAILOR_CUSTOMERS_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: TAILOR_CUSTOMERS_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

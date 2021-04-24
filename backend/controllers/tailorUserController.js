@@ -247,10 +247,30 @@ const tailorProducts = asyncHandler(async (req, res) => {
     }
   });
 });
+
+//@desc tailorcustomers
+//@route GET /api/tailor/tailorcustomers
+//@access PUBLIC
+const tailorCustomers = asyncHandler(async (req, res) => {
+  const tailorId = req.params.id;
+
+  let sql =
+    "select distinct customer.customer_id,dasa_user.user_id,dasa_user.first_name,dasa_user.last_name,dasa_user.email,dasa_user.phone from customer join  order_through on customer.customer_id=order_through.customer_id join dasa_user on dasa_user.user_id=customer.user_id where order_through.tailor_id = ?;";
+  db.query(sql, [tailorId], (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
 export {
   authTailorUser,
   registerTailorUser,
   tailorSales,
   tailorOrders,
   tailorProducts,
+  tailorCustomers,
 };

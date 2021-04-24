@@ -1,25 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PersonIcon from "@material-ui/icons/Person";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import "../../styles/tailor/TailorCustomersScreen.css";
 import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import { useDispatch, useSelector } from "react-redux";
+import { tailorCustomersAction } from "../../actions/tailorActions";
+import Loader from "../../Components/Loader";
+
 function TailorCustomersScreen() {
-  const tableRow = (
-    <tr>
-      <th scope="row" className="table__customer">
-        Sudeep Bhattrai
-      </th>
-      <td className="table__price">
-        {" "}
-        <span className="table__rs__title">Rs.</span> 12,000
-      </td>{" "}
-      <td className="table__customer">+9779804355969</td>
-      <td className="table__location">Itahari -07</td>
-      <td className="table__date">10 Feb, 2020</td>
-      <td>{seeMoreFunction()}</td>
-    </tr>
-  );
-  return (
+  const tailorCustomers = useSelector((state) => state.tailorCustomers);
+  const { loading, error, customers } = tailorCustomers;
+
+  const tailorLogin = useSelector((state) => state.tailorLogin);
+  const { tailorInfo } = tailorLogin;
+
+  // const tailorrSales = `${tailorSales ? tailorSales : 0}`;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (tailorInfo) {
+      const tailId = tailorInfo.tailorId;
+      console.log("screen id" + tailId);
+      dispatch(tailorCustomersAction(tailId));
+    } else {
+    }
+  }, [dispatch, tailorInfo]);
+  const theCustomers = tailorCustomers && tailorCustomers.customers;
+
+  // const theCustomers = tailorCustomers && tailorSales.recentOrders;
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="tailor__customer">
       <div className="tailor__customer__title">
         <h5 className="tailor__tabs__title">CUSTOMERS</h5>
@@ -32,31 +42,29 @@ function TailorCustomersScreen() {
                 User
               </th>
               <th scope="col" className="table__header">
-                Ordered
+                Email
               </th>
               <th scope="col" className="table__header">
                 Phone
               </th>
-              <th scope="col" className="table__header">
-                Location
-              </th>
-              <th scope="col" className="table__header">
-                Last Order
-              </th>
+
               <th scope="col" className="table__header">
                 See More
               </th>
             </tr>
           </thead>
           <tbody>
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
+            {theCustomers &&
+              theCustomers.map((customer) => (
+                <tr>
+                  <th scope="row" className="table__customer">
+                    {customer.first_name + customer.last_name}
+                  </th>
+                  <td className="table__location"> {customer.email}</td>{" "}
+                  <td className="table__customer">{customer.phone}</td>
+                  <td>{seeMoreFunction()}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
