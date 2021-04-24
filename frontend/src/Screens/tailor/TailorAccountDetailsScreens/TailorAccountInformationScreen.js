@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../../../styles/tailor/TailorAccountDetailsScreens.css";
-
+import "../../../actions/tailorActions.js";
+import { getTailorDetails } from "../../../actions/tailorActions.js";
+import Loader from "../../../Components/Loader";
 function TailorAccountInformationScreen({ editPage, changePasswordPage }) {
+  const dispatch = useDispatch();
+  const tailorDetails = useSelector((state) => state.tailorDetails);
+  const { tailor } = tailorDetails;
+
+  useEffect(() => {
+    if (
+      !tailor.firstName ||
+      !tailor.lastName ||
+      !tailor.email ||
+      !tailor.phone
+    ) {
+      dispatch(getTailorDetails("profile"));
+    }
+  }, [tailor, dispatch]);
+
   return (
     <div className="tailor__account__information">
       <div className="tailor__account__information">
@@ -14,35 +32,29 @@ function TailorAccountInformationScreen({ editPage, changePasswordPage }) {
             {" "}
             <strong>First Name:</strong>{" "}
           </span>
-          <span>Aman</span>
+          <span>{tailor.firstName}</span>
         </div>
         <div className="tailor__details">
           <span>
             {" "}
             <strong>Last Name:</strong>{" "}
           </span>
-          <span>Chaudhary</span>
+          <span>{tailor.lastName}</span>
         </div>
-        <div className="tailor__details">
-          <span>
-            {" "}
-            <strong>Location:</strong>{" "}
-          </span>
-          <span>Itahari-07, Sunsari</span>
-        </div>
+
         <div className="tailor__details">
           <span>
             {" "}
             <strong>Phone:</strong>{" "}
           </span>
-          <span>+9779804355969</span>
+          <span>{tailor.phone}</span>
         </div>
         <div className="tailor__details">
           <span>
             {" "}
             <strong>Email:</strong>{" "}
           </span>
-          <span>amanc1248@gmail.com</span>
+          <span>{tailor.email}</span>
         </div>
       </div>
       <div className="tailor__account__information__buttons row ">
@@ -65,7 +77,27 @@ function TailorAccountInformationScreen({ editPage, changePasswordPage }) {
 }
 
 export function TailorAccountInformationEdit({ editPage }) {
-  return (
+  const dispatch = useDispatch();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
+
+  const tailorDetails = useSelector((state) => state.tailorDetails);
+  const { loading, error, tailor } = tailorDetails;
+  useEffect(() => {
+    if (!tailor.firstName) {
+      dispatch(getTailorDetails("profile"));
+    } else {
+      setFirstName(tailor.firstName);
+      setLastName(tailor.lastName);
+      setEmail(tailor.email);
+      setPhone(tailor.phone);
+    }
+  }, [tailor, dispatch]);
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="tailor__account__information__edit">
       <div className="tailor__account__information__edit__instruction">
         Please update your personal account details, update your address book or
@@ -75,23 +107,35 @@ export function TailorAccountInformationEdit({ editPage }) {
         <div className="tailor__address__edit__inputs">
           <label>
             First Name
-            <input type="text" />
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            ></input>
           </label>
           <label>
             Last Name
-            <input type="text" />
-          </label>
-          <label>
-            Location
-            <input type="text" />
-          </label>
-          <label>
-            Phone
-            <input type="text" />
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            ></input>
           </label>
           <label>
             Email
-            <input type="text" />
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+          </label>
+          <label>
+            Phone
+            <input
+              type="text"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            ></input>
           </label>
         </div>
         <div className="tailor__account__information__buttons row justify-content-between">
@@ -127,11 +171,11 @@ export function TailorAccountInformationChangePassword({ changePasswordPage }) {
       <form action="">
         <div className="tailor__account__information__change__password__inputs">
           <label>
-            Old Password
+            Password
             <input type="text" />
           </label>
           <label>
-            New Password
+            Confirm Password
             <input type="text" />
           </label>
         </div>

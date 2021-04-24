@@ -8,6 +8,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { tailorProductsAction } from "../../actions/tailorActions";
+import Loader from "../../Components/Loader";
 
 function TailorProductsScreen() {
   const tailorLogin = useSelector((state) => state.tailorLogin);
@@ -29,7 +30,9 @@ function TailorProductsScreen() {
   const addProductClick = () => {
     setAddProduct(!addProduct);
   };
-  return (
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="tailor__products">
       {addProduct ? (
         <AddProduct clickOutside={addProductClick}></AddProduct>

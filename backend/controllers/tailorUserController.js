@@ -285,6 +285,36 @@ const tailorEmployees = asyncHandler(async (req, res) => {
     }
   });
 });
+
+//@desc get tailor profile
+//@route GET api/tailor/profile
+//@access PRIVATE
+const getTailorProfile = asyncHandler(async (req, res) => {
+  let sql =
+    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='tailor';select @tailorId:=`tailor_id`, password from tailor where user_id =@finaluid;SELECT @locId:=`location_id` from tailor_location where tailor_id = @tailorId;SELECT city, street from location where location_id = @locId; ";
+
+  db.query(sql, [req.user[0][0]["email"]], (err, result) => {
+    if (err) throw err;
+    if (result.length > 0) {
+      if (result) {
+        console.log(result);
+        res.json({
+          firstName: result[0][0]["first_name"],
+          lastName: result[0][0]["last_name"],
+          email: result[0][0]["email"],
+          phone: result[0][0]["phone"],
+          userId: result[1]["0"]["@finaluid:= `user_id`"],
+          tailorId: result[2]["0"]["@tailorId:=`tailor_id`"],
+          city: result[4]["0"]["city"],
+          street: result[4]["0"]["street"],
+        });
+      } else {
+        res.status(404);
+        throw new Error("user not found");
+      }
+    }
+  });
+});
 export {
   authTailorUser,
   registerTailorUser,
@@ -293,4 +323,5 @@ export {
   tailorProducts,
   tailorEmployees,
   tailorCustomers,
+  getTailorProfile,
 };
