@@ -266,11 +266,31 @@ const tailorCustomers = asyncHandler(async (req, res) => {
     }
   });
 });
+
+//@desc tailoremployees
+//@route GET /api/tailor/tailoremployees
+//@access PUBLIC
+const tailorEmployees = asyncHandler(async (req, res) => {
+  const tailorId = req.params.id;
+
+  let sql =
+    "select employee.employee_id,dasa_user.first_name, dasa_user.last_name, dasa_user.email, dasa_user.phone, employee.date_time,employee.status from employee join  dasa_user on employee.user_id = dasa_user.user_id where employee.tailor_id=?;";
+  db.query(sql, [tailorId], (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
 export {
   authTailorUser,
   registerTailorUser,
   tailorSales,
   tailorOrders,
   tailorProducts,
+  tailorEmployees,
   tailorCustomers,
 };

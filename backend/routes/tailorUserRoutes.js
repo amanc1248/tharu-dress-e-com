@@ -5,6 +5,7 @@ import {
   tailorSales,
   tailorOrders,
   tailorProducts,
+  tailorEmployees,
   tailorCustomers,
 } from "../controllers/tailorUserController.js";
 import { protect } from "../middleWare/authMiddleware.js";
@@ -13,6 +14,7 @@ router.route("/tailorSales/:id").get(tailorSales);
 router.route("/tailorOrders/:id").get(tailorOrders);
 router.route("/tailorProducts/:id").get(tailorProducts);
 router.route("/tailorCustomers/:id").get(tailorCustomers);
+router.route("/tailorEmployees/:id").get(tailorEmployees);
 router.post("/tailorsignin", authTailorUser);
 router.post("/tailorregister", registerTailorUser);
 

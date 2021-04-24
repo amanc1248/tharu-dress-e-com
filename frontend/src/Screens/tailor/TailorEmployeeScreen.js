@@ -1,40 +1,52 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../styles/tailor/TailorEmployeeScreen.css";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 import "../../styles/tailor/TailorProductsScreen.css";
 import { Link } from "react-router-dom";
 import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import { useDispatch, useSelector } from "react-redux";
+import { tailorEmployeesAction } from "../../actions/tailorActions";
+import Loader from "../../Components/Loader";
 function TailorEmployeeScreen() {
-  const tableStatus = (
-    <div className="table__status__container">
-      <div class="table__status__icon"></div>
-      <div className="table__status__text">Delivered</div>
-    </div>
-  );
-  const tableRow = (
-    <tr>
-      <th scope="row" className="table__customer">
-        Sudeep Bhattrai
-      </th>
-      <td className="table__date">20 Feb, 2020</td>
-      <td className="work__assigned">
-        {" "}
-        <Link to="/employeeDetails">See Details</Link>{" "}
-      </td>
-      <td className="table__customer">+9779804355969</td>
-      <td>
-        <div className="table__status"> {tableStatus}</div>
-      </td>
-      <td>{seeMoreFunction()}</td>
-    </tr>
-  );
+  const tailorEmployees = useSelector((state) => state.tailorEmployees);
+  const { loading, error, employees } = tailorEmployees;
+
+  const tailorLogin = useSelector((state) => state.tailorLogin);
+  const { tailorInfo } = tailorLogin;
+
+  // const tailorrSales = `${tailorSales ? tailorSales : 0}`;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (tailorInfo) {
+      const tailId = tailorInfo.tailorId;
+      console.log("screen id" + tailId);
+      dispatch(tailorEmployeesAction(tailId));
+    } else {
+    }
+  }, [dispatch, tailorInfo]);
+  const theEmployees = tailorEmployees && tailorEmployees.employees;
+
   const [addEmployee, setaddEmployee] = useState(false);
   const addEmployeeClick = () => {
     setaddEmployee(!addEmployee);
   };
+  const tableStatus = (
+    <div className="table__status__container">
+      <div class="table__status__icon"></div>
+      <div className="table__status__text">Working</div>
+    </div>
+  );
+  const tableStatusNotWorking = (
+    <div className="table__status__notDelivered__container">
+      <div class="table__status__icon"></div>
+      <div className="table__status__text">Free</div>
+    </div>
+  );
 
-  return (
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="tailor__employees">
       {addEmployee ? (
         <AssignWork clickOutside={addEmployeeClick}></AssignWork>
@@ -61,7 +73,7 @@ function TailorEmployeeScreen() {
                 Date Joined
               </th>
               <th scope="col" className="table__header">
-                Work Assigned
+                Email
               </th>
               <th scope="col" className="table__header">
                 Phone
@@ -75,14 +87,29 @@ function TailorEmployeeScreen() {
             </tr>
           </thead>
           <tbody>
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
+            {theEmployees &&
+              theEmployees.map((employee) => (
+                <tr key={employee.employee_id}>
+                  <th scope="row" className="table__customer">
+                    {employee.first_name + employee.last_name}
+                  </th>
+                  <td className="table__date">{employee.date_time}</td>
+                  <td className="work__assigned">
+                    {" "}
+                    <Link to="/employeeDetails">{employee.email}</Link>{" "}
+                  </td>
+                  <td className="table__customer">{employee.phone}</td>
+                  <td>
+                    <div className="table__status">
+                      {" "}
+                      {employee.status === "working"
+                        ? tableStatus
+                        : tableStatusNotWorking}
+                    </div>
+                  </td>
+                  <td>{seeMoreFunction()}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
