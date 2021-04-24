@@ -24,6 +24,9 @@ import {
   TAILOR_SALES_DETAILS_FAIL,
   TAILOR_SALES_DETAILS_REQUEST,
   TAILOR_SALES_DETAILS_SUCCESS,
+  TAILOR_UPDATE_PROFILE_FAIL,
+  TAILOR_UPDATE_PROFILE_REQUEST,
+  TAILOR_UPDATE_PROFILE_SUCCESS,
 } from "../constants/tailorConstants";
 
 export const tailorLoginReducer = (state = {}, action) => {
@@ -61,6 +64,20 @@ export const tailorDetailsReducer = (state = { tailor: {} }, action) => {
       return { loading: false, tailor: action.payload };
     case TAILOR_DETAILS_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const tailorUpdateProfileReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TAILOR_UPDATE_PROFILE_REQUEST:
+      return { loading: true };
+    case TAILOR_UPDATE_PROFILE_SUCCESS:
+      return { loading: false, success: true, tailorInfo: action.payload };
+    case TAILOR_UPDATE_PROFILE_FAIL:
+      return { loading: false, error: action.payload };
+
     default:
       return state;
   }

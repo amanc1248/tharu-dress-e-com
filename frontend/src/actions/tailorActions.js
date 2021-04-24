@@ -25,6 +25,8 @@ import {
   TAILOR_SALES_DETAILS_FAIL,
   TAILOR_SALES_DETAILS_REQUEST,
   TAILOR_SALES_DETAILS_SUCCESS,
+  TAILOR_UPDATE_PROFILE_REQUEST,
+  TAILOR_UPDATE_PROFILE_SUCCESS,
 } from "../constants/tailorConstants";
 
 export const tailorLoginAction = (email, password) => async (dispatch) => {
@@ -136,6 +138,39 @@ export const getTailorDetails = (id) => async (dispatch, getState) => {
       type: TAILOR_DETAILS_SUCCESS,
       payload: data,
     });
+  } catch (error) {
+    dispatch({
+      type: TAILOR_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateTailorProfile = (tailor) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: TAILOR_UPDATE_PROFILE_REQUEST,
+    });
+
+    const {
+      tailorLogin: { tailorInfo },
+    } = getState();
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${tailorInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.put("/api/tailor/profile", tailor, config);
+    dispatch({
+      type: TAILOR_UPDATE_PROFILE_SUCCESS,
+      payload: data,
+    });
+    localStorage.setItem("tailorInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: TAILOR_DETAILS_FAIL,

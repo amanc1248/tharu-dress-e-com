@@ -315,6 +315,80 @@ const getTailorProfile = asyncHandler(async (req, res) => {
     }
   });
 });
+
+//@desc update tailor profile
+//@route PUT /api/tailor/profile
+//@access PRIVATE
+const updateTailorProfile = asyncHandler(async (req, res) => {
+  let sql =
+    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='tailor';select @tailorId:=`tailor_id` , password from tailor where user_id =@finaluid;SELECT @locId:=`location_id` from tailor_location where tailor_id = @tailorId;SELECT city, street from location where location_id = @locId; ";
+
+  db.query(sql, [req.user[0][0]["email"]], (err, result) => {
+    if (err) throw err;
+    if (result.length > 0) {
+      if (result) {
+        console.log("First RESULT");
+        console.log(result);
+        console.log(result[0][0]["first_name"]);
+        console.log(result[3][0]["@locId:=`location_id`"]);
+
+        let firstName = req.body.firstName || result[0][0]["first_name"];
+        let lastName = req.body.lastName || result[0][0]["last_name"];
+        let email = req.body.email || result[0][0]["email"];
+        let phone = req.body.phone || result[0][0]["phone"];
+        let city = req.body.city || result[4][0]["city"];
+        let street = req.body.street || result[4][0]["street"];
+        let password;
+        if (req.body.password) {
+          password = req.body.password || result[2][0]["password"];
+        }
+
+        // save to database
+        let sql =
+          "UPDATE dasa_user SET first_name = ?, last_name=?, email=?, phone=? WHERE email=?;SELECT user_id,first_name,last_name,email,phone from dasa_user WHERE email=?;select tailor_id from tailor where user_id= ?;UPDATE tailor SET password=? where user_id=?;UPDATE location SET city=?,  street=? where location_id='loc1';";
+        db.query(
+          sql,
+          [
+            firstName,
+            lastName,
+            email,
+            phone,
+            req.user[0][0]["email"],
+            email,
+            result[1][0]["@finaluid:= `user_id`"],
+            password,
+            result[1][0]["@finaluid:= `user_id`"],
+            city,
+            street,
+          ],
+          (err, result) => {
+            // if (err) {
+            //   res.status(401).send({ message: err });
+            // }
+            console.log(result);
+            if (result) {
+              res.json({
+                firstName: result[1][0]["first_name"],
+                lastName: result[1][0]["last_name"],
+                email: result[1][0]["email"],
+                phone: result[1][0]["phone"],
+                userId: result[1]["0"]["@finaluid:= `user_id`"],
+                tailorId: result[2]["0"]["tailor_id"],
+                token: generateToken(result[1][0]["email"]),
+              });
+            } else {
+              res.status(401).send({ Message: err });
+            }
+          }
+        );
+        // give he response
+      } else {
+        res.status(404);
+        throw new Error("user not found");
+      }
+    }
+  });
+});
 export {
   authTailorUser,
   registerTailorUser,
@@ -324,4 +398,5 @@ export {
   tailorEmployees,
   tailorCustomers,
   getTailorProfile,
+  updateTailorProfile,
 };

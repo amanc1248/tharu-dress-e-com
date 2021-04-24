@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../../styles/tailor/TailorAccountDetailsScreens.css";
 import "../../../actions/tailorActions.js";
-import { getTailorDetails } from "../../../actions/tailorActions.js";
+import {
+  getTailorDetails,
+  updateTailorProfile,
+} from "../../../actions/tailorActions.js";
 import Loader from "../../../Components/Loader";
+import Message from "../../../Components/Message";
+import { goToChangePassword } from "../../../actions/accountDetailsActions";
 function TailorAccountInformationScreen({ editPage, changePasswordPage }) {
   const dispatch = useDispatch();
   const tailorDetails = useSelector((state) => state.tailorDetails);
@@ -85,6 +90,8 @@ export function TailorAccountInformationEdit({ editPage }) {
 
   const tailorDetails = useSelector((state) => state.tailorDetails);
   const { loading, error, tailor } = tailorDetails;
+  const tailorUpdateProfile = useSelector((state) => state.tailorUpdateProfile);
+  const { success } = tailorUpdateProfile;
   useEffect(() => {
     if (!tailor.firstName) {
       dispatch(getTailorDetails("profile"));
@@ -95,6 +102,14 @@ export function TailorAccountInformationEdit({ editPage }) {
       setPhone(tailor.phone);
     }
   }, [tailor, dispatch]);
+
+  const updateProfileHandler = (e) => {
+    e.preventDefault();
+    // dispatch update profile
+    dispatch(updateTailorProfile({ firstName, lastName, email, phone }));
+    editPage();
+    dispatch(getTailorDetails("profile"));
+  };
   return loading ? (
     <Loader></Loader>
   ) : (
@@ -103,6 +118,9 @@ export function TailorAccountInformationEdit({ editPage }) {
         Please update your personal account details, update your address book or
         change your email setting here.
       </div>
+      {error && <Message variant="danger">{error} </Message>}
+      {success && <Message variant="danger">Successfully updated </Message>}
+      {loading && <Loader> </Loader>}
       <form action="">
         <div className="tailor__address__edit__inputs">
           <label>
@@ -140,7 +158,10 @@ export function TailorAccountInformationEdit({ editPage }) {
         </div>
         <div className="tailor__account__information__buttons row justify-content-between">
           <div className="tailor__save__button__container col-6">
-            <button className="tailor__save__button" onClick={editPage}>
+            <button
+              className="tailor__save__button"
+              onClick={updateProfileHandler}
+            >
               SAVE
             </button>
           </div>
@@ -159,6 +180,29 @@ export function TailorAccountInformationEdit({ editPage }) {
 }
 
 export function TailorAccountInformationChangePassword({ changePasswordPage }) {
+  const dispatch = useDispatch();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [message, setMessage] = useState();
+  const tailorDetails = useSelector((state) => state.tailorDetails);
+  const { loading, error, user } = tailorDetails;
+
+  const tailorUpdateProfile = useSelector((state) => state.tailorUpdateProfile);
+  const { success } = tailorUpdateProfile;
+  const updatePasswordHandler = (e) => {
+    // dispatch update profile
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setMessage("Password do not match");
+    } else if (!password || !confirmPassword) {
+      setMessage("Please fill all the fields");
+    } else {
+      dispatch(updateTailorProfile({ password }));
+      changePasswordPage();
+    }
+
+    // dispatch(getUserDetails("profile"));
+  };
   return (
     <div className="tailor__account__information__change__password">
       <div className="tailor__account__information__change__password__instruction">
@@ -167,23 +211,35 @@ export function TailorAccountInformationChangePassword({ changePasswordPage }) {
       </div>
       <div className="tailor__account__information__change__password__title">
         <h4>CHANGE PASSWORD</h4>
+        {message && <Message variant="danger">{message} </Message>}
+        {error && <Message variant="danger">{error} </Message>}
+        {success && <Message variant="danger">Successfully updated </Message>}
+        {loading && <Loader> </Loader>}
       </div>
       <form action="">
         <div className="tailor__account__information__change__password__inputs">
           <label>
             Password
-            <input type="text" />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
           </label>
           <label>
             Confirm Password
-            <input type="text" />
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            ></input>
           </label>
         </div>
         <div className="tailor__account__information__buttons row justify-content-between">
           <div className="tailor__change__password__edit__button__container col-6">
             <button
               className="tailor__change__password__save__button"
-              onClick={changePasswordPage}
+              onClick={updatePasswordHandler}
             >
               SAVE
             </button>

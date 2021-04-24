@@ -166,7 +166,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 //@desc update user profile
 //@route PUT /api/users/profile
-//@access PUBLIC
+//@access PRIVATE
 const updateUserProfile = asyncHandler(async (req, res) => {
   let sql =
     "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select @customerId:=`customer_id` , password from customer where user_id =@finaluid;SELECT @locId:=`location_id` from customer_location where customer_id = @customerId;SELECT city, street from location where location_id = @locId; ";
