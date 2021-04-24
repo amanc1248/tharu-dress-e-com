@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../../../styles/tailor/TailorAccountDetailsScreens.css";
+import {
+  getTailorDetails,
+  updateTailorProfile,
+} from "../../../actions/tailorActions.js";
 function TailorStoreInformationScreen({ changeStoreInfoPage }) {
+  const dispatch = useDispatch();
+  const tailorDetails = useSelector((state) => state.tailorDetails);
+  const { tailor } = tailorDetails;
+
+  useEffect(() => {
+    if (!tailor.city || !tailor.street) {
+      dispatch(getTailorDetails("profile"));
+    }
+  }, [tailor, dispatch]);
   return (
     <div className="store__information">
       <div className="store__information__address__book__instruction">
@@ -15,13 +29,13 @@ function TailorStoreInformationScreen({ changeStoreInfoPage }) {
           <span>
             <strong>City:</strong>
           </span>
-          <span>Aman</span>
+          <span>{tailor.city}</span>
         </div>
         <div className="tailor__address__detail">
           <span>
             <strong>Street:</strong>
           </span>
-          <span>Chaudhary</span>
+          <span>{tailor.street}</span>
         </div>
       </div>
       <div className="address__book__buttons row justify-content-between">
@@ -39,6 +53,33 @@ function TailorStoreInformationScreen({ changeStoreInfoPage }) {
 }
 
 export function StoreInformationEdit({ changeStoreInfoPage }) {
+  const dispatch = useDispatch();
+  const [city, setCity] = useState();
+  const [street, setStreet] = useState();
+
+  const tailorDetails = useSelector((state) => state.tailorDetails);
+  const { loading, error, tailor } = tailorDetails;
+
+  const tailorUpdateProfile = useSelector((state) => state.tailorUpdateProfile);
+  const { success } = tailorUpdateProfile;
+
+  useEffect(() => {
+    if (!tailor.city) {
+      dispatch(getTailorDetails("profile"));
+    } else {
+      setCity(tailor.city);
+      setStreet(tailor.street);
+    }
+  }, [tailor, dispatch]);
+
+  const updateProfileHandler = (e) => {
+    e.preventDefault();
+    // dispatch update profile
+    dispatch(updateTailorProfile({ city, street }));
+    changeStoreInfoPage();
+    dispatch(getTailorDetails("profile"));
+  };
+
   return (
     <div className="store__information__edit">
       <div className="store__information__edit__instruction">
@@ -50,16 +91,24 @@ export function StoreInformationEdit({ changeStoreInfoPage }) {
         <div className="store__information__edit__inputs">
           <label>
             City
-            <input type="text" />
+            <input
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            ></input>
           </label>
           <label>
             Street
-            <input type="text" />
+            <input
+              type="text"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            ></input>
           </label>
         </div>
         <div className="account__information__buttons row justify-content-between">
           <div className="edit__button__container col-6">
-            <button className="edit__button" onClick={changeStoreInfoPage}>
+            <button className="edit__button" onClick={updateProfileHandler}>
               SAVE
             </button>
           </div>
