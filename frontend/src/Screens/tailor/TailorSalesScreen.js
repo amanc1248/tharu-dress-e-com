@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { tailorSalesDetailsAction } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";
+import { orderMarkAsDelivered } from "../../actions/orderActions";
 function TailorSalesScreen({ history }) {
   const tailorSalesDetails = useSelector((state) => state.tailorSalesDetails);
   const { loading, error, tailorSales } = tailorSalesDetails;
@@ -222,12 +223,16 @@ function RecentOrders({ recentOrders, history }) {
       <div className="table__status__text">Not Delivered</div>
     </div>
   );
-
+  const dispatch = useDispatch();
   const orderDetailsPage = (orderId) => {
     history.push(`/orders/${orderId}`);
   };
   const customerDetailsPage = (customerId) => {
     history.push(`/customerDetails/${customerId}`);
+  };
+  const orderMarkAsDeliveredFunction = (orderId) => {
+    window.location.reload();
+    dispatch(orderMarkAsDelivered({ orderId }));
   };
   // const tableRow = (
 
@@ -306,6 +311,9 @@ function RecentOrders({ recentOrders, history }) {
                         {
                           icon: <LocalShippingIcon></LocalShippingIcon>,
                           iconText: "Mark as delivered",
+                          theClickFunction: () => {
+                            orderMarkAsDeliveredFunction(order.order_id);
+                          },
                         },
 
                         {

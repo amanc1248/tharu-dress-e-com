@@ -9,6 +9,9 @@ import {
   ORDER_LIST_MY_FAIL,
   ORDER_LIST_MY_REQUEST,
   ORDER_LIST_MY_SUCCESS,
+  ORDER_MARK_AS_DELIVERED_FAIL,
+  ORDER_MARK_AS_DELIVERED_REQUEST,
+  ORDER_MARK_AS_DELIVERED_SUCCESS,
 } from "../constants/orderConstants.js";
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -103,6 +106,28 @@ export const listMyOrders = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ORDER_LIST_MY_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const orderMarkAsDelivered = (orderId) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ORDER_MARK_AS_DELIVERED_REQUEST,
+    });
+
+    const { data } = await axios.put(`/api/orders/markAsDelivered`, orderId);
+    dispatch({
+      type: ORDER_MARK_AS_DELIVERED_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ORDER_MARK_AS_DELIVERED_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -139,4 +139,20 @@ const getMyOrders = asyncHandler(async (req, res) => {
     }
   });
 });
-export { addOrderItems, getOrderById, getMyOrders };
+
+//@route PUT /api/order/markdelivered
+//@access PUBLIC
+const markOrderAsDelivered = asyncHandler(async (req, res) => {
+  const orderId = req.body.orderId;
+  let sql = "UPDATE the_order SET status='delivered' where order_id=?;";
+  db.query(sql, [orderId], (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+export { addOrderItems, getOrderById, getMyOrders, markOrderAsDelivered };

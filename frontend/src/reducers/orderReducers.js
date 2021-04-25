@@ -8,6 +8,9 @@ import {
   ORDER_LIST_MY_FAIL,
   ORDER_LIST_MY_REQUEST,
   ORDER_LIST_MY_SUCCESS,
+  ORDER_MARK_AS_DELIVERED_FAIL,
+  ORDER_MARK_AS_DELIVERED_REQUEST,
+  ORDER_MARK_AS_DELIVERED_SUCCESS,
 } from "../constants/orderConstants";
 export const orderCreateReducer = (state = {}, action) => {
   switch (action.type) {
@@ -71,6 +74,28 @@ export const orderListMyReducer = (state = { orders: [] }, action) => {
         orders: action.payload,
       };
     case ORDER_LIST_MY_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+export const orderMarkAsDeliveredReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ORDER_MARK_AS_DELIVERED_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ORDER_MARK_AS_DELIVERED_SUCCESS:
+      return {
+        loading: false,
+        status: action.payload,
+      };
+    case ORDER_MARK_AS_DELIVERED_FAIL:
       return {
         loading: false,
         error: action.payload,
