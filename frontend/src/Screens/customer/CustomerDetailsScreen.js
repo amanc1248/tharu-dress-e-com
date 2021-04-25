@@ -5,7 +5,7 @@ import Tabs from "../../Components/Tabs/Tabs";
 import DetailsPage from "../../Components/DetailsPage";
 import "../../styles/components/DetailsPage.css";
 import { CustomerDetailsForEmployee } from "../employee/EmployeeWorkScreen";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 function CustomerDetailsScreen() {
   return (
     <div className="customer__details">

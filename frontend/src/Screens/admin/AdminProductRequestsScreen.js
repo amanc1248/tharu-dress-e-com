@@ -7,7 +7,7 @@ import { BackspaceOutlined } from "@material-ui/icons";
 import { Link } from "@material-ui/core";
 import "../../styles/admin/AdminProductRequestsScreen.css";
 
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 
 function AdminProductRequestsScreen() {
   let seeMoreOptionsList = [

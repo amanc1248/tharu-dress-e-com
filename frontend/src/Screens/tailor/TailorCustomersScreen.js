@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PersonIcon from "@material-ui/icons/Person";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import "../../styles/tailor/TailorCustomersScreen.css";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { tailorCustomersAction } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";

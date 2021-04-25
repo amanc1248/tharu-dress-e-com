@@ -4,7 +4,7 @@ import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 import "../../styles/tailor/TailorProductsScreen.css";
 import { Link } from "react-router-dom";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { tailorEmployeesAction } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";

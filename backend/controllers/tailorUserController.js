@@ -177,11 +177,6 @@ const registerTailorUser = asyncHandler(async (req, res) => {
 const tailorSales = asyncHandler(async (req, res) => {
   const tailorId = req.params.id;
 
-  console.log("This is tailor req👇👇👇");
-  console.log(tailorId);
-  console.log("This is tailor res👇👇👇");
-
-  console.log(res);
   let todaysDetailsSql =
     "select COUNT(the_order.order_id) as todays_orders,SUM(the_order.total_price) as todays_revenue, COUNT(DISTINCT the_order.customer_id) as todays_customer from the_order join order_through on the_order.order_id  =  order_through.order_id where order_through.tailor_id=? AND the_order.date_time=current_date();";
   let totalDetailsSql =

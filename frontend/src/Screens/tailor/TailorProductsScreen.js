@@ -5,7 +5,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
 import Checkbox from "@material-ui/core/Checkbox";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { tailorProductsAction } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";

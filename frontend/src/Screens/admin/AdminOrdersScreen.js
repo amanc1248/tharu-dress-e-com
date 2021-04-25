@@ -3,7 +3,7 @@ import React from "react";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import PersonIcon from "@material-ui/icons/Person";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 
 function AdminOrdersScreen() {
   let seeMoreOptionsList = [

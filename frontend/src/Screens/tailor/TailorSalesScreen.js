@@ -13,7 +13,7 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
 import { useDispatch, useSelector } from "react-redux";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { tailorSalesDetailsAction } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";
 function TailorSalesScreen({ history }) {
@@ -83,6 +83,17 @@ function TailorSalesScreen({ history }) {
   console.log(tailorSales && tailorSales.recentOrders);
   const recentOrders = tailorSales && tailorSales.recentOrders;
 
+  const theList = [
+    [{ a: "k" }, { a: "k" }, { a: "k" }],
+    [{ u: "u" }, { u: "u" }, { u: "u" }],
+    [{ b: "b" }, { b: "b" }, { b: "b" }],
+    [{ c: "c" }, { c: "c" }, { c: "c" }],
+    [{ d: "d" }, { d: "d" }, { d: "d" }],
+  ];
+  theList.map((obj) => console.log(obj));
+
+  let seeMoreList = [];
+
   return loading ? (
     <Loader></Loader>
   ) : (
@@ -117,7 +128,10 @@ function TailorSalesScreen({ history }) {
           title="Recent Orders"
           colLength="col-12"
           dashBoardContent={
-            <RecentOrders recentOrders={recentOrders}></RecentOrders>
+            <RecentOrders
+              recentOrders={recentOrders}
+              history={history}
+            ></RecentOrders>
           }
         ></DashBoardCard2>
       </div>
@@ -195,47 +209,7 @@ function StoreStatistics({ storeStatisticsData }) {
   );
 }
 
-function RecentOrders({ recentOrders }) {
-  // console.log("This is recent orders first element");
-  // console.log(recentOrders.length);
-  // console.log(recentOrders[0][0]);
-  // console.log(recentOrders[1]);
-  // console.log(recentOrders[2]);
-  // console.log(recentOrders[3]);
-  // console.log(recentOrders[4]);
-  // console.log(recentOrders[5]);
-  // console.log(recentOrders[6]);
-  // console.log(recentOrders[7]);
-
-  // recent orders data👇👇👇
-  let seeMoreOptionsList = [
-    {
-      icon: <VisibilityIcon></VisibilityIcon>,
-      iconText: "Order Details",
-      theLink: "/orderDetails",
-    },
-
-    {
-      icon: <PersonIcon></PersonIcon>,
-      iconText: "Customer Details",
-      theLink: "/customerDetails",
-    },
-    {
-      icon: <LocalShippingIcon></LocalShippingIcon>,
-      iconText: "Mark as delivered",
-    },
-    {
-      icon: <CheckBoxIcon></CheckBoxIcon>,
-      iconText: "Mark as paid",
-    },
-    {
-      icon: <DescriptionIcon></DescriptionIcon>,
-      iconText: "Send Invoice",
-    },
-  ];
-  const seeMoreFunction = () => {
-    return <SeeMoreToogle theList={seeMoreOptionsList}></SeeMoreToogle>;
-  };
+function RecentOrders({ recentOrders, history }) {
   const tableStatus = (
     <div className="table__status__container">
       <div class="table__status__icon"></div>
@@ -249,6 +223,9 @@ function RecentOrders({ recentOrders }) {
     </div>
   );
 
+  const orderDetailsPage = (orderId) => {
+    history.push(`/orders/${orderId}`);
+  };
   // const tableRow = (
 
   // );
@@ -305,7 +282,33 @@ function RecentOrders({ recentOrders }) {
                     <span className="table__rs__title">Rs.</span>
                     {order.total_price}
                   </td>{" "}
-                  <td>{seeMoreFunction()}</td>
+                  <td>
+                    <SeeMoreToogle
+                      theList={[
+                        {
+                          icon: <VisibilityIcon></VisibilityIcon>,
+                          iconText: "Order Details",
+                          theClickFunction: () => {
+                            orderDetailsPage(order.order_id);
+                          },
+                        },
+
+                        {
+                          icon: <PersonIcon></PersonIcon>,
+                          iconText: "Customer Details",
+                        },
+                        {
+                          icon: <LocalShippingIcon></LocalShippingIcon>,
+                          iconText: "Mark as delivered",
+                        },
+
+                        {
+                          icon: <DescriptionIcon></DescriptionIcon>,
+                          iconText: "Send Invoice",
+                        },
+                      ]}
+                    ></SeeMoreToogle>
+                  </td>
                 </tr>
               ))}
           </tbody>

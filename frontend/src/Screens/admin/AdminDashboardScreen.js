@@ -15,7 +15,7 @@ import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
 import { WorkOutlineOutlined, PersonPinOutlined } from "@material-ui/icons";
 import { Doughnut } from "react-chartjs-2";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 function AdminDashboardScreen() {
   return (
     <div className="dashboard">

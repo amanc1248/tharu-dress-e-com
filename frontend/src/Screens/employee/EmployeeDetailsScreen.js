@@ -10,7 +10,7 @@ import {
   WorkDetailsAndProgress,
 } from "./EmployeeWorkScreen";
 import { CustomerOrders } from "../customer/CustomerDetailsScreen";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 function EmployeeDetailsScreen() {
   return (
     <div className="employee__details">

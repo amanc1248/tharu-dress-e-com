@@ -1,6 +1,6 @@
 import React from "react";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import "../../styles/admin/AdminCustomersScreen.css";
 
 function AdminCustomersScreen() {

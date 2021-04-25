@@ -1,21 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-export function SeeMoreToogle({ theList }) {
+function SeeMoreToogle({ theList, history }) {
   const [moreAction, setMoreAction] = useState(false);
   const hideMoreAction = () => {
     setMoreAction(!moreAction);
   };
 
-  function SeeMoreIndividual({ theIcon, theIconText, theLink }) {
+  function SeeMoreIndividual({ theIcon, theIconText, theClickFunction }) {
     return (
-      <Link to={theLink} style={{ textDecoration: "none", color: "none" }}>
-        <div className="see__more__individual__container">
-          <div className="see__more__icon">{theIcon}</div>
-          <div className="see__more__text">{theIconText}</div>
-        </div>
-      </Link>
+      <div
+        className="see__more__individual__container"
+        style={{ textDecoration: "none", color: "none" }}
+        onClick={theClickFunction}
+      >
+        <div className="see__more__icon">{theIcon}</div>
+        <div className="see__more__text">{theIconText}</div>
+      </div>
     );
   }
   function SeeMoreContainer({ seeMoreRef }) {
@@ -23,7 +25,7 @@ export function SeeMoreToogle({ theList }) {
       return (
         <SeeMoreIndividual
           key={obj.toString()}
-          theLink={obj.theLink}
+          theClickFunction={obj.theClickFunction}
           theIcon={obj.icon}
           theIconText={obj.iconText}
         >
@@ -63,3 +65,4 @@ export function SeeMoreToogle({ theList }) {
     </div>
   );
 }
+export default withRouter(SeeMoreToogle);

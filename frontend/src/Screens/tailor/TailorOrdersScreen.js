@@ -6,7 +6,7 @@ import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import DescriptionIcon from "@material-ui/icons/Description";
 import PersonIcon from "@material-ui/icons/Person";
-import { SeeMoreToogle } from "../../Components/SeeMoreContainer";
+import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { tailorOrdersAction } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";
@@ -143,10 +143,7 @@ let seeMoreOptionsList = [
     icon: <LocalShippingIcon></LocalShippingIcon>,
     iconText: "Mark as delivered",
   },
-  {
-    icon: <CheckBoxIcon></CheckBoxIcon>,
-    iconText: "Mark as paid",
-  },
+
   {
     icon: <DescriptionIcon></DescriptionIcon>,
     iconText: "Send Invoice",
