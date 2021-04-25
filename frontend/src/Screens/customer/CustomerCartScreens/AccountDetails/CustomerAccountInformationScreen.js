@@ -276,14 +276,14 @@ export function AccountInformation() {
             {" "}
             <strong>First Name:</strong>{" "}
           </span>
-          <span>{user.firstName}</span>
+          <span>{user && user.firstName}</span>
         </div>
         <div className="userDetails">
           <span>
             {" "}
             <strong>Last Name:</strong>{" "}
           </span>
-          <span>{user.lastName}</span>
+          <span>{user && user.lastName}</span>
         </div>
 
         <div className="userDetails">
@@ -291,14 +291,14 @@ export function AccountInformation() {
             {" "}
             <strong>Phone:</strong>{" "}
           </span>
-          <span>{user.phone}</span>
+          <span>{user && user.phone}</span>
         </div>
         <div className="userDetails">
           <span>
             {" "}
             <strong>Email:</strong>{" "}
           </span>
-          <span>{user.email}</span>
+          <span>{user && user.email}</span>
         </div>
       </div>
       <div className="account__information__buttons row justify-content-between no-gutters ">

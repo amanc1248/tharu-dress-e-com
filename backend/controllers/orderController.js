@@ -127,12 +127,14 @@ const getOrderById = asyncHandler(async (req, res) => {
 const getMyOrders = asyncHandler(async (req, res) => {
   console.log("this is my orderss");
   const customerId = req.user[2][0]["customer_id"];
+  console.log(customerId);
   let sql = "select * from the_order where customer_id=?;";
-  db.query(sql, customerId, (err, result) => {
+  db.query(sql, [customerId], (err, result) => {
     if (err) {
       throw err;
     }
     if (result) {
+      console.log(result);
       res.json(result);
     }
   });

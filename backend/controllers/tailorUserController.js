@@ -39,7 +39,7 @@ const authTailorUser = asyncHandler(async (req, res) => {
             phone: result[0][0]["phone"],
             userId: result[1]["0"]["@finaluid:= `user_id`"],
             tailorId: result[2]["0"]["tailor_id"],
-            token: generateToken(result[0][0]["email"]),
+            tailortoken: generateToken(result[0][0]["email"]),
           });
         } else {
           res.status(401).send({ message: "Invalid email or password" });
@@ -156,7 +156,7 @@ const registerTailorUser = asyncHandler(async (req, res) => {
                   locationId: result[13][0]["location_id"],
                   city: result[13][0]["city"],
                   street: result[13][0]["street"],
-                  token: generateToken(result[4][0]["email"]),
+                  tailortoken: generateToken(result[4][0]["email"]),
                 });
               }
             }
@@ -292,7 +292,6 @@ const getTailorProfile = asyncHandler(async (req, res) => {
     if (err) throw err;
     if (result.length > 0) {
       if (result) {
-        console.log(result);
         res.json({
           firstName: result[0][0]["first_name"],
           lastName: result[0][0]["last_name"],

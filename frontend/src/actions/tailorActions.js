@@ -129,7 +129,7 @@ export const getTailorDetails = (id) => async (dispatch, getState) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${tailorInfo.token}`,
+        Authorization: `Bearer ${tailorInfo.tailortoken}`,
       },
     };
 
@@ -161,7 +161,7 @@ export const updateTailorProfile = (tailor) => async (dispatch, getState) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${tailorInfo.token}`,
+        Authorization: `Bearer ${tailorInfo.tailortoken}`,
       },
     };
 

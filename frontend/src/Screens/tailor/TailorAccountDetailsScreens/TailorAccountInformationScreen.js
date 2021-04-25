@@ -8,11 +8,10 @@ import {
 } from "../../../actions/tailorActions.js";
 import Loader from "../../../Components/Loader";
 import Message from "../../../Components/Message";
-import { goToChangePassword } from "../../../actions/accountDetailsActions";
 function TailorAccountInformationScreen({ editPage, changePasswordPage }) {
   const dispatch = useDispatch();
   const tailorDetails = useSelector((state) => state.tailorDetails);
-  const { tailor } = tailorDetails;
+  const { loading, tailor } = tailorDetails;
 
   useEffect(() => {
     if (
@@ -25,7 +24,9 @@ function TailorAccountInformationScreen({ editPage, changePasswordPage }) {
     }
   }, [tailor, dispatch]);
 
-  return (
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="tailor__account__information">
       <div className="tailor__account__information">
         Please update your personal account details, update your address book or

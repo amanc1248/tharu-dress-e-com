@@ -22,3 +22,20 @@
 .work__customer__details {
   text-align: center;
 }
+@media screen and (max-width: 567px) {
+  .customer__orders__table td:nth-child(4),
+  .customer__orders__table td:nth-child(2),
+  .customer__orders__table td:nth-child(3) {
+    display: none;
+  }
+  .customer__orders__table th:nth-child(4),
+  .customer__orders__table th:nth-child(2),
+  .customer__orders__table th:nth-child(3) {
+    display: none;
+  }
+}
+.customer__orders__table {
+  background-color: #fff;
+  border-radius: 8px !important;
+  padding: 20px 10px;
+}

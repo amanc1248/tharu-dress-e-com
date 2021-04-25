@@ -39,7 +39,7 @@ const authUser = asyncHandler(async (req, res) => {
             phone: result[0][0]["phone"],
             userId: result[1]["0"]["@finaluid:= `user_id`"],
             customerId: result[2]["0"]["customer_id"],
-            token: generateToken(result[0][0]["email"]),
+            customertoken: generateToken(result[0][0]["email"]),
           });
         } else {
           res.status(401).send({ message: "Invalid email or password" });
@@ -67,7 +67,6 @@ const getUserProfile = asyncHandler(async (req, res) => {
     if (err) throw err;
     if (result.length > 0) {
       if (result) {
-        console.log(result);
         res.json({
           firstName: result[0][0]["first_name"],
           lastName: result[0][0]["last_name"],
@@ -129,7 +128,7 @@ const registerUser = asyncHandler(async (req, res) => {
                 email: result[4][0]["email"],
                 phone: result[4][0]["phone"],
                 customerId: result[5][0]["customer_id"],
-                token: generateToken(result[4][0]["email"]),
+                customertoken: generateToken(result[4][0]["email"]),
               });
             }
           }
@@ -152,7 +151,7 @@ const registerUser = asyncHandler(async (req, res) => {
                 email: result[7][0]["email"],
                 phone: result[7][0]["phone"],
                 customerId: result[8][0]["customer_id"],
-                token: generateToken(result[4][0]["email"]),
+                customertoken: generateToken(result[4][0]["email"]),
               });
             }
           }
@@ -222,7 +221,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
                 phone: result[1][0]["phone"],
                 userId: result[1]["0"]["@finaluid:= `user_id`"],
                 customerId: result[2]["0"]["customer_id"],
-                token: generateToken(result[1][0]["email"]),
+                customertoken: generateToken(result[1][0]["email"]),
               });
             } else {
               res.status(401).send({ Message: err });

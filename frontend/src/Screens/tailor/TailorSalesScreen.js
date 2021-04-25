@@ -226,6 +226,9 @@ function RecentOrders({ recentOrders, history }) {
   const orderDetailsPage = (orderId) => {
     history.push(`/orders/${orderId}`);
   };
+  const customerDetailsPage = (customerId) => {
+    history.push(`/customerDetails/${customerId}`);
+  };
   // const tableRow = (
 
   // );
@@ -296,6 +299,9 @@ function RecentOrders({ recentOrders, history }) {
                         {
                           icon: <PersonIcon></PersonIcon>,
                           iconText: "Customer Details",
+                          theClickFunction: () => {
+                            customerDetailsPage(order.customer_id);
+                          },
                         },
                         {
                           icon: <LocalShippingIcon></LocalShippingIcon>,

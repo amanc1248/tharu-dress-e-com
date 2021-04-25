@@ -1,22 +1,27 @@
 import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import db from "../config/db.js";
+import dotenv from "dotenv";
+dotenv.config();
 const protect = asyncHandler(async (req, res, next) => {
-  let token;
+  console.log(req.headers.authorization);
+  let customertoken;
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
   ) {
     try {
-      token = req.headers.authorization.split(" ")[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      console.log("Decoded value");
-      console.log(decoded);
+      customertoken = req.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(customertoken, process.env.JWT_SECRET);
+      console.log("customertoken  " + customertoken);
+
       let sql =
-        "select @uid :=`user_id`, first_name, last_name, email from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='tailor';select tailor_id from tailor where user_id =@finaluid;";
+        "select @uid :=`user_id`, first_name, last_name, email from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select customer_id from customer where user_id =@finaluid;";
       db.query(sql, [decoded.id], (err, result) => {
         if (result) {
           req.user = result;
+          console.log(req.user);
+
           next();
         } else {
           res.status(404);
@@ -26,16 +31,17 @@ const protect = asyncHandler(async (req, res, next) => {
     } catch (error) {
       console.error(error);
       res.status(401);
-      throw new Error("Not authorized, token failed");
+      throw new Error("Not authorized, customertoken failed");
     }
   }
-  if (!token) {
+  if (!customertoken) {
     res.status(401);
     throw new Error("Not authorized, no token");
   }
 });
 
 const tailorProtect = asyncHandler(async (req, res, next) => {
+  console.log(req.headers.authorization);
   let token;
   if (
     req.headers.authorization &&
@@ -44,14 +50,14 @@ const tailorProtect = asyncHandler(async (req, res, next) => {
     try {
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      console.log("Decoded value");
-      console.log(decoded);
+      console.log("taiortoken  " + token);
       let sql =
         "select @uid :=`user_id`, first_name, last_name, email from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='tailor';select tailor_id from tailor where user_id =@finaluid;";
       db.query(sql, [decoded.id], (err, result) => {
         if (result) {
-          console.log(result);
           req.user = result;
+          console.log(req.user);
+
           next();
         } else {
           res.status(404);

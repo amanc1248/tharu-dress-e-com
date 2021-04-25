@@ -108,9 +108,10 @@ function App() {
             <Route path="/orderDetails">
               {/* <OrdersDetails></OrdersDetails> */}
             </Route>
-            <Route path="/customerDetails">
-              <CustomerDetailsScreen></CustomerDetailsScreen>
-            </Route>
+            <Route
+              path="/customerDetails/:customerId"
+              component={CustomerDetailsScreen}
+            ></Route>
             <Route path="/employeeDetails">
               <EmployeeDetailsScreen></EmployeeDetailsScreen>
             </Route>

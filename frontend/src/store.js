@@ -33,6 +33,7 @@ import {
   tailorSalesDetailsReducer,
   tailorUpdateProfileReducer,
 } from "./reducers/tailorUserReducers";
+import { customerDetailsReducer } from "./reducers/customerReducers";
 
 const reducer = combineReducers({
   // for account details 👇
@@ -61,6 +62,9 @@ const reducer = combineReducers({
   tailorCustomers: tailorCustomersReducer,
   tailorEmployees: tailorEmployeesReducer,
   tailorUpdateProfile: tailorUpdateProfileReducer,
+
+  // particular customer 👇
+  customerDetails: customerDetailsReducer,
 });
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))

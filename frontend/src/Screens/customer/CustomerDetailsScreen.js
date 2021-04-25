@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import Tabs from "../../Components/Tabs/Tabs";
@@ -6,7 +6,17 @@ import DetailsPage from "../../Components/DetailsPage";
 import "../../styles/components/DetailsPage.css";
 import { CustomerDetailsForEmployee } from "../employee/EmployeeWorkScreen";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
-function CustomerDetailsScreen() {
+import { useDispatch, useSelector } from "react-redux";
+import { customerDetailsAction } from "../../actions/customerActions";
+import Loader from "../../Components/Loader";
+function CustomerDetailsScreen({ history, match }) {
+  const customerId = match.params.customerId;
+  const dispatch = useDispatch();
+  const customerDetails = useSelector((state) => state.customerDetails);
+  const { loading, error, customerInfo } = customerDetails;
+  useEffect(() => {
+    dispatch(customerDetailsAction(customerId));
+  }, [dispatch, customerId]);
   return (
     <div className="customer__details">
       <DetailsPage
@@ -16,129 +26,138 @@ function CustomerDetailsScreen() {
       <Tabs>
         <div label="Soni's Information">
           <div className="customer__info">
-            <CustomerDetailsForEmployee></CustomerDetailsForEmployee>
+            <CustomerDetails
+              history={history}
+              match={match}
+              customerInfo={customerInfo}
+              loading={loading}
+            ></CustomerDetails>
           </div>
         </div>
         <div label="Soni's Orders">
-          <CustomerOrders></CustomerOrders>
+          <CustomerOrders
+            customerInfo={customerInfo}
+            loading={loading}
+            history={history}
+          ></CustomerOrders>
         </div>
       </Tabs>
     </div>
   );
 }
 
+function CustomerDetails({ customerInfo, loading }) {
+  return loading ? (
+    <Loader></Loader>
+  ) : (
+    <div className="work__customer__details">
+      <div className="work__detail__progress__instruction">
+        Customer details is shown here.
+      </div>
+      <div className="work__detail__progress__title">
+        <h5>CUSTOMER DETAILS</h5>
+      </div>
+      <div className="work__customer__container">
+        <div className="employee__work__customer__details">
+          <span>
+            <strong>Full Name: </strong>
+          </span>
+          <span>{customerInfo && customerInfo.firstName}</span>
+        </div>
+        <div className="employee__work__customer__details">
+          <span>
+            <strong>Email: </strong>
+          </span>
+          <span>{customerInfo && customerInfo.email}</span>
+        </div>
+        <div className="employee__work__customer__details">
+          <span>
+            <strong>Phone: </strong>
+          </span>
+          <span>{customerInfo && customerInfo.phone}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 //Creating customer orders 👇👇👇👇
-export function CustomerOrders() {
-  return (
+export function CustomerOrders({ customerInfo, loading, history }) {
+  const tableStatus = (
+    <div className="table__status__container">
+      <div class="table__status__icon"></div>
+      <div className="table__status__text">Delivered</div>
+    </div>
+  );
+  const tableStatusNotDeliverd = (
+    <div className="table__status__notDelivered__container">
+      <div class="table__status__icon"></div>
+      <div className="table__status__text">Not Delivered</div>
+    </div>
+  );
+
+  const customerOrders = customerInfo && customerInfo.orders;
+  const orderDetailsPage = (orderId) => {
+    history.push(`/orders/${orderId}`);
+  };
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="customer__orders">
-      <div className="tailor__orders">
-        <table class="table order__table" id="orders__table">
+      <div className="">
+        <table class="table customer__orders__table">
           <thead>
             <tr>
               <th scope="col">Orders</th>
               <th scope="col">Date</th>
               <th scope="col">Status</th>
-              <th scope="col">Customer</th>
-              <th scope="col">Purchased</th>
-              <th scope="col">Assigned To</th>
               <th scope="col">Total</th>
               <th scope="col">See more</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td> <td>{seeMoreFunction()}</td>
-            </tr>
-
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
-            <tr>
-              <th scope="row">#124fdf</th>
-              <td>June 4, 2020</td>
-              <td>On Hold</td>
-              <td>Swarnima Chaudhary</td>
-              <td>1 item</td>
-              <td>Manturam Chaudhary</td>
-              <td>Rs. 12,000</td>
-              <td>{seeMoreFunction()}</td>
-            </tr>
+            {customerOrders &&
+              customerOrders.map((order) => (
+                <tr key={order.order_id}>
+                  <th scope="row" className="table__order__number">
+                    {order.order_id}
+                  </th>
+                  <td className="table__date">{order.date_time}</td>
+                  <td>
+                    <div className="table__status">
+                      {" "}
+                      {order.status === "delivered"
+                        ? tableStatus
+                        : tableStatusNotDeliverd}
+                    </div>
+                  </td>
+                  <td className="table__price">
+                    {" "}
+                    <span className="table__rs__title">Rs. </span>
+                    {order.total_price}
+                  </td>{" "}
+                  <td>
+                    <SeeMoreToogle
+                      theList={[
+                        {
+                          icon: <VisibilityIcon></VisibilityIcon>,
+                          iconText: "Order Details",
+                          theClickFunction: () => {
+                            orderDetailsPage(order.order_id);
+                          },
+                        },
+                        {
+                          icon: <AssignmentIndIcon></AssignmentIndIcon>,
+                          iconText: "Employee Details",
+                          theLink: "/employeeDetails",
+                        },
+                      ]}
+                    ></SeeMoreToogle>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
-        {/* <nav aria-label="Page navigation example">
-          <ul className="pagination justify-content-end">
-            <li className="page-item disabled">
-              <a className="page-link" tabindex="-1">
-                Previous
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">1</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">2</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">3</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">Next</a>
-            </li>
-          </ul>
-        </nav> */}
       </div>
     </div>
   );
@@ -158,4 +177,5 @@ let seeMoreOptionsList = [
 const seeMoreFunction = () => {
   return <SeeMoreToogle theList={seeMoreOptionsList}></SeeMoreToogle>;
 };
+
 export default CustomerDetailsScreen;

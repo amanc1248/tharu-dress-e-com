@@ -7,6 +7,7 @@ import orderRoutes from "./routes/orderRoutes.js";
 import tailorUserRoutes from "./routes/tailorUserRoutes.js";
 import { notFound, errorHandler } from "./middleWare/middleWare.js";
 import userRoutes from "./routes/userRoutes.js";
+import customersRoutes from "./routes/customersRoutes.js";
 import morgan from "morgan";
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/tailor", tailorUserRoutes);
+app.use("/api/customer", customersRoutes);
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
