@@ -1,6 +1,7 @@
 import React from "react";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
+import { withRouter } from "react-router";
 
 function AdminEmployeeScreen() {
   let seeMoreOptionsList = [
@@ -71,4 +72,4 @@ function AdminEmployeeScreen() {
   );
 }
 
-export default AdminEmployeeScreen;
+export default withRouter(AdminEmployeeScreen);

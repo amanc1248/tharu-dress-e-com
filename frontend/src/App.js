@@ -127,9 +127,7 @@ function App() {
             </Route>
 
             {/* Admin routes👇 */}
-            <Route path="/admin">
-              <AdminScreen></AdminScreen>
-            </Route>
+            <Route path="/admin" component={AdminScreen}></Route>
 
             <Route path="/playground/:id">
               <Header></Header>

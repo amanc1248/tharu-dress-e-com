@@ -8,6 +8,7 @@ import tailorUserRoutes from "./routes/tailorUserRoutes.js";
 import { notFound, errorHandler } from "./middleWare/middleWare.js";
 import userRoutes from "./routes/userRoutes.js";
 import customersRoutes from "./routes/customersRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 import morgan from "morgan";
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/tailor", tailorUserRoutes);
 app.use("/api/customer", customersRoutes);
+app.use("/api/admin", adminRoutes);
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));

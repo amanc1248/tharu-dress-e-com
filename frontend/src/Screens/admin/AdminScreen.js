@@ -1,7 +1,6 @@
 import "../../styles/admin/AdminScreen.css";
 
 import React from "react";
-import AdminProductRequestsScreen from "./AdminProductRequestsScreen";
 import AdminDashboardScreen from "./AdminDashboardScreen";
 import AdminCustomersScreen from "./AdminCustomersScreen";
 import AdminTailorsScreen from "./AdminTailorsScreen";
@@ -12,7 +11,6 @@ import theAdminSideBarData from "../../Data/AdminData";
 import { TheEntireSidebar } from "../../Components/TheEntireSidebar";
 const ourTabs = [
   <AdminDashboardScreen></AdminDashboardScreen>,
-  <AdminProductRequestsScreen></AdminProductRequestsScreen>,
   <AdminCustomersScreen></AdminCustomersScreen>,
   <AdminTailorsScreen></AdminTailorsScreen>,
   <AdminEmployeeScreen></AdminEmployeeScreen>,

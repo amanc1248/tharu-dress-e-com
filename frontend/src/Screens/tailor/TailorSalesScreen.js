@@ -84,17 +84,6 @@ function TailorSalesScreen({ history }) {
   console.log(tailorSales && tailorSales.recentOrders);
   const recentOrders = tailorSales && tailorSales.recentOrders;
 
-  const theList = [
-    [{ a: "k" }, { a: "k" }, { a: "k" }],
-    [{ u: "u" }, { u: "u" }, { u: "u" }],
-    [{ b: "b" }, { b: "b" }, { b: "b" }],
-    [{ c: "c" }, { c: "c" }, { c: "c" }],
-    [{ d: "d" }, { d: "d" }, { d: "d" }],
-  ];
-  theList.map((obj) => console.log(obj));
-
-  let seeMoreList = [];
-
   return loading ? (
     <Loader></Loader>
   ) : (

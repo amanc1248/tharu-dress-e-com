@@ -2,6 +2,7 @@ import React from "react";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import "../../styles/admin/AdminTailorsScreen.css";
+import { withRouter } from "react-router";
 
 function AdminTailorsScreen() {
   let seeMoreOptionsList = [
@@ -79,4 +80,4 @@ function AdminTailorsScreen() {
   );
 }
 
-export default AdminTailorsScreen;
+export default withRouter(AdminTailorsScreen);

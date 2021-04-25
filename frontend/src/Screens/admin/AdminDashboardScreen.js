@@ -1,23 +1,32 @@
 import { Link } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/admin/AdminDashboardScreen.css";
 
-import DnsIcon from "@material-ui/icons/Dns";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
-import LocalShippingIcon from "@material-ui/icons/LocalShipping";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import DescriptionIcon from "@material-ui/icons/Description";
+
 import PersonIcon from "@material-ui/icons/Person";
 import { WorkOutlineOutlined, PersonPinOutlined } from "@material-ui/icons";
-import { Doughnut } from "react-chartjs-2";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
-function AdminDashboardScreen() {
-  return (
+import { withRouter } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { adminDashBoardDetailsAction } from "../../actions/adminActions";
+import Loader from "../../Components/Loader";
+function AdminDashboardScreen({ history }) {
+  const adminDashBoard = useSelector((state) => state.adminDashBoard);
+  const { loading, adminDashBoardInfo } = adminDashBoard;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(adminDashBoardDetailsAction());
+  }, [dispatch]);
+
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="dashboard">
       <div className="tailor__products__heading">
         <h5 className="admin__tabs__title">DASHBOARD</h5>
@@ -30,64 +39,50 @@ function AdminDashboardScreen() {
           backgroundColor="#3A2272"
           titleColor="white"
           theWidth="col-lg-6  col-12"
-          theContent={<TotalSales></TotalSales>}
+          theContent={
+            <TotalSales
+              totalAmount={adminDashBoardInfo && adminDashBoardInfo.totalSales}
+            ></TotalSales>
+          }
           height="max-content"
         ></AdminDashboardCard1>
-        <AdminDashboardCard1
+        {/* <AdminDashboardCard1
           title="Average Orders"
           backgroundColor="white"
           titleColor="#526484"
           theWidth="col-lg-6  col-12"
           theContent={<AverageOrder></AverageOrder>}
           height="241px"
-        ></AdminDashboardCard1>
+        ></AdminDashboardCard1> */}
       </div>
 
       {/* orders, customers, tailors, employees card👇 */}
       <div className="row">
         <AdminDashboardCard2
           title="Orders"
-          amount="9763"
-          status="7.5"
+          amount={adminDashBoardInfo && adminDashBoardInfo.orders}
+          // status="7.5"
         ></AdminDashboardCard2>
 
         <AdminDashboardCard2
           title="Customers"
-          amount="763"
-          status="5"
+          amount={adminDashBoardInfo && adminDashBoardInfo.customers}
+          // status="5"
         ></AdminDashboardCard2>
         <AdminDashboardCard2
           title="Tailors"
-          amount="93"
-          status="1"
+          amount={adminDashBoardInfo && adminDashBoardInfo.totalTailors}
+          // status="1"
         ></AdminDashboardCard2>
         <AdminDashboardCard2
           title="Employees"
-          amount="93"
-          status="6"
+          amount={adminDashBoardInfo && adminDashBoardInfo.totalEmployees}
+          // status="6"
         ></AdminDashboardCard2>
       </div>
 
       {/* product requests, topProducts 👇 */}
-      <div className="row">
-        <AdminDashboardCard1
-          title="Product Requests"
-          backgroundColor="#DFF7FB"
-          theWidth="col-lg-6  col-12"
-          titleColor="#526484"
-          theContent={<ProductRequests></ProductRequests>}
-          height="max-content"
-        ></AdminDashboardCard1>
-
-        <AdminDashboardCard1
-          title="Top Products"
-          backgroundColor="white"
-          theWidth="col-lg-6 col-12"
-          titleColor="#526484"
-          theContent={<TopProductsAdmin></TopProductsAdmin>}
-          height="max-content"
-        ></AdminDashboardCard1>
-      </div>
+      <div className="row"></div>
 
       {/* Store Statistics, order statistics, user by location👇 */}
       <div className="row">
@@ -96,24 +91,11 @@ function AdminDashboardScreen() {
           backgroundColor="white"
           titleColor="#526484"
           theWidth="col-lg-6 col-12"
-          theContent={<StoreStatisticsAdmin></StoreStatisticsAdmin>}
-          height="max-content"
-        ></AdminDashboardCard1>
-
-        <AdminDashboardCard1
-          title="Order Statistics"
-          backgroundColor="white"
-          titleColor="#526484"
-          theWidth="col-lg-6 col-12"
-          theContent={<OrderStatisticsAdmin></OrderStatisticsAdmin>}
-          height="max-content"
-        ></AdminDashboardCard1>
-        <AdminDashboardCard1
-          title="User by location"
-          backgroundColor="white"
-          titleColor="#526484"
-          theWidth="col-lg-6 col-12"
-          // theContent={}
+          theContent={
+            <StoreStatisticsAdmin
+              dashBoardInfo={adminDashBoardInfo && adminDashBoardInfo}
+            ></StoreStatisticsAdmin>
+          }
           height="max-content"
         ></AdminDashboardCard1>
       </div>
@@ -125,7 +107,14 @@ function AdminDashboardScreen() {
           backgroundColor="white"
           theWidth="col-12"
           titleColor="#526484"
-          theContent={<RecentOrdersAdmin></RecentOrdersAdmin>}
+          theContent={
+            <RecentOrdersAdmin
+              dashBoardInfo={
+                adminDashBoardInfo && adminDashBoardInfo.recentOrders
+              }
+              history={history}
+            ></RecentOrdersAdmin>
+          }
           height="max-content"
         ></AdminDashboardCard1>
       </div>
@@ -166,33 +155,29 @@ function AdminDashboardCard2({ title, amount, status }) {
         <div className="this__week__average">
           <div className="this__week__average__amount">{amount}</div>
           <div className="this__week__status">
-            <div className="this__week__status__amount">{status}%</div>
-            <div className="avearage__order__status__text">vs. last week</div>
+            {/* <div className="this__week__status__amount">{status}%</div>
+            <div className="avearage__order__status__text">vs. last week</div> */}
           </div>
         </div>
       </div>
     </div>
   );
 }
-function TotalSales() {
-  function TotalSalesElement({
-    totalAmount,
-    lastMonthAmount,
-    thisWeekAmount,
-    salesStatus,
-  }) {
+function TotalSales({ totalAmount }) {
+  function TotalSalesElement({ lastMonthAmount, thisWeekAmount, salesStatus }) {
     return (
       <div className="total__sales">
         <div className="total__amount">Rs. {totalAmount}</div>
-        <div className="last__month__amount">
-          Rs. {lastMonthAmount} in last month
-        </div>
-        <div className="this__week__text">This week so far</div>
+        <div className="last__month__amount"></div>
+        <div className="this__week__text"></div>
         <div className="this__week__container">
-          <div className="this__week__amount">Rs. {thisWeekAmount}</div>
+          <div className="this__week__amount"></div>
           <div className="this__week__status">
-            <div className="this__week__status__amount">{salesStatus}%</div>
-            <div className="this__week__status__text">vs. last week</div>
+            <div className="this__week__status__amount"></div>
+            <div className="this__week__status__text">
+              {" "}
+              Total sales of the entire store
+            </div>
           </div>
         </div>
       </div>
@@ -207,10 +192,10 @@ function TotalSales() {
   return (
     <div className="">
       <TotalSalesElement
-        totalAmount={totalSalesData.totalSalesAmount}
-        lastMonthAmount={totalSalesData.lastMonthAmount}
-        thisWeekAmount={totalSalesData.thisWeekAmount}
-        salesStatus={totalSalesData.salesStatus}
+      // totalAmount={totalSalesData.totalSalesAmount}
+      // lastMonthAmount={totalSalesData.lastMonthAmount}
+      // thisWeekAmount={totalSalesData.thisWeekAmount}
+      // salesStatus={totalSalesData.salesStatus}
       ></TotalSalesElement>
     </div>
   );
@@ -249,143 +234,7 @@ function AverageOrder() {
   );
 }
 
-function ProductRequests() {
-  const topProductsList = [
-    {
-      image: "productImage.png",
-      title: "Anchara with red boutique",
-      price: 15000,
-      totalSold: 4,
-    },
-    {
-      image: "productImage.png",
-      title: "Men Dhoti",
-      price: 5000,
-      totalSold: 4,
-    },
-    {
-      image: "productImage.png",
-      title: "Kids Size Anchara",
-      price: 9000,
-      totalSold: 1,
-    },
-    {
-      image: "productImage.png",
-      title: "Flower Design Anchara",
-      price: 5000,
-      totalSold: 10,
-    },
-    {
-      image: "productImage.png",
-      title: "Anchara with red boutique",
-      price: 15000,
-      totalSold: 14,
-    },
-  ];
-  function TopProductsElement({ image, title, price, totalSold }) {
-    return (
-      <div className="products__requests__element">
-        <div className="product__request__first__part">
-          <div className="product__request__image__container">
-            <img src={image} alt="topProduct" className="top__product__image" />
-          </div>
-          <div className="title__price">
-            <div className="product__request__title">{title}</div>
-            <div className="product__request__price">Rs. {price}</div>
-          </div>
-        </div>
-        <div className="product__request__second__part">
-          <div className="see__request__detail">
-            <Link>See Details</Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
-  return (
-    <div className="top__products">
-      {topProductsList.map((obj) => {
-        return (
-          <TopProductsElement
-            title={obj.title}
-            price={obj.price}
-            totalSold={obj.totalSold}
-            image={obj.image}
-          ></TopProductsElement>
-        );
-      })}
-    </div>
-  );
-}
-function TopProductsAdmin() {
-  const topProductsList = [
-    {
-      image: "topproduct.png",
-      title: "Anchara with red boutique",
-      price: 15000,
-      totalSold: 4,
-    },
-    {
-      image: "topproduct.png",
-      title: "Men Dhoti",
-      price: 5000,
-      totalSold: 4,
-    },
-    {
-      image: "topproduct.png",
-      title: "Kids Size Anchara",
-      price: 9000,
-      totalSold: 1,
-    },
-    {
-      image: "topproduct.png",
-      title: "Flower Design Anchara",
-      price: 5000,
-      totalSold: 10,
-    },
-    {
-      image: "topproduct.png",
-      title: "Anchara with red boutique",
-      price: 15000,
-      totalSold: 14,
-    },
-  ];
-  function TopProductsElement({ image, title, price, totalSold }) {
-    return (
-      <div className="top__products__element">
-        <div className="first__part">
-          <div className="top__product__image__container">
-            <img src={image} alt="topProduct" className="top__product__image" />
-          </div>
-          <div className="title__price">
-            <div className="top__product__title">{title}</div>
-            <div className="top__product__price">Rs. {price}</div>
-          </div>
-        </div>
-        <div className="second__part">
-          <div className="total__price">Rs. {price * totalSold}</div>
-          <div className="total__sold">{totalSold} Sold</div>
-        </div>
-      </div>
-    );
-  }
-  return (
-    <div className="top__products">
-      {topProductsList.map((obj) => {
-        return (
-          <TopProductsElement
-            title={obj.title}
-            price={obj.price}
-            totalSold={obj.totalSold}
-            image={obj.image}
-          ></TopProductsElement>
-        );
-      })}
-    </div>
-  );
-}
-
-function StoreStatisticsAdmin() {
+function StoreStatisticsAdmin({ dashBoardInfo }) {
   function StoreStatisticsElement({
     title,
     amount,
@@ -415,20 +264,20 @@ function StoreStatisticsAdmin() {
   const storeStatisticsData = [
     {
       title: "Orders",
-      amount: "1,254",
+      amount: dashBoardInfo && dashBoardInfo.orders,
       icon: <LocalMallIcon style={{ color: "#854FFF" }}></LocalMallIcon>,
       containerColor: "#EFE8FF",
       iconColor: "#854FFF",
     },
     {
       title: "Revenue",
-      amount: "10,005",
+      amount: dashBoardInfo && dashBoardInfo.totalSales,
       icon: <AttachMoneyIcon style={{ color: "#09C2DE" }}></AttachMoneyIcon>,
       containerColor: "#DFF7FB",
     },
     {
       title: "Customers",
-      amount: "254",
+      amount: dashBoardInfo && dashBoardInfo.customers,
       icon: (
         <PeopleOutlineIcon style={{ color: "#FF63B6" }}></PeopleOutlineIcon>
       ),
@@ -436,7 +285,7 @@ function StoreStatisticsAdmin() {
     },
     {
       title: "Tailors",
-      amount: "254",
+      amount: dashBoardInfo && dashBoardInfo.totalTailors,
       icon: (
         <PersonPinOutlined style={{ color: "#9A6BFF" }}></PersonPinOutlined>
       ),
@@ -444,7 +293,7 @@ function StoreStatisticsAdmin() {
     },
     {
       title: "Employees",
-      amount: "254",
+      amount: dashBoardInfo && dashBoardInfo.totalEmployees,
       icon: (
         <WorkOutlineOutlined style={{ color: "#FFD752" }}></WorkOutlineOutlined>
       ),
@@ -452,15 +301,9 @@ function StoreStatisticsAdmin() {
     },
     {
       title: "Products",
-      amount: "547",
+      amount: dashBoardInfo && dashBoardInfo.totalProducts,
       icon: <WebAssetIcon style={{ color: "#816BFF" }}></WebAssetIcon>,
       containerColor: "#EFECFF",
-    },
-    {
-      title: "Categories",
-      amount: "14",
-      icon: <DnsIcon style={{ color: "#09C2DE" }}></DnsIcon>,
-      containerColor: "#DFF7FB",
     },
   ];
   return (
@@ -480,68 +323,29 @@ function StoreStatisticsAdmin() {
 }
 
 // Recent Orders Admin 👇👇
-function RecentOrdersAdmin() {
-  let seeMoreOptionsList = [
-    {
-      icon: <VisibilityIcon></VisibilityIcon>,
-      iconText: "Order Details",
-      theLink: "/orderDetails",
-    },
-    {
-      icon: <AssignmentIndIcon></AssignmentIndIcon>,
-      iconText: "Employee Details",
-      theLink: "/employeeDetails",
-    },
-    {
-      icon: <PersonIcon></PersonIcon>,
-      iconText: "Customer Details",
-      theLink: "/customerDetails",
-    },
-    {
-      icon: <LocalShippingIcon></LocalShippingIcon>,
-      iconText: "Mark as delivered",
-    },
-    {
-      icon: <CheckBoxIcon></CheckBoxIcon>,
-      iconText: "Mark as paid",
-    },
-    {
-      icon: <DescriptionIcon></DescriptionIcon>,
-      iconText: "Send Invoice",
-    },
-  ];
-  const seeMoreFunction = () => {
-    return <SeeMoreToogle theList={seeMoreOptionsList}></SeeMoreToogle>;
-  };
+function RecentOrdersAdmin({ dashBoardInfo, history }) {
   const tableStatus = (
     <div className="table__status__container">
       <div class="table__status__icon"></div>
       <div className="table__status__text">Delivered</div>
     </div>
   );
-  const tableRow = (
-    <tr>
-      <th scope="row" className="table__order__number">
-        #124fdf
-      </th>
-      <td className="table__date">June 4, 2020</td>
-      <td>
-        <div className="table__status"> {tableStatus}</div>
-      </td>
-      <td className="table__customer">Swarnima Chaudhary</td>
-      <td className="table__purchased__item">1 item</td>
-      <td className="table__assigned">Manturam Chaudhary</td>
-      <td className="table__price">
-        {" "}
-        <span className="table__rs__title">Rs.</span> 12,000
-      </td>{" "}
-      <td>{seeMoreFunction()}</td>
-    </tr>
+  const tableStatusNotDeliverd = (
+    <div className="table__status__notDelivered__container">
+      <div class="table__status__icon"></div>
+      <div className="table__status__text">Not Delivered</div>
+    </div>
   );
+  const orderDetailsPage = (orderId) => {
+    history.push(`/orders/${orderId}`);
+  };
+  const customerDetailsPage = (customerId) => {
+    history.push(`/customerDetails/${customerId}`);
+  };
   return (
     <div>
-      <div className="tailor__orders">
-        <table class="table " id="admin__recentOrders__table">
+      <div className="">
+        <table class="table admin__recentOrders__table " id="">
           <thead>
             <tr>
               <th scope="col" className="table__header">
@@ -556,12 +360,10 @@ function RecentOrdersAdmin() {
               <th scope="col" className="table__header">
                 Customer
               </th>
-              <th scope="col" className="table__header">
+              {/* <th scope="col" className="table__header">
                 Purchased
-              </th>
-              <th scope="col" className="table__header">
-                Assigned To
-              </th>
+              </th> */}
+
               <th scope="col" className="table__header">
                 Total
               </th>
@@ -571,42 +373,56 @@ function RecentOrdersAdmin() {
             </tr>
           </thead>
           <tbody>
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
+            {/* {recentOrders[0]["first_name"]} */}
+            {dashBoardInfo &&
+              dashBoardInfo.map((order) => (
+                <tr>
+                  <th scope="row" className="table__order__number">
+                    {order.order_id}
+                  </th>
+                  <td className="table__date">{order.date_time}</td>
+                  <td>
+                    <div className="table__status">
+                      {" "}
+                      {order.status === "delivered"
+                        ? tableStatus
+                        : tableStatusNotDeliverd}
+                    </div>
+                  </td>
+                  <td className="table__customer">{order.first_name}</td>
+                  <td className="table__price">
+                    {" "}
+                    <span className="table__rs__title">Rs.</span>
+                    {order.total_price}
+                  </td>{" "}
+                  <td>
+                    <SeeMoreToogle
+                      theList={[
+                        {
+                          icon: <VisibilityIcon></VisibilityIcon>,
+                          iconText: "Order Details",
+                          theClickFunction: () => {
+                            orderDetailsPage(order.order_id);
+                          },
+                        },
+
+                        {
+                          icon: <PersonIcon></PersonIcon>,
+                          iconText: "Customer Details",
+                          theClickFunction: () => {
+                            customerDetailsPage(order.customer_id);
+                          },
+                        },
+                      ]}
+                    ></SeeMoreToogle>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
     </div>
   );
 }
-function OrderStatisticsAdmin() {
-  return (
-    <div className="order__statistics">
-      <Doughnut
-        data={{
-          labels: ["Processing", "Cancelled", "Completed"],
-          datasets: [
-            {
-              data: [38, 9, 239],
-              backgroundColor: ["#00C0EB", "#FF5CA0", "#6347FF"],
-            },
-          ],
-        }}
-        options={{
-          legend: {
-            display: true,
-            position: "bottom",
-            fontFamily: "Arial",
-            postion: "right",
-          },
-        }}
-      />
-    </div>
-  );
-}
 
-export default AdminDashboardScreen;
+export default withRouter(AdminDashboardScreen);

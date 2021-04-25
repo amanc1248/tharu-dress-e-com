@@ -2,6 +2,7 @@ import React from "react";
 
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
+import { withRouter } from "react-router";
 
 function AdminProductsScreen() {
   let seeMoreOptionsList = [
@@ -76,4 +77,4 @@ function AdminProductsScreen() {
   );
 }
 
-export default AdminProductsScreen;
+export default withRouter(AdminProductsScreen);

@@ -10,10 +10,7 @@ const theSideBarData = [
     icon: <MdDashboard></MdDashboard>,
     title: "Dashboard",
   },
-  {
-    icon: <BiCube></BiCube>,
-    title: "Product Requests",
-  },
+
   {
     icon: <GroupIcon></GroupIcon>,
     title: "Customers",

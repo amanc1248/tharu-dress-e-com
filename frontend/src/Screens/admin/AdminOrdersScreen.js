@@ -4,6 +4,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import PersonIcon from "@material-ui/icons/Person";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
+import { withRouter } from "react-router";
 
 function AdminOrdersScreen() {
   let seeMoreOptionsList = [
@@ -93,4 +94,4 @@ function AdminOrdersScreen() {
   );
 }
 
-export default AdminOrdersScreen;
+export default withRouter(AdminOrdersScreen);
