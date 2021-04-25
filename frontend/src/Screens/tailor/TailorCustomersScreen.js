@@ -6,8 +6,9 @@ import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { tailorCustomersAction } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";
+import { withRouter } from "react-router";
 
-function TailorCustomersScreen() {
+function TailorCustomersScreen({ history }) {
   const tailorCustomers = useSelector((state) => state.tailorCustomers);
   const { loading, error, customers } = tailorCustomers;
 
@@ -26,7 +27,9 @@ function TailorCustomersScreen() {
   }, [dispatch, tailorInfo]);
   const theCustomers = tailorCustomers && tailorCustomers.customers;
 
-  // const theCustomers = tailorCustomers && tailorSales.recentOrders;
+  const customerDetailsPage = (customerId) => {
+    history.push(`/customerDetails/${customerId}`);
+  };
   return loading ? (
     <Loader></Loader>
   ) : (
@@ -62,7 +65,19 @@ function TailorCustomersScreen() {
                   </th>
                   <td className="table__location"> {customer.email}</td>{" "}
                   <td className="table__customer">{customer.phone}</td>
-                  <td>{seeMoreFunction()}</td>
+                  <td>
+                    <SeeMoreToogle
+                      theList={[
+                        {
+                          icon: <PersonIcon></PersonIcon>,
+                          iconText: "Customer Details",
+                          theClickFunction: () => {
+                            customerDetailsPage(customer.customer_id);
+                          },
+                        },
+                      ]}
+                    ></SeeMoreToogle>
+                  </td>
                 </tr>
               ))}
           </tbody>
@@ -71,19 +86,5 @@ function TailorCustomersScreen() {
     </div>
   );
 }
-export default TailorCustomersScreen;
+export default withRouter(TailorCustomersScreen);
 // for the customer see more
-let seeMoreOptionsCustomer = [
-  {
-    icon: <PersonIcon></PersonIcon>,
-    iconText: "Customer Details",
-    theLink: "/customerDetails",
-  },
-  {
-    icon: <FeaturedPlayListIcon></FeaturedPlayListIcon>,
-    iconText: "Product Orders",
-  },
-];
-const seeMoreFunction = () => {
-  return <SeeMoreToogle theList={seeMoreOptionsCustomer}></SeeMoreToogle>;
-};

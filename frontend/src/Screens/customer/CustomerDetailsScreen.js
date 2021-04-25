@@ -17,14 +17,16 @@ function CustomerDetailsScreen({ history, match }) {
   useEffect(() => {
     dispatch(customerDetailsAction(customerId));
   }, [dispatch, customerId]);
-  return (
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="customer__details">
       <DetailsPage
         title="CUSTOMER DETAILS"
-        detailName="Soni Chaudhary's"
+        detailName={customerInfo && customerInfo.firstName}
       ></DetailsPage>
       <Tabs>
-        <div label="Soni's Information">
+        <div label={`${customerInfo && customerInfo.firstName}`}>
           <div className="customer__info">
             <CustomerDetails
               history={history}
@@ -34,7 +36,7 @@ function CustomerDetailsScreen({ history, match }) {
             ></CustomerDetails>
           </div>
         </div>
-        <div label="Soni's Orders">
+        <div label={`${customerInfo && customerInfo.firstName} orders`}>
           <CustomerOrders
             customerInfo={customerInfo}
             loading={loading}

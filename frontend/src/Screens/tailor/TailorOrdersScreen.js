@@ -10,6 +10,8 @@ import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { tailorOrdersAction } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";
+import { orderMarkAsDelivered } from "../../actions/orderActions";
+import { withRouter } from "react-router";
 function TailorOrdersScreen({ history }) {
   const tailorLogin = useSelector((state) => state.tailorLogin);
   const { tailorInfo } = tailorLogin;
@@ -39,7 +41,16 @@ function TailorOrdersScreen({ history }) {
   const { loading, error, orders } = tailorOrders;
   // orders = tai
   const theOrders = tailorOrders && tailorOrders.orders;
-
+  const orderDetailsPage = (orderId) => {
+    history.push(`/orders/${orderId}`);
+  };
+  const customerDetailsPage = (customerId) => {
+    history.push(`/customerDetails/${customerId}`);
+  };
+  const orderMarkAsDeliveredFunction = (orderId) => {
+    window.location.reload();
+    dispatch(orderMarkAsDelivered({ orderId }));
+  };
   // );
   return loading ? (
     <Loader></Loader>
@@ -118,7 +129,39 @@ function TailorOrdersScreen({ history }) {
                     <span className="table__rs__title">Rs.</span>
                     {order.total_price}
                   </td>{" "}
-                  <td>{seeMoreFunction()}</td>
+                  <td>
+                    <SeeMoreToogle
+                      theList={[
+                        {
+                          icon: <VisibilityIcon></VisibilityIcon>,
+                          iconText: "Order Details",
+                          theClickFunction: () => {
+                            orderDetailsPage(order.order_id);
+                          },
+                        },
+
+                        {
+                          icon: <PersonIcon></PersonIcon>,
+                          iconText: "Customer Details",
+                          theClickFunction: () => {
+                            customerDetailsPage(order.customer_id);
+                          },
+                        },
+                        {
+                          icon: <LocalShippingIcon></LocalShippingIcon>,
+                          iconText: "Mark as delivered",
+                          theClickFunction: () => {
+                            orderMarkAsDeliveredFunction(order.order_id);
+                          },
+                        },
+
+                        {
+                          icon: <DescriptionIcon></DescriptionIcon>,
+                          iconText: "Send Invoice",
+                        },
+                      ]}
+                    ></SeeMoreToogle>
+                  </td>
                 </tr>
               ))}
           </tbody>
@@ -149,8 +192,5 @@ let seeMoreOptionsList = [
     iconText: "Send Invoice",
   },
 ];
-const seeMoreFunction = () => {
-  return <SeeMoreToogle theList={seeMoreOptionsList}></SeeMoreToogle>;
-};
 
-export default TailorOrdersScreen;
+export default withRouter(TailorOrdersScreen);
