@@ -216,7 +216,6 @@ export function PlaceOrder({ history }) {
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
-        // itemsPrice: cart.itemsPrice,
         totalPrice: cart.totalPrice,
         shippingPrice: cart.shippingPrice,
         customerId: userInfo.customerId,

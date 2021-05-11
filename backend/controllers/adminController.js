@@ -30,4 +30,20 @@ const getAdminDetails = asyncHandler(async (req, res) => {
   });
 });
 
-export { getAdminDetails };
+//@desc totalcustomers
+//@route GET /api/admin/totalcustomers
+//@access PUBLIC
+const totalCustomers = asyncHandler(async (req, res) => {
+  let sql =
+    "select distinct customer.customer_id,dasa_user.user_id,dasa_user.first_name,dasa_user.last_name,dasa_user.email,dasa_user.phone from customer join  dasa_user on dasa_user.user_id=customer.user_id ;";
+  db.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+export { getAdminDetails, totalCustomers };

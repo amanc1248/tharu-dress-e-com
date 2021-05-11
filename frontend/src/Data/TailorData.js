@@ -11,7 +11,7 @@ const theTailorSideBarData = [
   },
   {
     icon: <BiCube></BiCube>,
-    title: "Order",
+    title: "Product Order",
   },
   {
     icon: <RiProductHuntLine></RiProductHuntLine>,

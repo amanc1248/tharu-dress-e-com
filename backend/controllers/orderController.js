@@ -42,12 +42,9 @@ const addOrderItems = asyncHandler(async (req, res) => {
                 (item) =>
                   (finalsql =
                     finalsql +
-                    `INSERT INTO order_item VALUES('${orderId}', '${item.productId}', '${item.qty}','${item.length}', '${item.width}','notassigned',0);`)
+                    `INSERT INTO order_item VALUES('${orderId}', '${item.productId}', '${item.qty}','${item.length}', '${item.width}','notassigned',0);INSERT INTO order_through VALUES('${orderId}', '${item.productId}', '${customerId}', '${item.tailorId}','notassigned');`)
               );
             }
-            // finalsql =
-            //   finalsql +
-            //   `INSERT INTO shipping_address values(id,${shippingAddress.city}, ${shippingAddress.street}) `;
 
             finalsql =
               finalsql +
