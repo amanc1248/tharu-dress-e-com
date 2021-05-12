@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../../styles/tailor/TailorEmployeeScreen.css";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import "../../styles/tailor/TailorProductsScreen.css";
 
 import "../../styles/tailor/TailorProductsScreen.css";
 import { Link } from "react-router-dom";
@@ -49,7 +50,11 @@ function TailorEmployeeScreen() {
   ) : (
     <div className="tailor__employees">
       {addEmployee ? (
-        <AssignWork clickOutside={addEmployeeClick}></AssignWork>
+        <AssignWork
+          cancelAddEmployee={() => {
+            setaddEmployee(false);
+          }}
+        ></AssignWork>
       ) : null}
       <div className="tailor__employees__title">
         <h5 className="tailor__tabs__title">EMPLOYEES</h5>
@@ -119,22 +124,16 @@ function TailorEmployeeScreen() {
 export default TailorEmployeeScreen;
 
 // Assign work function 👇
-function AssignWork({ clickOutside }) {
-  const whenOutsideModal = (e) => {
-    if (!myRef.current.contains(e.target)) {
-      clickOutside();
-    }
-  };
-  const myRef = useRef();
+function AssignWork({ cancelAddEmployee }) {
   return (
-    <div className="assign__work" onClick={whenOutsideModal}>
-      <form action="" id="assign__work__inputs" ref={myRef}>
+    <div className="assign__work">
+      <form action="" id="assign__work__inputs">
         <div className="assign__work__container">
           <div className="assign__work__title">Assign Work</div>
           <div className="assign__work__desc">Assign work to your employee</div>
           <div className="assign__work__row">
             <label htmlFor="">
-              Select Employee
+              <p>Select Employee</p>
               <select name="" id="" className="select__employee__inputBox">
                 <option value="Aman Chaudhary">Aman Chaudhary</option>
                 <option value="Sima Chaudhary">Sima Chaudhary</option>
@@ -149,7 +148,7 @@ function AssignWork({ clickOutside }) {
           </div>
           <div className="assign__work__row">
             <label htmlFor="">
-              Select Order
+              <p> Select Order</p>
               <select name="" id="" className="select__employee__inputBox">
                 <option value="Order 1 product 1">Order 1 product 1</option>
                 <option value="Order 1 product 2">Order 1 product 2</option>
@@ -159,8 +158,14 @@ function AssignWork({ clickOutside }) {
               </select>
             </label>
           </div>
-          <div className="assign__work__row">
+          <div className="assign__work__row justify-content-between">
             <button className="assignWorkSubmitButton">DONE</button>
+            <button
+              className="newProductCancelButton"
+              onClick={cancelAddEmployee}
+            >
+              CANCEL
+            </button>
           </div>
         </div>
       </form>

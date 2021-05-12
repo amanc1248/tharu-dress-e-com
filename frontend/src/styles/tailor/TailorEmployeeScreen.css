@@ -2,7 +2,6 @@
 
 .tailor__employees {
   padding: 5px;
-  position: relative;
 }
 .tailor__employees__title {
   text-align: left;
@@ -35,9 +34,9 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 1; /* Sit on top */
+  z-index: 2; /* Sit on top */
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  height: 100vh; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
@@ -46,7 +45,7 @@
   position: absolute;
   right: 0;
   background-color: #fefefe;
-  /* margin: auto; */
+  margin: 5% 35%;
   border: 1px solid #888;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
@@ -57,7 +56,7 @@
   width: 100%;
 }
 .assign__work__container {
-  padding: 20px 10px;
+  padding: 30px 20px;
   text-align: left;
   width: 400px;
   -webkit-box-shadow: 0 0 2px rgb(21, 20, 20);
@@ -67,9 +66,19 @@
 .assign__work__title {
   font-weight: 600;
   font-size: 15px;
+  padding-bottom: 15px;
+}
+.assign__work__desc {
+  padding-bottom: 10px;
+}
+.add__employee__label {
+  padding: 10px 0;
 }
 @media screen and (max-width: 567px) {
   .assign__work__container {
     width: 100vw;
+  }
+  #assign__work__inputs {
+    margin: 0;
   }
 }
