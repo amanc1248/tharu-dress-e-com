@@ -290,7 +290,7 @@ export function AddProduct({ cancelAddProduct }) {
               ></input>
             </div>
           </div>
-          <div className="new__product__row justify-content-around">
+          <div className=" justify-content-around">
             <button className="newProductSubmitButton">DONE</button>
             <button
               className="newProductCancelButton"

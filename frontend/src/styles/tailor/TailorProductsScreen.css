@@ -54,7 +54,6 @@
 }
 
 /* Style for adding the new products 👇👇👇*/
-/* intentionally mismatched the class name  */
 .add__product {
   -webkit-box-shadow: 0 0 2px rgb(21, 20, 20);
   box-shadow: 0 0 2px rgb(21, 20, 20);
@@ -169,6 +168,9 @@
   font-weight: 600;
 }
 @media screen and (max-width: 567px) {
+  #add__product__inputs {
+    margin: 0;
+  }
   .new__product__row {
     display: flex;
     flex-direction: column;
