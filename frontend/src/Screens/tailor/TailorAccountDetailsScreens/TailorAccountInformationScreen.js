@@ -38,14 +38,14 @@ function TailorAccountInformationScreen({ editPage, changePasswordPage }) {
             {" "}
             <strong>First Name:</strong>{" "}
           </span>
-          <span>{tailor.firstName}</span>
+          <span>{tailor && tailor.firstName}</span>
         </div>
         <div className="tailor__details">
           <span>
             {" "}
             <strong>Last Name:</strong>{" "}
           </span>
-          <span>{tailor.lastName}</span>
+          <span>{tailor && tailor.lastName}</span>
         </div>
 
         <div className="tailor__details">
@@ -53,14 +53,14 @@ function TailorAccountInformationScreen({ editPage, changePasswordPage }) {
             {" "}
             <strong>Phone:</strong>{" "}
           </span>
-          <span>{tailor.phone}</span>
+          <span>{tailor && tailor.phone}</span>
         </div>
         <div className="tailor__details">
           <span>
             {" "}
             <strong>Email:</strong>{" "}
           </span>
-          <span>{tailor.email}</span>
+          <span>{tailor && tailor.email}</span>
         </div>
       </div>
       <div className="tailor__account__information__buttons row ">

@@ -35,7 +35,11 @@ function TailorProductsScreen() {
   ) : (
     <div className="tailor__products">
       {addProduct ? (
-        <AddProduct clickOutside={addProductClick}></AddProduct>
+        <AddProduct
+          cancelAddProduct={() => {
+            setAddProduct(false);
+          }}
+        ></AddProduct>
       ) : null}
       <div className="tailor__products__heading">
         <h5 className="tailor__tabs__title">PRODUCTS</h5>
@@ -111,14 +115,14 @@ const seeMoreFunction = () => {
   return <SeeMoreToogle theList={seeMoreOptionsListProducts}></SeeMoreToogle>;
 };
 
-export function AddProduct({ clickOutside }) {
-  const myRef = useRef();
+export function AddProduct({ cancelAddProduct }) {
+  // const myRef = useRef();
 
-  const whenOutsideModal = (e) => {
-    if (!myRef.current.contains(e.target)) {
-      clickOutside();
-    }
-  };
+  // const whenOutsideModal = (e) => {
+  //   if (!myRef.current.contains(e.target)) {
+  //     clickOutside();
+  //   }
+  // };
 
   let newProductLengthOptions = ["3.5", "4", "4.5", "5", "5.5"];
   let newProductWidthOptions = ["3.5", "4", "4.5", "5", "5.5"];
@@ -147,9 +151,9 @@ export function AddProduct({ clickOutside }) {
     );
   }
   return (
-    <div className="add__product" onClick={whenOutsideModal}>
+    <div className="add__product">
       <form action="" id="add__product__inputs">
-        <div className="add__product__container" ref={myRef}>
+        <div className="add__product__container">
           <div className="new__product__title">
             <div className="the__title">New Product</div>
             <p>Add information of the new product</p>
@@ -194,7 +198,7 @@ export function AddProduct({ clickOutside }) {
             <div className="new__product__container">
               <label htmlFor="">
                 Category
-                <select name="" id="" className="new__product__inputBox">
+                <select name="" id="" className="select__boxes">
                   <option value="Men">Men</option>
                   <option value="Women">Women</option>
                   <option value="Kids">Kids</option>
@@ -204,7 +208,7 @@ export function AddProduct({ clickOutside }) {
             <div className="new__product__container">
               <label htmlFor="">
                 Color
-                <select name="" id="" className="new__product__inputBox">
+                <select name="" id="" className="select__boxes">
                   <option value="Men">Green</option>
                   <option value="Women">White</option>
                   <option value="Kids">Yellow</option>
@@ -216,7 +220,7 @@ export function AddProduct({ clickOutside }) {
             <div className="new__product__container">
               <label htmlFor="">
                 Style
-                <select name="" id="" className="new__product__inputBox">
+                <select name="" id="" className="select__boxes">
                   <option value="Flowers">Flowers</option>
                   <option value="Full Boutique">Full Boutique</option>
                   <option value="Plain">Plain</option>
@@ -226,7 +230,7 @@ export function AddProduct({ clickOutside }) {
             <div className="new__product__container">
               <label htmlFor="">
                 Design
-                <select name="" id="" className="new__product__inputBox">
+                <select name="" id="" className="select__boxes">
                   <option value="Flowers">Flowers</option>
                   <option value="Text">Text</option>
                 </select>
@@ -235,7 +239,7 @@ export function AddProduct({ clickOutside }) {
           </div>
 
           {/* for setting the size options */}
-          <div className="new__product__size">
+          {/* <div className="new__product__size">
             <p>Size</p>
             <small>Length m</small>
             <div className="new__product__lenth__options">
@@ -247,7 +251,7 @@ export function AddProduct({ clickOutside }) {
                 {newProductWidthOption}
               </div>
             </p>
-          </div>
+          </div> */}
           <div className="new__product__row">
             <div className="product__cloth__desc">
               <label htmlFor="">
@@ -286,8 +290,14 @@ export function AddProduct({ clickOutside }) {
               ></input>
             </div>
           </div>
-          <div className="new__product__row">
+          <div className="new__product__row justify-content-around">
             <button className="newProductSubmitButton">DONE</button>
+            <button
+              className="newProductCancelButton"
+              onClick={cancelAddProduct}
+            >
+              CANCEL
+            </button>
           </div>
         </div>
       </form>

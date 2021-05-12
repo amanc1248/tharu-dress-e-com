@@ -2,7 +2,6 @@
 
 .tailor__products {
   padding: 5px;
-  position: relative;
 }
 #tailor__products__table {
   background-color: #fff;
@@ -55,22 +54,24 @@
 }
 
 /* Style for adding the new products 👇👇👇*/
+/* intentionally mismatched the class name  */
 .add__product {
   -webkit-box-shadow: 0 0 2px rgb(21, 20, 20);
   box-shadow: 0 0 2px rgb(21, 20, 20);
-  position: absolute; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
+  position: absolute;
+  /* Stay in place */
+  z-index: 2; /* Sit on top */
+  height: 100vh;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
+  left: 0;
+  width: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
 #add__product__inputs {
   position: absolute;
-  right: 0;
+  margin: 5% 35%;
   background-color: #fefefe;
   border: 1px solid #888;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -119,13 +120,23 @@
 }
 /* .new__product__row */
 .new__product__inputBox,
-.select__employee__inputBox {
-  -webkit-box-shadow: 0 0 2px rgb(187, 183, 183);
-  box-shadow: 0 0 2px rgb(187, 183, 183);
+.select__employee__inputBox,
+.select__boxes {
+  -webkit-box-shadow: 0 0 2px rgb(187, 183, 183) !important;
+  box-shadow: 0 0 2px rgb(145, 142, 142) !important;
+  border: none;
   border-radius: 5px;
   height: 42px;
   width: 100%;
 }
+/* . {
+  -webkit-box-shadow: 0 0 2px rgb(187, 183, 183) !;
+  box-shadow: 0 0 2px rgb(187, 183, 183) !important;
+  border-radius: 5px;
+  border: none;
+  height: 42px;
+  width: 100%;
+} */
 .new__product__lenth__options,
 .new__product__width__options {
   display: flex;
@@ -145,6 +156,16 @@
   border-radius: 5px;
   width: 120px;
   color: white;
+  font-weight: 600;
+}
+.newProductCancelButton {
+  height: 42px;
+  -webkit-box-shadow: 0 0 2px rgb(187, 183, 183);
+  box-shadow: 0 0 2px rgb(187, 183, 183);
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 120px;
+  color: black;
   font-weight: 600;
 }
 @media screen and (max-width: 567px) {

@@ -59,7 +59,7 @@ function TailorOrdersScreen({ history }) {
       <div className="tailor__heading row no-gutters">
         <div className="tailor__heading__part1 col-lg-6 col-md-6 col-12">
           {" "}
-          <h5 className="tailor__tabs__title">ORDERS</h5>
+          <h5 className="tailor__tabs__title">PRODUCT ORDERS</h5>
         </div>
         <div className="tailor__heading__part2 col-lg-4 col-md-5 col-12 justify-content-end">
           <div className="tailor__quick__search">

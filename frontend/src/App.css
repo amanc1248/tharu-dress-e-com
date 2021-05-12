@@ -39,6 +39,12 @@
 input:focus {
   outline: none;
 }
+select:focus {
+  outline: none;
+}
+option:focus {
+  outline: none;
+}
 button:focus {
   outline: none;
   box-shadow: none;
