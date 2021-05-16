@@ -77,10 +77,14 @@ export function TheEntireSidebar({
             <div className="admin__name">
               {name}
               {showSignOut ? (
-                <ExpandLessIcon onClick={changeSignOut}></ExpandLessIcon>
+                <ExpandLessIcon
+                  onClick={changeSignOut}
+                  className="sign__out__icon"
+                ></ExpandLessIcon>
               ) : (
                 <KeyboardArrowDownIcon
                   onClick={changeSignOut}
+                  className="sign__out__icon"
                 ></KeyboardArrowDownIcon>
               )}
             </div>

@@ -46,4 +46,29 @@ const totalCustomers = asyncHandler(async (req, res) => {
     }
   });
 });
-export { getAdminDetails, totalCustomers };
+
+//@desc all customer details
+//@route GET api/admin/
+//@access PRIVATE
+const getCustomersDetails = asyncHandler(async (req, res) => {
+  let sql1 =
+    "select CONCAT(dasa_user.first_name , ' ', dasa_user.last_name) as name, customer.date_time as dateJoined, count(the_order.customer_id) as totalOrders, sum(the_order.total_price) as totalPurchased,  the_order.customer_id,location.city as Location from the_order ";
+  let sql2 = "join customer on customer.customer_id=the_order.customer_id ";
+  let sql3 = "join dasa_user on dasa_user.user_id=customer.user_id ";
+  let sql4 =
+    "join customer_location on customer_location.customer_id=the_order.customer_id ";
+  let sql5 =
+    "join location on location.location_id = customer_location.location_id ";
+  let sql6 = "group by the_order.customer_id;";
+  let finalSql = sql1 + sql2 + sql3 + sql4 + sql5 + sql6;
+
+  db.query(finalSql, (err, result) => {
+    if (err) throw err;
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+
+export { getAdminDetails, totalCustomers, getCustomersDetails };

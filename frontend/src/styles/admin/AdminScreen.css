@@ -301,7 +301,9 @@
 
   font-weight: 700;
 }
-
+.sign__out__icon {
+  cursor: pointer;
+}
 /* Recent Orders Admin Table */
 @media screen and (max-width: 1000px) {
   table#admin__recentOrders__table td:nth-child(2),

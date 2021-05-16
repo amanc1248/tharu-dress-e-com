@@ -35,7 +35,10 @@ import {
   tailorUpdateProfileReducer,
 } from "./reducers/tailorUserReducers";
 import { customerDetailsReducer } from "./reducers/customerReducers";
-import { adminDashBoardReducer } from "./reducers/adminReducers";
+import {
+  adminAllCustomersDetailsReducer,
+  adminDashBoardReducer,
+} from "./reducers/adminReducers";
 
 const reducer = combineReducers({
   // for account details 👇
@@ -70,6 +73,7 @@ const reducer = combineReducers({
 
   // admin 👇
   adminDashBoard: adminDashBoardReducer,
+  adminAllCustomers: adminAllCustomersDetailsReducer,
 
   // order 👇
   orderMarkAsDelivered: orderMarkAsDeliveredReducer,
