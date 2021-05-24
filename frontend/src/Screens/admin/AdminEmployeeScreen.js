@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { withRouter } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../Components/Loader";
+import { adminAllEmployeesDetailAction } from "../../actions/adminActions";
 
-function AdminEmployeeScreen() {
+function AdminEmployeeScreen({ history }) {
+  const adminAllEmployees = useSelector((state) => state.adminAllEmployees);
+  const { loading, adminAllEmployeesInfo } = adminAllEmployees;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(adminAllEmployeesDetailAction());
+  }, [dispatch]);
+
   let seeMoreOptionsList = [
     {
       icon: <VisibilityIcon></VisibilityIcon>,
@@ -15,20 +26,9 @@ function AdminEmployeeScreen() {
     return <SeeMoreToogle theList={seeMoreOptionsList}></SeeMoreToogle>;
   };
 
-  const tableRow = (
-    <tr>
-      <th scope="row" className="table__customer">
-        Dipraj Rai
-      </th>
-      <td className="table__customer">April 5, 2019</td>
-      <td className="table__date">155</td>
-      <td className="table__customer">Abhishek Neupane</td>
-      <td className="table__location">Biratnagar</td>
-      <td>{seeMoreFunction()}</td>
-    </tr>
-  );
-
-  return (
+  return loading ? (
+    <Loader> </Loader>
+  ) : (
     <div className="employee__admin">
       <div className="tailor__products__heading">
         <h5 className="admin__tabs__title">EMPLOYEES</h5>
@@ -43,13 +43,7 @@ function AdminEmployeeScreen() {
               <th scope="col" className="table__header">
                 Date Joined
               </th>
-              <th scope="col" className="table__header">
-                Total Completed Orders
-              </th>
 
-              <th scope="col" className="table__header">
-                Associated Taior
-              </th>
               <th scope="col" className="table__header">
                 Location
               </th>
@@ -59,12 +53,28 @@ function AdminEmployeeScreen() {
             </tr>
           </thead>
           <tbody>
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
+            {adminAllEmployeesInfo &&
+              adminAllEmployeesInfo.map((employee) => (
+                <tr key={employee.employeeId}>
+                  <th scope="row" className="table__customer">
+                    {employee.name}
+                  </th>
+                  <td className="table__customer">{employee.dateJoined}</td>
+
+                  <td className="table__location">{employee.Location}</td>
+                  <td>
+                    <SeeMoreToogle
+                      theList={[
+                        {
+                          icon: <VisibilityIcon></VisibilityIcon>,
+                          iconText: "See Employee Details",
+                          theClickFunction: () => {},
+                        },
+                      ]}
+                    ></SeeMoreToogle>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

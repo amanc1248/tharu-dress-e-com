@@ -100,9 +100,34 @@ const getTailorsDetails = asyncHandler(async (req, res) => {
   });
 });
 
+//@desc all employee details
+//@route GET api/admin/
+//@access PRIVATE
+const getEmployeeDetails = asyncHandler(async (req, res) => {
+  let sql1 =
+    "select CONCAT(dasa_user.first_name , ' ', dasa_user.last_name) as name,employee.date_time as dateJoined,location.city as Location from employee ";
+  let sql2 = "join dasa_user on dasa_user.user_id = employee.user_id ";
+  let sql3 =
+    "join employee_location on employee_location.employee_id = employee.employee_id ";
+  let sql4 =
+    "join location on location.location_id = employee_location.location_id ";
+  let sql5 = "join tailor on tailor.tailor_id  = employee.tailor_id; ";
+
+  let finalSql = sql1 + sql2 + sql3 + sql4 + sql5;
+
+  db.query(finalSql, (err, result) => {
+    if (err) throw err;
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+
 export {
   getAdminDetails,
   totalCustomers,
   getCustomersDetails,
   getTailorsDetails,
+  getEmployeeDetails,
 };

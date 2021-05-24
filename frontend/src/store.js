@@ -37,6 +37,7 @@ import {
 import { customerDetailsReducer } from "./reducers/customerReducers";
 import {
   adminAllCustomersDetailsReducer,
+  adminAllEmployeesDetailsReducer,
   adminAllTailorsDetailsReducer,
   adminDashBoardReducer,
 } from "./reducers/adminReducers";
@@ -76,6 +77,7 @@ const reducer = combineReducers({
   adminDashBoard: adminDashBoardReducer,
   adminAllCustomers: adminAllCustomersDetailsReducer,
   adminAllTailors: adminAllTailorsDetailsReducer,
+  adminAllEmployees: adminAllEmployeesDetailsReducer,
 
   // order 👇
   orderMarkAsDelivered: orderMarkAsDeliveredReducer,
