@@ -3,6 +3,7 @@ import {
   getAdminDetails,
   getCustomersDetails,
   getEmployeeDetails,
+  getProductOrderDetails,
   getTailorsDetails,
   totalCustomers,
 } from "../controllers/adminController.js";
@@ -13,4 +14,5 @@ router.route("/totalCustomers").get(totalCustomers);
 router.route("/allCustomers").get(getCustomersDetails);
 router.route("/allTailors").get(getTailorsDetails);
 router.route("/allEmployees").get(getEmployeeDetails);
+router.route("/allProductOrders").get(getProductOrderDetails);
 export default router;

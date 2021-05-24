@@ -124,10 +124,35 @@ const getEmployeeDetails = asyncHandler(async (req, res) => {
   });
 });
 
+//@desc all product orders details
+//@route GET api/admin/
+//@access PRIVATE
+const getProductOrderDetails = asyncHandler(async (req, res) => {
+  let sql1 =
+    "select order_item.order_id,order_item.product_id,the_order.date_time as dateJoined,the_order.status as status,CONCAT(dasa_user.first_name , ' ', dasa_user.last_name) as customer,customer.customer_id from order_item ";
+  let sql2 =
+    "join order_through on order_item.order_id = order_through.order_id AND order_item.product_id=order_through.product_id ";
+  let sql3 = "join the_order on the_order.order_id = order_item.order_id ";
+  let sql4 = "join customer on customer.customer_id = the_order.customer_id ";
+  let sql5 = "join dasa_user  on dasa_user.user_id = customer.user_id ";
+  let sql6 = "join tailor on tailor.tailor_id = order_through.tailor_id;";
+
+  let finalSql = sql1 + sql2 + sql3 + sql4 + sql5 + sql6;
+
+  db.query(finalSql, (err, result) => {
+    if (err) throw err;
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+
 export {
   getAdminDetails,
   totalCustomers,
   getCustomersDetails,
   getTailorsDetails,
   getEmployeeDetails,
+  getProductOrderDetails,
 };
