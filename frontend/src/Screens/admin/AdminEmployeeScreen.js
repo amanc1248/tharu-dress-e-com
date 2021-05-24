@@ -34,7 +34,7 @@ function AdminEmployeeScreen({ history }) {
         <h5 className="admin__tabs__title">EMPLOYEES</h5>
       </div>
       <div className="tailor__orders">
-        <table class="table order__table" id="orders__table">
+        <table class="table admin__employees__table" id="">
           <thead>
             <tr>
               <th scope="col" className="table__header">

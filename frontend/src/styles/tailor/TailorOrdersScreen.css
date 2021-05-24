@@ -36,7 +36,9 @@
   font-size: 12px;
   border: none;
 }
-.order__table {
+.order__table,
+.admin__employees__table,
+.admin__orders__table {
   background-color: #fff;
   border-radius: 8px !important;
   padding: 20px 10px;
@@ -148,6 +150,28 @@
   .admin__recentOrders__table th:nth-child(4),
   .admin__recentOrders__table th:nth-child(5),
   .admin__recentOrders__table th:nth-child(3) {
+    display: none;
+  }
+}
+@media screen and (max-width: 567px) {
+  .admin__employees__table td:nth-child(2),
+  .admin__employees__table td:nth-child(3) {
+    display: none;
+  }
+  .admin__employees__table th:nth-child(2),
+  .admin__employees__table th:nth-child(3) {
+    display: none;
+  }
+}
+@media screen and (max-width: 567px) {
+  .admin__orders__table td:nth-child(1),
+  .admin__orders__table td:nth-child(2),
+  .admin__orders__table td:nth-child(3) {
+    display: none;
+  }
+  .admin__orders__table th:nth-child(1),
+  .admin__orders__table th:nth-child(2),
+  .admin__orders__table th:nth-child(3) {
     display: none;
   }
 }
