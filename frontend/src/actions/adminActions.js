@@ -6,6 +6,9 @@ import {
   ADMIN_ALL_EMPLOYEES_DETAILS_FAIL,
   ADMIN_ALL_EMPLOYEES_DETAILS_REQUEST,
   ADMIN_ALL_EMPLOYEES_DETAILS_SUCCESS,
+  ADMIN_ALL_PRODUCTS_DETAILS_FAIL,
+  ADMIN_ALL_PRODUCTS_DETAILS_REQUEST,
+  ADMIN_ALL_PRODUCTS_DETAILS_SUCCESS,
   ADMIN_ALL_PRODUCT_ORDERS_DETAILS_FAIL,
   ADMIN_ALL_PRODUCT_ORDERS_DETAILS_REQUEST,
   ADMIN_ALL_PRODUCT_ORDERS_DETAILS_SUCCESS,
@@ -139,6 +142,32 @@ export const adminAllProductOrdersDetailAction = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: ADMIN_ALL_PRODUCT_ORDERS_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const adminAllProductsDetailAction = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: ADMIN_ALL_PRODUCTS_DETAILS_REQUEST,
+    });
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.get(`/api/admin/allProducts`, config);
+    dispatch({
+      type: ADMIN_ALL_PRODUCTS_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ADMIN_ALL_PRODUCTS_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -4,6 +4,7 @@ import {
   getCustomersDetails,
   getEmployeeDetails,
   getProductOrderDetails,
+  getProductsDetails,
   getTailorsDetails,
   totalCustomers,
 } from "../controllers/adminController.js";
@@ -15,4 +16,5 @@ router.route("/allCustomers").get(getCustomersDetails);
 router.route("/allTailors").get(getTailorsDetails);
 router.route("/allEmployees").get(getEmployeeDetails);
 router.route("/allProductOrders").get(getProductOrderDetails);
+router.route("/allProducts").get(getProductsDetails);
 export default router;

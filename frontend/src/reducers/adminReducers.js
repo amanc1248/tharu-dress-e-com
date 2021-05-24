@@ -5,6 +5,9 @@ import {
   ADMIN_ALL_EMPLOYEES_DETAILS_FAIL,
   ADMIN_ALL_EMPLOYEES_DETAILS_REQUEST,
   ADMIN_ALL_EMPLOYEES_DETAILS_SUCCESS,
+  ADMIN_ALL_PRODUCTS_DETAILS_FAIL,
+  ADMIN_ALL_PRODUCTS_DETAILS_REQUEST,
+  ADMIN_ALL_PRODUCTS_DETAILS_SUCCESS,
   ADMIN_ALL_PRODUCT_ORDERS_DETAILS_FAIL,
   ADMIN_ALL_PRODUCT_ORDERS_DETAILS_REQUEST,
   ADMIN_ALL_PRODUCT_ORDERS_DETAILS_SUCCESS,
@@ -74,6 +77,19 @@ export const adminAllProductOrdersDetailsReducer = (state = {}, action) => {
     case ADMIN_ALL_PRODUCT_ORDERS_DETAILS_SUCCESS:
       return { loading: false, adminAllProductOrdersInfo: action.payload };
     case ADMIN_ALL_PRODUCT_ORDERS_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const adminAllProductsDetailsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADMIN_ALL_PRODUCTS_DETAILS_REQUEST:
+      return { loading: true };
+    case ADMIN_ALL_PRODUCTS_DETAILS_SUCCESS:
+      return { loading: false, adminAllProductsInfo: action.payload };
+    case ADMIN_ALL_PRODUCTS_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
