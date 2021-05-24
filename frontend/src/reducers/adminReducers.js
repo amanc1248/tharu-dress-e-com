@@ -2,6 +2,9 @@ import {
   ADMIN_ALL_CUSTOMERS_DETAILS_FAIL,
   ADMIN_ALL_CUSTOMERS_DETAILS_REQUEST,
   ADMIN_ALL_CUSTOMERS_DETAILS_SUCCESS,
+  ADMIN_ALL_TAILORS_DETAILS_FAIL,
+  ADMIN_ALL_TAILORS_DETAILS_REQUEST,
+  ADMIN_ALL_TAILORS_DETAILS_SUCCESS,
   ADMIN_DASHBOARD_DETAILS_FAIL,
   ADMIN_DASHBOARD_DETAILS_REQUEST,
   ADMIN_DASHBOARD_DETAILS_SUCCESS,
@@ -27,6 +30,18 @@ export const adminAllCustomersDetailsReducer = (state = {}, action) => {
     case ADMIN_ALL_CUSTOMERS_DETAILS_SUCCESS:
       return { loading: false, adminAllCustomersInfo: action.payload };
     case ADMIN_ALL_CUSTOMERS_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+export const adminAllTailorsDetailsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADMIN_ALL_TAILORS_DETAILS_REQUEST:
+      return { loading: true };
+    case ADMIN_ALL_TAILORS_DETAILS_SUCCESS:
+      return { loading: false, adminAllTailorsInfo: action.payload };
+    case ADMIN_ALL_TAILORS_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

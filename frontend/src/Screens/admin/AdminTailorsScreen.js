@@ -1,39 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import "../../styles/admin/AdminTailorsScreen.css";
+import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router";
+import { adminAllTailorsDetailAction } from "../../actions/adminActions";
+import Loader from "../../Components/Loader";
 
-function AdminTailorsScreen() {
-  let seeMoreOptionsList = [
-    {
-      icon: <VisibilityIcon></VisibilityIcon>,
-      iconText: "See Tailor Details",
-      theLink: "/orderDetails",
-    },
-  ];
-  const seeMoreFunction = () => {
-    return <SeeMoreToogle theList={seeMoreOptionsList}></SeeMoreToogle>;
-  };
+function AdminTailorsScreen({ history }) {
+  const adminAllTailors = useSelector((state) => state.adminAllTailors);
+  const { loading, adminAllTailorsInfo } = adminAllTailors;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(adminAllTailorsDetailAction());
+  }, [dispatch]);
 
-  const tableRow = (
-    <tr>
-      <th scope="row" className="table__customer">
-        Dipraj Rai
-      </th>
-      <td className="table__customer">April 5, 2019</td>
-      <td className="table__date">155</td>
-      <td className="table__price">
-        {" "}
-        <span className="table__rs__title">Rs.</span> 12,000
-      </td>{" "}
-      <td className="table__location">Biratnagar</td>
-      <td className="table__location">8</td>
-      <td>{seeMoreFunction()}</td>
-    </tr>
-  );
-
-  return (
+  return loading ? (
+    <Loader></Loader>
+  ) : (
     <div className="tailor__admin">
       <div className="tailor__products__heading">
         <h5 className="admin__tabs__title">TAILORS</h5>
@@ -47,9 +31,6 @@ function AdminTailorsScreen() {
               </th>
               <th scope="col" className="table__header">
                 Date Joined
-              </th>
-              <th scope="col" className="table__header">
-                Total Completed Orders
               </th>
 
               <th scope="col" className="table__header">
@@ -67,12 +48,32 @@ function AdminTailorsScreen() {
             </tr>
           </thead>
           <tbody>
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
-            {tableRow}
+            {adminAllTailorsInfo &&
+              adminAllTailorsInfo.map((tailor) => (
+                <tr>
+                  <th scope="row" className="table__customer">
+                    {tailor.name}
+                  </th>
+                  <td className="table__customer">{tailor.dateJoined}</td>
+                  <td className="table__price">
+                    <span className="table__rs__title">Rs.</span>
+                    {tailor.totalSales}
+                  </td>
+                  <td className="table__location">{tailor.Location}</td>
+                  <td className="table__location">{tailor.totalEmployees}</td>
+                  <td>
+                    <SeeMoreToogle
+                      theList={[
+                        {
+                          icon: <VisibilityIcon></VisibilityIcon>,
+                          iconText: "See Tailor Details",
+                          theClickFunction: () => {},
+                        },
+                      ]}
+                    ></SeeMoreToogle>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
