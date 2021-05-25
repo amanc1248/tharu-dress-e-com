@@ -90,8 +90,6 @@ const registerTailorUser = asyncHandler(async (req, res) => {
     noEmployees &&
     password
   ) {
-    const salt = await bcrypt.genSalt(10);
-    const finalPassword = await bcrypt.hash(password, salt);
     let sql =
       "select @uid:=`user_id` from dasa_user as var, (SELECT @uid := NULL) init_var  where email=?;select type from user_type where user_id=@uid AND type='tailor';";
     db.query(sql, [email], (err, result) => {
@@ -111,7 +109,7 @@ const registerTailorUser = asyncHandler(async (req, res) => {
             [
               result[0][0]["@uid:=`user_id`"],
               result[0][0]["@uid:=`user_id`"],
-              finalPassword,
+              password,
               noEmployees,
               city,
               street,
@@ -399,33 +397,48 @@ const addTailorProducts = asyncHandler(async (req, res) => {
     image,
     materialImage,
   } = req.body;
-  let sql1 = "select @productCount:= count(*)+1 from product;";
-  let sql2 = "select @productId:=concat('pod', @productCount);";
-  let sql3 =
-    "insert into product values(@productId,?,?,?,?,current_date(),?,?,?,'inactive',?,?);";
-  let finalSql = sql1 + sql2 + sql3;
-  console.log(finalSql);
-  db.query(
-    finalSql,
-    [
-      tailorId,
-      name,
-      category,
-      inStock,
-      price,
-      description,
-      clothDescription,
-      image,
-      materialImage,
-    ],
-    (err, result) => {
-      if (err) {
-        throw err;
-      } else {
-        res.json({ result });
+
+  if (
+    tailorId &&
+    name &&
+    category &&
+    inStock &&
+    price &&
+    description &&
+    clothDescription &&
+    image &&
+    materialImage
+  ) {
+    let sql1 = "select @productCount:= count(*)+1 from product;";
+    let sql2 = "select @productId:=concat('pod', @productCount);";
+    let sql3 =
+      "insert into product values(@productId,?,?,?,?,current_date(),?,?,?,'inactive',?,?);";
+    let finalSql = sql1 + sql2 + sql3;
+    console.log(finalSql);
+    db.query(
+      finalSql,
+      [
+        tailorId,
+        name,
+        category,
+        inStock,
+        price,
+        description,
+        clothDescription,
+        image,
+        materialImage,
+      ],
+      (err, result) => {
+        if (err) {
+          res.status(401).send({ message: "Please fill all the fields" });
+        } else {
+          res.json({ result });
+        }
       }
-    }
-  );
+    );
+  } else {
+    res.status(401).send({ message: "Please fill all the fields" });
+  }
 });
 export {
   authTailorUser,

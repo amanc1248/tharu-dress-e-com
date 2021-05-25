@@ -12,6 +12,7 @@ import {
   tailorProductsAction,
 } from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";
+import Message from "../../Components/Message";
 
 function TailorProductsScreen() {
   const tailorLogin = useSelector((state) => state.tailorLogin);
@@ -130,9 +131,10 @@ export function AddProduct({ cancelAddProduct }) {
   const [clothDescription, setClothDescription] = useState();
   const [image, setImage] = useState("/images/image1.jpg");
   const [materialImage, setMaterialImage] = useState("image1");
+  const [message, setMessage] = useState();
   const dispatch = useDispatch();
   const tailorAddProduct = useSelector((state) => state.tailorAddProduct);
-  const { loading, tailorAddProductInfo } = tailorAddProduct;
+  const { loading, tailorAddProductInfo, error } = tailorAddProduct;
   const addProductHandler = (e) => {
     dispatch(
       tailorAddProductAction(
@@ -154,6 +156,10 @@ export function AddProduct({ cancelAddProduct }) {
     <div className="add__product">
       <form action="" id="add__product__inputs">
         <div className="add__product__container">
+          {message && <Message variant="danger">{message}</Message>}
+
+          {error && <Message variant="danger">{error}</Message>}
+          {loading && <Loader></Loader>}
           <div className="new__product__title">
             <div className="the__title">New Product</div>
             <p>Add information of the new product</p>
