@@ -383,6 +383,50 @@ const updateTailorProfile = asyncHandler(async (req, res) => {
     }
   });
 });
+
+//@desc add tailor products
+//@route POST /api/tailor/tailorAddProducts
+//@access PUBLIC
+const addTailorProducts = asyncHandler(async (req, res) => {
+  const {
+    tailorId,
+    name,
+    category,
+    inStock,
+    price,
+    description,
+    clothDescription,
+    image,
+    materialImage,
+  } = req.body;
+  let sql1 = "select @productCount:= count(*)+1 from product;";
+  let sql2 = "select @productId:=concat('pod', @productCount);";
+  let sql3 =
+    "insert into product values(@productId,?,?,?,?,current_date(),?,?,?,'inactive',?,?);";
+  let finalSql = sql1 + sql2 + sql3;
+  console.log(finalSql);
+  db.query(
+    finalSql,
+    [
+      tailorId,
+      name,
+      category,
+      inStock,
+      price,
+      description,
+      clothDescription,
+      image,
+      materialImage,
+    ],
+    (err, result) => {
+      if (err) {
+        throw err;
+      } else {
+        res.json({ result });
+      }
+    }
+  );
+});
 export {
   authTailorUser,
   registerTailorUser,
@@ -393,4 +437,5 @@ export {
   tailorCustomers,
   getTailorProfile,
   updateTailorProfile,
+  addTailorProducts,
 };

@@ -170,27 +170,5 @@ function TailorOrdersScreen({ history }) {
     </div>
   );
 }
-let seeMoreOptionsList = [
-  {
-    icon: <VisibilityIcon></VisibilityIcon>,
-    iconText: "Order Details",
-    theLink: "/orderDetails",
-  },
-
-  {
-    icon: <PersonIcon></PersonIcon>,
-    iconText: "Customer Details",
-    theLink: "/customerDetails",
-  },
-  {
-    icon: <LocalShippingIcon></LocalShippingIcon>,
-    iconText: "Mark as delivered",
-  },
-
-  {
-    icon: <DescriptionIcon></DescriptionIcon>,
-    iconText: "Send Invoice",
-  },
-];
 
 export default withRouter(TailorOrdersScreen);

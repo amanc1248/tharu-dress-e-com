@@ -1,4 +1,7 @@
 import {
+  TAILOR_ADD_PRODUCT_FAIL,
+  TAILOR_ADD_PRODUCT_REQUEST,
+  TAILOR_ADD_PRODUCT_SUCCESS,
   TAILOR_CUSTOMERS_DETAILS_FAIL,
   TAILOR_CUSTOMERS_DETAILS_REQUEST,
   TAILOR_CUSTOMERS_DETAILS_SUCCESS,
@@ -142,6 +145,19 @@ export const tailorEmployeesReducer = (state = {}, action) => {
     case TAILOR_EMPLOYEES_DETAILS_SUCCESS:
       return { loading: false, employees: action.payload };
     case TAILOR_EMPLOYEES_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const tailorAddProductReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TAILOR_ADD_PRODUCT_REQUEST:
+      return { loading: true };
+    case TAILOR_ADD_PRODUCT_SUCCESS:
+      return { loading: false, tailorAddProductInfo: action.payload };
+    case TAILOR_ADD_PRODUCT_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

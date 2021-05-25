@@ -9,6 +9,7 @@ import {
   tailorCustomers,
   getTailorProfile,
   updateTailorProfile,
+  addTailorProducts,
 } from "../controllers/tailorUserController.js";
 import { tailorProtect } from "../middleWare/authMiddleware.js";
 const router = express.Router();
@@ -25,5 +26,6 @@ router
 
 router.post("/tailorsignin", authTailorUser);
 router.post("/tailorregister", registerTailorUser);
+router.post("/tailorAddProducts", addTailorProducts);
 
 export default router;

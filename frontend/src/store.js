@@ -24,6 +24,7 @@ import {
   orderMarkAsDeliveredReducer,
 } from "./reducers/orderReducers";
 import {
+  tailorAddProductReducer,
   tailorCustomersReducer,
   tailorDetailsReducer,
   tailorEmployeesReducer,
@@ -71,6 +72,7 @@ const reducer = combineReducers({
   tailorCustomers: tailorCustomersReducer,
   tailorEmployees: tailorEmployeesReducer,
   tailorUpdateProfile: tailorUpdateProfileReducer,
+  tailorAddProduct: tailorAddProductReducer,
 
   // particular customer 👇
   customerDetails: customerDetailsReducer,

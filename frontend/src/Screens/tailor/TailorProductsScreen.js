@@ -7,7 +7,10 @@ import Checkbox from "@material-ui/core/Checkbox";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SeeMoreToogle from "../../Components/SeeMoreContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { tailorProductsAction } from "../../actions/tailorActions";
+import {
+  tailorAddProductAction,
+  tailorProductsAction,
+} from "../../actions/tailorActions";
 import Loader from "../../Components/Loader";
 
 function TailorProductsScreen() {
@@ -116,40 +119,37 @@ const seeMoreFunction = () => {
 };
 
 export function AddProduct({ cancelAddProduct }) {
-  // const myRef = useRef();
+  const tailorLogin = useSelector((state) => state.tailorLogin);
+  const { tailorInfo } = tailorLogin;
 
-  // const whenOutsideModal = (e) => {
-  //   if (!myRef.current.contains(e.target)) {
-  //     clickOutside();
-  //   }
-  // };
+  const [name, setName] = useState();
+  const [category, setCategory] = useState();
+  const [inStock, setInStock] = useState();
+  const [price, setPrice] = useState();
+  const [description, setDescription] = useState();
+  const [clothDescription, setClothDescription] = useState();
+  const [image, setImage] = useState("/images/image1.jpg");
+  const [materialImage, setMaterialImage] = useState("image1");
+  const dispatch = useDispatch();
+  const tailorAddProduct = useSelector((state) => state.tailorAddProduct);
+  const { loading, tailorAddProductInfo } = tailorAddProduct;
+  const addProductHandler = (e) => {
+    dispatch(
+      tailorAddProductAction(
+        tailorInfo.tailorId,
+        name,
+        category,
+        inStock,
+        price,
+        description,
+        clothDescription,
+        image,
+        materialImage
+      )
+    );
+    window.location.reload();
+  };
 
-  let newProductLengthOptions = ["3.5", "4", "4.5", "5", "5.5"];
-  let newProductWidthOptions = ["3.5", "4", "4.5", "5", "5.5"];
-  let newProductLengthOption = newProductLengthOptions.map((obj) => {
-    return (
-      <NewProductLength
-        key={obj.toString()}
-        checkBoxText={obj}
-      ></NewProductLength>
-    );
-  });
-  let newProductWidthOption = newProductWidthOptions.map((obj) => {
-    return (
-      <NewProductLength
-        key={obj.toString()}
-        checkBoxText={obj}
-      ></NewProductLength>
-    );
-  });
-  function NewProductLength({ checkBoxText }) {
-    return (
-      <div className="new__product__length">
-        <Checkbox></Checkbox>
-        <small>{checkBoxText}</small>
-      </div>
-    );
-  }
   return (
     <div className="add__product">
       <form action="" id="add__product__inputs">
@@ -162,7 +162,12 @@ export function AddProduct({ cancelAddProduct }) {
             <div className="new__product__container">
               <label htmlFor="">
                 Product Title
-                <input type="text" className="new__product__inputBox" />
+                <input
+                  type="text"
+                  className="new__product__inputBox"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                ></input>
               </label>
             </div>
           </div>
@@ -170,13 +175,12 @@ export function AddProduct({ cancelAddProduct }) {
             <div className="new__product__container">
               <label htmlFor="">
                 Regular Price
-                <input type="number" className="new__product__inputBox" />
-              </label>
-            </div>
-            <div className="new__product__container">
-              <label htmlFor="">
-                Sale Price
-                <input type="number" className="new__product__inputBox" />
+                <input
+                  type="number"
+                  className="new__product__inputBox"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                ></input>
               </label>
             </div>
           </div>
@@ -184,13 +188,12 @@ export function AddProduct({ cancelAddProduct }) {
             <div className="new__product__container">
               <label htmlFor="">
                 Stock
-                <input type="number" className="new__product__inputBox" />
-              </label>
-            </div>
-            <div className="new__product__container">
-              <label htmlFor="">
-                SKU
-                <input type="number" className="new__product__inputBox" />
+                <input
+                  type="number"
+                  className="new__product__inputBox"
+                  value={inStock}
+                  onChange={(e) => setInStock(e.target.value)}
+                ></input>
               </label>
             </div>
           </div>
@@ -198,7 +201,13 @@ export function AddProduct({ cancelAddProduct }) {
             <div className="new__product__container">
               <label htmlFor="">
                 Category
-                <select name="" id="" className="select__boxes">
+                <select
+                  name=""
+                  id=""
+                  className="select__boxes"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
                   <option value="Men">Men</option>
                   <option value="Women">Women</option>
                   <option value="Kids">Kids</option>
@@ -238,20 +247,6 @@ export function AddProduct({ cancelAddProduct }) {
             </div>
           </div>
 
-          {/* for setting the size options */}
-          {/* <div className="new__product__size">
-            <p>Size</p>
-            <small>Length m</small>
-            <div className="new__product__lenth__options">
-              {newProductLengthOption}
-            </div>
-            <p>
-              <small>Width m</small>
-              <div className="new__product__width__options">
-                {newProductWidthOption}
-              </div>
-            </p>
-          </div> */}
           <div className="new__product__row">
             <div className="product__cloth__desc">
               <label htmlFor="">
@@ -261,6 +256,8 @@ export function AddProduct({ cancelAddProduct }) {
                   cols="40"
                   rows="5"
                   className="new__product__inputBox"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
               </label>
             </div>
@@ -274,6 +271,8 @@ export function AddProduct({ cancelAddProduct }) {
                   cols="40"
                   rows="5"
                   className="new__product__inputBox"
+                  value={clothDescription}
+                  onChange={(e) => setClothDescription(e.target.value)}
                 ></textarea>
               </label>
             </div>
@@ -291,7 +290,12 @@ export function AddProduct({ cancelAddProduct }) {
             </div>
           </div>
           <div className=" justify-content-around">
-            <button className="newProductSubmitButton">DONE</button>
+            <button
+              className="newProductSubmitButton"
+              onClick={addProductHandler}
+            >
+              DONE
+            </button>
             <button
               className="newProductCancelButton"
               onClick={cancelAddProduct}

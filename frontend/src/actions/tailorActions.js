@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  TAILOR_ADD_PRODUCT_FAIL,
+  TAILOR_ADD_PRODUCT_REQUEST,
+  TAILOR_ADD_PRODUCT_SUCCESS,
   TAILOR_CUSTOMERS_DETAILS_FAIL,
   TAILOR_CUSTOMERS_DETAILS_REQUEST,
   TAILOR_CUSTOMERS_DETAILS_SUCCESS,
@@ -64,58 +67,51 @@ export const tailorLogout = () => (dispatch) => {
   });
 };
 
-export const tailorRegisterAction = (
-  first_name,
-  last_name,
-  email,
-  phone,
-  city,
-  street,
-  noEmployees,
-  password
-) => async (dispatch) => {
-  try {
-    dispatch({
-      type: TAILOR_REGISTER_REQUEST,
-    });
-    const config = {
-      header: {
-        "Content-Type": "application/json",
-      },
-    };
-    const { data } = await axios.post(
-      "/api/tailor/tailorRegister",
-      {
-        first_name,
-        last_name,
-        email,
-        phone,
-        city,
-        street,
-        noEmployees,
-        password,
-      },
-      config
-    );
-    dispatch({
-      type: TAILOR_REGISTER_SUCCESS,
-      payload: data,
-    });
-    dispatch({
-      type: TAILOR_LOGIN_SUCCESS,
-      payload: data,
-    });
-    localStorage.setItem("tailorInfo", JSON.stringify(data));
-  } catch (error) {
-    dispatch({
-      type: TAILOR_REGISTER_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+export const tailorRegisterAction =
+  (first_name, last_name, email, phone, city, street, noEmployees, password) =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: TAILOR_REGISTER_REQUEST,
+      });
+      const config = {
+        header: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "/api/tailor/tailorRegister",
+        {
+          first_name,
+          last_name,
+          email,
+          phone,
+          city,
+          street,
+          noEmployees,
+          password,
+        },
+        config
+      );
+      dispatch({
+        type: TAILOR_REGISTER_SUCCESS,
+        payload: data,
+      });
+      dispatch({
+        type: TAILOR_LOGIN_SUCCESS,
+        payload: data,
+      });
+      localStorage.setItem("tailorInfo", JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: TAILOR_REGISTER_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const getTailorDetails = (id) => async (dispatch, getState) => {
   try {
@@ -326,3 +322,59 @@ export const tailorEmployeesAction = (tailorId) => async (dispatch) => {
     });
   }
 };
+
+export const tailorAddProductAction =
+  (
+    tailorId,
+    name,
+    category,
+    inStock,
+    price,
+    description,
+    clothDescription,
+    image,
+    materialImage
+  ) =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: TAILOR_ADD_PRODUCT_REQUEST,
+      });
+      const config = {
+        header: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "/api/tailor/tailorAddProducts",
+        {
+          tailorId,
+          name,
+          category,
+          inStock,
+          price,
+          description,
+          clothDescription,
+          image,
+          materialImage,
+        },
+        config
+      );
+      dispatch({
+        type: TAILOR_ADD_PRODUCT_SUCCESS,
+        payload: data,
+      });
+      dispatch({
+        type: TAILOR_LOGIN_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: TAILOR_ADD_PRODUCT_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };

@@ -170,6 +170,7 @@ const getProductsDetails = asyncHandler(async (req, res) => {
     }
   });
 });
+
 export {
   getAdminDetails,
   totalCustomers,
