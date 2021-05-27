@@ -29,7 +29,7 @@ const authTailorUser = asyncHandler(async (req, res) => {
     if (err) throw err;
     if (result.length > 0) {
       if (result[2][0] == null) {
-        res.status(401).send({ message: "Please fill all the fields" });
+        res.status(401).send({ message: "Tailor does not exist" });
       } else {
         if (MatchPassword(password, result[2]["0"]["password"])) {
           res.json({

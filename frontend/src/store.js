@@ -44,6 +44,10 @@ import {
   adminAllTailorsDetailsReducer,
   adminDashBoardReducer,
 } from "./reducers/adminReducers";
+import {
+  employeeLoginReducer,
+  employeeRegisterReducer,
+} from "./reducers/employeeReducers";
 
 const reducer = combineReducers({
   // for account details 👇
@@ -84,6 +88,10 @@ const reducer = combineReducers({
   adminAllEmployees: adminAllEmployeesDetailsReducer,
   adminAllProductOrders: adminAllProductOrdersDetailsReducer,
   adminAllProducts: adminAllProductsDetailsReducer,
+
+  //employee
+  employeeLogin: employeeLoginReducer,
+  employeeRegister: employeeRegisterReducer,
 
   // order 👇
   orderMarkAsDelivered: orderMarkAsDeliveredReducer,

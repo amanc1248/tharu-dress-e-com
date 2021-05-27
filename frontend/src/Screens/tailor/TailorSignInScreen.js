@@ -29,8 +29,7 @@ function TailorSignIn({ history }) {
       <div className="tailor__signIn__container">
         <div className="title__subTitle">
           <h4>SIGN IN</h4>
-          {error && <Message variant="danger">{error}</Message>}
-          {loading && <Loader></Loader>}
+
           <p className="subtitle">
             Please enter your email and password to access your account
           </p>
@@ -60,6 +59,8 @@ function TailorSignIn({ history }) {
               and Terms Of Service Apply{" "}
             </small>
           </div>
+          {error && <Message variant="danger">{error}</Message>}
+          {loading && <Loader></Loader>}
           <div className="tailor__form__footer row justify-content-between mr-0 ml-0">
             <p>
               <u> New Tailor?</u>

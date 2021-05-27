@@ -16,8 +16,8 @@ import CustomerProductsScreen from "./Screens/customer/CustomerProductsScreen";
 import CustomerCartScreen from "./Screens/customer/CustomerCartScreens/CustomerCartScreen";
 import CustomerProductScreen from "./Screens/customer/CustomerProductScreen";
 import TailorScreen from "./Screens/tailor/TailorScreen";
-import EmployeeSignInScreen from "./Screens/employee/EmployeeSignInScreen";
-import EmployeeScreen from "./Screens/employee/EmployeeScreen";
+import EmployeeSignIn from "./Screens/employee/EmployeeSignInScreen";
+
 import CustomerCheckOutScreen from "./Screens/customer/CustomerCheckOutScreen";
 import CustomerDetailsScreen from "./Screens/customer/CustomerDetailsScreen";
 import EmployeeDetailsScreen from "./Screens/employee/EmployeeDetailsScreen";
@@ -28,7 +28,8 @@ import CustomerRegisterScreen from "./Screens/customer/CustomerRegisterScreen";
 import CustomerOrderDetailsScreen from "./Screens/customer/CustomerOrderDetailsScreen";
 import TailorSignIn from "./Screens/tailor/TailorSignInScreen";
 import TailorRegister from "./Screens/tailor/tailorRegisterScreen";
-import EmployeeRegisterScreen from "./Screens/employee/EmployeeRegisterScreen";
+import EmployeeRegister from "./Screens/employee/EmployeeRegisterScreen";
+import EmployeeScreen from "./Screens/employee/EmployeeScreen";
 
 function App() {
   return (
@@ -94,12 +95,12 @@ function App() {
 
             <Route path="/employeeSignIn">
               <ImageWithTitle theTitle="SIGN IN TO YOUR EMPLOYEE ACCOUNT"></ImageWithTitle>
-              <EmployeeSignInScreen></EmployeeSignInScreen>
+              <EmployeeSignIn></EmployeeSignIn>
               <Footer></Footer>
             </Route>
             <Route path="/employeeRegister">
               <ImageWithTitle theTitle="CREATE AN EMPLOYEE ACCOUNT"></ImageWithTitle>
-              <EmployeeRegisterScreen></EmployeeRegisterScreen>
+              <EmployeeRegister></EmployeeRegister>
               <Footer></Footer>
             </Route>
 
