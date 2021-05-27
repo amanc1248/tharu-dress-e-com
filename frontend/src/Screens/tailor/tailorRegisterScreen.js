@@ -54,10 +54,7 @@ function TailorRegister({ history }) {
       <div className="tailor__register__container">
         <div className="title__subTitle">
           <h4>REGISTER</h4>
-          {message && <Message variant="danger">{message}</Message>}
 
-          {error && <Message variant="danger">{error}</Message>}
-          {loading && <Loader></Loader>}
           <p className="subtitle">
             Please register below to create an account.
           </p>
@@ -147,6 +144,10 @@ function TailorRegister({ history }) {
                 updates about Daasaa products, services and events.{" "}
               </small>
             </div>
+            {message && <Message variant="danger">{message}</Message>}
+
+            {error && <Message variant="danger">{error}</Message>}
+            {loading && <Loader></Loader>}
             <div className="row justify-content-between no-gutters">
               <p>
                 <u>Already a tailor?</u>

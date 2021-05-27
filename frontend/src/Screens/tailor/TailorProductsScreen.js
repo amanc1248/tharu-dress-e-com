@@ -132,10 +132,12 @@ export function AddProduct({ cancelAddProduct }) {
   const [image, setImage] = useState("/images/image1.jpg");
   const [materialImage, setMaterialImage] = useState("image1");
   const [message, setMessage] = useState();
+  const [productUpload, setProductUpload] = useState(false);
   const dispatch = useDispatch();
   const tailorAddProduct = useSelector((state) => state.tailorAddProduct);
   const { loading, tailorAddProductInfo, error } = tailorAddProduct;
   const addProductHandler = (e) => {
+    e.preventDefault();
     dispatch(
       tailorAddProductAction(
         tailorInfo.tailorId,

@@ -1,6 +1,7 @@
 .employee__signIn,
 .employee__register {
   text-align: left;
+  margin: 50px auto;
 }
 .employee__signIn__container,
 .employee__register__container {
@@ -38,6 +39,10 @@
   color: white;
 }
 @media screen and (max-width: 567px) {
+  .employee__signIn,
+  .employee__register {
+    margin: 10px auto;
+  }
   .employee__signIn__container,
   .employee__register__container {
     padding: 15px 10px;

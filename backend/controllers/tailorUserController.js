@@ -135,7 +135,7 @@ const registerTailorUser = asyncHandler(async (req, res) => {
               last_name,
               email,
               phone,
-              finalPassword,
+              password,
               noEmployees,
               city,
               street,

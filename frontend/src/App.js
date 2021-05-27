@@ -28,6 +28,7 @@ import CustomerRegisterScreen from "./Screens/customer/CustomerRegisterScreen";
 import CustomerOrderDetailsScreen from "./Screens/customer/CustomerOrderDetailsScreen";
 import TailorSignIn from "./Screens/tailor/TailorSignInScreen";
 import TailorRegister from "./Screens/tailor/tailorRegisterScreen";
+import EmployeeRegisterScreen from "./Screens/employee/EmployeeRegisterScreen";
 
 function App() {
   return (
@@ -92,8 +93,13 @@ function App() {
             <Route path="/tailorAccount" component={TailorScreen}></Route>
 
             <Route path="/employeeSignIn">
-              <ImageWithTitle theTitle="CREATE AN EMPLOYEE ACCOUNT"></ImageWithTitle>
+              <ImageWithTitle theTitle="SIGN IN TO YOUR EMPLOYEE ACCOUNT"></ImageWithTitle>
               <EmployeeSignInScreen></EmployeeSignInScreen>
+              <Footer></Footer>
+            </Route>
+            <Route path="/employeeRegister">
+              <ImageWithTitle theTitle="CREATE AN EMPLOYEE ACCOUNT"></ImageWithTitle>
+              <EmployeeRegisterScreen></EmployeeRegisterScreen>
               <Footer></Footer>
             </Route>
 
