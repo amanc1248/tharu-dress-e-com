@@ -110,6 +110,9 @@ const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
 const tailorInfoFromStorage = localStorage.getItem("tailorInfo")
   ? JSON.parse(localStorage.getItem("tailorInfo"))
   : null;
+const employeeInfoFromStorage = localStorage.getItem("employeeInfo")
+  ? JSON.parse(localStorage.getItem("employeeInfo"))
+  : null;
 const initialState = {
   cart: {
     cartItems: cartItemsFromStorage,
@@ -117,6 +120,7 @@ const initialState = {
   },
   userLogin: { userInfo: userInfoFromStorage },
   tailorLogin: { tailorInfo: tailorInfoFromStorage },
+  employeeLogin: { employeeInfo: employeeInfoFromStorage },
 };
 const middleware = [thunk];
 const store = createStore(
