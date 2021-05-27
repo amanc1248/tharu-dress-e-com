@@ -40,10 +40,11 @@ export function EmployeeSignIn() {
             </div>
             <div className="employee__form__footer row justify-content-between no-gutters">
               <p>
-                <u>Forgot Password</u>
+                <u> New Employee?</u>
+                <Link to="/employeeRegister"> Register</Link>
               </p>
               <Link to="/employeeAccount">
-                <button className="employee__signIn__button">Sign In</button>
+                <button className="tailor__signIn__button">Sign In</button>
               </Link>
             </div>
           </div>
