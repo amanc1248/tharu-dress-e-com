@@ -109,6 +109,7 @@ const registerEmployee = asyncHandler(async (req, res) => {
                   locationId: result[13][0]["location_id"],
                   city: result[13][0]["city"],
                   street: result[13][0]["street"],
+                  employeetoken: generateToken(result[4][0]["email"]),
                 });
               }
             }
@@ -151,6 +152,7 @@ const authEmployeeUser = asyncHandler(async (req, res) => {
               phone: result[0][0]["phone"],
               userId: result[1]["0"]["@finaluid:= `user_id`"],
               employee_id: result[2]["0"]["employee_id"],
+              employeetoken: generateToken(result[0][0]["email"]),
             });
           } else {
             res.status(401).send({ message: "Invalid email or password" });
@@ -210,9 +212,115 @@ const employeeCustomers = asyncHandler(async (req, res) => {
     }
   });
 });
+
+//@desc get employee profile
+//@route GET api/employee/profile
+//@access PRIVATE
+const getEmployeeProfile = asyncHandler(async (req, res) => {
+  let sql =
+    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='employee';select @employeeId:=`employee_id`, password from employee where user_id =@finaluid;SELECT @locId:=`location_id` from employee_location where employee_id = @employeeId;SELECT city, street from location where location_id = @locId; ";
+
+  db.query(sql, [req.user[0][0]["email"]], (err, result) => {
+    if (err) throw err;
+    if (result.length > 0) {
+      if (result) {
+        res.json({
+          firstName: result[0][0]["first_name"],
+          lastName: result[0][0]["last_name"],
+          email: result[0][0]["email"],
+          phone: result[0][0]["phone"],
+          userId: result[1]["0"]["@finaluid:= `user_id`"],
+          employeeId: result[2]["0"]["@employeeId:=`employee_id`"],
+          city: result[4]["0"]["city"],
+          street: result[4]["0"]["street"],
+        });
+      } else {
+        res.status(404);
+        throw new Error("user not found");
+      }
+    }
+  });
+});
+
+//@desc update employee profile
+//@route PUT /api/employee/profile
+//@access PRIVATE
+const updateEmployeeProfile = asyncHandler(async (req, res) => {
+  let sql =
+    "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='employee';select @employeeId:=`employee_id` , password from employee where user_id =@finaluid;SELECT @locId:=`location_id` from employee_location where employee_id = @employeeId;SELECT city, street from location where location_id = @locId; ";
+
+  db.query(sql, [req.user[0][0]["email"]], (err, result) => {
+    if (err) throw err;
+    if (result.length > 0) {
+      if (result) {
+        console.log("First RESULT");
+        console.log(result);
+        console.log(result[0][0]["first_name"]);
+        console.log(result[3][0]["@locId:=`location_id`"]);
+
+        let firstName = req.body.firstName || result[0][0]["first_name"];
+        let lastName = req.body.lastName || result[0][0]["last_name"];
+        let email = req.body.email || result[0][0]["email"];
+        let phone = req.body.phone || result[0][0]["phone"];
+        let city = req.body.city || result[4][0]["city"];
+        let street = req.body.street || result[4][0]["street"];
+        let password;
+        if (req.body.password) {
+          password = req.body.password || result[2][0]["password"];
+        }
+
+        // save to database
+        let sql =
+          "UPDATE dasa_user SET first_name = ?, last_name=?, email=?, phone=? WHERE email=?;SELECT user_id,first_name,last_name,email,phone from dasa_user WHERE email=?;select employee_id from employee where user_id= ?;UPDATE employee SET password=? where user_id=?;UPDATE location SET city=?,  street=? where location_id='loc1';";
+        db.query(
+          sql,
+          [
+            firstName,
+            lastName,
+            email,
+            phone,
+            req.user[0][0]["email"],
+            email,
+            result[1][0]["@finaluid:= `user_id`"],
+            password,
+            result[1][0]["@finaluid:= `user_id`"],
+            city,
+            street,
+          ],
+          (err, result) => {
+            // if (err) {
+            //   res.status(401).send({ message: err });
+            // }
+            console.log(result);
+            if (result) {
+              res.json({
+                firstName: result[1][0]["first_name"],
+                lastName: result[1][0]["last_name"],
+                email: result[1][0]["email"],
+                phone: result[1][0]["phone"],
+                userId: result[1]["0"]["@finaluid:= `user_id`"],
+                employeeId: result[2]["0"]["employee_id"],
+                employeetoken: generateToken(result[1][0]["email"]),
+              });
+            } else {
+              res.status(401).send({ Message: err });
+            }
+          }
+        );
+        // give he response
+      } else {
+        res.status(404);
+        throw new Error("user not found");
+      }
+    }
+  });
+});
+
 export {
   registerEmployee,
   authEmployeeUser,
   employeeProductOrders,
   employeeCustomers,
+  getEmployeeProfile,
+  updateEmployeeProfile,
 };

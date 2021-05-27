@@ -46,9 +46,11 @@ import {
 } from "./reducers/adminReducers";
 import {
   employeeCustomersReducer,
+  employeeDetailsReducer,
   employeeLoginReducer,
   employeeProductOrdersReducer,
   employeeRegisterReducer,
+  employeeUpdateProfileReducer,
 } from "./reducers/employeeReducers";
 
 const reducer = combineReducers({
@@ -96,6 +98,8 @@ const reducer = combineReducers({
   employeeRegister: employeeRegisterReducer,
   employeeProductOrders: employeeProductOrdersReducer,
   employeeCustomers: employeeCustomersReducer,
+  employeeDetails: employeeDetailsReducer,
+  employeeUpdateProfile: employeeUpdateProfileReducer,
 
   // order 👇
   orderMarkAsDelivered: orderMarkAsDeliveredReducer,

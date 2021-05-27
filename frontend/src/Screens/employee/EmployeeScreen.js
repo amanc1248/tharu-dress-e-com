@@ -5,9 +5,10 @@ import Tabs from "../../Components/Tabs/Tabs";
 import EmployeeWorkScreen from "./EmployeeWorkScreen";
 import EmployeeOrdersScreen from "./EmployeeOrdersScreen";
 import EmployeeCustomersScreen from "./EmployeeCustomersScreen";
-import EmployeeAccountDetailsScreen from "./EmployeeAccountDetailsScreen";
+
 import { useDispatch, useSelector } from "react-redux";
 import { employeeLogout } from "../../actions/employeeActions";
+import EmployeeAccountDetailsScreen from "./EmployeeAccountDetailsScreens/EmployeeAccountDetailsScreen";
 
 function EmployeeScreen({ history }) {
   const dispatch = useDispatch();
