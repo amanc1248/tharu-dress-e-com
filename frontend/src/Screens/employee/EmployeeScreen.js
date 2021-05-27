@@ -1,16 +1,38 @@
 import React, { useEffect, useRef, useState } from "react";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Tabs from "../../Components/Tabs/Tabs";
 import EmployeeWorkScreen from "./EmployeeWorkScreen";
 import EmployeeOrdersScreen from "./EmployeeOrdersScreen";
 import EmployeeCustomersScreen from "./EmployeeCustomersScreen";
 import EmployeeAccountDetailsScreen from "./EmployeeAccountDetailsScreen";
-function EmployeeScreen() {
+import { useDispatch, useSelector } from "react-redux";
+import { employeeLogout } from "../../actions/employeeActions";
+
+function EmployeeScreen({ history }) {
+  const dispatch = useDispatch();
+
+  const employeeLogin = useSelector((state) => state.employeeLogin);
+  const { employeeInfo } = employeeLogin;
+  const logoutHandler = () => {
+    dispatch(employeeLogout());
+  };
+
+  useEffect(() => {
+    if (!employeeInfo) {
+      history.push("/employeeRegister");
+    }
+  }, [history, employeeInfo]);
   return (
     <div className="employee__store">
       <div className="welcome__user">
-        <h5>WELCOME, AMAN</h5>
+        <span className="welcome__the__user">
+          WELCOME, {employeeInfo && employeeInfo["firstName"]}
+        </span>
+        <span className="user_logout" onClick={logoutHandler}>
+          {" "}
+          <u>Sign Out</u>
+        </span>
       </div>
       <p className="contact__us__instruction">
         If you have any queries or need further assistance, please Contact Us
@@ -33,7 +55,7 @@ function EmployeeScreen() {
   );
 }
 
-export default EmployeeScreen;
+export default withRouter(EmployeeScreen);
 
 export function SeeMoreEmployeeToogle({ theList }) {
   const [moreAction, setMoreAction] = useState(false);

@@ -3,6 +3,7 @@ import {
   EMPLOYEE_LOGIN_FAIL,
   EMPLOYEE_LOGIN_REQUEST,
   EMPLOYEE_LOGIN_SUCCESS,
+  EMPLOYEE_LOGOUT,
   EMPLOYEE_REGISTER_FAIL,
   EMPLOYEE_REGISTER_REQUEST,
   EMPLOYEE_REGISTER_SUCCESS,
@@ -92,3 +93,10 @@ export const employeeRegisterAction =
       });
     }
   };
+
+export const employeeLogout = () => (dispatch) => {
+  localStorage.removeItem("employeeInfo");
+  dispatch({
+    type: EMPLOYEE_LOGOUT,
+  });
+};
