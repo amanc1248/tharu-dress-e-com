@@ -45,7 +45,9 @@ import {
   adminDashBoardReducer,
 } from "./reducers/adminReducers";
 import {
+  employeeCustomersReducer,
   employeeLoginReducer,
+  employeeProductOrdersReducer,
   employeeRegisterReducer,
 } from "./reducers/employeeReducers";
 
@@ -92,6 +94,8 @@ const reducer = combineReducers({
   //employee
   employeeLogin: employeeLoginReducer,
   employeeRegister: employeeRegisterReducer,
+  employeeProductOrders: employeeProductOrdersReducer,
+  employeeCustomers: employeeCustomersReducer,
 
   // order 👇
   orderMarkAsDelivered: orderMarkAsDeliveredReducer,

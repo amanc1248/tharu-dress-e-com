@@ -41,7 +41,7 @@ function EmployeeScreen({ history }) {
         <div label="Your Work">
           <EmployeeWorkScreen></EmployeeWorkScreen>
         </div>
-        <div label="Orders">
+        <div label="Product Orders">
           <EmployeeOrdersScreen></EmployeeOrdersScreen>
         </div>
         <div label="Customers">

@@ -1,9 +1,15 @@
 import axios from "axios";
 import {
+  EMPLOYEE_CUSTOMERS_DETAILS_FAIL,
+  EMPLOYEE_CUSTOMERS_DETAILS_REQUEST,
+  EMPLOYEE_CUSTOMERS_DETAILS_SUCCESS,
   EMPLOYEE_LOGIN_FAIL,
   EMPLOYEE_LOGIN_REQUEST,
   EMPLOYEE_LOGIN_SUCCESS,
   EMPLOYEE_LOGOUT,
+  EMPLOYEE_PRODUCT_ORDERS_DETAILS_FAIL,
+  EMPLOYEE_PRODUCT_ORDERS_DETAILS_REQUEST,
+  EMPLOYEE_PRODUCT_ORDERS_DETAILS_SUCCESS,
   EMPLOYEE_REGISTER_FAIL,
   EMPLOYEE_REGISTER_REQUEST,
   EMPLOYEE_REGISTER_SUCCESS,
@@ -99,4 +105,63 @@ export const employeeLogout = () => (dispatch) => {
   dispatch({
     type: EMPLOYEE_LOGOUT,
   });
+};
+
+export const employeeProductOrdersAction =
+  (employee_id) => async (dispatch) => {
+    try {
+      dispatch({
+        type: EMPLOYEE_PRODUCT_ORDERS_DETAILS_REQUEST,
+      });
+      const config = {
+        header: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.get(
+        `/api/employee/employeeOrderProducts/${employee_id}`,
+        config
+      );
+      dispatch({
+        type: EMPLOYEE_PRODUCT_ORDERS_DETAILS_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: EMPLOYEE_PRODUCT_ORDERS_DETAILS_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
+export const employeeCustomersAction = (employee_id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: EMPLOYEE_CUSTOMERS_DETAILS_REQUEST,
+    });
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.get(
+      `/api/employee/employeeCustomers/${employee_id}`,
+      config
+    );
+    dispatch({
+      type: EMPLOYEE_CUSTOMERS_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: EMPLOYEE_CUSTOMERS_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
 };

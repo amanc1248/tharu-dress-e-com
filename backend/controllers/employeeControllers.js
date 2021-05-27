@@ -162,4 +162,57 @@ const authEmployeeUser = asyncHandler(async (req, res) => {
     res.status(401).send({ message: "Please fill all the fields" });
   }
 });
-export { registerEmployee, authEmployeeUser };
+
+//@desc employeeOrders
+//@route GET /api/employee/employeeOrders
+//@access PUBLIC
+const employeeProductOrders = asyncHandler(async (req, res) => {
+  const employee_id = req.params.id;
+
+  let sql1 =
+    "select order_through.order_id,order_through.product_id,the_order.date_time as date,the_order.status ,CONCAT(dasa_user.first_name , ' ', dasa_user.last_name) as customer,customer.customer_id from order_through ";
+  let sql2 = "join the_order on the_order.order_id = order_through.order_id ";
+  let sql3 = "join customer on customer.customer_id = the_order.customer_id ";
+  let sql4 =
+    "join dasa_user  on dasa_user.user_id = customer.user_id where employee_id=?;";
+  let finalSql = sql1 + sql2 + sql3 + sql4;
+  db.query(finalSql, [employee_id], (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+
+//@desc employeecustomers
+//@route GET /api/employee/employeeCustomers
+//@access PUBLIC
+const employeeCustomers = asyncHandler(async (req, res) => {
+  const employee_id = req.params.id;
+
+  let sql1 =
+    "select order_through.customer_id,CONCAT(dasa_user.first_name , ' ', dasa_user.last_name) as customer,customer.date_time as dateJoined,dasa_user.email,dasa_user.phone from order_through ";
+  let sql2 =
+    "join customer on customer.customer_id = order_through.customer_id ";
+  let sql3 = "join dasa_user on dasa_user.user_id = customer.user_id ";
+  let sql4 = "where employee_id='emp6' group by order_through.customer_id;";
+  let finalSql = sql1 + sql2 + sql3 + sql4;
+  db.query(finalSql, [employee_id], (err, result) => {
+    if (err) {
+      throw err;
+    }
+    if (result) {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+export {
+  registerEmployee,
+  authEmployeeUser,
+  employeeProductOrders,
+  employeeCustomers,
+};
