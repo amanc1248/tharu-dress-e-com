@@ -25,10 +25,6 @@ export function EmployeeRegister() {
         <form action="">
           <div className="employee__register__inputs">
             <label htmlFor="">
-              Location
-              <input type="text" />
-            </label>
-            <label htmlFor="">
               First name
               <input type="text" />
             </label>
@@ -45,11 +41,23 @@ export function EmployeeRegister() {
               <input type="email" />
             </label>
             <label htmlFor="">
-              Store Id
+              City
               <input type="text" />
             </label>
             <label htmlFor="">
-              Store Location
+              Street
+              <input type="text" />
+            </label>
+            <label htmlFor="">
+              Tailor Store Id
+              <input type="text" />
+            </label>
+            <label htmlFor="">
+              Password
+              <input type="text" />
+            </label>
+            <label htmlFor="">
+              Confirm Password
               <input type="text" />
             </label>
           </div>
@@ -61,7 +69,12 @@ export function EmployeeRegister() {
                 updates about Daasaa products, services and events.{" "}
               </small>
             </div>
-            <div className="row justify-content-end no-gutters">
+
+            <div className="row justify-content-between no-gutters">
+              <p>
+                <u> Already an Employee?</u>
+                <Link to="/employeesignin"> Signin</Link>
+              </p>
               <Link to="/employeeAccount">
                 <button className="employee__register__button ">
                   Register
