@@ -47,7 +47,7 @@ function Header() {
           className="text-right order-lg-0 order-last"
         >
           <Nav className="mr-auto">
-            <Nav.Link
+            {/* <Nav.Link
               href="men"
               className={
                 // "menWomenKidsHeading" +
@@ -79,7 +79,7 @@ function Header() {
               }
             >
               KIDS
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
 

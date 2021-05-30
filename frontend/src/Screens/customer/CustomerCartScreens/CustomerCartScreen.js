@@ -66,9 +66,7 @@ function CustomerCartScreen({ match, location, history }) {
           <div label="Bag">
             <CustomerBagScreen bagTitle="SHOPPING BAG"></CustomerBagScreen>
           </div>
-          <div label="Favorites">
-            <CustomerFavoriteScreen></CustomerFavoriteScreen>
-          </div>
+
           <div label="Orders">
             <CustomerOrdersScreen></CustomerOrdersScreen>
           </div>

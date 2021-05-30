@@ -25,35 +25,34 @@ const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   let sql =
     "select @uid :=`user_id`, first_name, last_name, email, phone from dasa_user as var, (SELECT @uid := NULL) init_var where email=?;select @finaluid:= `user_id` from user_type, (SELECT @finaluid := NULL) init_var  where user_id =@uid AND type='customer';select customer_id, password from customer where user_id =@finaluid;";
-  db.query(sql, [email], (err, result) => {
-    if (err) throw err;
-    if (result.length > 0) {
-      if (result[2][0] == null) {
-        res.status(401).send({ message: "user not found" });
-      } else {
-        if (MatchPassword(password, result[2]["0"]["password"])) {
-          res.json({
-            firstName: result[0][0]["first_name"],
-            lastName: result[0][0]["last_name"],
-            email: result[0][0]["email"],
-            phone: result[0][0]["phone"],
-            userId: result[1]["0"]["@finaluid:= `user_id`"],
-            customerId: result[2]["0"]["customer_id"],
-            customertoken: generateToken(result[0][0]["email"]),
-          });
+  if (email && password) {
+    db.query(sql, [email], (err, result) => {
+      if (err) throw err;
+      if (result.length > 0) {
+        if (result[2][0] == null) {
+          res.status(401).send({ message: "user not found" });
         } else {
-          res.status(401).send({ message: "Invalid email or password" });
+          if (MatchPassword(password, result[2]["0"]["password"])) {
+            res.json({
+              firstName: result[0][0]["first_name"],
+              lastName: result[0][0]["last_name"],
+              email: result[0][0]["email"],
+              phone: result[0][0]["phone"],
+              userId: result[1]["0"]["@finaluid:= `user_id`"],
+              customerId: result[2]["0"]["customer_id"],
+              customertoken: generateToken(result[0][0]["email"]),
+            });
+          } else {
+            res.status(401).send({ message: "Invalid email or password" });
+          }
         }
+      } else {
+        res.status(401).send({ message: "Please fill all the fields" });
       }
-    } else {
-      res.status(401).send({ message: "Please fill all the fields" });
-    }
-    // if (result && matchPassword(password, result)) {
-    //   res.json({
-    //     result,
-    //   });
-    // }
-  });
+    });
+  } else {
+    res.status(401).send({ message: "Please fill all the fields" });
+  }
 });
 
 //@desc get user profile
@@ -89,78 +88,105 @@ const getUserProfile = asyncHandler(async (req, res) => {
 //@route POST /api/users
 //@access PUBLIC
 const registerUser = asyncHandler(async (req, res) => {
-  const { first_name, last_name, email, phone, password } = req.body;
+  const { first_name, last_name, email, phone, city, street, password } =
+    req.body;
 
   const salt = await bcrypt.genSalt(10);
   const finalPassword = await bcrypt.hash(password, salt);
   let sql =
     "select @uid:=`user_id` from dasa_user as var, (SELECT @uid := NULL) init_var  where email=?;select type from user_type where user_id=@uid AND type='customer';";
-  db.query(sql, [email], (err, result) => {
-    if (err) {
-      res.status(401).send({ message: "Please fill all the fields" });
-    }
-    if (result.length > 0) {
-      if (result[1][0] != null) {
-        res.status(401).send({ message: "customer already exists" });
-        console.log(result);
-        // no action needed
-      } else if (result[0][0] != null) {
-        // create customer with same user id👇👇
-        // res.status(401).send({ message: "user exists but no customer" });
-        let sql =
-          "INSERT INTO user_type values(?, 'customer', 'active');select @customerCount:= count(*)+1 from customer; select @customerID:=concat('cus', @customerCount);INSERT INTO customer values (@customerID, ?, ?, current_date());select * from dasa_user where email=?; select customer_id from customer where user_id= ?;";
-        db.query(
-          sql,
-          [
-            result[0][0]["@uid:=`user_id`"],
-            result[0][0]["@uid:=`user_id`"],
-            finalPassword,
-            email,
-            result[0][0]["@uid:=`user_id`"],
-          ],
-          (err, result) => {
-            console.log(result);
-            if (result) {
-              res.json({
-                userId: result[4][0]["user_id"],
-                firstName: result[4][0]["first_name"],
-                lastName: result[4][0]["last_name"],
-                email: result[4][0]["email"],
-                phone: result[4][0]["phone"],
-                customerId: result[5][0]["customer_id"],
-                customertoken: generateToken(result[4][0]["email"]),
-              });
-            }
-          }
-        );
-      } else {
-        // CREATE NEW USER👇👇
-        console.log(result);
-        console.log("User does not exist, no customer, no tailor, no employee");
-        let sql =
-          "select @userCount:= count(*)+1 from dasa_user;select @userID:=concat('u', @userCount);INSERT INTO dasa_user values(@userID, ?,?,?,?);INSERT INTO user_type values(@userID, 'customer','active');select @customerCount:= count(*)+1 from customer;select @customerID:=concat('cus', @customerCount);INSERT INTO customer values(@customerID,@userID,?, current_date());select * from dasa_user where email=?; select customer_id from customer where user_id= @userID;";
-        db.query(
-          sql,
-          [first_name, last_name, email, phone, finalPassword, email],
-          (err, result) => {
-            if (result.length > 0) {
-              res.json({
-                userId: result[7][0]["user_id"],
-                firstName: result[7][0]["first_name"],
-                lastName: result[7][0]["last_name"],
-                email: result[7][0]["email"],
-                phone: result[7][0]["phone"],
-                customerId: result[8][0]["customer_id"],
-                customertoken: generateToken(result[4][0]["email"]),
-              });
-            }
-          }
-        );
+  if (first_name && last_name && email && phone && password) {
+    db.query(sql, [email], (err, result) => {
+      if (err) {
+        res.status(401).send({ message: "Please fill all the fields" });
       }
-    } else {
-      res.status(401).send({ message: "Please fill all the fields" });
-    }
-  });
+      if (result.length > 0) {
+        if (result[1][0] != null) {
+          res.status(401).send({ message: "customer already exists" });
+          console.log(result);
+          // no action needed
+        } else if (result[0][0] != null) {
+          // create customer with same user id👇👇
+          // res.status(401).send({ message: "user exists but no customer" });
+          let sql =
+            "INSERT INTO user_type values(?, 'customer', 'active');select @customerCount:= count(*)+1 from customer; select @customerID:=concat('cus', @customerCount);INSERT INTO customer values (@customerID, ?, ?, current_date());select * from dasa_user where email=?; select customer_id from customer where user_id= ?;";
+          db.query(
+            sql,
+            [
+              result[0][0]["@uid:=`user_id`"],
+              result[0][0]["@uid:=`user_id`"],
+              password,
+              email,
+              result[0][0]["@uid:=`user_id`"],
+            ],
+            (err, result) => {
+              console.log(result);
+              if (result) {
+                res.json({
+                  userId: result[4][0]["user_id"],
+                  firstName: result[4][0]["first_name"],
+                  lastName: result[4][0]["last_name"],
+                  email: result[4][0]["email"],
+                  phone: result[4][0]["phone"],
+                  customerId: result[5][0]["customer_id"],
+                  customertoken: generateToken(result[4][0]["email"]),
+                });
+              }
+            }
+          );
+        } else {
+          // CREATE NEW USER👇👇
+          console.log(result);
+          console.log(
+            "User does not exist, no customer, no tailor, no employee"
+          );
+          let sql1 =
+            "select @userCount:= count(*)+1 from dasa_user;select @userID:=concat('u', @userCount);INSERT INTO dasa_user values(@userID, ?,?,?,?);INSERT INTO user_type values(@userID, 'customer','active');select @customerCount:= count(*)+1 from customer;select @customerID:=concat('cus', @customerCount);INSERT INTO customer values(@customerID,@userID,?, current_date());select * from dasa_user where email=?; select customer_id from customer where user_id= @userID;SELECT @locCount:=count(*)+1 from location;SELECT @locationId:=concat('loc',@locCount);INSERT INTO location values(@locationId, ?,?);select * from location where location_id='loc6';";
+          let sql2 = "";
+          let finalSql = sql1 + sql2;
+          console.log(sql1);
+          db.query(
+            sql1,
+            [
+              first_name,
+              last_name,
+              email,
+              phone,
+              password,
+              email,
+              city,
+              street,
+            ],
+            (err, result) => {
+              if (result.length > 0) {
+                console.log("This is result👇");
+                console.log(result[12]);
+
+                console.log("hiii");
+                console.log(result[11]);
+                res.json({
+                  userId: result[7][0]["user_id"],
+                  firstName: result[7][0]["first_name"],
+                  lastName: result[7][0]["last_name"],
+                  email: result[7][0]["email"],
+                  phone: result[7][0]["phone"],
+                  customerId: result[8][0]["customer_id"],
+                  location_id: result[12][0]["location_id"],
+                  city: result[12][0]["city"],
+                  street: result[12][0]["street"],
+                  customertoken: generateToken(result[4][0]["email"]),
+                });
+              }
+            }
+          );
+        }
+      } else {
+        res.status(401).send({ message: "Please fill all the fields" });
+      }
+    });
+  } else {
+    res.status(401).send({ message: "Please fill all the fields" });
+  }
 });
 
 //@desc update user profile

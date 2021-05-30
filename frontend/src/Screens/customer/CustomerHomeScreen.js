@@ -44,22 +44,7 @@ function CustomerHomeScreen() {
               </Link>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel__image"
-              src="images\Home Carousel Image\images\hrithik.jpg"
-              alt="Third slide"
-            />
 
-            <Carousel.Caption>
-              <h4 class="headingClothShortDescription">MEN FABRIC</h4>
-              <Link to="/menCategory">
-                <button type="button" name="button" class="carousel-button">
-                  SHOP MEN
-                </button>
-              </Link>
-            </Carousel.Caption>
-          </Carousel.Item>
           <Carousel.Item>
             <img
               className="d-block w-100 carousel__image"
@@ -72,24 +57,6 @@ function CustomerHomeScreen() {
               <Link to="/kidCategory">
                 <button type="button" name="button" className="carousel-button">
                   SHOP ANCHARA
-                </button>
-              </Link>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel__image"
-              src="images/Home Carousel Image/images/20190910_120902.jpg"
-              alt="Third slide"
-            />
-
-            <Carousel.Caption>
-              <h4 className="headingClothShortDescription">
-                MULTI-COLOR DHOTI
-              </h4>
-              <Link to="/menCategory">
-                <button type="button" name="button" className="carousel-button">
-                  SHOP DHOTI
                 </button>
               </Link>
             </Carousel.Caption>
@@ -113,9 +80,11 @@ function CustomerHomeScreen() {
               <Carousel.Caption>
                 <div className="shopTheLookBox">
                   <h6 className="shopTheLookHeading">
-                    <button className="shop__the__look__button">
-                      SHOP THE LOOK
-                    </button>
+                    <Link to="/womenCategory">
+                      <button className="shop__the__look__button">
+                        SHOP THE LOOK
+                      </button>{" "}
+                    </Link>
                   </h6>
                 </div>
               </Carousel.Caption>
@@ -129,9 +98,11 @@ function CustomerHomeScreen() {
               <Carousel.Caption>
                 <div className="shopTheLookBox">
                   <h6 className="shopTheLookHeading">
-                    <button className="shop__the__look__button">
-                      SHOP THE LOOK
-                    </button>
+                    <Link to="/womenCategory">
+                      <button className="shop__the__look__button">
+                        SHOP THE LOOK
+                      </button>{" "}
+                    </Link>
                   </h6>
                 </div>
               </Carousel.Caption>
@@ -145,9 +116,11 @@ function CustomerHomeScreen() {
               <Carousel.Caption>
                 <div className="shopTheLookBox">
                   <h6 className="shopTheLookHeading">
-                    <button className="shop__the__look__button">
-                      SHOP THE LOOK
-                    </button>
+                    <Link to="/womenCategory">
+                      <button className="shop__the__look__button">
+                        SHOP THE LOOK
+                      </button>{" "}
+                    </Link>
                   </h6>
                 </div>
               </Carousel.Caption>
@@ -161,9 +134,11 @@ function CustomerHomeScreen() {
               <Carousel.Caption>
                 <div className="shopTheLookBox">
                   <h6 className="shopTheLookHeading">
-                    <button className="shop__the__look__button">
-                      SHOP THE LOOK
-                    </button>
+                    <Link to="/womenCategory">
+                      <button className="shop__the__look__button">
+                        SHOP THE LOOK
+                      </button>{" "}
+                    </Link>
                   </h6>
                 </div>
               </Carousel.Caption>
@@ -177,9 +152,11 @@ function CustomerHomeScreen() {
               <Carousel.Caption>
                 <div className="shopTheLookBox">
                   <h6 className="shopTheLookHeading">
-                    <button className="shop__the__look__button">
-                      SHOP THE LOOK
-                    </button>
+                    <Link to="/womenCategory">
+                      <button className="shop__the__look__button">
+                        SHOP THE LOOK
+                      </button>{" "}
+                    </Link>
                   </h6>
                 </div>
               </Carousel.Caption>

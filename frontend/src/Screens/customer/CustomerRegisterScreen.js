@@ -19,7 +19,8 @@ function CustomerRegisterScreen({ location, history }) {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [message, setMessage] = useState();
-
+  const [city, setCity] = useState();
+  const [street, setStreet] = useState();
   const redirect = location.search ? location.search.split("=")[1] : "/cart";
 
   const userRegister = useSelector((state) => state.userRegister);
@@ -36,7 +37,9 @@ function CustomerRegisterScreen({ location, history }) {
     if (password !== confirmPassword) {
       setMessage("Password do not match");
     } else {
-      dispatch(register(firstName, lastName, email, phone, password));
+      dispatch(
+        register(firstName, lastName, email, phone, city, street, password)
+      );
     }
   };
   return (
@@ -49,10 +52,7 @@ function CustomerRegisterScreen({ location, history }) {
             <div className="signup__container">
               <div className="title__subtitle">
                 <h4>REGISTER</h4>
-                {message && <Message variant="danger">{message}</Message>}
 
-                {error && <Message variant="danger">{error}</Message>}
-                {loading && <Loader></Loader>}
                 <p className="subtitle">
                   Please register below to create an account
                 </p>
@@ -89,9 +89,25 @@ function CustomerRegisterScreen({ location, history }) {
                   <label>
                     Phone
                     <input
-                      type="text"
+                      type="number"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
+                    ></input>
+                  </label>
+                  <label htmlFor="">
+                    City
+                    <input
+                      type="text"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                    ></input>
+                  </label>
+                  <label htmlFor="">
+                    Street
+                    <input
+                      type="text"
+                      value={street}
+                      onChange={(e) => setStreet(e.target.value)}
                     ></input>
                   </label>
 
@@ -122,6 +138,10 @@ function CustomerRegisterScreen({ location, history }) {
                       events.{" "}
                     </small>
                   </div>
+                  {message && <Message variant="danger">{message}</Message>}
+
+                  {error && <Message variant="danger">{error}</Message>}
+                  {loading && <Loader></Loader>}
                   <div className="row justify-content-between  no-gutters">
                     <p>
                       <u>Have an account?</u>

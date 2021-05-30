@@ -47,8 +47,7 @@ export function Login({ location, history }) {
       <div className="login__container">
         <div className="title__subTitle">
           <h4>SIGN IN</h4>
-          {error && <Message variant="danger">{error}</Message>}
-          {loading && <Loader></Loader>}
+
           <p className="subtitle">
             Please enter your email and password to access your account
           </p>
@@ -78,6 +77,8 @@ export function Login({ location, history }) {
               and Terms Of Service Apply{" "}
             </small>
           </div>
+          {error && <Message variant="danger">{error}</Message>}
+          {loading && <Loader></Loader>}
           <div className="login__form__footer row justify-content-between mr-0 ml-0">
             <p>
               <u> New Customer?</u>
